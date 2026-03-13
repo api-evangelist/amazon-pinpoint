@@ -1,0 +1,168 @@
+openapi: 3.1.0
+info:
+  title: Amazon Pinpoint API
+  description: >-
+    The Amazon Pinpoint API enables you to create and manage marketing
+    campaigns, define audience segments, send transactional messages,
+    and analyze engagement metrics for multi-channel communications.
+  version: '2016-12-01'
+  contact:
+    name: AWS Support
+    url: https://aws.amazon.com/premiumsupport/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+servers:
+  - url: https://pinpoint.{region}.amazonaws.com
+    description: Amazon Pinpoint regional endpoint
+    variables:
+      region:
+        default: us-east-1
+        description: AWS region
+        enum:
+          - us-east-1
+          - us-east-2
+          - us-west-2
+          - eu-west-1
+          - eu-central-1
+          - ap-northeast-1
+          - ap-southeast-1
+          - ap-southeast-2
+security:
+  - sigv4: []
+tags:
+  - name: Applications
+    description: Operations for managing Pinpoint applications (projects)
+  - name: Campaigns
+    description: Operations for creating and managing campaigns
+  - name: Segments
+    description: Operations for defining audience segments
+  - name: Channels
+    description: Operations for configuring messaging channels
+  - name: Messages
+    description: Operations for sending messages
+paths:
+  /v1/apps:
+    post:
+      operationId: CreateApp
+      summary: Create an application
+      description: Creates a new Pinpoint application (project).
+      tags:
+        - Applications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateApplicationRequest'
+      responses:
+        '201':
+          description: Application created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResponse'
+    get:
+      operationId: GetApps
+      summary: List applications
+      description: Retrieves information about all applications associated with your account.
+      tags:
+        - Applications
+      responses:
+        '200':
+          description: Applications retrieved successfully
+  /v1/apps/{application-id}:
+    get:
+      operationId: GetApp
+      summary: Get application details
+      description: Retrieves information about an application.
+      tags:
+        - Applications
+      parameters:
+        - name: application-id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Application details retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResponse'
+components:
+  securitySchemes:
+    sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4
+  schemas:
+    CreateApplicationRequest:
+      type: object
+      required:
+        - Name
+      properties:
+        Name:
+          type: string
+          description: The display name of the application
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+    ApplicationResponse:
+      type: object
+      properties:
+        Id:
+          type: string
+        Arn:
+          type: string
+        Name:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+    CampaignResponse:
+      type: object
+      properties:
+        Id:
+          type: string
+        ApplicationId:
+          type: string
+        Arn:
+          type: string
+        Name:
+          type: string
+        State:
+          type: object
+          properties:
+            CampaignStatus:
+              type: string
+              enum:
+                - SCHEDULED
+                - EXECUTING
+                - PENDING_NEXT_RUN
+                - COMPLETED
+                - PAUSED
+                - DELETED
+                - INVALID
+    SegmentResponse:
+      type: object
+      properties:
+        Id:
+          type: string
+        ApplicationId:
+          type: string
+        Arn:
+          type: string
+        Name:
+          type: string
+        SegmentType:
+          type: string
+          enum:
+            - DIMENSIONAL
+            - IMPORT
