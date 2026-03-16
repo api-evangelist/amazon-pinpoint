@@ -13,7 +13,7 @@ tags:
 - Campaigns
 - AWS
 created: '2024-01-15'
-modified: '2026-03-13'
+modified: '2026-03-16'
 apis:
 - name: Amazon Pinpoint API
   description: The Amazon Pinpoint API enables you to create and manage marketing campaigns, send transactional messages, and define audience segments for targeted communications.
