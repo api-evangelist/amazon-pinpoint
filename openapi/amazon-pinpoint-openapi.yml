@@ -35,14 +35,6 @@ security:
 tags:
   - name: Applications
     description: Operations for managing Pinpoint applications (projects)
-  - name: Campaigns
-    description: Operations for creating and managing campaigns
-  - name: Segments
-    description: Operations for defining audience segments
-  - name: Channels
-    description: Operations for configuring messaging channels
-  - name: Messages
-    description: Operations for sending messages
 paths:
   /v1/apps:
     post:
