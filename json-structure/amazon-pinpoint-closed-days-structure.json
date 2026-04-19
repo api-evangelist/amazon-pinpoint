@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-closed-days-structure.json",
+  "name": "ClosedDays",
+  "description": "The time when journey will stop sending messages.",
+  "type": "object",
+  "properties": {
+    "EMAIL": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOfClosedDaysRules"
+        },
+        {
+          "description": "Rules for Email Channel."
+        }
+      ]
+    },
+    "SMS": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOfClosedDaysRules"
+        },
+        {
+          "description": "Rules for SMS Channel."
+        }
+      ]
+    },
+    "PUSH": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOfClosedDaysRules"
+        },
+        {
+          "description": "Rules for Push Channel."
+        }
+      ]
+    },
+    "VOICE": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOfClosedDaysRules"
+        },
+        {
+          "description": "Rules for Voice Channel."
+        }
+      ]
+    },
+    "CUSTOM": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOfClosedDaysRules"
+        },
+        {
+          "description": "Rules for Custom Channel."
+        }
+      ]
+    }
+  }
+}

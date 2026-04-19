@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-in-app-message-header-config-schema.json",
+  "title": "InAppMessageHeaderConfig",
+  "description": "Text config for Message Header.",
+  "type": "object",
+  "properties": {
+    "Alignment": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Alignment"
+        },
+        {
+          "description": "The alignment of the text. Valid values: LEFT, CENTER, RIGHT."
+        }
+      ]
+    },
+    "Header": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "Message Header."
+        }
+      ]
+    },
+    "TextColor": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The text color."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Alignment",
+    "Header",
+    "TextColor"
+  ]
+}

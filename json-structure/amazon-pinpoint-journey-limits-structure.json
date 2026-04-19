@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-journey-limits-structure.json",
+  "name": "JourneyLimits",
+  "description": "Specifies limits on the messages that a journey can send and the number of times participants can enter a journey.",
+  "type": "object",
+  "properties": {
+    "DailyCap": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The maximum number of messages that the journey can send to a single participant during a 24-hour period. The maximum value is 100."
+        }
+      ]
+    },
+    "EndpointReentryCap": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The maximum number of times that a participant can enter the journey. The maximum value is 100. To allow participants to enter the journey an unlimited number of times, set this value to 0."
+        }
+      ]
+    },
+    "MessagesPerSecond": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The maximum number of messages that the journey can send each second."
+        }
+      ]
+    },
+    "EndpointReentryInterval": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "Minimum time that must pass before an endpoint can re-enter a given journey. The duration should use an ISO 8601 format, such as PT1H. "
+        }
+      ]
+    }
+  }
+}

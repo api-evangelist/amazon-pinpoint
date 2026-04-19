@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-override-button-configuration-schema.json",
+  "title": "OverrideButtonConfiguration",
+  "description": "Override button configuration.",
+  "type": "object",
+  "properties": {
+    "ButtonAction": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ButtonAction"
+        },
+        {
+          "description": "Action triggered by the button."
+        }
+      ]
+    },
+    "Link": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "Button destination."
+        }
+      ]
+    }
+  },
+  "required": [
+    "ButtonAction"
+  ]
+}

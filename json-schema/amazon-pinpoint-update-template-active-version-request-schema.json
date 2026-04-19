@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-update-template-active-version-request-schema.json",
+  "title": "UpdateTemplateActiveVersionRequest",
+  "description": "UpdateTemplateActiveVersionRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "TemplateActiveVersionRequest": {
+      "$ref": "#/components/schemas/TemplateActiveVersionRequest"
+    }
+  },
+  "required": [
+    "TemplateActiveVersionRequest"
+  ]
+}

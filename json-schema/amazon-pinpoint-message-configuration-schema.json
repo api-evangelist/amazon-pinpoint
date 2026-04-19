@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-message-configuration-schema.json",
+  "title": "MessageConfiguration",
+  "description": "Specifies the message configuration settings for a campaign.",
+  "type": "object",
+  "properties": {
+    "ADMMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Message"
+        },
+        {
+          "description": "The message that the campaign sends through the ADM (Amazon Device Messaging) channel. If specified, this message overrides the default message."
+        }
+      ]
+    },
+    "APNSMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Message"
+        },
+        {
+          "description": "The message that the campaign sends through the APNs (Apple Push Notification service) channel. If specified, this message overrides the default message."
+        }
+      ]
+    },
+    "BaiduMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Message"
+        },
+        {
+          "description": "The message that the campaign sends through the Baidu (Baidu Cloud Push) channel. If specified, this message overrides the default message."
+        }
+      ]
+    },
+    "CustomMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CampaignCustomMessage"
+        },
+        {
+          "description": "<p>The message that the campaign sends through a custom channel, as specified by the delivery configuration (CustomDeliveryConfiguration) settings for the campaign. If specified, this message overrides the default message.</p> "
+        }
+      ]
+    },
+    "DefaultMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Message"
+        },
+        {
+          "description": "The default message that the campaign sends through all the channels that are configured for the campaign."
+        }
+      ]
+    },
+    "EmailMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CampaignEmailMessage"
+        },
+        {
+          "description": "The message that the campaign sends through the email channel. If specified, this message overrides the default message."
+        }
+      ]
+    },
+    "GCMMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Message"
+        },
+        {
+          "description": "The message that the campaign sends through the GCM channel, which enables Amazon Pinpoint to send push notifications through the Firebase Cloud Messaging (FCM), formerly Google Cloud Messaging (GCM), service. If specified, this message overrides the default message."
+        }
+      ]
+    },
+    "SMSMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CampaignSmsMessage"
+        },
+        {
+          "description": "The message that the campaign sends through the SMS channel. If specified, this message overrides the default message."
+        }
+      ]
+    },
+    "InAppMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CampaignInAppMessage"
+        },
+        {
+          "description": "The in-app message configuration."
+        }
+      ]
+    }
+  }
+}

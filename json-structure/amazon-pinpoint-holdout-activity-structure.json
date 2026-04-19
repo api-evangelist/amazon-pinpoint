@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-holdout-activity-structure.json",
+  "name": "HoldoutActivity",
+  "description": "Specifies the settings for a holdout activity in a journey. This type of activity stops a journey for a specified percentage of participants.",
+  "type": "object",
+  "properties": {
+    "NextActivity": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the next activity to perform, after performing the holdout activity."
+        }
+      ]
+    },
+    "Percentage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "<p>The percentage of participants who shouldn't continue the journey.</p> <p>To determine which participants are held out, Amazon Pinpoint applies a probability-based algorithm to the percentage that you specify. Therefore, the actual percentage of participants who are held out may not be equal to the percentage that you specify.</p>"
+        }
+      ]
+    }
+  },
+  "required": [
+    "Percentage"
+  ]
+}

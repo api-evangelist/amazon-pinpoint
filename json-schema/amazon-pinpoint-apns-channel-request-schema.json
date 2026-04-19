@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-apns-channel-request-schema.json",
+  "title": "APNSChannelRequest",
+  "description": "Specifies the status and settings of the APNs (Apple Push Notification service) channel for an application.",
+  "type": "object",
+  "properties": {
+    "BundleId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The bundle identifier that's assigned to your iOS app. This identifier is used for APNs tokens."
+        }
+      ]
+    },
+    "Certificate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The APNs client certificate that you received from Apple, if you want Amazon Pinpoint to communicate with APNs by using an APNs certificate."
+        }
+      ]
+    },
+    "DefaultAuthenticationMethod": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The default authentication method that you want Amazon Pinpoint to use when authenticating with APNs, key or certificate."
+        }
+      ]
+    },
+    "Enabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "description": "Specifies whether to enable the APNs channel for the application."
+        }
+      ]
+    },
+    "PrivateKey": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The private key for the APNs client certificate that you want Amazon Pinpoint to use to communicate with APNs."
+        }
+      ]
+    },
+    "TeamId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The identifier that's assigned to your Apple developer account team. This identifier is used for APNs tokens."
+        }
+      ]
+    },
+    "TokenKey": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The authentication key to use for APNs tokens."
+        }
+      ]
+    },
+    "TokenKeyId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The key identifier that's assigned to your APNs signing key, if you want Amazon Pinpoint to communicate with APNs by using APNs tokens."
+        }
+      ]
+    }
+  }
+}

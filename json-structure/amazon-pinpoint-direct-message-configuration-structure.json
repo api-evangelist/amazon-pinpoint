@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-direct-message-configuration-structure.json",
+  "name": "DirectMessageConfiguration",
+  "description": "Specifies the settings and content for the default message and any default messages that you tailored for specific channels.",
+  "type": "object",
+  "properties": {
+    "ADMMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ADMMessage"
+        },
+        {
+          "description": "The default push notification message for the ADM (Amazon Device Messaging) channel. This message overrides the default push notification message (DefaultPushNotificationMessage)."
+        }
+      ]
+    },
+    "APNSMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/APNSMessage"
+        },
+        {
+          "description": "The default push notification message for the APNs (Apple Push Notification service) channel. This message overrides the default push notification message (DefaultPushNotificationMessage)."
+        }
+      ]
+    },
+    "BaiduMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BaiduMessage"
+        },
+        {
+          "description": "The default push notification message for the Baidu (Baidu Cloud Push) channel. This message overrides the default push notification message (DefaultPushNotificationMessage)."
+        }
+      ]
+    },
+    "DefaultMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DefaultMessage"
+        },
+        {
+          "description": "The default message for all channels."
+        }
+      ]
+    },
+    "DefaultPushNotificationMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DefaultPushNotificationMessage"
+        },
+        {
+          "description": "The default push notification message for all push notification channels."
+        }
+      ]
+    },
+    "EmailMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EmailMessage"
+        },
+        {
+          "description": "The default message for the email channel. This message overrides the default message (DefaultMessage)."
+        }
+      ]
+    },
+    "GCMMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GCMMessage"
+        },
+        {
+          "description": "The default push notification message for the GCM channel, which is used to send notifications through the Firebase Cloud Messaging (FCM), formerly Google Cloud Messaging (GCM), service. This message overrides the default push notification message (DefaultPushNotificationMessage)."
+        }
+      ]
+    },
+    "SMSMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SMSMessage"
+        },
+        {
+          "description": "The default message for the SMS channel. This message overrides the default message (DefaultMessage)."
+        }
+      ]
+    },
+    "VoiceMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VoiceMessage"
+        },
+        {
+          "description": "The default message for the voice channel. This message overrides the default message (DefaultMessage)."
+        }
+      ]
+    }
+  }
+}

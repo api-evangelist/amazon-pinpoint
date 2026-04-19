@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-in-app-message-body-config-schema.json",
+  "title": "InAppMessageBodyConfig",
+  "description": "Text config for Message Body.",
+  "type": "object",
+  "properties": {
+    "Alignment": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Alignment"
+        },
+        {
+          "description": "The alignment of the text. Valid values: LEFT, CENTER, RIGHT."
+        }
+      ]
+    },
+    "Body": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "Message Body."
+        }
+      ]
+    },
+    "TextColor": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The text color."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Alignment",
+    "TextColor",
+    "Body"
+  ]
+}

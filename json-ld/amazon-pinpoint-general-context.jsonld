@@ -1,0 +1,322 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "pinpoint": "https://pinpoint.amazonaws.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "OpenHoursRule": "pinpoint:OpenHoursRule",
+    "StartTime": {
+      "@id": "pinpoint:StartTime",
+      "@type": "xsd:string"
+    },
+    "EndTime": {
+      "@id": "pinpoint:EndTime",
+      "@type": "xsd:string"
+    },
+    "Session": "pinpoint:Session",
+    "Duration": {
+      "@id": "pinpoint:Duration",
+      "@type": "xsd:string"
+    },
+    "Id": {
+      "@id": "pinpoint:Id",
+      "@type": "xsd:string"
+    },
+    "StartTimestamp": {
+      "@id": "pinpoint:StartTimestamp",
+      "@type": "xsd:string"
+    },
+    "StopTimestamp": {
+      "@id": "pinpoint:StopTimestamp",
+      "@type": "xsd:string"
+    },
+    "GPSCoordinates": "pinpoint:GPSCoordinates",
+    "Latitude": {
+      "@id": "pinpoint:Latitude",
+      "@type": "xsd:string"
+    },
+    "Longitude": {
+      "@id": "pinpoint:Longitude",
+      "@type": "xsd:string"
+    },
+    "RandomSplitEntry": "pinpoint:RandomSplitEntry",
+    "NextActivity": {
+      "@id": "pinpoint:NextActivity",
+      "@type": "xsd:string"
+    },
+    "Percentage": {
+      "@id": "pinpoint:Percentage",
+      "@type": "xsd:string"
+    },
+    "UpdateRecommenderConfigurationRequest": "pinpoint:UpdateRecommenderConfigurationRequest",
+    "UpdateRecommenderConfiguration": "pinpoint:UpdateRecommenderConfiguration",
+    "TagResourceRequest": "pinpoint:TagResourceRequest",
+    "TagsModel": "pinpoint:TagsModel",
+    "NumberValidateRequest": "pinpoint:NumberValidateRequest",
+    "IsoCountryCode": {
+      "@id": "pinpoint:IsoCountryCode",
+      "@type": "xsd:string"
+    },
+    "PhoneNumber": {
+      "@id": "pinpoint:PhoneNumber",
+      "@type": "xsd:string"
+    },
+    "Attributes": {
+      "@id": "pinpoint:Attributes",
+      "@type": "xsd:string"
+    },
+    "Description": {
+      "@id": "pinpoint:Description",
+      "@type": "xsd:string"
+    },
+    "Name": {
+      "@id": "pinpoint:Name",
+      "@type": "xsd:string"
+    },
+    "RecommendationProviderIdType": {
+      "@id": "pinpoint:RecommendationProviderIdType",
+      "@type": "xsd:string"
+    },
+    "RecommendationProviderRoleArn": {
+      "@id": "pinpoint:RecommendationProviderRoleArn",
+      "@type": "xsd:string"
+    },
+    "RecommendationProviderUri": {
+      "@id": "pinpoint:RecommendationProviderUri",
+      "@type": "xsd:string"
+    },
+    "RecommendationTransformerUri": {
+      "@id": "pinpoint:RecommendationTransformerUri",
+      "@type": "xsd:string"
+    },
+    "RecommendationsDisplayName": {
+      "@id": "pinpoint:RecommendationsDisplayName",
+      "@type": "xsd:string"
+    },
+    "RecommendationsPerMessage": {
+      "@id": "pinpoint:RecommendationsPerMessage",
+      "@type": "xsd:string"
+    },
+    "PhoneNumberValidateRequest": "pinpoint:PhoneNumberValidateRequest",
+    "EventsRequest": "pinpoint:EventsRequest",
+    "BatchItem": {
+      "@id": "pinpoint:BatchItem",
+      "@type": "xsd:string"
+    },
+    "OpenHours": "pinpoint:OpenHours",
+    "EMAIL": {
+      "@id": "pinpoint:EMAIL",
+      "@type": "xsd:string"
+    },
+    "SMS": {
+      "@id": "pinpoint:SMS",
+      "@type": "xsd:string"
+    },
+    "PUSH": {
+      "@id": "pinpoint:PUSH",
+      "@type": "xsd:string"
+    },
+    "VOICE": {
+      "@id": "pinpoint:VOICE",
+      "@type": "xsd:string"
+    },
+    "CUSTOM": {
+      "@id": "pinpoint:CUSTOM",
+      "@type": "xsd:string"
+    },
+    "AttributesResource": "pinpoint:AttributesResource",
+    "ApplicationId": {
+      "@id": "pinpoint:ApplicationId",
+      "@type": "xsd:string"
+    },
+    "AttributeType": {
+      "@id": "pinpoint:AttributeType",
+      "@type": "xsd:string"
+    },
+    "WriteEventStream": "pinpoint:WriteEventStream",
+    "DestinationStreamArn": {
+      "@id": "pinpoint:DestinationStreamArn",
+      "@type": "xsd:string"
+    },
+    "RoleArn": {
+      "@id": "pinpoint:RoleArn",
+      "@type": "xsd:string"
+    },
+    "GetRecommenderConfigurationsRequest": "pinpoint:GetRecommenderConfigurationsRequest",
+    "Event": "pinpoint:Event",
+    "AppPackageName": {
+      "@id": "pinpoint:AppPackageName",
+      "@type": "xsd:string"
+    },
+    "AppTitle": {
+      "@id": "pinpoint:AppTitle",
+      "@type": "xsd:string"
+    },
+    "AppVersionCode": {
+      "@id": "pinpoint:AppVersionCode",
+      "@type": "xsd:string"
+    },
+    "ClientSdkVersion": {
+      "@id": "pinpoint:ClientSdkVersion",
+      "@type": "xsd:string"
+    },
+    "EventType": {
+      "@id": "pinpoint:EventType",
+      "@type": "xsd:string"
+    },
+    "Metrics": {
+      "@id": "pinpoint:Metrics",
+      "@type": "xsd:string"
+    },
+    "SdkName": {
+      "@id": "pinpoint:SdkName",
+      "@type": "xsd:string"
+    },
+    "Timestamp": {
+      "@id": "pinpoint:Timestamp",
+      "@type": "xsd:string"
+    },
+    "QuietTime": "pinpoint:QuietTime",
+    "End": {
+      "@id": "pinpoint:End",
+      "@type": "xsd:string"
+    },
+    "Start": {
+      "@id": "pinpoint:Start",
+      "@type": "xsd:string"
+    },
+    "EventFilter": "pinpoint:EventFilter",
+    "Dimensions": {
+      "@id": "pinpoint:Dimensions",
+      "@type": "xsd:string"
+    },
+    "FilterType": {
+      "@id": "pinpoint:FilterType",
+      "@type": "xsd:string"
+    },
+    "DeleteEventStreamRequest": "pinpoint:DeleteEventStreamRequest",
+    "EventsBatch": "pinpoint:EventsBatch",
+    "Endpoint": {
+      "@id": "pinpoint:Endpoint",
+      "@type": "xsd:string"
+    },
+    "Events": {
+      "@id": "pinpoint:Events",
+      "@type": "xsd:string"
+    },
+    "RemoveAttributesRequest": "pinpoint:RemoveAttributesRequest",
+    "UpdateAttributesRequest": "pinpoint:UpdateAttributesRequest",
+    "CreateRecommenderConfiguration": "pinpoint:CreateRecommenderConfiguration",
+    "OverrideButtonConfiguration": "pinpoint:OverrideButtonConfiguration",
+    "ButtonAction": {
+      "@id": "pinpoint:ButtonAction",
+      "@type": "xsd:string"
+    },
+    "Link": {
+      "@id": "pinpoint:Link",
+      "@type": "xsd:string"
+    },
+    "ClosedDays": "pinpoint:ClosedDays",
+    "EventStream": "pinpoint:EventStream",
+    "ExternalId": {
+      "@id": "pinpoint:ExternalId",
+      "@type": "xsd:string"
+    },
+    "LastModifiedDate": {
+      "@id": "pinpoint:LastModifiedDate",
+      "@type": "xsd:string"
+    },
+    "LastUpdatedBy": {
+      "@id": "pinpoint:LastUpdatedBy",
+      "@type": "xsd:string"
+    },
+    "GetRecommenderConfigurationRequest": "pinpoint:GetRecommenderConfigurationRequest",
+    "CreateRecommenderConfigurationRequest": "pinpoint:CreateRecommenderConfigurationRequest",
+    "DeleteRecommenderConfigurationRequest": "pinpoint:DeleteRecommenderConfigurationRequest",
+    "PutEventsRequest": "pinpoint:PutEventsRequest",
+    "Amazon Pinpoint Application Definition": "pinpoint:Amazon Pinpoint Application Definition",
+    "Arn": {
+      "@id": "pinpoint:Arn",
+      "@type": "xsd:string"
+    },
+    "tags": {
+      "@id": "pinpoint:tags",
+      "@type": "@id"
+    },
+    "CreationDate": {
+      "@id": "pinpoint:CreationDate",
+      "@type": "xsd:string"
+    },
+    "Campaigns": {
+      "@id": "pinpoint:Campaigns",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "Segments": {
+      "@id": "pinpoint:Segments",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "Channels": {
+      "@id": "pinpoint:Channels",
+      "@type": "xsd:string"
+    },
+    "ClosedDaysRule": "pinpoint:ClosedDaysRule",
+    "StartDateTime": {
+      "@id": "pinpoint:StartDateTime",
+      "@type": "xsd:string"
+    },
+    "EndDateTime": {
+      "@id": "pinpoint:EndDateTime",
+      "@type": "xsd:string"
+    },
+    "Schedule": "pinpoint:Schedule",
+    "Frequency": {
+      "@id": "pinpoint:Frequency",
+      "@type": "xsd:string"
+    },
+    "IsLocalTime": {
+      "@id": "pinpoint:IsLocalTime",
+      "@type": "xsd:string"
+    },
+    "Timezone": {
+      "@id": "pinpoint:Timezone",
+      "@type": "xsd:string"
+    },
+    "CustomDeliveryConfiguration": "pinpoint:CustomDeliveryConfiguration",
+    "DeliveryUri": {
+      "@id": "pinpoint:DeliveryUri",
+      "@type": "xsd:string"
+    },
+    "EndpointTypes": {
+      "@id": "pinpoint:EndpointTypes",
+      "@type": "xsd:string"
+    },
+    "GetEventStreamRequest": "pinpoint:GetEventStreamRequest",
+    "Blacklist": {
+      "@id": "pinpoint:Blacklist",
+      "@type": "xsd:string"
+    },
+    "DefaultButtonConfiguration": "pinpoint:DefaultButtonConfiguration",
+    "BackgroundColor": {
+      "@id": "pinpoint:BackgroundColor",
+      "@type": "xsd:string"
+    },
+    "BorderRadius": {
+      "@id": "pinpoint:BorderRadius",
+      "@type": "xsd:string"
+    },
+    "Text": {
+      "@id": "pinpoint:Text",
+      "@type": "xsd:string"
+    },
+    "TextColor": {
+      "@id": "pinpoint:TextColor",
+      "@type": "xsd:string"
+    },
+    "PutEventStreamRequest": "pinpoint:PutEventStreamRequest",
+    "ListTagsForResourceRequest": "pinpoint:ListTagsForResourceRequest",
+    "UntagResourceRequest": "pinpoint:UntagResourceRequest"
+  }
+}

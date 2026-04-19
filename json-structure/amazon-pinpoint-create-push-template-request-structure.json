@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-create-push-template-request-structure.json",
+  "name": "CreatePushTemplateRequest",
+  "description": "CreatePushTemplateRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "PushNotificationTemplateRequest": {
+      "$ref": "#/components/schemas/PushNotificationTemplateRequest"
+    }
+  },
+  "required": [
+    "PushNotificationTemplateRequest"
+  ]
+}

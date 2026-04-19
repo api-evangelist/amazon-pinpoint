@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-phone-number-validate-response-schema.json",
+  "title": "PhoneNumberValidateResponse",
+  "description": "PhoneNumberValidateResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "NumberValidateResponse": {
+      "$ref": "#/components/schemas/NumberValidateResponse"
+    }
+  },
+  "required": [
+    "NumberValidateResponse"
+  ]
+}

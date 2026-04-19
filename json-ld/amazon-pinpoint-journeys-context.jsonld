@@ -1,0 +1,416 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "pinpoint": "https://pinpoint.amazonaws.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ActivityResponse": "pinpoint:ActivityResponse",
+    "ApplicationId": {
+      "@id": "pinpoint:ApplicationId",
+      "@type": "xsd:string"
+    },
+    "CampaignId": {
+      "@id": "pinpoint:CampaignId",
+      "@type": "xsd:string"
+    },
+    "End": {
+      "@id": "pinpoint:End",
+      "@type": "xsd:string"
+    },
+    "Id": {
+      "@id": "pinpoint:Id",
+      "@type": "xsd:string"
+    },
+    "Result": {
+      "@id": "pinpoint:Result",
+      "@type": "xsd:string"
+    },
+    "ScheduledStart": {
+      "@id": "pinpoint:ScheduledStart",
+      "@type": "xsd:string"
+    },
+    "Start": {
+      "@id": "pinpoint:Start",
+      "@type": "xsd:string"
+    },
+    "State": {
+      "@id": "pinpoint:State",
+      "@type": "xsd:string"
+    },
+    "SuccessfulEndpointCount": {
+      "@id": "pinpoint:SuccessfulEndpointCount",
+      "@type": "xsd:string"
+    },
+    "TimezonesCompletedCount": {
+      "@id": "pinpoint:TimezonesCompletedCount",
+      "@type": "xsd:string"
+    },
+    "TimezonesTotalCount": {
+      "@id": "pinpoint:TimezonesTotalCount",
+      "@type": "xsd:string"
+    },
+    "TotalEndpointCount": {
+      "@id": "pinpoint:TotalEndpointCount",
+      "@type": "xsd:string"
+    },
+    "TreatmentId": {
+      "@id": "pinpoint:TreatmentId",
+      "@type": "xsd:string"
+    },
+    "ListJourneysResponse": "pinpoint:ListJourneysResponse",
+    "JourneysResponse": "pinpoint:JourneysResponse",
+    "GetJourneyExecutionActivityMetricsRequest": "pinpoint:GetJourneyExecutionActivityMetricsRequest",
+    "JourneyLimits": "pinpoint:JourneyLimits",
+    "DailyCap": {
+      "@id": "pinpoint:DailyCap",
+      "@type": "xsd:string"
+    },
+    "EndpointReentryCap": {
+      "@id": "pinpoint:EndpointReentryCap",
+      "@type": "xsd:string"
+    },
+    "MessagesPerSecond": {
+      "@id": "pinpoint:MessagesPerSecond",
+      "@type": "xsd:string"
+    },
+    "EndpointReentryInterval": {
+      "@id": "pinpoint:EndpointReentryInterval",
+      "@type": "xsd:string"
+    },
+    "UpdateJourneyResponse": "pinpoint:UpdateJourneyResponse",
+    "JourneyResponse": "pinpoint:JourneyResponse",
+    "WaitTime": "pinpoint:WaitTime",
+    "WaitFor": {
+      "@id": "pinpoint:WaitFor",
+      "@type": "xsd:string"
+    },
+    "WaitUntil": {
+      "@id": "pinpoint:WaitUntil",
+      "@type": "xsd:string"
+    },
+    "EmailMessageActivity": "pinpoint:EmailMessageActivity",
+    "MessageConfig": {
+      "@id": "pinpoint:MessageConfig",
+      "@type": "xsd:string"
+    },
+    "NextActivity": {
+      "@id": "pinpoint:NextActivity",
+      "@type": "xsd:string"
+    },
+    "TemplateName": {
+      "@id": "pinpoint:TemplateName",
+      "@type": "xsd:string"
+    },
+    "TemplateVersion": {
+      "@id": "pinpoint:TemplateVersion",
+      "@type": "xsd:string"
+    },
+    "DeleteJourneyResponse": "pinpoint:DeleteJourneyResponse",
+    "JourneyStateRequest": "pinpoint:JourneyStateRequest",
+    "SimpleCondition": "pinpoint:SimpleCondition",
+    "EventCondition": "pinpoint:EventCondition",
+    "SegmentCondition": {
+      "@id": "pinpoint:SegmentCondition",
+      "@type": "xsd:string"
+    },
+    "SegmentDimensions": {
+      "@id": "pinpoint:SegmentDimensions",
+      "@type": "xsd:string"
+    },
+    "JourneyExecutionActivityMetricsResponse": "pinpoint:JourneyExecutionActivityMetricsResponse",
+    "ActivityType": {
+      "@id": "pinpoint:ActivityType",
+      "@type": "xsd:string"
+    },
+    "JourneyActivityId": {
+      "@id": "pinpoint:JourneyActivityId",
+      "@type": "xsd:string"
+    },
+    "JourneyId": {
+      "@id": "pinpoint:JourneyId",
+      "@type": "xsd:string"
+    },
+    "LastEvaluatedTime": {
+      "@id": "pinpoint:LastEvaluatedTime",
+      "@type": "xsd:string"
+    },
+    "Metrics": {
+      "@id": "pinpoint:Metrics",
+      "@type": "xsd:string"
+    },
+    "HoldoutActivity": "pinpoint:HoldoutActivity",
+    "Percentage": {
+      "@id": "pinpoint:Percentage",
+      "@type": "xsd:string"
+    },
+    "JourneyEmailMessage": "pinpoint:JourneyEmailMessage",
+    "FromAddress": {
+      "@id": "pinpoint:FromAddress",
+      "@type": "xsd:string"
+    },
+    "GetJourneyResponse": "pinpoint:GetJourneyResponse",
+    "DeleteJourneyRequest": "pinpoint:DeleteJourneyRequest",
+    "GetJourneyDateRangeKpiResponse": "pinpoint:GetJourneyDateRangeKpiResponse",
+    "JourneyDateRangeKpiResponse": "pinpoint:JourneyDateRangeKpiResponse",
+    "JourneyChannelSettings": "pinpoint:JourneyChannelSettings",
+    "ConnectCampaignArn": {
+      "@id": "pinpoint:ConnectCampaignArn",
+      "@type": "xsd:string"
+    },
+    "ConnectCampaignExecutionRoleArn": {
+      "@id": "pinpoint:ConnectCampaignExecutionRoleArn",
+      "@type": "xsd:string"
+    },
+    "Item": {
+      "@id": "pinpoint:Item",
+      "@type": "xsd:string"
+    },
+    "NextToken": {
+      "@id": "pinpoint:NextToken",
+      "@type": "xsd:string"
+    },
+    "GetJourneyExecutionMetricsResponse": "pinpoint:GetJourneyExecutionMetricsResponse",
+    "JourneyExecutionMetricsResponse": "pinpoint:JourneyExecutionMetricsResponse",
+    "EndTime": {
+      "@id": "pinpoint:EndTime",
+      "@type": "xsd:string"
+    },
+    "KpiName": {
+      "@id": "pinpoint:KpiName",
+      "@type": "xsd:string"
+    },
+    "KpiResult": {
+      "@id": "pinpoint:KpiResult",
+      "@type": "xsd:string"
+    },
+    "StartTime": {
+      "@id": "pinpoint:StartTime",
+      "@type": "xsd:string"
+    },
+    "JourneySchedule": "pinpoint:JourneySchedule",
+    "Timezone": {
+      "@id": "pinpoint:Timezone",
+      "@type": "xsd:string"
+    },
+    "JourneyPushMessage": "pinpoint:JourneyPushMessage",
+    "TimeToLive": {
+      "@id": "pinpoint:TimeToLive",
+      "@type": "xsd:string"
+    },
+    "GetJourneyRequest": "pinpoint:GetJourneyRequest",
+    "Activity": "pinpoint:Activity",
+    "CUSTOM": {
+      "@id": "pinpoint:CUSTOM",
+      "@type": "xsd:string"
+    },
+    "ConditionalSplit": {
+      "@id": "pinpoint:ConditionalSplit",
+      "@type": "xsd:string"
+    },
+    "Description": {
+      "@id": "pinpoint:Description",
+      "@type": "xsd:string"
+    },
+    "EMAIL": {
+      "@id": "pinpoint:EMAIL",
+      "@type": "xsd:string"
+    },
+    "Holdout": {
+      "@id": "pinpoint:Holdout",
+      "@type": "xsd:string"
+    },
+    "MultiCondition": {
+      "@id": "pinpoint:MultiCondition",
+      "@type": "xsd:string"
+    },
+    "PUSH": {
+      "@id": "pinpoint:PUSH",
+      "@type": "xsd:string"
+    },
+    "RandomSplit": {
+      "@id": "pinpoint:RandomSplit",
+      "@type": "xsd:string"
+    },
+    "SMS": {
+      "@id": "pinpoint:SMS",
+      "@type": "xsd:string"
+    },
+    "Wait": {
+      "@id": "pinpoint:Wait",
+      "@type": "xsd:string"
+    },
+    "ContactCenter": {
+      "@id": "pinpoint:ContactCenter",
+      "@type": "xsd:string"
+    },
+    "EventStartCondition": "pinpoint:EventStartCondition",
+    "EventFilter": {
+      "@id": "pinpoint:EventFilter",
+      "@type": "xsd:string"
+    },
+    "SegmentId": {
+      "@id": "pinpoint:SegmentId",
+      "@type": "xsd:string"
+    },
+    "MultiConditionalSplitActivity": "pinpoint:MultiConditionalSplitActivity",
+    "Branches": {
+      "@id": "pinpoint:Branches",
+      "@type": "xsd:string"
+    },
+    "DefaultActivity": {
+      "@id": "pinpoint:DefaultActivity",
+      "@type": "xsd:string"
+    },
+    "EvaluationWaitTime": {
+      "@id": "pinpoint:EvaluationWaitTime",
+      "@type": "xsd:string"
+    },
+    "WriteJourneyRequest": "pinpoint:WriteJourneyRequest",
+    "Activities": {
+      "@id": "pinpoint:Activities",
+      "@type": "xsd:string"
+    },
+    "CreationDate": {
+      "@id": "pinpoint:CreationDate",
+      "@type": "xsd:string"
+    },
+    "LastModifiedDate": {
+      "@id": "pinpoint:LastModifiedDate",
+      "@type": "xsd:string"
+    },
+    "Limits": {
+      "@id": "pinpoint:Limits",
+      "@type": "xsd:string"
+    },
+    "LocalTime": {
+      "@id": "pinpoint:LocalTime",
+      "@type": "xsd:string"
+    },
+    "Name": {
+      "@id": "pinpoint:Name",
+      "@type": "xsd:string"
+    },
+    "QuietTime": {
+      "@id": "pinpoint:QuietTime",
+      "@type": "xsd:string"
+    },
+    "RefreshFrequency": {
+      "@id": "pinpoint:RefreshFrequency",
+      "@type": "xsd:string"
+    },
+    "Schedule": {
+      "@id": "pinpoint:Schedule",
+      "@type": "xsd:string"
+    },
+    "StartActivity": {
+      "@id": "pinpoint:StartActivity",
+      "@type": "xsd:string"
+    },
+    "StartCondition": "pinpoint:StartCondition",
+    "WaitForQuietTime": {
+      "@id": "pinpoint:WaitForQuietTime",
+      "@type": "xsd:string"
+    },
+    "RefreshOnSegmentUpdate": {
+      "@id": "pinpoint:RefreshOnSegmentUpdate",
+      "@type": "xsd:string"
+    },
+    "SendingSchedule": {
+      "@id": "pinpoint:SendingSchedule",
+      "@type": "xsd:string"
+    },
+    "OpenHours": {
+      "@id": "pinpoint:OpenHours",
+      "@type": "xsd:string"
+    },
+    "ClosedDays": {
+      "@id": "pinpoint:ClosedDays",
+      "@type": "xsd:string"
+    },
+    "WaitActivity": "pinpoint:WaitActivity",
+    "UpdateJourneyStateRequest": "pinpoint:UpdateJourneyStateRequest",
+    "UpdateJourneyRequest": "pinpoint:UpdateJourneyRequest",
+    "ListJourneysRequest": "pinpoint:ListJourneysRequest",
+    "JourneyCustomMessage": "pinpoint:JourneyCustomMessage",
+    "Data": {
+      "@id": "pinpoint:Data",
+      "@type": "xsd:string"
+    },
+    "Dimensions": {
+      "@id": "pinpoint:Dimensions",
+      "@type": "xsd:string"
+    },
+    "MessageActivity": {
+      "@id": "pinpoint:MessageActivity",
+      "@type": "xsd:string"
+    },
+    "SMSMessageActivity": "pinpoint:SMSMessageActivity",
+    "CustomMessageActivity": "pinpoint:CustomMessageActivity",
+    "DeliveryUri": {
+      "@id": "pinpoint:DeliveryUri",
+      "@type": "xsd:string"
+    },
+    "EndpointTypes": {
+      "@id": "pinpoint:EndpointTypes",
+      "@type": "xsd:string"
+    },
+    "JourneySMSMessage": "pinpoint:JourneySMSMessage",
+    "MessageType": {
+      "@id": "pinpoint:MessageType",
+      "@type": "xsd:string"
+    },
+    "OriginationNumber": {
+      "@id": "pinpoint:OriginationNumber",
+      "@type": "xsd:string"
+    },
+    "SenderId": {
+      "@id": "pinpoint:SenderId",
+      "@type": "xsd:string"
+    },
+    "EntityId": {
+      "@id": "pinpoint:EntityId",
+      "@type": "xsd:string"
+    },
+    "TemplateId": {
+      "@id": "pinpoint:TemplateId",
+      "@type": "xsd:string"
+    },
+    "UpdateJourneyStateResponse": "pinpoint:UpdateJourneyStateResponse",
+    "ConditionalSplitActivity": "pinpoint:ConditionalSplitActivity",
+    "Condition": "pinpoint:Condition",
+    "FalseActivity": {
+      "@id": "pinpoint:FalseActivity",
+      "@type": "xsd:string"
+    },
+    "TrueActivity": {
+      "@id": "pinpoint:TrueActivity",
+      "@type": "xsd:string"
+    },
+    "GetJourneyExecutionActivityMetricsResponse": "pinpoint:GetJourneyExecutionActivityMetricsResponse",
+    "Conditions": {
+      "@id": "pinpoint:Conditions",
+      "@type": "xsd:string"
+    },
+    "Operator": {
+      "@id": "pinpoint:Operator",
+      "@type": "xsd:string"
+    },
+    "SegmentStartCondition": {
+      "@id": "pinpoint:SegmentStartCondition",
+      "@type": "xsd:string"
+    },
+    "PushMessageActivity": "pinpoint:PushMessageActivity",
+    "CreateJourneyRequest": "pinpoint:CreateJourneyRequest",
+    "GetJourneyDateRangeKpiRequest": "pinpoint:GetJourneyDateRangeKpiRequest",
+    "tags": {
+      "@id": "pinpoint:tags",
+      "@type": "xsd:string"
+    },
+    "RandomSplitActivity": "pinpoint:RandomSplitActivity",
+    "MultiConditionalBranch": "pinpoint:MultiConditionalBranch",
+    "CreateJourneyResponse": "pinpoint:CreateJourneyResponse",
+    "GetJourneyExecutionMetricsRequest": "pinpoint:GetJourneyExecutionMetricsRequest",
+    "ContactCenterActivity": "pinpoint:ContactCenterActivity"
+  }
+}

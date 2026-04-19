@@ -15,34 +15,34 @@ info:
   x-logo:
     url: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 servers:
-  - url: https://pinpoint.{region}.amazonaws.com
-    description: Amazon Pinpoint regional endpoint
-    variables:
-      region:
-        default: us-east-1
-        description: AWS region
-        enum:
-          - us-east-1
-          - us-east-2
-          - us-west-2
-          - eu-west-1
-          - eu-central-1
-          - ap-northeast-1
-          - ap-southeast-1
-          - ap-southeast-2
+- url: https://pinpoint.{region}.amazonaws.com
+  description: Amazon Pinpoint regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-2
+      - eu-west-1
+      - eu-central-1
+      - ap-northeast-1
+      - ap-southeast-1
+      - ap-southeast-2
 security:
-  - sigv4: []
+- sigv4: []
 tags:
-  - name: Applications
-    description: Operations for managing Pinpoint applications (projects)
+- name: Applications
+  description: Operations for managing Pinpoint applications (projects)
 paths:
   /v1/apps:
     post:
       operationId: CreateApp
-      summary: Amazon Pinpoint Create an application
+      summary: Amazon Pinpoint Create an Application
       description: Creates a new Pinpoint application (project).
       tags:
-        - Applications
+      - Applications
       requestBody:
         required: true
         content:
@@ -58,26 +58,26 @@ paths:
                 $ref: '#/components/schemas/ApplicationResponse'
     get:
       operationId: GetApps
-      summary: Amazon Pinpoint List applications
+      summary: Amazon Pinpoint List Applications
       description: Retrieves information about all applications associated with your account.
       tags:
-        - Applications
+      - Applications
       responses:
         '200':
           description: Applications retrieved successfully
   /v1/apps/{application-id}:
     get:
       operationId: GetApp
-      summary: Amazon Pinpoint Get application details
+      summary: Amazon Pinpoint Get Application Details
       description: Retrieves information about an application.
       tags:
-        - Applications
+      - Applications
       parameters:
-        - name: application-id
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: application-id
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: Application details retrieved successfully
@@ -96,7 +96,7 @@ components:
     CreateApplicationRequest:
       type: object
       required:
-        - Name
+      - Name
       properties:
         Name:
           type: string
@@ -135,13 +135,13 @@ components:
             CampaignStatus:
               type: string
               enum:
-                - SCHEDULED
-                - EXECUTING
-                - PENDING_NEXT_RUN
-                - COMPLETED
-                - PAUSED
-                - DELETED
-                - INVALID
+              - SCHEDULED
+              - EXECUTING
+              - PENDING_NEXT_RUN
+              - COMPLETED
+              - PAUSED
+              - DELETED
+              - INVALID
     SegmentResponse:
       type: object
       properties:
@@ -156,5 +156,5 @@ components:
         SegmentType:
           type: string
           enum:
-            - DIMENSIONAL
-            - IMPORT
+          - DIMENSIONAL
+          - IMPORT

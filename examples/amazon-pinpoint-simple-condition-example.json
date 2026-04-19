@@ -1,0 +1,5 @@
+{
+  "EventCondition": "example-EventCondition",
+  "SegmentCondition": "example-SegmentCondition",
+  "SegmentDimensions": "example-SegmentDimensions"
+}

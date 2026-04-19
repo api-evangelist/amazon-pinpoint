@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-in-app-messages-response-schema.json",
+  "title": "InAppMessagesResponse",
+  "description": "Get in-app messages response object.",
+  "type": "object",
+  "properties": {
+    "InAppMessageCampaigns": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOfInAppMessageCampaign"
+        },
+        {
+          "description": "List of targeted in-app message campaigns."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-list-recommender-configurations-response-structure.json",
+  "name": "ListRecommenderConfigurationsResponse",
+  "description": "Provides information about all the recommender model configurations that are associated with your Amazon Pinpoint account.",
+  "type": "object",
+  "properties": {
+    "Item": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOfRecommenderConfigurationResponse"
+        },
+        {
+          "description": "An array of responses, one for each recommender model configuration that's associated with your Amazon Pinpoint account."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Item"
+  ]
+}

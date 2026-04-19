@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-frequency-structure.json",
+  "name": "Frequency",
+  "description": "Frequency schema from Amazon Pinpoint API",
+  "type": "string",
+  "enum": [
+    "ONCE",
+    "HOURLY",
+    "DAILY",
+    "WEEKLY",
+    "MONTHLY",
+    "EVENT",
+    "IN_APP_EVENT"
+  ]
+}

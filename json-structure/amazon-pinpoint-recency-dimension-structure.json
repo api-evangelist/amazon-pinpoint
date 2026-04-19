@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-recency-dimension-structure.json",
+  "name": "RecencyDimension",
+  "description": "Specifies criteria for including or excluding endpoints from a segment based on how recently an endpoint was active.",
+  "type": "object",
+  "properties": {
+    "Duration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Duration"
+        },
+        {
+          "description": "The duration to use when determining whether an endpoint is active or inactive."
+        }
+      ]
+    },
+    "RecencyType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RecencyType"
+        },
+        {
+          "description": "The type of recency dimension to use for the segment. Valid values are: ACTIVE, endpoints that were active within the specified duration are included in the segment; and, INACTIVE, endpoints that weren't active within the specified duration are included in the segment."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Duration",
+    "RecencyType"
+  ]
+}

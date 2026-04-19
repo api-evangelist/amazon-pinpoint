@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-import-job-response-schema.json",
+  "title": "ImportJobResponse",
+  "description": "Provides information about the status and settings of a job that imports endpoint definitions from one or more files. The files can be stored in an Amazon Simple Storage Service (Amazon S3) bucket or uploaded directly from a computer by using the Amazon Pinpoint console.",
+  "type": "object",
+  "properties": {
+    "ApplicationId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the application that's associated with the import job."
+        }
+      ]
+    },
+    "CompletedPieces": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The number of pieces that were processed successfully (completed) by the import job, as of the time of the request."
+        }
+      ]
+    },
+    "CompletionDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date, in ISO 8601 format, when the import job was completed."
+        }
+      ]
+    },
+    "CreationDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date, in ISO 8601 format, when the import job was created."
+        }
+      ]
+    },
+    "Definition": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImportJobResource"
+        },
+        {
+          "description": "The resource settings that apply to the import job."
+        }
+      ]
+    },
+    "FailedPieces": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The number of pieces that weren't processed successfully (failed) by the import job, as of the time of the request."
+        }
+      ]
+    },
+    "Failures": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOf__string"
+        },
+        {
+          "description": "An array of entries, one for each of the first 100 entries that weren't processed successfully (failed) by the import job, if any."
+        }
+      ]
+    },
+    "Id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the import job."
+        }
+      ]
+    },
+    "JobStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobStatus"
+        },
+        {
+          "description": "The status of the import job. The job status is FAILED if Amazon Pinpoint wasn't able to process one or more pieces in the job."
+        }
+      ]
+    },
+    "TotalFailures": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The total number of endpoint definitions that weren't processed successfully (failed) by the import job, typically because an error, such as a syntax error, occurred."
+        }
+      ]
+    },
+    "TotalPieces": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The total number of pieces that must be processed to complete the import job. Each piece consists of an approximately equal portion of the endpoint definitions that are part of the import job."
+        }
+      ]
+    },
+    "TotalProcessed": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The total number of endpoint definitions that were processed by the import job."
+        }
+      ]
+    },
+    "Type": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The job type. This value is IMPORT for import jobs."
+        }
+      ]
+    }
+  },
+  "required": [
+    "JobStatus",
+    "CreationDate",
+    "Type",
+    "Definition",
+    "Id",
+    "ApplicationId"
+  ]
+}

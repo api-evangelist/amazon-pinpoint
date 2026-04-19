@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-get-application-date-range-kpi-response-schema.json",
+  "title": "GetApplicationDateRangeKpiResponse",
+  "description": "GetApplicationDateRangeKpiResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "ApplicationDateRangeKpiResponse": {
+      "$ref": "#/components/schemas/ApplicationDateRangeKpiResponse"
+    }
+  },
+  "required": [
+    "ApplicationDateRangeKpiResponse"
+  ]
+}

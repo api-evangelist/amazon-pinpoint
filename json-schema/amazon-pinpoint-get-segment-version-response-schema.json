@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-get-segment-version-response-schema.json",
+  "title": "GetSegmentVersionResponse",
+  "description": "GetSegmentVersionResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "SegmentResponse": {
+      "$ref": "#/components/schemas/SegmentResponse"
+    }
+  },
+  "required": [
+    "SegmentResponse"
+  ]
+}

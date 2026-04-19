@@ -1,0 +1,11 @@
+{
+  "Attributes": "example-Attributes",
+  "Description": "Description for Description",
+  "Name": "Example Name",
+  "RecommendationProviderIdType": "114586",
+  "RecommendationProviderRoleArn": "303248",
+  "RecommendationProviderUri": "603709",
+  "RecommendationTransformerUri": "example-RecommendationTransformerUri",
+  "RecommendationsDisplayName": "Example Recommendationsdisplayname",
+  "RecommendationsPerMessage": "example-RecommendationsPerMessage"
+}

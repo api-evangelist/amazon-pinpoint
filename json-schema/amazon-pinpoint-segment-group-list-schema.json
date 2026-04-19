@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-segment-group-list-schema.json",
+  "title": "SegmentGroupList",
+  "description": "Specifies the settings that define the relationships between segment groups for a segment.",
+  "type": "object",
+  "properties": {
+    "Groups": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOfSegmentGroup"
+        },
+        {
+          "description": "An array that defines the set of segment criteria to evaluate when handling segment groups for the segment."
+        }
+      ]
+    },
+    "Include": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Include"
+        },
+        {
+          "description": "Specifies how to handle multiple segment groups for the segment. For example, if the segment includes three segment groups, whether the resulting segment includes endpoints that match all, any, or none of the segment groups."
+        }
+      ]
+    }
+  }
+}

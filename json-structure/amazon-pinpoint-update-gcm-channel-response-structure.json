@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-update-gcm-channel-response-structure.json",
+  "name": "UpdateGcmChannelResponse",
+  "description": "UpdateGcmChannelResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "GCMChannelResponse": {
+      "$ref": "#/components/schemas/GCMChannelResponse"
+    }
+  },
+  "required": [
+    "GCMChannelResponse"
+  ]
+}

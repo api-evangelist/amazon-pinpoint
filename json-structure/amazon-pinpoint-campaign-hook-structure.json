@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-campaign-hook-structure.json",
+  "name": "CampaignHook",
+  "description": "Specifies settings for invoking an AWS Lambda function that customizes a segment for a campaign.",
+  "type": "object",
+  "properties": {
+    "LambdaFunctionName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The name or Amazon Resource Name (ARN) of the AWS Lambda function that Amazon Pinpoint invokes to customize a segment for a campaign."
+        }
+      ]
+    },
+    "Mode": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Mode"
+        },
+        {
+          "description": "<p>The mode that Amazon Pinpoint uses to invoke the AWS Lambda function. Possible values are:</p> <ul><li><p>FILTER - Invoke the function to customize the segment that's used by a campaign.</p></li> <li><p>DELIVERY - (Deprecated) Previously, invoked the function to send a campaign through a custom channel. This functionality is not supported anymore. To send a campaign through a custom channel, use the CustomDeliveryConfiguration and CampaignCustomMessage objects of the campaign.</p></li></ul>"
+        }
+      ]
+    },
+    "WebUrl": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": " <p>The web URL that Amazon Pinpoint calls to invoke the AWS Lambda function over HTTPS.</p>"
+        }
+      ]
+    }
+  }
+}

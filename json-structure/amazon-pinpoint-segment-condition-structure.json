@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-segment-condition-structure.json",
+  "name": "SegmentCondition",
+  "description": "Specifies a segment to associate with an activity in a journey.",
+  "type": "object",
+  "properties": {
+    "SegmentId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the segment to associate with the activity."
+        }
+      ]
+    }
+  },
+  "required": [
+    "SegmentId"
+  ]
+}

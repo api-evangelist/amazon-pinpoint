@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-event-start-condition-structure.json",
+  "name": "EventStartCondition",
+  "description": "Specifies the settings for an event that causes a journey activity to start.",
+  "type": "object",
+  "properties": {
+    "EventFilter": {
+      "$ref": "#/components/schemas/EventFilter"
+    },
+    "SegmentId": {
+      "$ref": "#/components/schemas/__string"
+    }
+  }
+}

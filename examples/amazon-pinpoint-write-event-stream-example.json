@@ -1,0 +1,4 @@
+{
+  "DestinationStreamArn": "arn:aws:pinpoint:us-east-1:123456789:apps/abc123",
+  "RoleArn": "arn:aws:pinpoint:us-east-1:123456789:apps/abc123"
+}

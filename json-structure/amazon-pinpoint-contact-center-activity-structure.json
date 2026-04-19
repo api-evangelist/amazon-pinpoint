@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-contact-center-activity-structure.json",
+  "name": "ContactCenterActivity",
+  "description": "ContactCenterActivity schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "NextActivity": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the next activity to perform after the this activity."
+        }
+      ]
+    }
+  }
+}

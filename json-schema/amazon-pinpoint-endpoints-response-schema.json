@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-endpoints-response-schema.json",
+  "title": "EndpointsResponse",
+  "description": "Provides information about all the endpoints that are associated with a user ID.",
+  "type": "object",
+  "properties": {
+    "Item": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOfEndpointResponse"
+        },
+        {
+          "description": "An array of responses, one for each endpoint that's associated with the user ID."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Item"
+  ]
+}

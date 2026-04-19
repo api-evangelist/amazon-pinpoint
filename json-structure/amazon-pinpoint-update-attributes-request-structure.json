@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-update-attributes-request-structure.json",
+  "name": "UpdateAttributesRequest",
+  "description": "Specifies one or more attributes to remove from all the endpoints that are associated with an application.",
+  "type": "object",
+  "properties": {
+    "Blacklist": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOf__string"
+        },
+        {
+          "description": "An array of the attributes to remove from all the endpoints that are associated with the application. The array can specify the complete, exact name of each attribute to remove or it can specify a glob pattern that an attribute name must match in order for the attribute to be removed."
+        }
+      ]
+    }
+  }
+}

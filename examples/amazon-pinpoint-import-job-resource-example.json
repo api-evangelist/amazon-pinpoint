@@ -1,0 +1,10 @@
+{
+  "DefineSegment": "example-DefineSegment",
+  "ExternalId": "345357",
+  "Format": "example-Format",
+  "RegisterEndpoints": "example-RegisterEndpoints",
+  "RoleArn": "arn:aws:pinpoint:us-east-1:123456789:apps/abc123",
+  "S3Url": "https://example.com",
+  "SegmentId": "123115",
+  "SegmentName": "Example Segmentname"
+}

@@ -1,0 +1,11 @@
+{
+  "CustomDeliveryConfiguration": "example-CustomDeliveryConfiguration",
+  "Id": "349307",
+  "MessageConfiguration": "example-MessageConfiguration",
+  "Schedule": "example-Schedule",
+  "SizePercent": "example-SizePercent",
+  "State": "ACTIVE",
+  "TemplateConfiguration": "example-TemplateConfiguration",
+  "TreatmentDescription": "Description for TreatmentDescription",
+  "TreatmentName": "Example Treatmentname"
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-update-voice-template-response-schema.json",
+  "title": "UpdateVoiceTemplateResponse",
+  "description": "UpdateVoiceTemplateResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "MessageBody": {
+      "$ref": "#/components/schemas/MessageBody"
+    }
+  },
+  "required": [
+    "MessageBody"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-get-voice-channel-request-structure.json",
+  "name": "GetVoiceChannelRequest",
+  "description": "GetVoiceChannelRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {}
+}

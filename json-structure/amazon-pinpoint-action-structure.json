@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-action-structure.json",
+  "name": "Action",
+  "description": "Action schema from Amazon Pinpoint API",
+  "type": "string",
+  "enum": [
+    "OPEN_APP",
+    "DEEP_LINK",
+    "URL"
+  ]
+}

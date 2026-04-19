@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-write-treatment-resource-structure.json",
+  "name": "WriteTreatmentResource",
+  "description": "Specifies the settings for a campaign treatment. A <i>treatment</i> is a variation of a campaign that's used for A/B testing of a campaign.",
+  "type": "object",
+  "properties": {
+    "CustomDeliveryConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CustomDeliveryConfiguration"
+        },
+        {
+          "description": "The delivery configuration settings for sending the treatment through a custom channel. This object is required if the MessageConfiguration object for the treatment specifies a CustomMessage object."
+        }
+      ]
+    },
+    "MessageConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MessageConfiguration"
+        },
+        {
+          "description": "The message configuration settings for the treatment."
+        }
+      ]
+    },
+    "Schedule": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Schedule"
+        },
+        {
+          "description": "The schedule settings for the treatment."
+        }
+      ]
+    },
+    "SizePercent": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The allocated percentage of users (segment members) to send the treatment to."
+        }
+      ]
+    },
+    "TemplateConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TemplateConfiguration"
+        },
+        {
+          "description": "The message template to use for the treatment."
+        }
+      ]
+    },
+    "TreatmentDescription": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "A custom description of the treatment."
+        }
+      ]
+    },
+    "TreatmentName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "A custom name for the treatment."
+        }
+      ]
+    }
+  },
+  "required": [
+    "SizePercent"
+  ]
+}

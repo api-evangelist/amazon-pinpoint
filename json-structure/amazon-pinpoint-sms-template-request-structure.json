@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-sms-template-request-structure.json",
+  "name": "SMSTemplateRequest",
+  "description": "Specifies the content and settings for a message template that can be used in text messages that are sent through the SMS channel.",
+  "type": "object",
+  "properties": {
+    "Body": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The message body to use in text messages that are based on the message template."
+        }
+      ]
+    },
+    "DefaultSubstitutions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "A JSON object that specifies the default values to use for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable. When you create a message that's based on the template, you can override these defaults with message-specific and address-specific variables and values."
+        }
+      ]
+    },
+    "RecommenderId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the recommender model to use for the message template. Amazon Pinpoint uses this value to determine how to retrieve and process data from a recommender model when it sends messages that use the template, if the template contains message variables for recommendation data."
+        }
+      ]
+    },
+    "tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOf__string"
+        },
+        {
+          "description": "A string-to-string map of key-value pairs that defines the tags to associate with the message template. Each tag consists of a required tag key and an associated tag value."
+        }
+      ]
+    },
+    "TemplateDescription": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "A custom description of the message template."
+        }
+      ]
+    }
+  }
+}

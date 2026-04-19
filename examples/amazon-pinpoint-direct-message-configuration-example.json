@@ -1,0 +1,11 @@
+{
+  "ADMMessage": "example-ADMMessage",
+  "APNSMessage": "example-APNSMessage",
+  "BaiduMessage": "976705",
+  "DefaultMessage": "example-DefaultMessage",
+  "DefaultPushNotificationMessage": "example-DefaultPushNotificationMessage",
+  "EmailMessage": "example-EmailMessage",
+  "GCMMessage": "example-GCMMessage",
+  "SMSMessage": "example-SMSMessage",
+  "VoiceMessage": "example-VoiceMessage"
+}

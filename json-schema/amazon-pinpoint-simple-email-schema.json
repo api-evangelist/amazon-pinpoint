@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-simple-email-schema.json",
+  "title": "SimpleEmail",
+  "description": "Specifies the contents of an email message, composed of a subject, a text part, and an HTML part.",
+  "type": "object",
+  "properties": {
+    "HtmlPart": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SimpleEmailPart"
+        },
+        {
+          "description": "The body of the email message, in HTML format. We recommend using HTML format for email clients that render HTML content. You can include links, formatted text, and more in an HTML message."
+        }
+      ]
+    },
+    "Subject": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SimpleEmailPart"
+        },
+        {
+          "description": "The subject line, or title, of the email."
+        }
+      ]
+    },
+    "TextPart": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SimpleEmailPart"
+        },
+        {
+          "description": "The body of the email message, in plain text format. We recommend using plain text format for email clients that don't render HTML content and clients that are connected to high-latency networks, such as mobile devices."
+        }
+      ]
+    }
+  }
+}

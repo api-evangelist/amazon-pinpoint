@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-event-item-response-structure.json",
+  "name": "EventItemResponse",
+  "description": "Provides the status code and message that result from processing an event.",
+  "type": "object",
+  "properties": {
+    "Message": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "A custom message that's returned in the response as a result of processing the event."
+        }
+      ]
+    },
+    "StatusCode": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The status code that's returned in the response as a result of processing the event. Possible values are: 202, for events that were accepted; and, 400, for events that weren't valid."
+        }
+      ]
+    }
+  }
+}

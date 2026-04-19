@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-application-response-schema.json",
+  "title": "ApplicationResponse",
+  "description": "Provides information about an application.",
+  "type": "object",
+  "properties": {
+    "Arn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of the application."
+        }
+      ]
+    },
+    "Id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+        }
+      ]
+    },
+    "Name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The display name of the application. This name is displayed as the <b>Project name</b> on the Amazon Pinpoint console."
+        }
+      ]
+    },
+    "tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOf__string"
+        },
+        {
+          "description": "A string-to-string map of key-value pairs that identifies the tags that are associated with the application. Each tag consists of a required tag key and an associated tag value."
+        }
+      ]
+    },
+    "CreationDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date and time when the Application was created."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Id",
+    "Arn",
+    "Name"
+  ]
+}

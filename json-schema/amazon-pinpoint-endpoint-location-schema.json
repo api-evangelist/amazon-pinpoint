@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-endpoint-location-schema.json",
+  "title": "EndpointLocation",
+  "description": "Specifies geographic information about an endpoint.",
+  "type": "object",
+  "properties": {
+    "City": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The name of the city where the endpoint is located."
+        }
+      ]
+    },
+    "Country": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The two-character code, in ISO 3166-1 alpha-2 format, for the country or region where the endpoint is located. For example, US for the United States."
+        }
+      ]
+    },
+    "Latitude": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__double"
+        },
+        {
+          "description": "The latitude coordinate of the endpoint location, rounded to one decimal place."
+        }
+      ]
+    },
+    "Longitude": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__double"
+        },
+        {
+          "description": "The longitude coordinate of the endpoint location, rounded to one decimal place."
+        }
+      ]
+    },
+    "PostalCode": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The postal or ZIP code for the area where the endpoint is located."
+        }
+      ]
+    },
+    "Region": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The name of the region where the endpoint is located. For locations in the United States, this value is the name of a state."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-delete-user-endpoints-response-schema.json",
+  "title": "DeleteUserEndpointsResponse",
+  "description": "DeleteUserEndpointsResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "EndpointsResponse": {
+      "$ref": "#/components/schemas/EndpointsResponse"
+    }
+  },
+  "required": [
+    "EndpointsResponse"
+  ]
+}

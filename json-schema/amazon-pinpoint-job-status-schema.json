@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-job-status-schema.json",
+  "title": "JobStatus",
+  "description": "JobStatus schema from Amazon Pinpoint API",
+  "type": "string",
+  "enum": [
+    "CREATED",
+    "PREPARING_FOR_INITIALIZATION",
+    "INITIALIZING",
+    "PROCESSING",
+    "PENDING_JOB",
+    "COMPLETING",
+    "COMPLETED",
+    "FAILING",
+    "FAILED"
+  ]
+}

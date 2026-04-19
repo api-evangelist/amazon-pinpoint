@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-send-users-messages-request-structure.json",
+  "name": "SendUsersMessagesRequest",
+  "description": "SendUsersMessagesRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "SendUsersMessageRequest": {
+      "$ref": "#/components/schemas/SendUsersMessageRequest"
+    }
+  },
+  "required": [
+    "SendUsersMessageRequest"
+  ]
+}

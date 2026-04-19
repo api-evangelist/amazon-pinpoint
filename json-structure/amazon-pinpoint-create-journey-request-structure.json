@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-create-journey-request-structure.json",
+  "name": "CreateJourneyRequest",
+  "description": "CreateJourneyRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "WriteJourneyRequest": {
+      "$ref": "#/components/schemas/WriteJourneyRequest"
+    }
+  },
+  "required": [
+    "WriteJourneyRequest"
+  ]
+}

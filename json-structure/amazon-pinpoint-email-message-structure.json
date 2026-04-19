@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-email-message-structure.json",
+  "name": "EmailMessage",
+  "description": "Specifies the default settings and content for a one-time email message that's sent directly to an endpoint.",
+  "type": "object",
+  "properties": {
+    "Body": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The body of the email message."
+        }
+      ]
+    },
+    "FeedbackForwardingAddress": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The email address to forward bounces and complaints to, if feedback forwarding is enabled."
+        }
+      ]
+    },
+    "FromAddress": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The verified email address to send the email message from. The default value is the FromAddress specified for the email channel."
+        }
+      ]
+    },
+    "RawEmail": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RawEmail"
+        },
+        {
+          "description": "The email message, represented as a raw MIME message."
+        }
+      ]
+    },
+    "ReplyToAddresses": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOf__string"
+        },
+        {
+          "description": "The reply-to email address(es) for the email message. If a recipient replies to the email, each reply-to address receives the reply."
+        }
+      ]
+    },
+    "SimpleEmail": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SimpleEmail"
+        },
+        {
+          "description": "The email message, composed of a subject, a text part, and an HTML part."
+        }
+      ]
+    },
+    "Substitutions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOfListOf__string"
+        },
+        {
+          "description": "The default message variables to use in the email message. You can override the default variables with individual address variables."
+        }
+      ]
+    }
+  }
+}

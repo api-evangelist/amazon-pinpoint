@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-create-voice-template-response-structure.json",
+  "name": "CreateVoiceTemplateResponse",
+  "description": "CreateVoiceTemplateResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "CreateTemplateMessageBody": {
+      "$ref": "#/components/schemas/CreateTemplateMessageBody"
+    }
+  },
+  "required": [
+    "CreateTemplateMessageBody"
+  ]
+}

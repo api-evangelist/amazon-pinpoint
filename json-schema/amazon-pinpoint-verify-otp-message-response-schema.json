@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-verify-otp-message-response-schema.json",
+  "title": "VerifyOTPMessageResponse",
+  "description": "VerifyOTPMessageResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "VerificationResponse": {
+      "$ref": "#/components/schemas/VerificationResponse"
+    }
+  },
+  "required": [
+    "VerificationResponse"
+  ]
+}

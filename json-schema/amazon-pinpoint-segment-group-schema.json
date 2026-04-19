@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-segment-group-schema.json",
+  "title": "SegmentGroup",
+  "description": "Specifies the base segments and dimensions for a segment, and the relationships between these base segments and dimensions.",
+  "type": "object",
+  "properties": {
+    "Dimensions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOfSegmentDimensions"
+        },
+        {
+          "description": "An array that defines the dimensions for the segment."
+        }
+      ]
+    },
+    "SourceSegments": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOfSegmentReference"
+        },
+        {
+          "description": "<p>The base segment to build the segment on. A base segment, also referred to as a <i>source segment</i>, defines the initial population of endpoints for a segment. When you add dimensions to a segment, Amazon Pinpoint filters the base segment by using the dimensions that you specify.</p> <p>You can specify more than one dimensional segment or only one imported segment. If you specify an imported segment, the Amazon Pinpoint console displays a segment size estimate that indicates the size of the imported segment without any filters applied to it.</p>"
+        }
+      ]
+    },
+    "SourceType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SourceType"
+        },
+        {
+          "description": "Specifies how to handle multiple base segments for the segment. For example, if you specify three base segments for the segment, whether the resulting segment is based on all, any, or none of the base segments."
+        }
+      ]
+    },
+    "Type": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Type"
+        },
+        {
+          "description": "Specifies how to handle multiple dimensions for the segment. For example, if you specify three dimensions for the segment, whether the resulting segment includes endpoints that match all, any, or none of the dimensions."
+        }
+      ]
+    }
+  }
+}

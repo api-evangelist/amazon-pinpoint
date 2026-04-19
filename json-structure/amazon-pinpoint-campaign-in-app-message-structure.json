@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-campaign-in-app-message-structure.json",
+  "name": "CampaignInAppMessage",
+  "description": "In-app message configuration.",
+  "type": "object",
+  "properties": {
+    "Body": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The message body of the notification, the email body or the text message."
+        }
+      ]
+    },
+    "Content": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOfInAppMessageContent"
+        },
+        {
+          "description": "In-app message content."
+        }
+      ]
+    },
+    "CustomConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOf__string"
+        },
+        {
+          "description": "Custom config to be sent to client."
+        }
+      ]
+    },
+    "Layout": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Layout"
+        },
+        {
+          "description": "In-app message layout."
+        }
+      ]
+    }
+  }
+}

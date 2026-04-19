@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-delete-adm-channel-response-structure.json",
+  "name": "DeleteAdmChannelResponse",
+  "description": "DeleteAdmChannelResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "ADMChannelResponse": {
+      "$ref": "#/components/schemas/ADMChannelResponse"
+    }
+  },
+  "required": [
+    "ADMChannelResponse"
+  ]
+}

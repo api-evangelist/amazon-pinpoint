@@ -1,0 +1,274 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "pinpoint": "https://pinpoint.amazonaws.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "SegmentLocation": "pinpoint:SegmentLocation",
+    "Country": {
+      "@id": "pinpoint:Country",
+      "@type": "xsd:string"
+    },
+    "GPSPoint": {
+      "@id": "pinpoint:GPSPoint",
+      "@type": "xsd:string"
+    },
+    "GetSegmentVersionsResponse": "pinpoint:GetSegmentVersionsResponse",
+    "SegmentsResponse": "pinpoint:SegmentsResponse",
+    "SetDimension": "pinpoint:SetDimension",
+    "DimensionType": {
+      "@id": "pinpoint:DimensionType",
+      "@type": "xsd:string"
+    },
+    "Values": {
+      "@id": "pinpoint:Values",
+      "@type": "xsd:string"
+    },
+    "SegmentGroup": "pinpoint:SegmentGroup",
+    "Dimensions": {
+      "@id": "pinpoint:Dimensions",
+      "@type": "xsd:string"
+    },
+    "SourceSegments": {
+      "@id": "pinpoint:SourceSegments",
+      "@type": "xsd:string"
+    },
+    "SourceType": {
+      "@id": "pinpoint:SourceType",
+      "@type": "xsd:string"
+    },
+    "Type": {
+      "@id": "pinpoint:Type",
+      "@type": "xsd:string"
+    },
+    "WriteSegmentRequest": "pinpoint:WriteSegmentRequest",
+    "Name": {
+      "@id": "pinpoint:Name",
+      "@type": "xsd:string"
+    },
+    "SegmentGroups": {
+      "@id": "pinpoint:SegmentGroups",
+      "@type": "xsd:string"
+    },
+    "tags": {
+      "@id": "pinpoint:tags",
+      "@type": "xsd:string"
+    },
+    "EndpointDemographic": "pinpoint:EndpointDemographic",
+    "AppVersion": {
+      "@id": "pinpoint:AppVersion",
+      "@type": "xsd:string"
+    },
+    "Locale": {
+      "@id": "pinpoint:Locale",
+      "@type": "xsd:string"
+    },
+    "Make": {
+      "@id": "pinpoint:Make",
+      "@type": "xsd:string"
+    },
+    "Model": {
+      "@id": "pinpoint:Model",
+      "@type": "xsd:string"
+    },
+    "ModelVersion": {
+      "@id": "pinpoint:ModelVersion",
+      "@type": "xsd:string"
+    },
+    "Platform": {
+      "@id": "pinpoint:Platform",
+      "@type": "xsd:string"
+    },
+    "PlatformVersion": {
+      "@id": "pinpoint:PlatformVersion",
+      "@type": "xsd:string"
+    },
+    "Timezone": {
+      "@id": "pinpoint:Timezone",
+      "@type": "xsd:string"
+    },
+    "GetSegmentExportJobsRequest": "pinpoint:GetSegmentExportJobsRequest",
+    "UpdateSegmentRequest": "pinpoint:UpdateSegmentRequest",
+    "GetSegmentVersionRequest": "pinpoint:GetSegmentVersionRequest",
+    "SegmentResponse": "pinpoint:SegmentResponse",
+    "ApplicationId": {
+      "@id": "pinpoint:ApplicationId",
+      "@type": "xsd:string"
+    },
+    "Arn": {
+      "@id": "pinpoint:Arn",
+      "@type": "xsd:string"
+    },
+    "CreationDate": {
+      "@id": "pinpoint:CreationDate",
+      "@type": "xsd:string"
+    },
+    "Id": {
+      "@id": "pinpoint:Id",
+      "@type": "xsd:string"
+    },
+    "ImportDefinition": {
+      "@id": "pinpoint:ImportDefinition",
+      "@type": "xsd:string"
+    },
+    "LastModifiedDate": {
+      "@id": "pinpoint:LastModifiedDate",
+      "@type": "xsd:string"
+    },
+    "SegmentType": {
+      "@id": "pinpoint:SegmentType",
+      "@type": "xsd:string"
+    },
+    "Version": {
+      "@id": "pinpoint:Version",
+      "@type": "xsd:string"
+    },
+    "GetSegmentImportJobsRequest": "pinpoint:GetSegmentImportJobsRequest",
+    "CreateSegmentResponse": "pinpoint:CreateSegmentResponse",
+    "SegmentGroupList": "pinpoint:SegmentGroupList",
+    "Groups": {
+      "@id": "pinpoint:Groups",
+      "@type": "xsd:string"
+    },
+    "Include": {
+      "@id": "pinpoint:Include",
+      "@type": "xsd:string"
+    },
+    "EventDimensions": "pinpoint:EventDimensions",
+    "Attributes": {
+      "@id": "pinpoint:Attributes",
+      "@type": "xsd:string"
+    },
+    "EventType": {
+      "@id": "pinpoint:EventType",
+      "@type": "xsd:string"
+    },
+    "Metrics": {
+      "@id": "pinpoint:Metrics",
+      "@type": "xsd:string"
+    },
+    "CreateSegmentRequest": "pinpoint:CreateSegmentRequest",
+    "SegmentImportResource": "pinpoint:SegmentImportResource",
+    "ChannelCounts": {
+      "@id": "pinpoint:ChannelCounts",
+      "@type": "xsd:string"
+    },
+    "ExternalId": {
+      "@id": "pinpoint:ExternalId",
+      "@type": "xsd:string"
+    },
+    "Format": {
+      "@id": "pinpoint:Format",
+      "@type": "xsd:string"
+    },
+    "RoleArn": {
+      "@id": "pinpoint:RoleArn",
+      "@type": "xsd:string"
+    },
+    "S3Url": {
+      "@id": "pinpoint:S3Url",
+      "@type": "xsd:string"
+    },
+    "Size": {
+      "@id": "pinpoint:Size",
+      "@type": "xsd:string"
+    },
+    "RecencyDimension": "pinpoint:RecencyDimension",
+    "Duration": {
+      "@id": "pinpoint:Duration",
+      "@type": "xsd:string"
+    },
+    "RecencyType": {
+      "@id": "pinpoint:RecencyType",
+      "@type": "xsd:string"
+    },
+    "UpdateSegmentResponse": "pinpoint:UpdateSegmentResponse",
+    "GetSegmentVersionResponse": "pinpoint:GetSegmentVersionResponse",
+    "DeleteSegmentResponse": "pinpoint:DeleteSegmentResponse",
+    "Item": {
+      "@id": "pinpoint:Item",
+      "@type": "xsd:string"
+    },
+    "NextToken": {
+      "@id": "pinpoint:NextToken",
+      "@type": "xsd:string"
+    },
+    "GPSPointDimension": "pinpoint:GPSPointDimension",
+    "Coordinates": {
+      "@id": "pinpoint:Coordinates",
+      "@type": "xsd:string"
+    },
+    "RangeInKilometers": {
+      "@id": "pinpoint:RangeInKilometers",
+      "@type": "xsd:string"
+    },
+    "GetSegmentResponse": "pinpoint:GetSegmentResponse",
+    "GetSegmentExportJobsResponse": "pinpoint:GetSegmentExportJobsResponse",
+    "ExportJobsResponse": {
+      "@id": "pinpoint:ExportJobsResponse",
+      "@type": "xsd:string"
+    },
+    "SegmentReference": "pinpoint:SegmentReference",
+    "SegmentBehaviors": "pinpoint:SegmentBehaviors",
+    "Recency": {
+      "@id": "pinpoint:Recency",
+      "@type": "xsd:string"
+    },
+    "MetricDimension": "pinpoint:MetricDimension",
+    "ComparisonOperator": {
+      "@id": "pinpoint:ComparisonOperator",
+      "@type": "xsd:string"
+    },
+    "Value": {
+      "@id": "pinpoint:Value",
+      "@type": "xsd:string"
+    },
+    "GetSegmentVersionsRequest": "pinpoint:GetSegmentVersionsRequest",
+    "GetSegmentRequest": "pinpoint:GetSegmentRequest",
+    "GetSegmentsRequest": "pinpoint:GetSegmentsRequest",
+    "SegmentDemographics": "pinpoint:SegmentDemographics",
+    "Channel": {
+      "@id": "pinpoint:Channel",
+      "@type": "xsd:string"
+    },
+    "DeviceType": {
+      "@id": "pinpoint:DeviceType",
+      "@type": "xsd:string"
+    },
+    "SegmentCondition": "pinpoint:SegmentCondition",
+    "SegmentId": {
+      "@id": "pinpoint:SegmentId",
+      "@type": "xsd:string"
+    },
+    "DeleteSegmentRequest": "pinpoint:DeleteSegmentRequest",
+    "AttributeDimension": "pinpoint:AttributeDimension",
+    "AttributeType": {
+      "@id": "pinpoint:AttributeType",
+      "@type": "xsd:string"
+    },
+    "GetSegmentImportJobsResponse": "pinpoint:GetSegmentImportJobsResponse",
+    "ImportJobsResponse": {
+      "@id": "pinpoint:ImportJobsResponse",
+      "@type": "xsd:string"
+    },
+    "GetSegmentsResponse": "pinpoint:GetSegmentsResponse",
+    "SegmentDimensions": "pinpoint:SegmentDimensions",
+    "Behavior": {
+      "@id": "pinpoint:Behavior",
+      "@type": "xsd:string"
+    },
+    "Demographic": {
+      "@id": "pinpoint:Demographic",
+      "@type": "xsd:string"
+    },
+    "Location": {
+      "@id": "pinpoint:Location",
+      "@type": "xsd:string"
+    },
+    "UserAttributes": {
+      "@id": "pinpoint:UserAttributes",
+      "@type": "xsd:string"
+    }
+  }
+}

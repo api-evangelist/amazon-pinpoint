@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-write-segment-request-schema.json",
+  "title": "WriteSegmentRequest",
+  "description": "Specifies the configuration, dimension, and other settings for a segment. A WriteSegmentRequest object can include a Dimensions object or a SegmentGroups object, but not both.",
+  "type": "object",
+  "properties": {
+    "Dimensions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SegmentDimensions"
+        },
+        {
+          "description": "The criteria that define the dimensions for the segment."
+        }
+      ]
+    },
+    "Name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The name of the segment."
+        }
+      ]
+    },
+    "SegmentGroups": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SegmentGroupList"
+        },
+        {
+          "description": "The segment group to use and the dimensions to apply to the group's base segments in order to build the segment. A segment group can consist of zero or more base segments. Your request can include only one segment group."
+        }
+      ]
+    },
+    "tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOf__string"
+        },
+        {
+          "description": "A string-to-string map of key-value pairs that defines the tags to associate with the segment. Each tag consists of a required tag key and an associated tag value."
+        }
+      ]
+    }
+  }
+}

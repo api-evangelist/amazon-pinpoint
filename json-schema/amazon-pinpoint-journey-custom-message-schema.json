@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-journey-custom-message-schema.json",
+  "title": "JourneyCustomMessage",
+  "description": "Specifies the message content for a custom channel message that's sent to participants in a journey.",
+  "type": "object",
+  "properties": {
+    "Data": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The message content that's passed to an AWS Lambda function or to a web hook."
+        }
+      ]
+    }
+  }
+}

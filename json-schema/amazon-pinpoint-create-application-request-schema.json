@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-create-application-request-schema.json",
+  "title": "CreateApplicationRequest",
+  "description": "Specifies the display name of an application and the tags to associate with the application.",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The display name of the application. This name is displayed as the <b>Project name</b> on the Amazon Pinpoint console."
+        }
+      ]
+    },
+    "tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOf__string"
+        },
+        {
+          "description": "A string-to-string map of key-value pairs that defines the tags to associate with the application. Each tag consists of a required tag key and an associated tag value."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Name"
+  ]
+}

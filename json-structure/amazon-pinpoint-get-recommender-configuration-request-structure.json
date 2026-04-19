@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-get-recommender-configuration-request-structure.json",
+  "name": "GetRecommenderConfigurationRequest",
+  "description": "GetRecommenderConfigurationRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {}
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-channel-type-schema.json",
+  "title": "ChannelType",
+  "description": "ChannelType schema from Amazon Pinpoint API",
+  "type": "string",
+  "enum": [
+    "PUSH",
+    "GCM",
+    "APNS",
+    "APNS_SANDBOX",
+    "APNS_VOIP",
+    "APNS_VOIP_SANDBOX",
+    "ADM",
+    "SMS",
+    "VOICE",
+    "EMAIL",
+    "BAIDU",
+    "CUSTOM",
+    "IN_APP"
+  ]
+}

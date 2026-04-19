@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-delete-recommender-configuration-response-schema.json",
+  "title": "DeleteRecommenderConfigurationResponse",
+  "description": "DeleteRecommenderConfigurationResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "RecommenderConfigurationResponse": {
+      "$ref": "#/components/schemas/RecommenderConfigurationResponse"
+    }
+  },
+  "required": [
+    "RecommenderConfigurationResponse"
+  ]
+}

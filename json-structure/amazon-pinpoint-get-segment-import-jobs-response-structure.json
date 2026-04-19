@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-get-segment-import-jobs-response-structure.json",
+  "name": "GetSegmentImportJobsResponse",
+  "description": "GetSegmentImportJobsResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "ImportJobsResponse": {
+      "$ref": "#/components/schemas/ImportJobsResponse"
+    }
+  },
+  "required": [
+    "ImportJobsResponse"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "MessageConfig": "example-MessageConfig",
+  "NextActivity": "example-NextActivity",
+  "TemplateName": "Example Templatename",
+  "TemplateVersion": "example-TemplateVersion"
+}

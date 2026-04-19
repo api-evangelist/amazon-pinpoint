@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-in-app-message-content-structure.json",
+  "name": "InAppMessageContent",
+  "description": "The configuration for the message content.",
+  "type": "object",
+  "properties": {
+    "BackgroundColor": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The background color for the message."
+        }
+      ]
+    },
+    "BodyConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InAppMessageBodyConfig"
+        },
+        {
+          "description": "The configuration for the message body."
+        }
+      ]
+    },
+    "HeaderConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InAppMessageHeaderConfig"
+        },
+        {
+          "description": "The configuration for the message header."
+        }
+      ]
+    },
+    "ImageUrl": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The image url for the background of message."
+        }
+      ]
+    },
+    "PrimaryBtn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InAppMessageButton"
+        },
+        {
+          "description": "The first button inside the message."
+        }
+      ]
+    },
+    "SecondaryBtn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InAppMessageButton"
+        },
+        {
+          "description": "The second button inside message."
+        }
+      ]
+    }
+  }
+}

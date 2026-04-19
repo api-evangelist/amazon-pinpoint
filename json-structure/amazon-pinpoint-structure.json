@@ -1,0 +1,369 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://schemas.apievangelist.com/amazon-pinpoint/application-definition",
+  "name": "Amazon Pinpoint Application Definition",
+  "description": "Schema defining the structure of an Amazon Pinpoint application resource, including campaigns, segments, channels, and messaging configuration for multi-channel marketing communications.",
+  "type": "object",
+  "required": [
+    "Name"
+  ],
+  "properties": {
+    "Id": {
+      "type": "string",
+      "description": "The unique identifier for the application."
+    },
+    "Arn": {
+      "type": "string",
+      "description": "The Amazon Resource Name of the application."
+    },
+    "Name": {
+      "type": "string",
+      "description": "The display name of the application."
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Tags associated with the application."
+    },
+    "CreationDate": {
+      "type": "string",
+      "description": "The date and time when the application was created."
+    },
+    "Campaigns": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Campaign"
+      },
+      "description": "The campaigns for the application."
+    },
+    "Segments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Segment"
+      },
+      "description": "The audience segments for the application."
+    },
+    "Channels": {
+      "$ref": "#/$defs/Channels"
+    }
+  },
+  "definitions": {
+    "Campaign": {
+      "type": "object",
+      "description": "A messaging campaign that engages a targeted audience segment.",
+      "required": [
+        "Name"
+      ],
+      "properties": {
+        "Id": {
+          "type": "string",
+          "description": "The unique identifier of the campaign."
+        },
+        "ApplicationId": {
+          "type": "string",
+          "description": "The unique identifier of the application."
+        },
+        "Arn": {
+          "type": "string",
+          "description": "The ARN of the campaign."
+        },
+        "Name": {
+          "type": "string",
+          "description": "The name of the campaign."
+        },
+        "Description": {
+          "type": "string",
+          "description": "A description of the campaign."
+        },
+        "SegmentId": {
+          "type": "string",
+          "description": "The unique identifier of the target segment."
+        },
+        "SegmentVersion": {
+          "type": "integer",
+          "description": "The version of the target segment."
+        },
+        "State": {
+          "type": "object",
+          "properties": {
+            "CampaignStatus": {
+              "type": "string",
+              "enum": [
+                "SCHEDULED",
+                "EXECUTING",
+                "PENDING_NEXT_RUN",
+                "COMPLETED",
+                "PAUSED",
+                "DELETED",
+                "INVALID"
+              ]
+            }
+          }
+        },
+        "Schedule": {
+          "$ref": "#/$defs/Schedule"
+        },
+        "MessageConfiguration": {
+          "$ref": "#/$defs/MessageConfiguration"
+        },
+        "IsPaused": {
+          "type": "boolean",
+          "description": "Whether the campaign is paused."
+        },
+        "CreationDate": {
+          "type": "string"
+        },
+        "LastModifiedDate": {
+          "type": "string"
+        }
+      },
+      "name": "Campaign"
+    },
+    "Segment": {
+      "type": "object",
+      "description": "An audience segment that defines a group of users for targeting.",
+      "properties": {
+        "Id": {
+          "type": "string",
+          "description": "The unique identifier of the segment."
+        },
+        "ApplicationId": {
+          "type": "string"
+        },
+        "Arn": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string",
+          "description": "The name of the segment."
+        },
+        "SegmentType": {
+          "type": "string",
+          "enum": [
+            "DIMENSIONAL",
+            "IMPORT"
+          ],
+          "description": "The segment type."
+        },
+        "Dimensions": {
+          "$ref": "#/$defs/SegmentDimensions"
+        },
+        "CreationDate": {
+          "type": "string"
+        },
+        "LastModifiedDate": {
+          "type": "string"
+        },
+        "Version": {
+          "type": "integer"
+        }
+      },
+      "name": "Segment"
+    },
+    "Schedule": {
+      "type": "object",
+      "description": "The schedule settings for a campaign.",
+      "properties": {
+        "StartTime": {
+          "type": "string",
+          "description": "The scheduled time when the campaign begins."
+        },
+        "EndTime": {
+          "type": "string",
+          "description": "The scheduled time when the campaign ends."
+        },
+        "Frequency": {
+          "type": "string",
+          "enum": [
+            "ONCE",
+            "HOURLY",
+            "DAILY",
+            "WEEKLY",
+            "MONTHLY",
+            "EVENT",
+            "IN_APP_EVENT"
+          ],
+          "description": "How often the campaign is sent."
+        },
+        "IsLocalTime": {
+          "type": "boolean",
+          "description": "Whether to use local time for the schedule."
+        },
+        "Timezone": {
+          "type": "string",
+          "description": "The starting UTC offset for the campaign schedule."
+        }
+      },
+      "name": "Schedule"
+    },
+    "MessageConfiguration": {
+      "type": "object",
+      "description": "The message configuration for a campaign.",
+      "properties": {
+        "EmailMessage": {
+          "type": "object",
+          "properties": {
+            "Title": {
+              "type": "string"
+            },
+            "Body": {
+              "type": "string"
+            },
+            "HtmlBody": {
+              "type": "string"
+            },
+            "FromAddress": {
+              "type": "string"
+            }
+          }
+        },
+        "SMSMessage": {
+          "type": "object",
+          "properties": {
+            "Body": {
+              "type": "string"
+            },
+            "MessageType": {
+              "type": "string",
+              "enum": [
+                "TRANSACTIONAL",
+                "PROMOTIONAL"
+              ]
+            },
+            "SenderId": {
+              "type": "string"
+            }
+          }
+        },
+        "GCMMessage": {
+          "type": "object",
+          "properties": {
+            "Title": {
+              "type": "string"
+            },
+            "Body": {
+              "type": "string"
+            },
+            "Action": {
+              "type": "string",
+              "enum": [
+                "OPEN_APP",
+                "DEEP_LINK",
+                "URL"
+              ]
+            }
+          }
+        },
+        "APNSMessage": {
+          "type": "object",
+          "properties": {
+            "Title": {
+              "type": "string"
+            },
+            "Body": {
+              "type": "string"
+            },
+            "Action": {
+              "type": "string",
+              "enum": [
+                "OPEN_APP",
+                "DEEP_LINK",
+                "URL"
+              ]
+            }
+          }
+        }
+      },
+      "name": "MessageConfiguration"
+    },
+    "SegmentDimensions": {
+      "type": "object",
+      "description": "The dimension settings for a segment.",
+      "properties": {
+        "Demographic": {
+          "type": "object",
+          "properties": {
+            "AppVersion": {
+              "type": "object"
+            },
+            "Channel": {
+              "type": "object"
+            },
+            "DeviceType": {
+              "type": "object"
+            },
+            "Make": {
+              "type": "object"
+            },
+            "Model": {
+              "type": "object"
+            },
+            "Platform": {
+              "type": "object"
+            }
+          }
+        },
+        "Location": {
+          "type": "object",
+          "properties": {
+            "Country": {
+              "type": "object"
+            },
+            "GPSPoint": {
+              "type": "object"
+            }
+          }
+        }
+      },
+      "name": "SegmentDimensions"
+    },
+    "Channels": {
+      "type": "object",
+      "description": "The messaging channel configurations for the application.",
+      "properties": {
+        "Email": {
+          "type": "object",
+          "properties": {
+            "Enabled": {
+              "type": "boolean"
+            },
+            "FromAddress": {
+              "type": "string"
+            },
+            "Identity": {
+              "type": "string"
+            }
+          }
+        },
+        "SMS": {
+          "type": "object",
+          "properties": {
+            "Enabled": {
+              "type": "boolean"
+            },
+            "SenderId": {
+              "type": "string"
+            },
+            "ShortCode": {
+              "type": "string"
+            }
+          }
+        },
+        "Push": {
+          "type": "object",
+          "properties": {
+            "APNs": {
+              "type": "object"
+            },
+            "GCM": {
+              "type": "object"
+            }
+          }
+        }
+      },
+      "name": "Channels"
+    }
+  }
+}

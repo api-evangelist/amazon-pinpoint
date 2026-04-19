@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-source-type-structure.json",
+  "name": "SourceType",
+  "description": "SourceType schema from Amazon Pinpoint API",
+  "type": "string",
+  "enum": [
+    "ALL",
+    "ANY",
+    "NONE"
+  ]
+}

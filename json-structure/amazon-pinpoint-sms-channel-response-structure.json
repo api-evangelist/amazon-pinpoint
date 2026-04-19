@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-sms-channel-response-structure.json",
+  "name": "SMSChannelResponse",
+  "description": "Provides information about the status and settings of the SMS channel for an application.",
+  "type": "object",
+  "properties": {
+    "ApplicationId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the application that the SMS channel applies to."
+        }
+      ]
+    },
+    "CreationDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date and time, in ISO 8601 format, when the SMS channel was enabled."
+        }
+      ]
+    },
+    "Enabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "description": "Specifies whether the SMS channel is enabled for the application."
+        }
+      ]
+    },
+    "HasCredential": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "description": "(Not used) This property is retained only for backward compatibility."
+        }
+      ]
+    },
+    "Id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "(Deprecated) An identifier for the SMS channel. This property is retained only for backward compatibility."
+        }
+      ]
+    },
+    "IsArchived": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "description": "Specifies whether the SMS channel is archived."
+        }
+      ]
+    },
+    "LastModifiedBy": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The user who last modified the SMS channel."
+        }
+      ]
+    },
+    "LastModifiedDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date and time, in ISO 8601 format, when the SMS channel was last modified."
+        }
+      ]
+    },
+    "Platform": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The type of messaging or notification platform for the channel. For the SMS channel, this value is SMS."
+        }
+      ]
+    },
+    "PromotionalMessagesPerSecond": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The maximum number of promotional messages that you can send through the SMS channel each second."
+        }
+      ]
+    },
+    "SenderId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The identity that displays on recipients' devices when they receive messages from the SMS channel."
+        }
+      ]
+    },
+    "ShortCode": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The registered short code to use when you send messages through the SMS channel."
+        }
+      ]
+    },
+    "TransactionalMessagesPerSecond": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The maximum number of transactional messages that you can send through the SMS channel each second."
+        }
+      ]
+    },
+    "Version": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The current version of the SMS channel."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Platform"
+  ]
+}

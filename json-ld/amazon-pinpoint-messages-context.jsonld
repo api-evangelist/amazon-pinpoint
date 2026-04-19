@@ -1,0 +1,306 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "pinpoint": "https://pinpoint.amazonaws.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "InAppMessagesResponse": "pinpoint:InAppMessagesResponse",
+    "InAppMessageCampaigns": {
+      "@id": "pinpoint:InAppMessageCampaigns",
+      "@type": "xsd:string"
+    },
+    "MessageResponse": "pinpoint:MessageResponse",
+    "ApplicationId": {
+      "@id": "pinpoint:ApplicationId",
+      "@type": "xsd:string"
+    },
+    "EndpointResult": {
+      "@id": "pinpoint:EndpointResult",
+      "@type": "xsd:string"
+    },
+    "RequestId": {
+      "@id": "pinpoint:RequestId",
+      "@type": "xsd:string"
+    },
+    "Result": {
+      "@id": "pinpoint:Result",
+      "@type": "xsd:string"
+    },
+    "SendOTPMessageResponse": "pinpoint:SendOTPMessageResponse",
+    "DirectMessageConfiguration": "pinpoint:DirectMessageConfiguration",
+    "ADMMessage": {
+      "@id": "pinpoint:ADMMessage",
+      "@type": "xsd:string"
+    },
+    "APNSMessage": {
+      "@id": "pinpoint:APNSMessage",
+      "@type": "xsd:string"
+    },
+    "BaiduMessage": {
+      "@id": "pinpoint:BaiduMessage",
+      "@type": "xsd:string"
+    },
+    "DefaultMessage": "pinpoint:DefaultMessage",
+    "DefaultPushNotificationMessage": "pinpoint:DefaultPushNotificationMessage",
+    "EmailMessage": {
+      "@id": "pinpoint:EmailMessage",
+      "@type": "xsd:string"
+    },
+    "GCMMessage": {
+      "@id": "pinpoint:GCMMessage",
+      "@type": "xsd:string"
+    },
+    "SMSMessage": {
+      "@id": "pinpoint:SMSMessage",
+      "@type": "xsd:string"
+    },
+    "VoiceMessage": {
+      "@id": "pinpoint:VoiceMessage",
+      "@type": "xsd:string"
+    },
+    "SendMessagesRequest": "pinpoint:SendMessagesRequest",
+    "MessageRequest": "pinpoint:MessageRequest",
+    "SendOTPMessageRequest": "pinpoint:SendOTPMessageRequest",
+    "SendOTPMessageRequestParameters": "pinpoint:SendOTPMessageRequestParameters",
+    "GetInAppMessagesRequest": "pinpoint:GetInAppMessagesRequest",
+    "VerifyOTPMessageRequest": "pinpoint:VerifyOTPMessageRequest",
+    "VerifyOTPMessageRequestParameters": "pinpoint:VerifyOTPMessageRequestParameters",
+    "GetInAppMessagesResponse": "pinpoint:GetInAppMessagesResponse",
+    "VerifyOTPMessageResponse": "pinpoint:VerifyOTPMessageResponse",
+    "VerificationResponse": {
+      "@id": "pinpoint:VerificationResponse",
+      "@type": "xsd:string"
+    },
+    "Action": {
+      "@id": "pinpoint:Action",
+      "@type": "xsd:string"
+    },
+    "Body": {
+      "@id": "pinpoint:Body",
+      "@type": "xsd:string"
+    },
+    "Data": {
+      "@id": "pinpoint:Data",
+      "@type": "xsd:string"
+    },
+    "SilentPush": {
+      "@id": "pinpoint:SilentPush",
+      "@type": "xsd:string"
+    },
+    "Substitutions": {
+      "@id": "pinpoint:Substitutions",
+      "@type": "xsd:string"
+    },
+    "Title": {
+      "@id": "pinpoint:Title",
+      "@type": "xsd:string"
+    },
+    "Url": {
+      "@id": "pinpoint:Url",
+      "@type": "xsd:string"
+    },
+    "InAppMessageHeaderConfig": "pinpoint:InAppMessageHeaderConfig",
+    "Alignment": {
+      "@id": "pinpoint:Alignment",
+      "@type": "xsd:string"
+    },
+    "Header": {
+      "@id": "pinpoint:Header",
+      "@type": "xsd:string"
+    },
+    "TextColor": {
+      "@id": "pinpoint:TextColor",
+      "@type": "xsd:string"
+    },
+    "MessageConfiguration": "pinpoint:MessageConfiguration",
+    "CustomMessage": {
+      "@id": "pinpoint:CustomMessage",
+      "@type": "xsd:string"
+    },
+    "InAppMessage": "pinpoint:InAppMessage",
+    "InAppMessageBodyConfig": "pinpoint:InAppMessageBodyConfig",
+    "MessageResult": "pinpoint:MessageResult",
+    "DeliveryStatus": {
+      "@id": "pinpoint:DeliveryStatus",
+      "@type": "xsd:string"
+    },
+    "MessageId": {
+      "@id": "pinpoint:MessageId",
+      "@type": "xsd:string"
+    },
+    "StatusCode": {
+      "@id": "pinpoint:StatusCode",
+      "@type": "xsd:string"
+    },
+    "StatusMessage": {
+      "@id": "pinpoint:StatusMessage",
+      "@type": "xsd:string"
+    },
+    "UpdatedToken": {
+      "@id": "pinpoint:UpdatedToken",
+      "@type": "xsd:string"
+    },
+    "AddressConfiguration": "pinpoint:AddressConfiguration",
+    "BodyOverride": {
+      "@id": "pinpoint:BodyOverride",
+      "@type": "xsd:string"
+    },
+    "ChannelType": {
+      "@id": "pinpoint:ChannelType",
+      "@type": "xsd:string"
+    },
+    "Context": {
+      "@id": "pinpoint:Context",
+      "@type": "xsd:string"
+    },
+    "RawContent": {
+      "@id": "pinpoint:RawContent",
+      "@type": "xsd:string"
+    },
+    "TitleOverride": {
+      "@id": "pinpoint:TitleOverride",
+      "@type": "xsd:string"
+    },
+    "Content": {
+      "@id": "pinpoint:Content",
+      "@type": "xsd:string"
+    },
+    "CustomConfig": {
+      "@id": "pinpoint:CustomConfig",
+      "@type": "xsd:string"
+    },
+    "Layout": {
+      "@id": "pinpoint:Layout",
+      "@type": "xsd:string"
+    },
+    "Addresses": {
+      "@id": "pinpoint:Addresses",
+      "@type": "xsd:string"
+    },
+    "Endpoints": {
+      "@id": "pinpoint:Endpoints",
+      "@type": "xsd:string"
+    },
+    "TemplateConfiguration": {
+      "@id": "pinpoint:TemplateConfiguration",
+      "@type": "xsd:string"
+    },
+    "TraceId": {
+      "@id": "pinpoint:TraceId",
+      "@type": "xsd:string"
+    },
+    "DestinationIdentity": {
+      "@id": "pinpoint:DestinationIdentity",
+      "@type": "xsd:string"
+    },
+    "Otp": {
+      "@id": "pinpoint:Otp",
+      "@type": "xsd:string"
+    },
+    "ReferenceId": {
+      "@id": "pinpoint:ReferenceId",
+      "@type": "xsd:string"
+    },
+    "SendMessagesResponse": "pinpoint:SendMessagesResponse",
+    "InAppMessageContent": "pinpoint:InAppMessageContent",
+    "BackgroundColor": {
+      "@id": "pinpoint:BackgroundColor",
+      "@type": "xsd:string"
+    },
+    "BodyConfig": {
+      "@id": "pinpoint:BodyConfig",
+      "@type": "xsd:string"
+    },
+    "HeaderConfig": {
+      "@id": "pinpoint:HeaderConfig",
+      "@type": "xsd:string"
+    },
+    "ImageUrl": {
+      "@id": "pinpoint:ImageUrl",
+      "@type": "xsd:string"
+    },
+    "PrimaryBtn": {
+      "@id": "pinpoint:PrimaryBtn",
+      "@type": "xsd:string"
+    },
+    "SecondaryBtn": {
+      "@id": "pinpoint:SecondaryBtn",
+      "@type": "xsd:string"
+    },
+    "AllowedAttempts": {
+      "@id": "pinpoint:AllowedAttempts",
+      "@type": "xsd:string"
+    },
+    "BrandName": {
+      "@id": "pinpoint:BrandName",
+      "@type": "xsd:string"
+    },
+    "Channel": {
+      "@id": "pinpoint:Channel",
+      "@type": "xsd:string"
+    },
+    "CodeLength": {
+      "@id": "pinpoint:CodeLength",
+      "@type": "xsd:string"
+    },
+    "EntityId": {
+      "@id": "pinpoint:EntityId",
+      "@type": "xsd:string"
+    },
+    "Language": {
+      "@id": "pinpoint:Language",
+      "@type": "xsd:string"
+    },
+    "OriginationIdentity": {
+      "@id": "pinpoint:OriginationIdentity",
+      "@type": "xsd:string"
+    },
+    "TemplateId": {
+      "@id": "pinpoint:TemplateId",
+      "@type": "xsd:string"
+    },
+    "ValidityPeriod": {
+      "@id": "pinpoint:ValidityPeriod",
+      "@type": "xsd:string"
+    },
+    "Message": "pinpoint:Message",
+    "ImageIconUrl": {
+      "@id": "pinpoint:ImageIconUrl",
+      "@type": "xsd:string"
+    },
+    "ImageSmallIconUrl": {
+      "@id": "pinpoint:ImageSmallIconUrl",
+      "@type": "xsd:string"
+    },
+    "JsonBody": {
+      "@id": "pinpoint:JsonBody",
+      "@type": "xsd:string"
+    },
+    "MediaUrl": {
+      "@id": "pinpoint:MediaUrl",
+      "@type": "xsd:string"
+    },
+    "TimeToLive": {
+      "@id": "pinpoint:TimeToLive",
+      "@type": "xsd:string"
+    },
+    "InAppMessageButton": "pinpoint:InAppMessageButton",
+    "Android": {
+      "@id": "pinpoint:Android",
+      "@type": "xsd:string"
+    },
+    "DefaultConfig": {
+      "@id": "pinpoint:DefaultConfig",
+      "@type": "xsd:string"
+    },
+    "IOS": {
+      "@id": "pinpoint:IOS",
+      "@type": "xsd:string"
+    },
+    "Web": {
+      "@id": "pinpoint:Web",
+      "@type": "xsd:string"
+    }
+  }
+}

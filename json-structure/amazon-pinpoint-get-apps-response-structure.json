@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-get-apps-response-structure.json",
+  "name": "GetAppsResponse",
+  "description": "GetAppsResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "ApplicationsResponse": {
+      "$ref": "#/components/schemas/ApplicationsResponse"
+    }
+  },
+  "required": [
+    "ApplicationsResponse"
+  ]
+}

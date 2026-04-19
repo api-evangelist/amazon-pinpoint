@@ -1,0 +1,200 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "pinpoint": "https://pinpoint.amazonaws.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "EndpointMessageResult": "pinpoint:EndpointMessageResult",
+    "Address": {
+      "@id": "pinpoint:Address",
+      "@type": "xsd:string"
+    },
+    "DeliveryStatus": {
+      "@id": "pinpoint:DeliveryStatus",
+      "@type": "xsd:string"
+    },
+    "MessageId": {
+      "@id": "pinpoint:MessageId",
+      "@type": "xsd:string"
+    },
+    "StatusCode": {
+      "@id": "pinpoint:StatusCode",
+      "@type": "xsd:string"
+    },
+    "StatusMessage": {
+      "@id": "pinpoint:StatusMessage",
+      "@type": "xsd:string"
+    },
+    "UpdatedToken": {
+      "@id": "pinpoint:UpdatedToken",
+      "@type": "xsd:string"
+    },
+    "SendUsersMessageRequest": "pinpoint:SendUsersMessageRequest",
+    "Context": {
+      "@id": "pinpoint:Context",
+      "@type": "xsd:string"
+    },
+    "MessageConfiguration": {
+      "@id": "pinpoint:MessageConfiguration",
+      "@type": "xsd:string"
+    },
+    "TemplateConfiguration": {
+      "@id": "pinpoint:TemplateConfiguration",
+      "@type": "xsd:string"
+    },
+    "TraceId": {
+      "@id": "pinpoint:TraceId",
+      "@type": "xsd:string"
+    },
+    "Users": {
+      "@id": "pinpoint:Users",
+      "@type": "xsd:string"
+    },
+    "DeleteUserEndpointsRequest": "pinpoint:DeleteUserEndpointsRequest",
+    "DeleteUserEndpointsResponse": "pinpoint:DeleteUserEndpointsResponse",
+    "EndpointsResponse": "pinpoint:EndpointsResponse",
+    "GetUserEndpointsRequest": "pinpoint:GetUserEndpointsRequest",
+    "Item": {
+      "@id": "pinpoint:Item",
+      "@type": "xsd:string"
+    },
+    "EndpointItemResponse": "pinpoint:EndpointItemResponse",
+    "Message": {
+      "@id": "pinpoint:Message",
+      "@type": "xsd:string"
+    },
+    "DeleteEndpointRequest": "pinpoint:DeleteEndpointRequest",
+    "UpdateEndpointRequest": "pinpoint:UpdateEndpointRequest",
+    "EndpointRequest": "pinpoint:EndpointRequest",
+    "GetEndpointRequest": "pinpoint:GetEndpointRequest",
+    "EndpointUser": "pinpoint:EndpointUser",
+    "UserAttributes": {
+      "@id": "pinpoint:UserAttributes",
+      "@type": "xsd:string"
+    },
+    "UserId": {
+      "@id": "pinpoint:UserId",
+      "@type": "xsd:string"
+    },
+    "SendUsersMessageResponse": "pinpoint:SendUsersMessageResponse",
+    "ApplicationId": {
+      "@id": "pinpoint:ApplicationId",
+      "@type": "xsd:string"
+    },
+    "RequestId": {
+      "@id": "pinpoint:RequestId",
+      "@type": "xsd:string"
+    },
+    "Result": {
+      "@id": "pinpoint:Result",
+      "@type": "xsd:string"
+    },
+    "EndpointResponse": "pinpoint:EndpointResponse",
+    "Attributes": {
+      "@id": "pinpoint:Attributes",
+      "@type": "xsd:string"
+    },
+    "ChannelType": {
+      "@id": "pinpoint:ChannelType",
+      "@type": "xsd:string"
+    },
+    "CohortId": {
+      "@id": "pinpoint:CohortId",
+      "@type": "xsd:string"
+    },
+    "CreationDate": {
+      "@id": "pinpoint:CreationDate",
+      "@type": "xsd:string"
+    },
+    "Demographic": {
+      "@id": "pinpoint:Demographic",
+      "@type": "xsd:string"
+    },
+    "EffectiveDate": {
+      "@id": "pinpoint:EffectiveDate",
+      "@type": "xsd:string"
+    },
+    "EndpointStatus": {
+      "@id": "pinpoint:EndpointStatus",
+      "@type": "xsd:string"
+    },
+    "Id": {
+      "@id": "pinpoint:Id",
+      "@type": "xsd:string"
+    },
+    "Location": {
+      "@id": "pinpoint:Location",
+      "@type": "xsd:string"
+    },
+    "Metrics": {
+      "@id": "pinpoint:Metrics",
+      "@type": "xsd:string"
+    },
+    "OptOut": {
+      "@id": "pinpoint:OptOut",
+      "@type": "xsd:string"
+    },
+    "User": {
+      "@id": "pinpoint:User",
+      "@type": "xsd:string"
+    },
+    "EndpointBatchItem": "pinpoint:EndpointBatchItem",
+    "SendUsersMessagesResponse": "pinpoint:SendUsersMessagesResponse",
+    "GetUserEndpointsResponse": "pinpoint:GetUserEndpointsResponse",
+    "UpdateEndpointsBatchResponse": "pinpoint:UpdateEndpointsBatchResponse",
+    "MessageBody": {
+      "@id": "pinpoint:MessageBody",
+      "@type": "xsd:string"
+    },
+    "UpdateEndpointsBatchRequest": "pinpoint:UpdateEndpointsBatchRequest",
+    "EndpointBatchRequest": "pinpoint:EndpointBatchRequest",
+    "SendUsersMessagesRequest": "pinpoint:SendUsersMessagesRequest",
+    "DeleteEndpointResponse": "pinpoint:DeleteEndpointResponse",
+    "EndpointLocation": "pinpoint:EndpointLocation",
+    "City": {
+      "@id": "pinpoint:City",
+      "@type": "xsd:string"
+    },
+    "Country": {
+      "@id": "pinpoint:Country",
+      "@type": "xsd:string"
+    },
+    "Latitude": {
+      "@id": "pinpoint:Latitude",
+      "@type": "xsd:string"
+    },
+    "Longitude": {
+      "@id": "pinpoint:Longitude",
+      "@type": "xsd:string"
+    },
+    "PostalCode": {
+      "@id": "pinpoint:PostalCode",
+      "@type": "xsd:string"
+    },
+    "Region": {
+      "@id": "pinpoint:Region",
+      "@type": "xsd:string"
+    },
+    "EndpointSendConfiguration": "pinpoint:EndpointSendConfiguration",
+    "BodyOverride": {
+      "@id": "pinpoint:BodyOverride",
+      "@type": "xsd:string"
+    },
+    "RawContent": {
+      "@id": "pinpoint:RawContent",
+      "@type": "xsd:string"
+    },
+    "Substitutions": {
+      "@id": "pinpoint:Substitutions",
+      "@type": "xsd:string"
+    },
+    "TitleOverride": {
+      "@id": "pinpoint:TitleOverride",
+      "@type": "xsd:string"
+    },
+    "PublicEndpoint": "pinpoint:PublicEndpoint",
+    "UpdateEndpointResponse": "pinpoint:UpdateEndpointResponse",
+    "GetEndpointResponse": "pinpoint:GetEndpointResponse"
+  }
+}

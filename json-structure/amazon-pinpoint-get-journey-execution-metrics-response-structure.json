@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-get-journey-execution-metrics-response-structure.json",
+  "name": "GetJourneyExecutionMetricsResponse",
+  "description": "GetJourneyExecutionMetricsResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "JourneyExecutionMetricsResponse": {
+      "$ref": "#/components/schemas/JourneyExecutionMetricsResponse"
+    }
+  },
+  "required": [
+    "JourneyExecutionMetricsResponse"
+  ]
+}

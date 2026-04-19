@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-address-configuration-structure.json",
+  "name": "AddressConfiguration",
+  "description": "Specifies address-based configuration settings for a message that's sent directly to an endpoint.",
+  "type": "object",
+  "properties": {
+    "BodyOverride": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The message body to use instead of the default message body. This value overrides the default message body."
+        }
+      ]
+    },
+    "ChannelType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ChannelType"
+        },
+        {
+          "description": "The channel to use when sending the message."
+        }
+      ]
+    },
+    "Context": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOf__string"
+        },
+        {
+          "description": "<p>An object that maps custom attributes to attributes for the address and is attached to the message. Attribute names are case sensitive.</p> <p>For a push notification, this payload is added to the data.pinpoint object. For an email or text message, this payload is added to email/SMS delivery receipt event attributes.</p>"
+        }
+      ]
+    },
+    "RawContent": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides all other values for the message."
+        }
+      ]
+    },
+    "Substitutions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOfListOf__string"
+        },
+        {
+          "description": "A map of the message variables to merge with the variables specified by properties of the DefaultMessage object. The variables specified in this map take precedence over all other variables."
+        }
+      ]
+    },
+    "TitleOverride": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The message title to use instead of the default message title. This value overrides the default message title."
+        }
+      ]
+    }
+  }
+}

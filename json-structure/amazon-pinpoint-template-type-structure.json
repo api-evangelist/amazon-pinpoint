@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-template-type-structure.json",
+  "name": "TemplateType",
+  "description": "TemplateType schema from Amazon Pinpoint API",
+  "type": "string",
+  "enum": [
+    "EMAIL",
+    "SMS",
+    "VOICE",
+    "PUSH",
+    "INAPP"
+  ]
+}

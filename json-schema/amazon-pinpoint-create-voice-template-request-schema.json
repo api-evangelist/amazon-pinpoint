@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-create-voice-template-request-schema.json",
+  "title": "CreateVoiceTemplateRequest",
+  "description": "CreateVoiceTemplateRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "VoiceTemplateRequest": {
+      "$ref": "#/components/schemas/VoiceTemplateRequest"
+    }
+  },
+  "required": [
+    "VoiceTemplateRequest"
+  ]
+}

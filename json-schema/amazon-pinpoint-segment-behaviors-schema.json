@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-segment-behaviors-schema.json",
+  "title": "SegmentBehaviors",
+  "description": "Specifies dimension settings for including or excluding endpoints from a segment based on how recently an endpoint was active.",
+  "type": "object",
+  "properties": {
+    "Recency": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RecencyDimension"
+        },
+        {
+          "description": "The dimension settings that are based on how recently an endpoint was active."
+        }
+      ]
+    }
+  }
+}

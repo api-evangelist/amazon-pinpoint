@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-list-template-versions-response-structure.json",
+  "name": "ListTemplateVersionsResponse",
+  "description": "ListTemplateVersionsResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "TemplateVersionsResponse": {
+      "$ref": "#/components/schemas/TemplateVersionsResponse"
+    }
+  },
+  "required": [
+    "TemplateVersionsResponse"
+  ]
+}

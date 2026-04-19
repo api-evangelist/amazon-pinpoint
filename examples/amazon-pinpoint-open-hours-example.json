@@ -1,0 +1,7 @@
+{
+  "EMAIL": "example-EMAIL",
+  "SMS": "example-SMS",
+  "PUSH": "example-PUSH",
+  "VOICE": "example-VOICE",
+  "CUSTOM": "example-CUSTOM"
+}

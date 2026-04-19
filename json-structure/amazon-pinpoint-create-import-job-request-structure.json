@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-create-import-job-request-structure.json",
+  "name": "CreateImportJobRequest",
+  "description": "CreateImportJobRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "ImportJobRequest": {
+      "$ref": "#/components/schemas/ImportJobRequest"
+    }
+  },
+  "required": [
+    "ImportJobRequest"
+  ]
+}

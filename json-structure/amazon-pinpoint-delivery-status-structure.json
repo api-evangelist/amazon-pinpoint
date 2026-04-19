@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-delivery-status-structure.json",
+  "name": "DeliveryStatus",
+  "description": "DeliveryStatus schema from Amazon Pinpoint API",
+  "type": "string",
+  "enum": [
+    "SUCCESSFUL",
+    "THROTTLED",
+    "TEMPORARY_FAILURE",
+    "PERMANENT_FAILURE",
+    "UNKNOWN_FAILURE",
+    "OPT_OUT",
+    "DUPLICATE"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-attributes-resource-schema.json",
+  "title": "AttributesResource",
+  "description": "Provides information about the type and the names of attributes that were removed from all the endpoints that are associated with an application.",
+  "type": "object",
+  "properties": {
+    "ApplicationId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the application."
+        }
+      ]
+    },
+    "AttributeType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "<p>The type of attribute or attributes that were removed from the endpoints. Valid values are:</p> <ul><li><p>endpoint-custom-attributes - Custom attributes that describe endpoints.</p></li> <li><p>endpoint-metric-attributes - Custom metrics that your app reports to Amazon Pinpoint for endpoints.</p></li> <li><p>endpoint-user-attributes - Custom attributes that describe users.</p></li></ul>"
+        }
+      ]
+    },
+    "Attributes": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOf__string"
+        },
+        {
+          "description": "An array that specifies the names of the attributes that were removed from the endpoints."
+        }
+      ]
+    }
+  },
+  "required": [
+    "AttributeType",
+    "ApplicationId"
+  ]
+}

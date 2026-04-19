@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-get-campaign-date-range-kpi-response-structure.json",
+  "name": "GetCampaignDateRangeKpiResponse",
+  "description": "GetCampaignDateRangeKpiResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "CampaignDateRangeKpiResponse": {
+      "$ref": "#/components/schemas/CampaignDateRangeKpiResponse"
+    }
+  },
+  "required": [
+    "CampaignDateRangeKpiResponse"
+  ]
+}

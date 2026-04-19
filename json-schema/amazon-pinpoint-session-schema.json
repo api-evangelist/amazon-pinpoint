@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-session-schema.json",
+  "title": "Session",
+  "description": "Provides information about a session.",
+  "type": "object",
+  "properties": {
+    "Duration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The duration of the session, in milliseconds."
+        }
+      ]
+    },
+    "Id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the session."
+        }
+      ]
+    },
+    "StartTimestamp": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date and time when the session began."
+        }
+      ]
+    },
+    "StopTimestamp": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date and time when the session ended."
+        }
+      ]
+    }
+  },
+  "required": [
+    "StartTimestamp",
+    "Id"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-get-segment-versions-request-schema.json",
+  "title": "GetSegmentVersionsRequest",
+  "description": "GetSegmentVersionsRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {}
+}

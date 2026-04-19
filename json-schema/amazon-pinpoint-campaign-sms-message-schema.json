@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-campaign-sms-message-schema.json",
+  "title": "CampaignSmsMessage",
+  "description": "Specifies the content and settings for an SMS message that's sent to recipients of a campaign.",
+  "type": "object",
+  "properties": {
+    "Body": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The body of the SMS message."
+        }
+      ]
+    },
+    "MessageType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MessageType"
+        },
+        {
+          "description": "The SMS message type. Valid values are TRANSACTIONAL (for messages that are critical or time-sensitive, such as a one-time passwords) and PROMOTIONAL (for messsages that aren't critical or time-sensitive, such as marketing messages)."
+        }
+      ]
+    },
+    "OriginationNumber": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The long code to send the SMS message from. This value should be one of the dedicated long codes that's assigned to your AWS account. Although it isn't required, we recommend that you specify the long code using an E.164 format to ensure prompt and accurate delivery of the message. For example, +12065550100."
+        }
+      ]
+    },
+    "SenderId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The sender ID to display on recipients' devices when they receive the SMS message."
+        }
+      ]
+    },
+    "EntityId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The entity ID or Principal Entity (PE) id received from the regulatory body for sending SMS in your country."
+        }
+      ]
+    },
+    "TemplateId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The template ID received from the regulatory body for sending SMS in your country."
+        }
+      ]
+    }
+  }
+}

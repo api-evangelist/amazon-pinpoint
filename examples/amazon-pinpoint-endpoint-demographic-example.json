@@ -1,0 +1,10 @@
+{
+  "AppVersion": "example-AppVersion",
+  "Locale": "example-Locale",
+  "Make": "example-Make",
+  "Model": "example-Model",
+  "ModelVersion": "example-ModelVersion",
+  "Platform": "example-Platform",
+  "PlatformVersion": "example-PlatformVersion",
+  "Timezone": "example-Timezone"
+}

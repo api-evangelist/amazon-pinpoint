@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-template-response-schema.json",
+  "title": "TemplateResponse",
+  "description": "Provides information about a message template that's associated with your Amazon Pinpoint account.",
+  "type": "object",
+  "properties": {
+    "Arn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of the message template. This value isn't included in a TemplateResponse object. To retrieve the ARN of a template, use the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or GetVoiceTemplate operation, depending on the type of template that you want to retrieve the ARN for."
+        }
+      ]
+    },
+    "CreationDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date, in ISO 8601 format, when the message template was created."
+        }
+      ]
+    },
+    "DefaultSubstitutions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The JSON object that specifies the default values that are used for message variables in the message template. This object isn't included in a TemplateResponse object. To retrieve this object for a template, use the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or GetVoiceTemplate operation, depending on the type of template that you want to retrieve the object for."
+        }
+      ]
+    },
+    "LastModifiedDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date, in ISO 8601 format, when the message template was last modified."
+        }
+      ]
+    },
+    "tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOf__string"
+        },
+        {
+          "description": "A map of key-value pairs that identifies the tags that are associated with the message template. This object isn't included in a TemplateResponse object. To retrieve this object for a template, use the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or GetVoiceTemplate operation, depending on the type of template that you want to retrieve the object for."
+        }
+      ]
+    },
+    "TemplateDescription": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The custom description of the message template. This value isn't included in a TemplateResponse object. To retrieve the description of a template, use the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or GetVoiceTemplate operation, depending on the type of template that you want to retrieve the description for."
+        }
+      ]
+    },
+    "TemplateName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The name of the message template."
+        }
+      ]
+    },
+    "TemplateType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TemplateType"
+        },
+        {
+          "description": "The type of channel that the message template is designed for. Possible values are: EMAIL, PUSH, SMS, and VOICE."
+        }
+      ]
+    },
+    "Version": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier, as an integer, for the active version of the message template."
+        }
+      ]
+    }
+  },
+  "required": [
+    "LastModifiedDate",
+    "CreationDate",
+    "TemplateName",
+    "TemplateType"
+  ]
+}

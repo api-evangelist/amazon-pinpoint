@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-list-templates-response-schema.json",
+  "title": "ListTemplatesResponse",
+  "description": "ListTemplatesResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "TemplatesResponse": {
+      "$ref": "#/components/schemas/TemplatesResponse"
+    }
+  },
+  "required": [
+    "TemplatesResponse"
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-email-channel-response-structure.json",
+  "name": "EmailChannelResponse",
+  "description": "Provides information about the status and settings of the email channel for an application.",
+  "type": "object",
+  "properties": {
+    "ApplicationId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the application that the email channel applies to."
+        }
+      ]
+    },
+    "ConfigurationSet": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The <a href=\"https://docs.aws.amazon.com/ses/latest/APIReference/API_ConfigurationSet.html\">Amazon SES configuration set</a> that's applied to messages that are sent through the channel."
+        }
+      ]
+    },
+    "CreationDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date and time, in ISO 8601 format, when the email channel was enabled."
+        }
+      ]
+    },
+    "Enabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "description": "Specifies whether the email channel is enabled for the application."
+        }
+      ]
+    },
+    "FromAddress": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The verified email address that email is sent from when you send email through the channel."
+        }
+      ]
+    },
+    "HasCredential": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "description": "(Not used) This property is retained only for backward compatibility."
+        }
+      ]
+    },
+    "Id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "(Deprecated) An identifier for the email channel. This property is retained only for backward compatibility."
+        }
+      ]
+    },
+    "Identity": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": " <p>The Amazon Resource Name (ARN) of the identity, verified with Amazon Simple Email Service (Amazon SES), that's used when you send email through the channel.</p>"
+        }
+      ]
+    },
+    "IsArchived": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "description": "Specifies whether the email channel is archived."
+        }
+      ]
+    },
+    "LastModifiedBy": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The user who last modified the email channel."
+        }
+      ]
+    },
+    "LastModifiedDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date and time, in ISO 8601 format, when the email channel was last modified."
+        }
+      ]
+    },
+    "MessagesPerSecond": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The maximum number of emails that can be sent through the channel each second."
+        }
+      ]
+    },
+    "Platform": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The type of messaging or notification platform for the channel. For the email channel, this value is EMAIL."
+        }
+      ]
+    },
+    "RoleArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": " <p>The ARN of the AWS Identity and Access Management (IAM) role that Amazon Pinpoint uses to submit email-related event data for the channel.</p>"
+        }
+      ]
+    },
+    "Version": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The current version of the email channel."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Platform"
+  ]
+}

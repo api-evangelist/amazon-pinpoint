@@ -1,0 +1,11 @@
+{
+  "Arn": "arn:aws:pinpoint:us-east-1:123456789:apps/abc123",
+  "CreationDate": "example-CreationDate",
+  "DefaultSubstitutions": "example-DefaultSubstitutions",
+  "LastModifiedDate": "example-LastModifiedDate",
+  "tags": "example-tags",
+  "TemplateDescription": "Description for TemplateDescription",
+  "TemplateName": "Example Templatename",
+  "TemplateType": "STANDARD",
+  "Version": "example-Version"
+}

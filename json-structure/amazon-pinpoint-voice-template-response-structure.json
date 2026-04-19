@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-voice-template-response-structure.json",
+  "name": "VoiceTemplateResponse",
+  "description": "Provides information about the content and settings for a message template that can be used in messages that are sent through the voice channel.",
+  "type": "object",
+  "properties": {
+    "Arn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of the message template."
+        }
+      ]
+    },
+    "Body": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The text of the script that's used in messages that are based on the message template, in plain text format."
+        }
+      ]
+    },
+    "CreationDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date, in ISO 8601 format, when the message template was created."
+        }
+      ]
+    },
+    "DefaultSubstitutions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The JSON object that specifies the default values that are used for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable."
+        }
+      ]
+    },
+    "LanguageCode": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The code for the language that's used when synthesizing the text of the script in messages that are based on the message template. For a list of supported languages and the code for each one, see the <a href=\"https://docs.aws.amazon.com/polly/latest/dg/what-is.html\">Amazon Polly Developer Guide</a>."
+        }
+      ]
+    },
+    "LastModifiedDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date, in ISO 8601 format, when the message template was last modified."
+        }
+      ]
+    },
+    "tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOf__string"
+        },
+        {
+          "description": "A string-to-string map of key-value pairs that identifies the tags that are associated with the message template. Each tag consists of a required tag key and an associated tag value."
+        }
+      ]
+    },
+    "TemplateDescription": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The custom description of the message template."
+        }
+      ]
+    },
+    "TemplateName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The name of the message template."
+        }
+      ]
+    },
+    "TemplateType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TemplateType"
+        },
+        {
+          "description": "The type of channel that the message template is designed for. For a voice template, this value is VOICE."
+        }
+      ]
+    },
+    "Version": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier, as an integer, for the active version of the message template, or the version of the template that you specified by using the version parameter in your request."
+        }
+      ]
+    },
+    "VoiceId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The name of the voice that's used when delivering messages that are based on the message template. For a list of supported voices, see the <a href=\"https://docs.aws.amazon.com/polly/latest/dg/what-is.html\">Amazon Polly Developer Guide</a>."
+        }
+      ]
+    }
+  },
+  "required": [
+    "LastModifiedDate",
+    "CreationDate",
+    "TemplateName",
+    "TemplateType"
+  ]
+}

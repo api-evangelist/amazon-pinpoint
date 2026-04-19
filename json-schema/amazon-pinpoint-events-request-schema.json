@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-events-request-schema.json",
+  "title": "EventsRequest",
+  "description": "Specifies a batch of events to process.",
+  "type": "object",
+  "properties": {
+    "BatchItem": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOfEventsBatch"
+        },
+        {
+          "description": "The batch of events to process. For each item in a batch, the endpoint ID acts as a key that has an EventsBatch object as its value."
+        }
+      ]
+    }
+  },
+  "required": [
+    "BatchItem"
+  ]
+}

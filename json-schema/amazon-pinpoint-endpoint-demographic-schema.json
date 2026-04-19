@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-endpoint-demographic-schema.json",
+  "title": "EndpointDemographic",
+  "description": "Specifies demographic information about an endpoint, such as the applicable time zone and platform.",
+  "type": "object",
+  "properties": {
+    "AppVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The version of the app that's associated with the endpoint."
+        }
+      ]
+    },
+    "Locale": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The locale of the endpoint, in the following format: the ISO 639-1 alpha-2 code, followed by an underscore (_), followed by an ISO 3166-1 alpha-2 value."
+        }
+      ]
+    },
+    "Make": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The manufacturer of the endpoint device, such as apple or samsung."
+        }
+      ]
+    },
+    "Model": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The model name or number of the endpoint device, such as iPhone or SM-G900F."
+        }
+      ]
+    },
+    "ModelVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The model version of the endpoint device."
+        }
+      ]
+    },
+    "Platform": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The platform of the endpoint device, such as ios."
+        }
+      ]
+    },
+    "PlatformVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The platform version of the endpoint device."
+        }
+      ]
+    },
+    "Timezone": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The time zone of the endpoint, specified as a tz database name value, such as America/Los_Angeles."
+        }
+      ]
+    }
+  }
+}

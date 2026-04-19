@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-update-journey-request-schema.json",
+  "title": "UpdateJourneyRequest",
+  "description": "UpdateJourneyRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "WriteJourneyRequest": {
+      "$ref": "#/components/schemas/WriteJourneyRequest"
+    }
+  },
+  "required": [
+    "WriteJourneyRequest"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-import-jobs-response-schema.json",
+  "title": "ImportJobsResponse",
+  "description": "Provides information about the status and settings of all the import jobs that are associated with an application or segment. An import job is a job that imports endpoint definitions from one or more files.",
+  "type": "object",
+  "properties": {
+    "Item": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOfImportJobResponse"
+        },
+        {
+          "description": "An array of responses, one for each import job that's associated with the application (Import Jobs resource) or segment (Segment Import Jobs resource)."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Item"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-export-jobs-response-schema.json",
+  "title": "ExportJobsResponse",
+  "description": "Provides information about all the export jobs that are associated with an application or segment. An export job is a job that exports endpoint definitions to a file.",
+  "type": "object",
+  "properties": {
+    "Item": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOfExportJobResponse"
+        },
+        {
+          "description": "An array of responses, one for each export job that's associated with the application (Export Jobs resource) or segment (Segment Export Jobs resource)."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Item"
+  ]
+}

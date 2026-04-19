@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-send-users-message-request-schema.json",
+  "title": "SendUsersMessageRequest",
+  "description": "Specifies the configuration and other settings for a message to send to all the endpoints that are associated with a list of users.",
+  "type": "object",
+  "properties": {
+    "Context": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOf__string"
+        },
+        {
+          "description": "A map of custom attribute-value pairs. For a push notification, Amazon Pinpoint adds these attributes to the data.pinpoint object in the body of the notification payload. Amazon Pinpoint also provides these attributes in the events that it generates for users-messages deliveries."
+        }
+      ]
+    },
+    "MessageConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DirectMessageConfiguration"
+        },
+        {
+          "description": "The settings and content for the default message and any default messages that you defined for specific channels."
+        }
+      ]
+    },
+    "TemplateConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TemplateConfiguration"
+        },
+        {
+          "description": "The message template to use for the message."
+        }
+      ]
+    },
+    "TraceId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for tracing the message. This identifier is visible to message recipients."
+        }
+      ]
+    },
+    "Users": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOfEndpointSendConfiguration"
+        },
+        {
+          "description": "A map that associates user IDs with <a href=\"https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-messages.html#apps-application-id-messages-model-endpointsendconfiguration\">EndpointSendConfiguration</a> objects. You can use an <a href=\"https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-messages.html#apps-application-id-messages-model-endpointsendconfiguration\">EndpointSendConfiguration</a> object to tailor the message for a user by specifying settings such as content overrides and message variables."
+        }
+      ]
+    }
+  },
+  "required": [
+    "MessageConfiguration",
+    "Users"
+  ]
+}

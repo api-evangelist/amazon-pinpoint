@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-create-segment-request-schema.json",
+  "title": "CreateSegmentRequest",
+  "description": "CreateSegmentRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "WriteSegmentRequest": {
+      "$ref": "#/components/schemas/WriteSegmentRequest"
+    }
+  },
+  "required": [
+    "WriteSegmentRequest"
+  ]
+}

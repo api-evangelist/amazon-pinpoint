@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-state-structure.json",
+  "name": "State",
+  "description": "State schema from Amazon Pinpoint API",
+  "type": "string",
+  "enum": [
+    "DRAFT",
+    "ACTIVE",
+    "COMPLETED",
+    "CANCELLED",
+    "CLOSED",
+    "PAUSED"
+  ]
+}

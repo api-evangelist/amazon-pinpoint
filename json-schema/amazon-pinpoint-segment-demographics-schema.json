@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-segment-demographics-schema.json",
+  "title": "SegmentDemographics",
+  "description": "Specifies demographic-based dimension settings for including or excluding endpoints from a segment. These settings derive from characteristics of endpoint devices, such as platform, make, and model.",
+  "type": "object",
+  "properties": {
+    "AppVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SetDimension"
+        },
+        {
+          "description": "The app version criteria for the segment."
+        }
+      ]
+    },
+    "Channel": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SetDimension"
+        },
+        {
+          "description": "The channel criteria for the segment."
+        }
+      ]
+    },
+    "DeviceType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SetDimension"
+        },
+        {
+          "description": "The device type criteria for the segment."
+        }
+      ]
+    },
+    "Make": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SetDimension"
+        },
+        {
+          "description": "The device make criteria for the segment."
+        }
+      ]
+    },
+    "Model": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SetDimension"
+        },
+        {
+          "description": "The device model criteria for the segment."
+        }
+      ]
+    },
+    "Platform": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SetDimension"
+        },
+        {
+          "description": "The device platform criteria for the segment."
+        }
+      ]
+    }
+  }
+}

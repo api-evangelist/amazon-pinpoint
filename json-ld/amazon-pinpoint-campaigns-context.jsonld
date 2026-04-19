@@ -1,0 +1,307 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "pinpoint": "https://pinpoint.amazonaws.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "TreatmentResource": "pinpoint:TreatmentResource",
+    "CustomDeliveryConfiguration": {
+      "@id": "pinpoint:CustomDeliveryConfiguration",
+      "@type": "xsd:string"
+    },
+    "Id": {
+      "@id": "pinpoint:Id",
+      "@type": "xsd:string"
+    },
+    "MessageConfiguration": {
+      "@id": "pinpoint:MessageConfiguration",
+      "@type": "xsd:string"
+    },
+    "Schedule": {
+      "@id": "pinpoint:Schedule",
+      "@type": "xsd:string"
+    },
+    "SizePercent": {
+      "@id": "pinpoint:SizePercent",
+      "@type": "xsd:string"
+    },
+    "State": {
+      "@id": "pinpoint:State",
+      "@type": "xsd:string"
+    },
+    "TemplateConfiguration": {
+      "@id": "pinpoint:TemplateConfiguration",
+      "@type": "xsd:string"
+    },
+    "TreatmentDescription": {
+      "@id": "pinpoint:TreatmentDescription",
+      "@type": "xsd:string"
+    },
+    "TreatmentName": {
+      "@id": "pinpoint:TreatmentName",
+      "@type": "xsd:string"
+    },
+    "GetCampaignResponse": "pinpoint:GetCampaignResponse",
+    "CampaignResponse": "pinpoint:CampaignResponse",
+    "UpdateCampaignResponse": "pinpoint:UpdateCampaignResponse",
+    "CampaignDateRangeKpiResponse": "pinpoint:CampaignDateRangeKpiResponse",
+    "ApplicationId": {
+      "@id": "pinpoint:ApplicationId",
+      "@type": "xsd:string"
+    },
+    "CampaignId": {
+      "@id": "pinpoint:CampaignId",
+      "@type": "xsd:string"
+    },
+    "EndTime": {
+      "@id": "pinpoint:EndTime",
+      "@type": "xsd:string"
+    },
+    "KpiName": {
+      "@id": "pinpoint:KpiName",
+      "@type": "xsd:string"
+    },
+    "KpiResult": {
+      "@id": "pinpoint:KpiResult",
+      "@type": "xsd:string"
+    },
+    "NextToken": {
+      "@id": "pinpoint:NextToken",
+      "@type": "xsd:string"
+    },
+    "StartTime": {
+      "@id": "pinpoint:StartTime",
+      "@type": "xsd:string"
+    },
+    "CampaignHook": "pinpoint:CampaignHook",
+    "LambdaFunctionName": {
+      "@id": "pinpoint:LambdaFunctionName",
+      "@type": "xsd:string"
+    },
+    "Mode": {
+      "@id": "pinpoint:Mode",
+      "@type": "xsd:string"
+    },
+    "WebUrl": {
+      "@id": "pinpoint:WebUrl",
+      "@type": "xsd:string"
+    },
+    "GetCampaignVersionRequest": "pinpoint:GetCampaignVersionRequest",
+    "CampaignState": "pinpoint:CampaignState",
+    "CampaignStatus": {
+      "@id": "pinpoint:CampaignStatus",
+      "@type": "xsd:string"
+    },
+    "GetCampaignsResponse": "pinpoint:GetCampaignsResponse",
+    "CampaignsResponse": "pinpoint:CampaignsResponse",
+    "CreateCampaignRequest": "pinpoint:CreateCampaignRequest",
+    "WriteCampaignRequest": "pinpoint:WriteCampaignRequest",
+    "DeleteCampaignResponse": "pinpoint:DeleteCampaignResponse",
+    "GetCampaignActivitiesResponse": "pinpoint:GetCampaignActivitiesResponse",
+    "ActivitiesResponse": {
+      "@id": "pinpoint:ActivitiesResponse",
+      "@type": "xsd:string"
+    },
+    "CampaignCustomMessage": "pinpoint:CampaignCustomMessage",
+    "Data": {
+      "@id": "pinpoint:Data",
+      "@type": "xsd:string"
+    },
+    "GetCampaignsRequest": "pinpoint:GetCampaignsRequest",
+    "AdditionalTreatments": {
+      "@id": "pinpoint:AdditionalTreatments",
+      "@type": "xsd:string"
+    },
+    "Description": {
+      "@id": "pinpoint:Description",
+      "@type": "xsd:string"
+    },
+    "HoldoutPercent": {
+      "@id": "pinpoint:HoldoutPercent",
+      "@type": "xsd:string"
+    },
+    "Hook": {
+      "@id": "pinpoint:Hook",
+      "@type": "xsd:string"
+    },
+    "IsPaused": {
+      "@id": "pinpoint:IsPaused",
+      "@type": "xsd:string"
+    },
+    "Limits": {
+      "@id": "pinpoint:Limits",
+      "@type": "xsd:string"
+    },
+    "Name": {
+      "@id": "pinpoint:Name",
+      "@type": "xsd:string"
+    },
+    "SegmentId": {
+      "@id": "pinpoint:SegmentId",
+      "@type": "xsd:string"
+    },
+    "SegmentVersion": {
+      "@id": "pinpoint:SegmentVersion",
+      "@type": "xsd:string"
+    },
+    "tags": {
+      "@id": "pinpoint:tags",
+      "@type": "xsd:string"
+    },
+    "Priority": {
+      "@id": "pinpoint:Priority",
+      "@type": "xsd:string"
+    },
+    "CampaignInAppMessage": "pinpoint:CampaignInAppMessage",
+    "Body": {
+      "@id": "pinpoint:Body",
+      "@type": "xsd:string"
+    },
+    "Content": {
+      "@id": "pinpoint:Content",
+      "@type": "xsd:string"
+    },
+    "CustomConfig": {
+      "@id": "pinpoint:CustomConfig",
+      "@type": "xsd:string"
+    },
+    "Layout": {
+      "@id": "pinpoint:Layout",
+      "@type": "xsd:string"
+    },
+    "CampaignEmailMessage": "pinpoint:CampaignEmailMessage",
+    "FromAddress": {
+      "@id": "pinpoint:FromAddress",
+      "@type": "xsd:string"
+    },
+    "HtmlBody": {
+      "@id": "pinpoint:HtmlBody",
+      "@type": "xsd:string"
+    },
+    "Title": {
+      "@id": "pinpoint:Title",
+      "@type": "xsd:string"
+    },
+    "Arn": {
+      "@id": "pinpoint:Arn",
+      "@type": "xsd:string"
+    },
+    "CreationDate": {
+      "@id": "pinpoint:CreationDate",
+      "@type": "xsd:string"
+    },
+    "DefaultState": {
+      "@id": "pinpoint:DefaultState",
+      "@type": "xsd:string"
+    },
+    "LastModifiedDate": {
+      "@id": "pinpoint:LastModifiedDate",
+      "@type": "xsd:string"
+    },
+    "Version": {
+      "@id": "pinpoint:Version",
+      "@type": "xsd:string"
+    },
+    "InAppCampaignSchedule": "pinpoint:InAppCampaignSchedule",
+    "EndDate": {
+      "@id": "pinpoint:EndDate",
+      "@type": "xsd:string"
+    },
+    "EventFilter": {
+      "@id": "pinpoint:EventFilter",
+      "@type": "xsd:string"
+    },
+    "QuietTime": {
+      "@id": "pinpoint:QuietTime",
+      "@type": "xsd:string"
+    },
+    "GetCampaignDateRangeKpiRequest": "pinpoint:GetCampaignDateRangeKpiRequest",
+    "CreateCampaignResponse": "pinpoint:CreateCampaignResponse",
+    "GetCampaignVersionsRequest": "pinpoint:GetCampaignVersionsRequest",
+    "InAppMessageCampaign": "pinpoint:InAppMessageCampaign",
+    "DailyCap": {
+      "@id": "pinpoint:DailyCap",
+      "@type": "xsd:string"
+    },
+    "InAppMessage": {
+      "@id": "pinpoint:InAppMessage",
+      "@type": "xsd:string"
+    },
+    "SessionCap": {
+      "@id": "pinpoint:SessionCap",
+      "@type": "xsd:string"
+    },
+    "TotalCap": {
+      "@id": "pinpoint:TotalCap",
+      "@type": "xsd:string"
+    },
+    "TreatmentId": {
+      "@id": "pinpoint:TreatmentId",
+      "@type": "xsd:string"
+    },
+    "CampaignEventFilter": "pinpoint:CampaignEventFilter",
+    "Dimensions": {
+      "@id": "pinpoint:Dimensions",
+      "@type": "xsd:string"
+    },
+    "FilterType": {
+      "@id": "pinpoint:FilterType",
+      "@type": "xsd:string"
+    },
+    "Item": {
+      "@id": "pinpoint:Item",
+      "@type": "xsd:string"
+    },
+    "GetCampaignVersionsResponse": "pinpoint:GetCampaignVersionsResponse",
+    "GetCampaignVersionResponse": "pinpoint:GetCampaignVersionResponse",
+    "CampaignSmsMessage": "pinpoint:CampaignSmsMessage",
+    "MessageType": {
+      "@id": "pinpoint:MessageType",
+      "@type": "xsd:string"
+    },
+    "OriginationNumber": {
+      "@id": "pinpoint:OriginationNumber",
+      "@type": "xsd:string"
+    },
+    "SenderId": {
+      "@id": "pinpoint:SenderId",
+      "@type": "xsd:string"
+    },
+    "EntityId": {
+      "@id": "pinpoint:EntityId",
+      "@type": "xsd:string"
+    },
+    "TemplateId": {
+      "@id": "pinpoint:TemplateId",
+      "@type": "xsd:string"
+    },
+    "GetCampaignDateRangeKpiResponse": "pinpoint:GetCampaignDateRangeKpiResponse",
+    "GetCampaignRequest": "pinpoint:GetCampaignRequest",
+    "DeleteCampaignRequest": "pinpoint:DeleteCampaignRequest",
+    "GetCampaignActivitiesRequest": "pinpoint:GetCampaignActivitiesRequest",
+    "CampaignLimits": "pinpoint:CampaignLimits",
+    "Daily": {
+      "@id": "pinpoint:Daily",
+      "@type": "xsd:string"
+    },
+    "MaximumDuration": {
+      "@id": "pinpoint:MaximumDuration",
+      "@type": "xsd:string"
+    },
+    "MessagesPerSecond": {
+      "@id": "pinpoint:MessagesPerSecond",
+      "@type": "xsd:string"
+    },
+    "Total": {
+      "@id": "pinpoint:Total",
+      "@type": "xsd:string"
+    },
+    "Session": {
+      "@id": "pinpoint:Session",
+      "@type": "xsd:string"
+    },
+    "UpdateCampaignRequest": "pinpoint:UpdateCampaignRequest",
+    "WriteTreatmentResource": "pinpoint:WriteTreatmentResource"
+  }
+}

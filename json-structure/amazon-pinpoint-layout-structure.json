@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-layout-structure.json",
+  "name": "Layout",
+  "description": "Layout schema from Amazon Pinpoint API",
+  "type": "string",
+  "enum": [
+    "BOTTOM_BANNER",
+    "TOP_BANNER",
+    "OVERLAYS",
+    "MOBILE_FEED",
+    "MIDDLE_BANNER",
+    "CAROUSEL"
+  ]
+}

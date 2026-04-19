@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-create-sms-template-request-schema.json",
+  "title": "CreateSmsTemplateRequest",
+  "description": "CreateSmsTemplateRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "SMSTemplateRequest": {
+      "$ref": "#/components/schemas/SMSTemplateRequest"
+    }
+  },
+  "required": [
+    "SMSTemplateRequest"
+  ]
+}

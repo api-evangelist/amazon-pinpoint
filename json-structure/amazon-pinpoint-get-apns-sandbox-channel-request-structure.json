@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-get-apns-sandbox-channel-request-structure.json",
+  "name": "GetApnsSandboxChannelRequest",
+  "description": "GetApnsSandboxChannelRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {}
+}

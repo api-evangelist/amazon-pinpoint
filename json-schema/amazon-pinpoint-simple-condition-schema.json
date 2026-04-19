@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-simple-condition-schema.json",
+  "title": "SimpleCondition",
+  "description": "Specifies a condition to evaluate for an activity in a journey.",
+  "type": "object",
+  "properties": {
+    "EventCondition": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EventCondition"
+        },
+        {
+          "description": "The dimension settings for the event that's associated with the activity."
+        }
+      ]
+    },
+    "SegmentCondition": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SegmentCondition"
+        },
+        {
+          "description": "The segment that's associated with the activity."
+        }
+      ]
+    },
+    "SegmentDimensions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SegmentDimensions"
+        },
+        {
+          "xml": {
+            "name": "segmentDimensions"
+          },
+          "description": "The dimension settings for the segment that's associated with the activity."
+        }
+      ]
+    }
+  }
+}

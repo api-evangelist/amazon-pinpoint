@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-event-filter-structure.json",
+  "name": "EventFilter",
+  "description": "Specifies the settings for an event that causes a campaign to be sent or a journey activity to be performed.",
+  "type": "object",
+  "properties": {
+    "Dimensions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EventDimensions"
+        },
+        {
+          "description": "The dimensions for the event filter to use for the campaign or the journey activity."
+        }
+      ]
+    },
+    "FilterType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/FilterType"
+        },
+        {
+          "description": "The type of event that causes the campaign to be sent or the journey activity to be performed. Valid values are: SYSTEM, sends the campaign or performs the activity when a system event occurs; and, ENDPOINT, sends the campaign or performs the activity when an endpoint event (<link  linkend=\"apps-application-id-events\">Events resource</link>) occurs."
+        }
+      ]
+    }
+  },
+  "required": [
+    "FilterType",
+    "Dimensions"
+  ]
+}

@@ -1,0 +1,462 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "pinpoint": "https://pinpoint.amazonaws.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "CreateVoiceTemplateResponse": "pinpoint:CreateVoiceTemplateResponse",
+    "CreateTemplateMessageBody": {
+      "@id": "pinpoint:CreateTemplateMessageBody",
+      "@type": "xsd:string"
+    },
+    "DeleteBaiduChannelRequest": "pinpoint:DeleteBaiduChannelRequest",
+    "GetSmsChannelResponse": "pinpoint:GetSmsChannelResponse",
+    "SMSChannelResponse": "pinpoint:SMSChannelResponse",
+    "EmailTemplateRequest": "pinpoint:EmailTemplateRequest",
+    "DefaultSubstitutions": {
+      "@id": "pinpoint:DefaultSubstitutions",
+      "@type": "xsd:string"
+    },
+    "HtmlPart": {
+      "@id": "pinpoint:HtmlPart",
+      "@type": "xsd:string"
+    },
+    "RecommenderId": {
+      "@id": "pinpoint:RecommenderId",
+      "@type": "xsd:string"
+    },
+    "Subject": {
+      "@id": "pinpoint:Subject",
+      "@type": "xsd:string"
+    },
+    "tags": {
+      "@id": "pinpoint:tags",
+      "@type": "xsd:string"
+    },
+    "TemplateDescription": {
+      "@id": "pinpoint:TemplateDescription",
+      "@type": "xsd:string"
+    },
+    "TextPart": {
+      "@id": "pinpoint:TextPart",
+      "@type": "xsd:string"
+    },
+    "APNSChannelRequest": "pinpoint:APNSChannelRequest",
+    "BundleId": {
+      "@id": "pinpoint:BundleId",
+      "@type": "xsd:string"
+    },
+    "Certificate": {
+      "@id": "pinpoint:Certificate",
+      "@type": "xsd:string"
+    },
+    "DefaultAuthenticationMethod": {
+      "@id": "pinpoint:DefaultAuthenticationMethod",
+      "@type": "xsd:string"
+    },
+    "Enabled": {
+      "@id": "pinpoint:Enabled",
+      "@type": "xsd:string"
+    },
+    "PrivateKey": {
+      "@id": "pinpoint:PrivateKey",
+      "@type": "xsd:string"
+    },
+    "TeamId": {
+      "@id": "pinpoint:TeamId",
+      "@type": "xsd:string"
+    },
+    "TokenKey": {
+      "@id": "pinpoint:TokenKey",
+      "@type": "xsd:string"
+    },
+    "TokenKeyId": {
+      "@id": "pinpoint:TokenKeyId",
+      "@type": "xsd:string"
+    },
+    "GetGcmChannelRequest": "pinpoint:GetGcmChannelRequest",
+    "UpdateEmailChannelRequest": "pinpoint:UpdateEmailChannelRequest",
+    "EmailChannelRequest": "pinpoint:EmailChannelRequest",
+    "UpdateEmailTemplateResponse": "pinpoint:UpdateEmailTemplateResponse",
+    "MessageBody": {
+      "@id": "pinpoint:MessageBody",
+      "@type": "xsd:string"
+    },
+    "GetApnsVoipSandboxChannelResponse": "pinpoint:GetApnsVoipSandboxChannelResponse",
+    "APNSVoipSandboxChannelResponse": "pinpoint:APNSVoipSandboxChannelResponse",
+    "DeleteVoiceChannelResponse": "pinpoint:DeleteVoiceChannelResponse",
+    "VoiceChannelResponse": "pinpoint:VoiceChannelResponse",
+    "GetApnsVoipChannelResponse": "pinpoint:GetApnsVoipChannelResponse",
+    "APNSVoipChannelResponse": "pinpoint:APNSVoipChannelResponse",
+    "GetGcmChannelResponse": "pinpoint:GetGcmChannelResponse",
+    "GCMChannelResponse": "pinpoint:GCMChannelResponse",
+    "UpdateSmsTemplateRequest": "pinpoint:UpdateSmsTemplateRequest",
+    "SMSTemplateRequest": "pinpoint:SMSTemplateRequest",
+    "DeleteApnsVoipSandboxChannelRequest": "pinpoint:DeleteApnsVoipSandboxChannelRequest",
+    "VoiceTemplateRequest": "pinpoint:VoiceTemplateRequest",
+    "Body": {
+      "@id": "pinpoint:Body",
+      "@type": "xsd:string"
+    },
+    "LanguageCode": {
+      "@id": "pinpoint:LanguageCode",
+      "@type": "xsd:string"
+    },
+    "VoiceId": {
+      "@id": "pinpoint:VoiceId",
+      "@type": "xsd:string"
+    },
+    "BaiduChannelResponse": "pinpoint:BaiduChannelResponse",
+    "ApplicationId": {
+      "@id": "pinpoint:ApplicationId",
+      "@type": "xsd:string"
+    },
+    "CreationDate": {
+      "@id": "pinpoint:CreationDate",
+      "@type": "xsd:string"
+    },
+    "Credential": {
+      "@id": "pinpoint:Credential",
+      "@type": "xsd:string"
+    },
+    "HasCredential": {
+      "@id": "pinpoint:HasCredential",
+      "@type": "xsd:string"
+    },
+    "Id": {
+      "@id": "pinpoint:Id",
+      "@type": "xsd:string"
+    },
+    "IsArchived": {
+      "@id": "pinpoint:IsArchived",
+      "@type": "xsd:string"
+    },
+    "LastModifiedBy": {
+      "@id": "pinpoint:LastModifiedBy",
+      "@type": "xsd:string"
+    },
+    "LastModifiedDate": {
+      "@id": "pinpoint:LastModifiedDate",
+      "@type": "xsd:string"
+    },
+    "Platform": {
+      "@id": "pinpoint:Platform",
+      "@type": "xsd:string"
+    },
+    "Version": {
+      "@id": "pinpoint:Version",
+      "@type": "xsd:string"
+    },
+    "GetApnsVoipSandboxChannelRequest": "pinpoint:GetApnsVoipSandboxChannelRequest",
+    "DeleteVoiceChannelRequest": "pinpoint:DeleteVoiceChannelRequest",
+    "GCMMessage": "pinpoint:GCMMessage",
+    "Action": {
+      "@id": "pinpoint:Action",
+      "@type": "xsd:string"
+    },
+    "CollapseKey": {
+      "@id": "pinpoint:CollapseKey",
+      "@type": "xsd:string"
+    },
+    "Data": {
+      "@id": "pinpoint:Data",
+      "@type": "xsd:string"
+    },
+    "IconReference": {
+      "@id": "pinpoint:IconReference",
+      "@type": "xsd:string"
+    },
+    "ImageIconUrl": {
+      "@id": "pinpoint:ImageIconUrl",
+      "@type": "xsd:string"
+    },
+    "ImageUrl": {
+      "@id": "pinpoint:ImageUrl",
+      "@type": "xsd:string"
+    },
+    "Priority": {
+      "@id": "pinpoint:Priority",
+      "@type": "xsd:string"
+    },
+    "RawContent": {
+      "@id": "pinpoint:RawContent",
+      "@type": "xsd:string"
+    },
+    "RestrictedPackageName": {
+      "@id": "pinpoint:RestrictedPackageName",
+      "@type": "xsd:string"
+    },
+    "SilentPush": {
+      "@id": "pinpoint:SilentPush",
+      "@type": "xsd:string"
+    },
+    "SmallImageIconUrl": {
+      "@id": "pinpoint:SmallImageIconUrl",
+      "@type": "xsd:string"
+    },
+    "Sound": {
+      "@id": "pinpoint:Sound",
+      "@type": "xsd:string"
+    },
+    "Substitutions": {
+      "@id": "pinpoint:Substitutions",
+      "@type": "xsd:string"
+    },
+    "TimeToLive": {
+      "@id": "pinpoint:TimeToLive",
+      "@type": "xsd:string"
+    },
+    "Title": {
+      "@id": "pinpoint:Title",
+      "@type": "xsd:string"
+    },
+    "Url": {
+      "@id": "pinpoint:Url",
+      "@type": "xsd:string"
+    },
+    "DeleteSmsTemplateRequest": "pinpoint:DeleteSmsTemplateRequest",
+    "CreateSmsTemplateResponse": "pinpoint:CreateSmsTemplateResponse",
+    "UpdateApnsChannelResponse": "pinpoint:UpdateApnsChannelResponse",
+    "APNSChannelResponse": "pinpoint:APNSChannelResponse",
+    "GetEmailTemplateResponse": "pinpoint:GetEmailTemplateResponse",
+    "EmailTemplateResponse": "pinpoint:EmailTemplateResponse",
+    "GetAdmChannelResponse": "pinpoint:GetAdmChannelResponse",
+    "ADMChannelResponse": "pinpoint:ADMChannelResponse",
+    "GetChannelsRequest": "pinpoint:GetChannelsRequest",
+    "DeleteSmsTemplateResponse": "pinpoint:DeleteSmsTemplateResponse",
+    "DeleteEmailChannelResponse": "pinpoint:DeleteEmailChannelResponse",
+    "EmailChannelResponse": "pinpoint:EmailChannelResponse",
+    "UpdateAdmChannelRequest": "pinpoint:UpdateAdmChannelRequest",
+    "ADMChannelRequest": "pinpoint:ADMChannelRequest",
+    "GetApnsChannelRequest": "pinpoint:GetApnsChannelRequest",
+    "APNSMessage": "pinpoint:APNSMessage",
+    "APNSPushType": {
+      "@id": "pinpoint:APNSPushType",
+      "@type": "xsd:string"
+    },
+    "Badge": {
+      "@id": "pinpoint:Badge",
+      "@type": "xsd:string"
+    },
+    "Category": {
+      "@id": "pinpoint:Category",
+      "@type": "xsd:string"
+    },
+    "CollapseId": {
+      "@id": "pinpoint:CollapseId",
+      "@type": "xsd:string"
+    },
+    "MediaUrl": {
+      "@id": "pinpoint:MediaUrl",
+      "@type": "xsd:string"
+    },
+    "PreferredAuthenticationMethod": {
+      "@id": "pinpoint:PreferredAuthenticationMethod",
+      "@type": "xsd:string"
+    },
+    "ThreadId": {
+      "@id": "pinpoint:ThreadId",
+      "@type": "xsd:string"
+    },
+    "EmailMessage": "pinpoint:EmailMessage",
+    "FeedbackForwardingAddress": {
+      "@id": "pinpoint:FeedbackForwardingAddress",
+      "@type": "xsd:string"
+    },
+    "FromAddress": {
+      "@id": "pinpoint:FromAddress",
+      "@type": "xsd:string"
+    },
+    "RawEmail": "pinpoint:RawEmail",
+    "ReplyToAddresses": {
+      "@id": "pinpoint:ReplyToAddresses",
+      "@type": "xsd:string"
+    },
+    "SimpleEmail": "pinpoint:SimpleEmail",
+    "GetEmailChannelResponse": "pinpoint:GetEmailChannelResponse",
+    "APNSVoipChannelRequest": "pinpoint:APNSVoipChannelRequest",
+    "GetVoiceChannelRequest": "pinpoint:GetVoiceChannelRequest",
+    "DeleteVoiceTemplateResponse": "pinpoint:DeleteVoiceTemplateResponse",
+    "PromotionalMessagesPerSecond": {
+      "@id": "pinpoint:PromotionalMessagesPerSecond",
+      "@type": "xsd:string"
+    },
+    "SenderId": {
+      "@id": "pinpoint:SenderId",
+      "@type": "xsd:string"
+    },
+    "ShortCode": {
+      "@id": "pinpoint:ShortCode",
+      "@type": "xsd:string"
+    },
+    "TransactionalMessagesPerSecond": {
+      "@id": "pinpoint:TransactionalMessagesPerSecond",
+      "@type": "xsd:string"
+    },
+    "SMSTemplateResponse": "pinpoint:SMSTemplateResponse",
+    "Arn": {
+      "@id": "pinpoint:Arn",
+      "@type": "xsd:string"
+    },
+    "TemplateName": {
+      "@id": "pinpoint:TemplateName",
+      "@type": "xsd:string"
+    },
+    "TemplateType": {
+      "@id": "pinpoint:TemplateType",
+      "@type": "xsd:string"
+    },
+    "UpdateApnsVoipSandboxChannelRequest": "pinpoint:UpdateApnsVoipSandboxChannelRequest",
+    "APNSVoipSandboxChannelRequest": "pinpoint:APNSVoipSandboxChannelRequest",
+    "VoiceChannelRequest": "pinpoint:VoiceChannelRequest",
+    "UpdateBaiduChannelResponse": "pinpoint:UpdateBaiduChannelResponse",
+    "GetSmsTemplateResponse": "pinpoint:GetSmsTemplateResponse",
+    "APNSPushNotificationTemplate": "pinpoint:APNSPushNotificationTemplate",
+    "UpdateVoiceTemplateRequest": "pinpoint:UpdateVoiceTemplateRequest",
+    "DeleteApnsVoipChannelRequest": "pinpoint:DeleteApnsVoipChannelRequest",
+    "APNSSandboxChannelResponse": "pinpoint:APNSSandboxChannelResponse",
+    "HasTokenKey": {
+      "@id": "pinpoint:HasTokenKey",
+      "@type": "xsd:string"
+    },
+    "GetBaiduChannelRequest": "pinpoint:GetBaiduChannelRequest",
+    "GetApnsVoipChannelRequest": "pinpoint:GetApnsVoipChannelRequest",
+    "GetVoiceChannelResponse": "pinpoint:GetVoiceChannelResponse",
+    "UpdateSmsChannelRequest": "pinpoint:UpdateSmsChannelRequest",
+    "SMSChannelRequest": "pinpoint:SMSChannelRequest",
+    "APNSSandboxChannelRequest": "pinpoint:APNSSandboxChannelRequest",
+    "GCMChannelRequest": "pinpoint:GCMChannelRequest",
+    "ApiKey": {
+      "@id": "pinpoint:ApiKey",
+      "@type": "xsd:string"
+    },
+    "UpdateApnsSandboxChannelRequest": "pinpoint:UpdateApnsSandboxChannelRequest",
+    "DeleteGcmChannelRequest": "pinpoint:DeleteGcmChannelRequest",
+    "UpdateEmailTemplateRequest": "pinpoint:UpdateEmailTemplateRequest",
+    "BaiduChannelRequest": "pinpoint:BaiduChannelRequest",
+    "SecretKey": {
+      "@id": "pinpoint:SecretKey",
+      "@type": "xsd:string"
+    },
+    "GetApnsSandboxChannelRequest": "pinpoint:GetApnsSandboxChannelRequest",
+    "GetEmailTemplateRequest": "pinpoint:GetEmailTemplateRequest",
+    "VoiceMessage": "pinpoint:VoiceMessage",
+    "OriginationNumber": {
+      "@id": "pinpoint:OriginationNumber",
+      "@type": "xsd:string"
+    },
+    "BaiduMessage": "pinpoint:BaiduMessage",
+    "DeleteAdmChannelRequest": "pinpoint:DeleteAdmChannelRequest",
+    "ClientId": {
+      "@id": "pinpoint:ClientId",
+      "@type": "xsd:string"
+    },
+    "ClientSecret": {
+      "@id": "pinpoint:ClientSecret",
+      "@type": "xsd:string"
+    },
+    "UpdateApnsVoipChannelRequest": "pinpoint:UpdateApnsVoipChannelRequest",
+    "UpdateVoiceChannelResponse": "pinpoint:UpdateVoiceChannelResponse",
+    "GetApnsChannelResponse": "pinpoint:GetApnsChannelResponse",
+    "GetChannelsResponse": "pinpoint:GetChannelsResponse",
+    "ChannelsResponse": "pinpoint:ChannelsResponse",
+    "SimpleEmailPart": "pinpoint:SimpleEmailPart",
+    "Charset": {
+      "@id": "pinpoint:Charset",
+      "@type": "xsd:string"
+    },
+    "DeleteApnsVoipChannelResponse": "pinpoint:DeleteApnsVoipChannelResponse",
+    "DeleteApnsSandboxChannelRequest": "pinpoint:DeleteApnsSandboxChannelRequest",
+    "UpdateApnsChannelRequest": "pinpoint:UpdateApnsChannelRequest",
+    "DeleteEmailTemplateResponse": "pinpoint:DeleteEmailTemplateResponse",
+    "ChannelResponse": "pinpoint:ChannelResponse",
+    "GetApnsSandboxChannelResponse": "pinpoint:GetApnsSandboxChannelResponse",
+    "DeleteSmsChannelRequest": "pinpoint:DeleteSmsChannelRequest",
+    "GetEmailChannelRequest": "pinpoint:GetEmailChannelRequest",
+    "GetBaiduChannelResponse": "pinpoint:GetBaiduChannelResponse",
+    "GetVoiceTemplateRequest": "pinpoint:GetVoiceTemplateRequest",
+    "DeleteApnsChannelRequest": "pinpoint:DeleteApnsChannelRequest",
+    "UpdateApnsVoipChannelResponse": "pinpoint:UpdateApnsVoipChannelResponse",
+    "ConfigurationSet": {
+      "@id": "pinpoint:ConfigurationSet",
+      "@type": "xsd:string"
+    },
+    "Identity": {
+      "@id": "pinpoint:Identity",
+      "@type": "xsd:string"
+    },
+    "RoleArn": {
+      "@id": "pinpoint:RoleArn",
+      "@type": "xsd:string"
+    },
+    "VoiceTemplateResponse": "pinpoint:VoiceTemplateResponse",
+    "UpdateEmailChannelResponse": "pinpoint:UpdateEmailChannelResponse",
+    "UpdateGcmChannelRequest": "pinpoint:UpdateGcmChannelRequest",
+    "UpdateApnsVoipSandboxChannelResponse": "pinpoint:UpdateApnsVoipSandboxChannelResponse",
+    "GetSmsTemplateRequest": "pinpoint:GetSmsTemplateRequest",
+    "DeleteAdmChannelResponse": "pinpoint:DeleteAdmChannelResponse",
+    "UpdateGcmChannelResponse": "pinpoint:UpdateGcmChannelResponse",
+    "DeleteApnsSandboxChannelResponse": "pinpoint:DeleteApnsSandboxChannelResponse",
+    "UpdateVoiceTemplateResponse": "pinpoint:UpdateVoiceTemplateResponse",
+    "UpdateBaiduChannelRequest": "pinpoint:UpdateBaiduChannelRequest",
+    "CreateVoiceTemplateRequest": "pinpoint:CreateVoiceTemplateRequest",
+    "DeleteEmailChannelRequest": "pinpoint:DeleteEmailChannelRequest",
+    "MessagesPerSecond": {
+      "@id": "pinpoint:MessagesPerSecond",
+      "@type": "xsd:string"
+    },
+    "SMSMessage": "pinpoint:SMSMessage",
+    "Keyword": {
+      "@id": "pinpoint:Keyword",
+      "@type": "xsd:string"
+    },
+    "MessageType": {
+      "@id": "pinpoint:MessageType",
+      "@type": "xsd:string"
+    },
+    "EntityId": {
+      "@id": "pinpoint:EntityId",
+      "@type": "xsd:string"
+    },
+    "TemplateId": {
+      "@id": "pinpoint:TemplateId",
+      "@type": "xsd:string"
+    },
+    "CreateEmailTemplateResponse": "pinpoint:CreateEmailTemplateResponse",
+    "UpdateSmsChannelResponse": "pinpoint:UpdateSmsChannelResponse",
+    "UpdateApnsSandboxChannelResponse": "pinpoint:UpdateApnsSandboxChannelResponse",
+    "DeleteVoiceTemplateRequest": "pinpoint:DeleteVoiceTemplateRequest",
+    "GetSmsChannelRequest": "pinpoint:GetSmsChannelRequest",
+    "DeleteBaiduChannelResponse": "pinpoint:DeleteBaiduChannelResponse",
+    "CreateSmsTemplateRequest": "pinpoint:CreateSmsTemplateRequest",
+    "GetVoiceTemplateResponse": "pinpoint:GetVoiceTemplateResponse",
+    "UpdateVoiceChannelRequest": "pinpoint:UpdateVoiceChannelRequest",
+    "CreateEmailTemplateRequest": "pinpoint:CreateEmailTemplateRequest",
+    "DeleteGcmChannelResponse": "pinpoint:DeleteGcmChannelResponse",
+    "UpdateAdmChannelResponse": "pinpoint:UpdateAdmChannelResponse",
+    "DeleteEmailTemplateRequest": "pinpoint:DeleteEmailTemplateRequest",
+    "ADMMessage": "pinpoint:ADMMessage",
+    "ConsolidationKey": {
+      "@id": "pinpoint:ConsolidationKey",
+      "@type": "xsd:string"
+    },
+    "ExpiresAfter": {
+      "@id": "pinpoint:ExpiresAfter",
+      "@type": "xsd:string"
+    },
+    "MD5": {
+      "@id": "pinpoint:MD5",
+      "@type": "xsd:string"
+    },
+    "DeleteApnsChannelResponse": "pinpoint:DeleteApnsChannelResponse",
+    "GetAdmChannelRequest": "pinpoint:GetAdmChannelRequest",
+    "DeleteApnsVoipSandboxChannelResponse": "pinpoint:DeleteApnsVoipSandboxChannelResponse",
+    "UpdateSmsTemplateResponse": "pinpoint:UpdateSmsTemplateResponse",
+    "DeleteSmsChannelResponse": "pinpoint:DeleteSmsChannelResponse",
+    "Channels": {
+      "@id": "pinpoint:Channels",
+      "@type": "xsd:string"
+    }
+  }
+}

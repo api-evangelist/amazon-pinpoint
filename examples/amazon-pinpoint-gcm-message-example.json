@@ -1,0 +1,19 @@
+{
+  "Action": "example-Action",
+  "Body": "example-Body",
+  "CollapseKey": "example-CollapseKey",
+  "Data": "example-Data",
+  "IconReference": "example-IconReference",
+  "ImageIconUrl": "https://example.com",
+  "ImageUrl": "https://example.com",
+  "Priority": "example-Priority",
+  "RawContent": "example-RawContent",
+  "RestrictedPackageName": "Example Restrictedpackagename",
+  "SilentPush": "example-SilentPush",
+  "SmallImageIconUrl": "https://example.com",
+  "Sound": "example-Sound",
+  "Substitutions": "example-Substitutions",
+  "TimeToLive": "example-TimeToLive",
+  "Title": "example-Title",
+  "Url": "https://example.com"
+}

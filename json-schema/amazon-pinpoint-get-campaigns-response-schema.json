@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-get-campaigns-response-schema.json",
+  "title": "GetCampaignsResponse",
+  "description": "GetCampaignsResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "CampaignsResponse": {
+      "$ref": "#/components/schemas/CampaignsResponse"
+    }
+  },
+  "required": [
+    "CampaignsResponse"
+  ]
+}

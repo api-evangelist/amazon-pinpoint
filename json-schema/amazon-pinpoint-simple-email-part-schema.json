@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-simple-email-part-schema.json",
+  "title": "SimpleEmailPart",
+  "description": "Specifies the subject or body of an email message, represented as textual email data and the applicable character set.",
+  "type": "object",
+  "properties": {
+    "Charset": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The applicable character set for the message content."
+        }
+      ]
+    },
+    "Data": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The textual data of the message content."
+        }
+      ]
+    }
+  }
+}

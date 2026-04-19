@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-verification-response-schema.json",
+  "title": "VerificationResponse",
+  "description": "Verify OTP Message Response.",
+  "type": "object",
+  "properties": {
+    "Valid": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "description": "Specifies whether the OTP is valid or not."
+        }
+      ]
+    }
+  }
+}

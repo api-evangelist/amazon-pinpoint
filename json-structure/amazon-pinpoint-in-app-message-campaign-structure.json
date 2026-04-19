@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-in-app-message-campaign-structure.json",
+  "name": "InAppMessageCampaign",
+  "description": "Targeted in-app message campaign.",
+  "type": "object",
+  "properties": {
+    "CampaignId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "Campaign id of the corresponding campaign."
+        }
+      ]
+    },
+    "DailyCap": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "Daily cap which controls the number of times any in-app messages can be shown to the endpoint during a day."
+        }
+      ]
+    },
+    "InAppMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InAppMessage"
+        },
+        {
+          "description": "In-app message content with all fields required for rendering an in-app message."
+        }
+      ]
+    },
+    "Priority": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "Priority of the in-app message."
+        }
+      ]
+    },
+    "Schedule": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InAppCampaignSchedule"
+        },
+        {
+          "description": "Schedule of the campaign."
+        }
+      ]
+    },
+    "SessionCap": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "Session cap which controls the number of times an in-app message can be shown to the endpoint during an application session."
+        }
+      ]
+    },
+    "TotalCap": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "Total cap which controls the number of times an in-app message can be shown to the endpoint."
+        }
+      ]
+    },
+    "TreatmentId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "Treatment id of the campaign."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-sms-channel-request-structure.json",
+  "name": "SMSChannelRequest",
+  "description": "Specifies the status and settings of the SMS channel for an application.",
+  "type": "object",
+  "properties": {
+    "Enabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "description": "Specifies whether to enable the SMS channel for the application."
+        }
+      ]
+    },
+    "SenderId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The identity that you want to display on recipients' devices when they receive messages from the SMS channel."
+        }
+      ]
+    },
+    "ShortCode": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The registered short code that you want to use when you send messages through the SMS channel."
+        }
+      ]
+    }
+  }
+}

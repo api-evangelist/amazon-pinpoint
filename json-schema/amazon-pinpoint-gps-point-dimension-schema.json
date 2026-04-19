@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-gps-point-dimension-schema.json",
+  "title": "GPSPointDimension",
+  "description": "Specifies GPS-based criteria for including or excluding endpoints from a segment.",
+  "type": "object",
+  "properties": {
+    "Coordinates": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GPSCoordinates"
+        },
+        {
+          "description": "The GPS coordinates to measure distance from."
+        }
+      ]
+    },
+    "RangeInKilometers": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__double"
+        },
+        {
+          "description": "The range, in kilometers, from the GPS coordinates."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Coordinates"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-adm-channel-request-schema.json",
+  "title": "ADMChannelRequest",
+  "description": "Specifies the status and settings of the ADM (Amazon Device Messaging) channel for an application.",
+  "type": "object",
+  "properties": {
+    "ClientId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The Client ID that you received from Amazon to send messages by using ADM."
+        }
+      ]
+    },
+    "ClientSecret": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The Client Secret that you received from Amazon to send messages by using ADM."
+        }
+      ]
+    },
+    "Enabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "description": "Specifies whether to enable the ADM channel for the application."
+        }
+      ]
+    }
+  },
+  "required": [
+    "ClientSecret",
+    "ClientId"
+  ]
+}

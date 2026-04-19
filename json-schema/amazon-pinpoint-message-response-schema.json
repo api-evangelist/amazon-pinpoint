@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-message-response-schema.json",
+  "title": "MessageResponse",
+  "description": "Provides information about the results of a request to send a message to an endpoint address.",
+  "type": "object",
+  "properties": {
+    "ApplicationId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the application that was used to send the message."
+        }
+      ]
+    },
+    "EndpointResult": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOfEndpointMessageResult"
+        },
+        {
+          "description": "A map that contains a multipart response for each address that the message was sent to. In the map, the endpoint ID is the key and the result is the value."
+        }
+      ]
+    },
+    "RequestId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The identifier for the original request that the message was delivered for."
+        }
+      ]
+    },
+    "Result": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOfMessageResult"
+        },
+        {
+          "description": "A map that contains a multipart response for each address (email address, phone number, or push notification token) that the message was sent to. In the map, the address is the key and the result is the value."
+        }
+      ]
+    }
+  },
+  "required": [
+    "ApplicationId"
+  ]
+}

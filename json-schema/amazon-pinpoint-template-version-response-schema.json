@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-template-version-response-schema.json",
+  "title": "TemplateVersionResponse",
+  "description": "Provides information about a specific version of a message template.",
+  "type": "object",
+  "properties": {
+    "CreationDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date, in ISO 8601 format, when the version of the message template was created."
+        }
+      ]
+    },
+    "DefaultSubstitutions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "A JSON object that specifies the default values that are used for message variables in the version of the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable."
+        }
+      ]
+    },
+    "LastModifiedDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date, in ISO 8601 format, when the version of the message template was last modified."
+        }
+      ]
+    },
+    "TemplateDescription": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The custom description of the version of the message template."
+        }
+      ]
+    },
+    "TemplateName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The name of the message template."
+        }
+      ]
+    },
+    "TemplateType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The type of channel that the message template is designed for. Possible values are: EMAIL, PUSH, SMS, and VOICE."
+        }
+      ]
+    },
+    "Version": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the version of the message template. This value is an integer that Amazon Pinpoint automatically increments and assigns to each new version of a template."
+        }
+      ]
+    }
+  },
+  "required": [
+    "LastModifiedDate",
+    "CreationDate",
+    "TemplateName",
+    "TemplateType"
+  ]
+}

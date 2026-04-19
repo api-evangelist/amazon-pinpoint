@@ -1,0 +1,381 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: Amazon Pinpoint API
+  description: Multi-channel customer engagement API for campaigns, journeys, segments, templates, and messaging channels.
+  tags:
+    - Amazon
+    - AWS
+    - Marketing
+    - Messaging
+    - Campaigns
+    - Journeys
+    - Segmentation
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+      AWS_REGION: AWS_REGION
+
+capability:
+  consumes:
+    - type: http
+      namespace: amazon-pinpoint
+      baseUri: https://pinpoint.{region}.amazonaws.com
+      description: Amazon Pinpoint multi-channel customer engagement API
+      authentication:
+        type: apikey
+        key: Authorization
+        value: "{{AWS_ACCESS_KEY_ID}}"
+        placement: header
+      resources:
+        - name: apps
+          path: /v1/apps
+          description: Manage Pinpoint applications (projects)
+          operations:
+            - name: get-apps
+              method: GET
+              description: List all Pinpoint applications
+              inputParameters:
+                - name: page-size
+                  in: query
+                  type: integer
+                  required: false
+                  description: Max number of items to return
+                - name: token
+                  in: query
+                  type: string
+                  required: false
+                  description: Pagination token
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-app
+              method: POST
+              description: Create a new Pinpoint application
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  Name: "{{tools.name}}"
+
+        - name: campaigns
+          path: /v1/apps/{application-id}/campaigns
+          description: Manage messaging campaigns
+          operations:
+            - name: get-campaigns
+              method: GET
+              description: List campaigns for an application
+              inputParameters:
+                - name: application-id
+                  in: path
+                  type: string
+                  required: true
+                  description: Application ID
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-campaign
+              method: POST
+              description: Create a new campaign
+              inputParameters:
+                - name: application-id
+                  in: path
+                  type: string
+                  required: true
+                  description: Application ID
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  Name: "{{tools.name}}"
+
+        - name: segments
+          path: /v1/apps/{application-id}/segments
+          description: Manage audience segments
+          operations:
+            - name: get-segments
+              method: GET
+              description: List audience segments for an application
+              inputParameters:
+                - name: application-id
+                  in: path
+                  type: string
+                  required: true
+                  description: Application ID
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-segment
+              method: POST
+              description: Create a new audience segment
+              inputParameters:
+                - name: application-id
+                  in: path
+                  type: string
+                  required: true
+                  description: Application ID
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  Name: "{{tools.name}}"
+
+        - name: journeys
+          path: /v1/apps/{application-id}/journeys
+          description: Manage customer journeys
+          operations:
+            - name: list-journeys
+              method: GET
+              description: List customer journeys for an application
+              inputParameters:
+                - name: application-id
+                  in: path
+                  type: string
+                  required: true
+                  description: Application ID
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-journey
+              method: POST
+              description: Create a new customer journey
+              inputParameters:
+                - name: application-id
+                  in: path
+                  type: string
+                  required: true
+                  description: Application ID
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  Name: "{{tools.name}}"
+
+        - name: messages
+          path: /v1/apps/{application-id}/messages
+          description: Send transactional messages
+          operations:
+            - name: send-messages
+              method: POST
+              description: Send transactional messages to endpoints
+              inputParameters:
+                - name: application-id
+                  in: path
+                  type: string
+                  required: true
+                  description: Application ID
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  MessageRequest: "{{tools.message_request}}"
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: amazon-pinpoint-rest
+      resources:
+        - path: /v1/apps
+          name: apps
+          description: Pinpoint applications management
+          operations:
+            - method: GET
+              name: list-apps
+              description: List all Pinpoint applications
+              call: "amazon-pinpoint.get-apps"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-app
+              description: Create a new Pinpoint application
+              call: "amazon-pinpoint.create-app"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/apps/{application-id}/campaigns
+          name: campaigns
+          description: Campaign management
+          operations:
+            - method: GET
+              name: list-campaigns
+              description: List campaigns for an application
+              call: "amazon-pinpoint.get-campaigns"
+              with:
+                application-id: "rest.application-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/apps/{application-id}/segments
+          name: segments
+          description: Audience segment management
+          operations:
+            - method: GET
+              name: list-segments
+              description: List audience segments
+              call: "amazon-pinpoint.get-segments"
+              with:
+                application-id: "rest.application-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/apps/{application-id}/journeys
+          name: journeys
+          description: Customer journey management
+          operations:
+            - method: GET
+              name: list-journeys
+              description: List customer journeys
+              call: "amazon-pinpoint.list-journeys"
+              with:
+                application-id: "rest.application-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: amazon-pinpoint-mcp
+      transport: http
+      tools:
+        - name: list-apps
+          description: List all Pinpoint applications
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "amazon-pinpoint.get-apps"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-app
+          description: Create a new Pinpoint application
+          hints:
+            readOnly: false
+            destructive: false
+          call: "amazon-pinpoint.create-app"
+          with:
+            name: "tools.name"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-campaigns
+          description: List campaigns for a Pinpoint application
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "amazon-pinpoint.get-campaigns"
+          with:
+            application-id: "tools.application_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-campaign
+          description: Create a new marketing campaign
+          hints:
+            readOnly: false
+            destructive: false
+          call: "amazon-pinpoint.create-campaign"
+          with:
+            application-id: "tools.application_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-segments
+          description: List audience segments for a Pinpoint application
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "amazon-pinpoint.get-segments"
+          with:
+            application-id: "tools.application_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-segment
+          description: Create a new audience segment
+          hints:
+            readOnly: false
+            destructive: false
+          call: "amazon-pinpoint.create-segment"
+          with:
+            application-id: "tools.application_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-journeys
+          description: List customer journeys for a Pinpoint application
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "amazon-pinpoint.list-journeys"
+          with:
+            application-id: "tools.application_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-journey
+          description: Create a new customer journey workflow
+          hints:
+            readOnly: false
+            destructive: false
+          call: "amazon-pinpoint.create-journey"
+          with:
+            application-id: "tools.application_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: send-messages
+          description: Send transactional messages to customer endpoints
+          hints:
+            readOnly: false
+            destructive: false
+          call: "amazon-pinpoint.send-messages"
+          with:
+            application-id: "tools.application_id"
+          outputParameters:
+            - type: object
+              mapping: "$."

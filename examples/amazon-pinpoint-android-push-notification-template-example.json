@@ -1,0 +1,11 @@
+{
+  "Action": "example-Action",
+  "Body": "example-Body",
+  "ImageIconUrl": "https://example.com",
+  "ImageUrl": "https://example.com",
+  "RawContent": "example-RawContent",
+  "SmallImageIconUrl": "https://example.com",
+  "Sound": "example-Sound",
+  "Title": "example-Title",
+  "Url": "https://example.com"
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-delete-app-response-schema.json",
+  "title": "DeleteAppResponse",
+  "description": "DeleteAppResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "ApplicationResponse": {
+      "$ref": "#/components/schemas/ApplicationResponse"
+    }
+  },
+  "required": [
+    "ApplicationResponse"
+  ]
+}

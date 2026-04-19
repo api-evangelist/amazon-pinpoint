@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-update-apns-sandbox-channel-response-schema.json",
+  "title": "UpdateApnsSandboxChannelResponse",
+  "description": "UpdateApnsSandboxChannelResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "APNSSandboxChannelResponse": {
+      "$ref": "#/components/schemas/APNSSandboxChannelResponse"
+    }
+  },
+  "required": [
+    "APNSSandboxChannelResponse"
+  ]
+}

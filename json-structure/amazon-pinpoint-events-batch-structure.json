@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-events-batch-structure.json",
+  "name": "EventsBatch",
+  "description": "Specifies a batch of endpoints and events to process.",
+  "type": "object",
+  "properties": {
+    "Endpoint": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PublicEndpoint"
+        },
+        {
+          "description": "A set of properties and attributes that are associated with the endpoint."
+        }
+      ]
+    },
+    "Events": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOfEvent"
+        },
+        {
+          "description": "A set of properties that are associated with the event."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Endpoint",
+    "Events"
+  ]
+}

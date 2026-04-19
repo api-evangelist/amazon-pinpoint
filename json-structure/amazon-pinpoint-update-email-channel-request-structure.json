@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-update-email-channel-request-structure.json",
+  "name": "UpdateEmailChannelRequest",
+  "description": "UpdateEmailChannelRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "EmailChannelRequest": {
+      "$ref": "#/components/schemas/EmailChannelRequest"
+    }
+  },
+  "required": [
+    "EmailChannelRequest"
+  ]
+}

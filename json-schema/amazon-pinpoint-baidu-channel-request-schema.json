@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-baidu-channel-request-schema.json",
+  "title": "BaiduChannelRequest",
+  "description": "Specifies the status and settings of the Baidu (Baidu Cloud Push) channel for an application.",
+  "type": "object",
+  "properties": {
+    "ApiKey": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The API key that you received from the Baidu Cloud Push service to communicate with the service."
+        }
+      ]
+    },
+    "Enabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "description": "Specifies whether to enable the Baidu channel for the application."
+        }
+      ]
+    },
+    "SecretKey": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The secret key that you received from the Baidu Cloud Push service to communicate with the service."
+        }
+      ]
+    }
+  },
+  "required": [
+    "SecretKey",
+    "ApiKey"
+  ]
+}

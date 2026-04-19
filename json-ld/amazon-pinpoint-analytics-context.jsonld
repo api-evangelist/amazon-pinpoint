@@ -1,0 +1,343 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "pinpoint": "https://pinpoint.amazonaws.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ExportJobsResponse": "pinpoint:ExportJobsResponse",
+    "Item": {
+      "@id": "pinpoint:Item",
+      "@type": "xsd:string"
+    },
+    "NextToken": {
+      "@id": "pinpoint:NextToken",
+      "@type": "xsd:string"
+    },
+    "GetApplicationDateRangeKpiRequest": "pinpoint:GetApplicationDateRangeKpiRequest",
+    "GetRecommenderConfigurationsResponse": "pinpoint:GetRecommenderConfigurationsResponse",
+    "ListRecommenderConfigurationsResponse": "pinpoint:ListRecommenderConfigurationsResponse",
+    "ResultRowValue": "pinpoint:ResultRowValue",
+    "Key": {
+      "@id": "pinpoint:Key",
+      "@type": "xsd:string"
+    },
+    "Type": {
+      "@id": "pinpoint:Type",
+      "@type": "xsd:string"
+    },
+    "Value": {
+      "@id": "pinpoint:Value",
+      "@type": "xsd:string"
+    },
+    "GetImportJobsResponse": "pinpoint:GetImportJobsResponse",
+    "ImportJobsResponse": "pinpoint:ImportJobsResponse",
+    "ImportJobResource": "pinpoint:ImportJobResource",
+    "DefineSegment": {
+      "@id": "pinpoint:DefineSegment",
+      "@type": "xsd:string"
+    },
+    "ExternalId": {
+      "@id": "pinpoint:ExternalId",
+      "@type": "xsd:string"
+    },
+    "Format": {
+      "@id": "pinpoint:Format",
+      "@type": "xsd:string"
+    },
+    "RegisterEndpoints": {
+      "@id": "pinpoint:RegisterEndpoints",
+      "@type": "xsd:string"
+    },
+    "RoleArn": {
+      "@id": "pinpoint:RoleArn",
+      "@type": "xsd:string"
+    },
+    "S3Url": {
+      "@id": "pinpoint:S3Url",
+      "@type": "xsd:string"
+    },
+    "SegmentId": {
+      "@id": "pinpoint:SegmentId",
+      "@type": "xsd:string"
+    },
+    "SegmentName": {
+      "@id": "pinpoint:SegmentName",
+      "@type": "xsd:string"
+    },
+    "GetImportJobRequest": "pinpoint:GetImportJobRequest",
+    "ApplicationsResponse": "pinpoint:ApplicationsResponse",
+    "GetAppResponse": "pinpoint:GetAppResponse",
+    "ApplicationResponse": "pinpoint:ApplicationResponse",
+    "BaseKpiResult": "pinpoint:BaseKpiResult",
+    "Rows": {
+      "@id": "pinpoint:Rows",
+      "@type": "xsd:string"
+    },
+    "ApplicationDateRangeKpiResponse": "pinpoint:ApplicationDateRangeKpiResponse",
+    "ApplicationId": {
+      "@id": "pinpoint:ApplicationId",
+      "@type": "xsd:string"
+    },
+    "EndTime": {
+      "@id": "pinpoint:EndTime",
+      "@type": "xsd:string"
+    },
+    "KpiName": {
+      "@id": "pinpoint:KpiName",
+      "@type": "xsd:string"
+    },
+    "KpiResult": {
+      "@id": "pinpoint:KpiResult",
+      "@type": "xsd:string"
+    },
+    "StartTime": {
+      "@id": "pinpoint:StartTime",
+      "@type": "xsd:string"
+    },
+    "PutEventsResponse": "pinpoint:PutEventsResponse",
+    "EventsResponse": "pinpoint:EventsResponse",
+    "GetExportJobRequest": "pinpoint:GetExportJobRequest",
+    "CreateRecommenderConfigurationResponse": "pinpoint:CreateRecommenderConfigurationResponse",
+    "RecommenderConfigurationResponse": "pinpoint:RecommenderConfigurationResponse",
+    "CreateAppResponse": "pinpoint:CreateAppResponse",
+    "GetExportJobsResponse": "pinpoint:GetExportJobsResponse",
+    "ExportJobResource": "pinpoint:ExportJobResource",
+    "S3UrlPrefix": {
+      "@id": "pinpoint:S3UrlPrefix",
+      "@type": "xsd:string"
+    },
+    "SegmentVersion": {
+      "@id": "pinpoint:SegmentVersion",
+      "@type": "xsd:string"
+    },
+    "NumberValidateResponse": "pinpoint:NumberValidateResponse",
+    "Carrier": {
+      "@id": "pinpoint:Carrier",
+      "@type": "xsd:string"
+    },
+    "City": {
+      "@id": "pinpoint:City",
+      "@type": "xsd:string"
+    },
+    "CleansedPhoneNumberE164": {
+      "@id": "pinpoint:CleansedPhoneNumberE164",
+      "@type": "xsd:string"
+    },
+    "CleansedPhoneNumberNational": {
+      "@id": "pinpoint:CleansedPhoneNumberNational",
+      "@type": "xsd:string"
+    },
+    "Country": {
+      "@id": "pinpoint:Country",
+      "@type": "xsd:string"
+    },
+    "CountryCodeIso2": {
+      "@id": "pinpoint:CountryCodeIso2",
+      "@type": "xsd:string"
+    },
+    "CountryCodeNumeric": {
+      "@id": "pinpoint:CountryCodeNumeric",
+      "@type": "xsd:string"
+    },
+    "County": {
+      "@id": "pinpoint:County",
+      "@type": "xsd:string"
+    },
+    "OriginalCountryCodeIso2": {
+      "@id": "pinpoint:OriginalCountryCodeIso2",
+      "@type": "xsd:string"
+    },
+    "OriginalPhoneNumber": {
+      "@id": "pinpoint:OriginalPhoneNumber",
+      "@type": "xsd:string"
+    },
+    "PhoneType": {
+      "@id": "pinpoint:PhoneType",
+      "@type": "xsd:string"
+    },
+    "PhoneTypeCode": {
+      "@id": "pinpoint:PhoneTypeCode",
+      "@type": "xsd:string"
+    },
+    "Timezone": {
+      "@id": "pinpoint:Timezone",
+      "@type": "xsd:string"
+    },
+    "ZipCode": {
+      "@id": "pinpoint:ZipCode",
+      "@type": "xsd:string"
+    },
+    "GetApplicationDateRangeKpiResponse": "pinpoint:GetApplicationDateRangeKpiResponse",
+    "GetRecommenderConfigurationResponse": "pinpoint:GetRecommenderConfigurationResponse",
+    "DeleteAppResponse": "pinpoint:DeleteAppResponse",
+    "PutEventStreamResponse": "pinpoint:PutEventStreamResponse",
+    "EventStream": {
+      "@id": "pinpoint:EventStream",
+      "@type": "xsd:string"
+    },
+    "ActivitiesResponse": "pinpoint:ActivitiesResponse",
+    "GetExportJobsRequest": "pinpoint:GetExportJobsRequest",
+    "Arn": {
+      "@id": "pinpoint:Arn",
+      "@type": "xsd:string"
+    },
+    "Id": {
+      "@id": "pinpoint:Id",
+      "@type": "xsd:string"
+    },
+    "Name": {
+      "@id": "pinpoint:Name",
+      "@type": "xsd:string"
+    },
+    "tags": {
+      "@id": "pinpoint:tags",
+      "@type": "xsd:string"
+    },
+    "CreationDate": {
+      "@id": "pinpoint:CreationDate",
+      "@type": "xsd:string"
+    },
+    "GetAppsResponse": "pinpoint:GetAppsResponse",
+    "CreateImportJobRequest": "pinpoint:CreateImportJobRequest",
+    "ImportJobRequest": "pinpoint:ImportJobRequest",
+    "ResultRow": "pinpoint:ResultRow",
+    "GroupedBys": {
+      "@id": "pinpoint:GroupedBys",
+      "@type": "xsd:string"
+    },
+    "Values": {
+      "@id": "pinpoint:Values",
+      "@type": "xsd:string"
+    },
+    "DeleteRecommenderConfigurationResponse": "pinpoint:DeleteRecommenderConfigurationResponse",
+    "CreateExportJobResponse": "pinpoint:CreateExportJobResponse",
+    "ExportJobResponse": "pinpoint:ExportJobResponse",
+    "UpdateApplicationSettingsResponse": "pinpoint:UpdateApplicationSettingsResponse",
+    "ApplicationSettingsResource": {
+      "@id": "pinpoint:ApplicationSettingsResource",
+      "@type": "xsd:string"
+    },
+    "PhoneNumberValidateResponse": "pinpoint:PhoneNumberValidateResponse",
+    "ListTagsForResourceResponse": "pinpoint:ListTagsForResourceResponse",
+    "TagsModel": {
+      "@id": "pinpoint:TagsModel",
+      "@type": "xsd:string"
+    },
+    "GetImportJobResponse": "pinpoint:GetImportJobResponse",
+    "ImportJobResponse": "pinpoint:ImportJobResponse",
+    "CompletedPieces": {
+      "@id": "pinpoint:CompletedPieces",
+      "@type": "xsd:string"
+    },
+    "CompletionDate": {
+      "@id": "pinpoint:CompletionDate",
+      "@type": "xsd:string"
+    },
+    "Definition": {
+      "@id": "pinpoint:Definition",
+      "@type": "xsd:string"
+    },
+    "FailedPieces": {
+      "@id": "pinpoint:FailedPieces",
+      "@type": "xsd:string"
+    },
+    "Failures": {
+      "@id": "pinpoint:Failures",
+      "@type": "xsd:string"
+    },
+    "JobStatus": {
+      "@id": "pinpoint:JobStatus",
+      "@type": "xsd:string"
+    },
+    "TotalFailures": {
+      "@id": "pinpoint:TotalFailures",
+      "@type": "xsd:string"
+    },
+    "TotalPieces": {
+      "@id": "pinpoint:TotalPieces",
+      "@type": "xsd:string"
+    },
+    "TotalProcessed": {
+      "@id": "pinpoint:TotalProcessed",
+      "@type": "xsd:string"
+    },
+    "EventItemResponse": "pinpoint:EventItemResponse",
+    "Message": {
+      "@id": "pinpoint:Message",
+      "@type": "xsd:string"
+    },
+    "StatusCode": {
+      "@id": "pinpoint:StatusCode",
+      "@type": "xsd:string"
+    },
+    "DeleteEventStreamResponse": "pinpoint:DeleteEventStreamResponse",
+    "VerificationResponse": "pinpoint:VerificationResponse",
+    "Valid": {
+      "@id": "pinpoint:Valid",
+      "@type": "xsd:string"
+    },
+    "ExportJobRequest": "pinpoint:ExportJobRequest",
+    "GetExportJobResponse": "pinpoint:GetExportJobResponse",
+    "Results": {
+      "@id": "pinpoint:Results",
+      "@type": "xsd:string"
+    },
+    "ItemResponse": "pinpoint:ItemResponse",
+    "EndpointItemResponse": {
+      "@id": "pinpoint:EndpointItemResponse",
+      "@type": "xsd:string"
+    },
+    "EventsItemResponse": {
+      "@id": "pinpoint:EventsItemResponse",
+      "@type": "xsd:string"
+    },
+    "GetEventStreamResponse": "pinpoint:GetEventStreamResponse",
+    "UpdateRecommenderConfigurationResponse": "pinpoint:UpdateRecommenderConfigurationResponse",
+    "Attributes": {
+      "@id": "pinpoint:Attributes",
+      "@type": "xsd:string"
+    },
+    "Description": {
+      "@id": "pinpoint:Description",
+      "@type": "xsd:string"
+    },
+    "LastModifiedDate": {
+      "@id": "pinpoint:LastModifiedDate",
+      "@type": "xsd:string"
+    },
+    "RecommendationProviderIdType": {
+      "@id": "pinpoint:RecommendationProviderIdType",
+      "@type": "xsd:string"
+    },
+    "RecommendationProviderRoleArn": {
+      "@id": "pinpoint:RecommendationProviderRoleArn",
+      "@type": "xsd:string"
+    },
+    "RecommendationProviderUri": {
+      "@id": "pinpoint:RecommendationProviderUri",
+      "@type": "xsd:string"
+    },
+    "RecommendationTransformerUri": {
+      "@id": "pinpoint:RecommendationTransformerUri",
+      "@type": "xsd:string"
+    },
+    "RecommendationsDisplayName": {
+      "@id": "pinpoint:RecommendationsDisplayName",
+      "@type": "xsd:string"
+    },
+    "RecommendationsPerMessage": {
+      "@id": "pinpoint:RecommendationsPerMessage",
+      "@type": "xsd:string"
+    },
+    "GetApplicationSettingsResponse": "pinpoint:GetApplicationSettingsResponse",
+    "CreateImportJobResponse": "pinpoint:CreateImportJobResponse",
+    "CreateExportJobRequest": "pinpoint:CreateExportJobRequest",
+    "GetImportJobsRequest": "pinpoint:GetImportJobsRequest",
+    "RemoveAttributesResponse": "pinpoint:RemoveAttributesResponse",
+    "AttributesResource": {
+      "@id": "pinpoint:AttributesResource",
+      "@type": "xsd:string"
+    }
+  }
+}

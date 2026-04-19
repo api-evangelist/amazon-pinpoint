@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-get-in-app-messages-response-structure.json",
+  "name": "GetInAppMessagesResponse",
+  "description": "GetInAppMessagesResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "InAppMessagesResponse": {
+      "$ref": "#/components/schemas/InAppMessagesResponse"
+    }
+  },
+  "required": [
+    "InAppMessagesResponse"
+  ]
+}

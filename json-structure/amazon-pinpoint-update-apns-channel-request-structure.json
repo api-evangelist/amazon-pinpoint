@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-update-apns-channel-request-structure.json",
+  "name": "UpdateApnsChannelRequest",
+  "description": "UpdateApnsChannelRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "APNSChannelRequest": {
+      "$ref": "#/components/schemas/APNSChannelRequest"
+    }
+  },
+  "required": [
+    "APNSChannelRequest"
+  ]
+}

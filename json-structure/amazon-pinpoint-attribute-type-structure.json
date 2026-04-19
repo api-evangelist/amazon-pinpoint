@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-attribute-type-structure.json",
+  "name": "AttributeType",
+  "description": "AttributeType schema from Amazon Pinpoint API",
+  "type": "string",
+  "enum": [
+    "INCLUSIVE",
+    "EXCLUSIVE",
+    "CONTAINS",
+    "BEFORE",
+    "AFTER",
+    true,
+    "BETWEEN"
+  ]
+}

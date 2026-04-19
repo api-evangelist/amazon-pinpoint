@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-get-in-app-template-response-schema.json",
+  "title": "GetInAppTemplateResponse",
+  "description": "GetInAppTemplateResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "InAppTemplateResponse": {
+      "$ref": "#/components/schemas/InAppTemplateResponse"
+    }
+  },
+  "required": [
+    "InAppTemplateResponse"
+  ]
+}

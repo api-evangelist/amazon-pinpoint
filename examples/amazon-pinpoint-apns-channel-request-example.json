@@ -1,0 +1,10 @@
+{
+  "BundleId": "392861",
+  "Certificate": "example-Certificate",
+  "DefaultAuthenticationMethod": "example-DefaultAuthenticationMethod",
+  "Enabled": "example-Enabled",
+  "PrivateKey": "example-PrivateKey",
+  "TeamId": "758448",
+  "TokenKey": "page-token-abc123",
+  "TokenKeyId": "749645"
+}

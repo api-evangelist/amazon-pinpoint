@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-adm-channel-response-structure.json",
+  "name": "ADMChannelResponse",
+  "description": "Provides information about the status and settings of the ADM (Amazon Device Messaging) channel for an application.",
+  "type": "object",
+  "properties": {
+    "ApplicationId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the application that the ADM channel applies to."
+        }
+      ]
+    },
+    "CreationDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date and time when the ADM channel was enabled."
+        }
+      ]
+    },
+    "Enabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "description": "Specifies whether the ADM channel is enabled for the application."
+        }
+      ]
+    },
+    "HasCredential": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "description": "(Not used) This property is retained only for backward compatibility."
+        }
+      ]
+    },
+    "Id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "(Deprecated) An identifier for the ADM channel. This property is retained only for backward compatibility."
+        }
+      ]
+    },
+    "IsArchived": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "description": "Specifies whether the ADM channel is archived."
+        }
+      ]
+    },
+    "LastModifiedBy": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The user who last modified the ADM channel."
+        }
+      ]
+    },
+    "LastModifiedDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date and time when the ADM channel was last modified."
+        }
+      ]
+    },
+    "Platform": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The type of messaging or notification platform for the channel. For the ADM channel, this value is ADM."
+        }
+      ]
+    },
+    "Version": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The current version of the ADM channel."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Platform"
+  ]
+}

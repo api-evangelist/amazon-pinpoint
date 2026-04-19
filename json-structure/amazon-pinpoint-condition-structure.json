@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-condition-structure.json",
+  "name": "Condition",
+  "description": "Specifies the conditions to evaluate for an activity in a journey, and how to evaluate those conditions.",
+  "type": "object",
+  "properties": {
+    "Conditions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOfSimpleCondition"
+        },
+        {
+          "description": "The conditions to evaluate for the activity."
+        }
+      ]
+    },
+    "Operator": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Operator"
+        },
+        {
+          "description": "Specifies how to handle multiple conditions for the activity. For example, if you specify two conditions for an activity, whether both or only one of the conditions must be met for the activity to be performed."
+        }
+      ]
+    }
+  }
+}

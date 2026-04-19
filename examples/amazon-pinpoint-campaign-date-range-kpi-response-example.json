@@ -1,0 +1,9 @@
+{
+  "ApplicationId": "960566",
+  "CampaignId": "643085",
+  "EndTime": "example-EndTime",
+  "KpiName": "Example Kpiname",
+  "KpiResult": "example-KpiResult",
+  "NextToken": "page-token-abc123",
+  "StartTime": "example-StartTime"
+}

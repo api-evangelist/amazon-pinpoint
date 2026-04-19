@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-attribute-dimension-schema.json",
+  "title": "AttributeDimension",
+  "description": "Specifies attribute-based criteria for including or excluding endpoints from a segment.",
+  "type": "object",
+  "properties": {
+    "AttributeType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AttributeType"
+        },
+        {
+          "description": "The type of segment dimension to use. Valid values are: <ul><li>INCLUSIVE - endpoints that have attributes matching the values are included in the segment.</li><li>EXCLUSIVE - endpoints that have attributes matching the values are excluded in the segment.</li><li>CONTAINS - endpoints that have attributes' substrings match the values are included in the segment.</li><li>BEFORE - endpoints with attributes read as ISO_INSTANT datetimes before the value are included in the segment.</li><li>AFTER - endpoints with attributes read as ISO_INSTANT datetimes after the value are included in the segment.</li><li>ON - endpoints with attributes read as ISO_INSTANT dates on the value are included in the segment. Time is ignored in this comparison.</li><li>BETWEEN - endpoints with attributes read as ISO_INSTANT datetimes between the values are included in the segment.</li>"
+        }
+      ]
+    },
+    "Values": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOf__string"
+        },
+        {
+          "description": "The criteria values to use for the segment dimension. Depending on the value of the AttributeType property, endpoints are included or excluded from the segment if their attribute values match the criteria values."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Values"
+  ]
+}

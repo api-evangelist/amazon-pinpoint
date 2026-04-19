@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-endpoint-item-response-schema.json",
+  "title": "EndpointItemResponse",
+  "description": "Provides the status code and message that result from processing data for an endpoint.",
+  "type": "object",
+  "properties": {
+    "Message": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The custom message that's returned in the response as a result of processing the endpoint data."
+        }
+      ]
+    },
+    "StatusCode": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The status code that's returned in the response as a result of processing the endpoint data."
+        }
+      ]
+    }
+  }
+}

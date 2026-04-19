@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-delete-baidu-channel-response-schema.json",
+  "title": "DeleteBaiduChannelResponse",
+  "description": "DeleteBaiduChannelResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "BaiduChannelResponse": {
+      "$ref": "#/components/schemas/BaiduChannelResponse"
+    }
+  },
+  "required": [
+    "BaiduChannelResponse"
+  ]
+}

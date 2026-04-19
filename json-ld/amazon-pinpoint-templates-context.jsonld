@@ -1,0 +1,194 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "pinpoint": "https://pinpoint.amazonaws.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ListTemplatesRequest": "pinpoint:ListTemplatesRequest",
+    "UpdateInAppTemplateRequest": "pinpoint:UpdateInAppTemplateRequest",
+    "InAppTemplateRequest": "pinpoint:InAppTemplateRequest",
+    "TemplateResponse": "pinpoint:TemplateResponse",
+    "Arn": {
+      "@id": "pinpoint:Arn",
+      "@type": "xsd:string"
+    },
+    "CreationDate": {
+      "@id": "pinpoint:CreationDate",
+      "@type": "xsd:string"
+    },
+    "DefaultSubstitutions": {
+      "@id": "pinpoint:DefaultSubstitutions",
+      "@type": "xsd:string"
+    },
+    "LastModifiedDate": {
+      "@id": "pinpoint:LastModifiedDate",
+      "@type": "xsd:string"
+    },
+    "tags": {
+      "@id": "pinpoint:tags",
+      "@type": "xsd:string"
+    },
+    "TemplateDescription": {
+      "@id": "pinpoint:TemplateDescription",
+      "@type": "xsd:string"
+    },
+    "TemplateName": {
+      "@id": "pinpoint:TemplateName",
+      "@type": "xsd:string"
+    },
+    "TemplateType": {
+      "@id": "pinpoint:TemplateType",
+      "@type": "xsd:string"
+    },
+    "Version": {
+      "@id": "pinpoint:Version",
+      "@type": "xsd:string"
+    },
+    "AndroidPushNotificationTemplate": "pinpoint:AndroidPushNotificationTemplate",
+    "Action": {
+      "@id": "pinpoint:Action",
+      "@type": "xsd:string"
+    },
+    "Body": {
+      "@id": "pinpoint:Body",
+      "@type": "xsd:string"
+    },
+    "ImageIconUrl": {
+      "@id": "pinpoint:ImageIconUrl",
+      "@type": "xsd:string"
+    },
+    "ImageUrl": {
+      "@id": "pinpoint:ImageUrl",
+      "@type": "xsd:string"
+    },
+    "RawContent": {
+      "@id": "pinpoint:RawContent",
+      "@type": "xsd:string"
+    },
+    "SmallImageIconUrl": {
+      "@id": "pinpoint:SmallImageIconUrl",
+      "@type": "xsd:string"
+    },
+    "Sound": {
+      "@id": "pinpoint:Sound",
+      "@type": "xsd:string"
+    },
+    "Title": {
+      "@id": "pinpoint:Title",
+      "@type": "xsd:string"
+    },
+    "Url": {
+      "@id": "pinpoint:Url",
+      "@type": "xsd:string"
+    },
+    "GetPushTemplateResponse": "pinpoint:GetPushTemplateResponse",
+    "PushNotificationTemplateResponse": "pinpoint:PushNotificationTemplateResponse",
+    "GetInAppTemplateRequest": "pinpoint:GetInAppTemplateRequest",
+    "TemplateVersionsResponse": "pinpoint:TemplateVersionsResponse",
+    "Item": {
+      "@id": "pinpoint:Item",
+      "@type": "xsd:string"
+    },
+    "Message": {
+      "@id": "pinpoint:Message",
+      "@type": "xsd:string"
+    },
+    "NextToken": {
+      "@id": "pinpoint:NextToken",
+      "@type": "xsd:string"
+    },
+    "RequestID": {
+      "@id": "pinpoint:RequestID",
+      "@type": "xsd:string"
+    },
+    "PushNotificationTemplateRequest": "pinpoint:PushNotificationTemplateRequest",
+    "ADM": {
+      "@id": "pinpoint:ADM",
+      "@type": "xsd:string"
+    },
+    "APNS": {
+      "@id": "pinpoint:APNS",
+      "@type": "xsd:string"
+    },
+    "Baidu": {
+      "@id": "pinpoint:Baidu",
+      "@type": "xsd:string"
+    },
+    "Default": {
+      "@id": "pinpoint:Default",
+      "@type": "xsd:string"
+    },
+    "GCM": {
+      "@id": "pinpoint:GCM",
+      "@type": "xsd:string"
+    },
+    "RecommenderId": {
+      "@id": "pinpoint:RecommenderId",
+      "@type": "xsd:string"
+    },
+    "CreateTemplateMessageBody": "pinpoint:CreateTemplateMessageBody",
+    "UpdatePushTemplateRequest": "pinpoint:UpdatePushTemplateRequest",
+    "ListTemplatesResponse": "pinpoint:ListTemplatesResponse",
+    "TemplatesResponse": "pinpoint:TemplatesResponse",
+    "DefaultPushNotificationTemplate": "pinpoint:DefaultPushNotificationTemplate",
+    "DeletePushTemplateResponse": "pinpoint:DeletePushTemplateResponse",
+    "MessageBody": {
+      "@id": "pinpoint:MessageBody",
+      "@type": "xsd:string"
+    },
+    "TemplateCreateMessageBody": "pinpoint:TemplateCreateMessageBody",
+    "Content": {
+      "@id": "pinpoint:Content",
+      "@type": "xsd:string"
+    },
+    "CustomConfig": {
+      "@id": "pinpoint:CustomConfig",
+      "@type": "xsd:string"
+    },
+    "Layout": {
+      "@id": "pinpoint:Layout",
+      "@type": "xsd:string"
+    },
+    "CreatePushTemplateResponse": "pinpoint:CreatePushTemplateResponse",
+    "TemplateConfiguration": "pinpoint:TemplateConfiguration",
+    "EmailTemplate": {
+      "@id": "pinpoint:EmailTemplate",
+      "@type": "xsd:string"
+    },
+    "PushTemplate": {
+      "@id": "pinpoint:PushTemplate",
+      "@type": "xsd:string"
+    },
+    "SMSTemplate": {
+      "@id": "pinpoint:SMSTemplate",
+      "@type": "xsd:string"
+    },
+    "VoiceTemplate": {
+      "@id": "pinpoint:VoiceTemplate",
+      "@type": "xsd:string"
+    },
+    "DeleteInAppTemplateRequest": "pinpoint:DeleteInAppTemplateRequest",
+    "InAppTemplateResponse": "pinpoint:InAppTemplateResponse",
+    "DeletePushTemplateRequest": "pinpoint:DeletePushTemplateRequest",
+    "TemplateActiveVersionRequest": "pinpoint:TemplateActiveVersionRequest",
+    "CreatePushTemplateRequest": "pinpoint:CreatePushTemplateRequest",
+    "UpdateTemplateActiveVersionResponse": "pinpoint:UpdateTemplateActiveVersionResponse",
+    "UpdateTemplateActiveVersionRequest": "pinpoint:UpdateTemplateActiveVersionRequest",
+    "GetInAppTemplateResponse": "pinpoint:GetInAppTemplateResponse",
+    "CreateInAppTemplateRequest": "pinpoint:CreateInAppTemplateRequest",
+    "UpdateInAppTemplateResponse": "pinpoint:UpdateInAppTemplateResponse",
+    "ListTemplateVersionsRequest": "pinpoint:ListTemplateVersionsRequest",
+    "Template": "pinpoint:Template",
+    "Name": {
+      "@id": "pinpoint:Name",
+      "@type": "xsd:string"
+    },
+    "UpdatePushTemplateResponse": "pinpoint:UpdatePushTemplateResponse",
+    "GetPushTemplateRequest": "pinpoint:GetPushTemplateRequest",
+    "TemplateVersionResponse": "pinpoint:TemplateVersionResponse",
+    "DeleteInAppTemplateResponse": "pinpoint:DeleteInAppTemplateResponse",
+    "ListTemplateVersionsResponse": "pinpoint:ListTemplateVersionsResponse",
+    "CreateInAppTemplateResponse": "pinpoint:CreateInAppTemplateResponse"
+  }
+}

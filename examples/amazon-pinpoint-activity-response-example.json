@@ -1,0 +1,15 @@
+{
+  "ApplicationId": "407516",
+  "CampaignId": "945644",
+  "End": "example-End",
+  "Id": "481107",
+  "Result": "example-Result",
+  "ScheduledStart": "example-ScheduledStart",
+  "Start": "example-Start",
+  "State": "ACTIVE",
+  "SuccessfulEndpointCount": "example-SuccessfulEndpointCount",
+  "TimezonesCompletedCount": "example-TimezonesCompletedCount",
+  "TimezonesTotalCount": "example-TimezonesTotalCount",
+  "TotalEndpointCount": "example-TotalEndpointCount",
+  "TreatmentId": "745259"
+}

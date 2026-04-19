@@ -1,0 +1,8 @@
+{
+  "Address": "example-Address",
+  "DeliveryStatus": "ACTIVE",
+  "MessageId": "189100",
+  "StatusCode": "ACTIVE",
+  "StatusMessage": "ACTIVE",
+  "UpdatedToken": "page-token-abc123"
+}

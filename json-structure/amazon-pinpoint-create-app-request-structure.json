@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-create-app-request-structure.json",
+  "name": "CreateAppRequest",
+  "description": "CreateAppRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "CreateApplicationRequest": {
+      "$ref": "#/components/schemas/CreateApplicationRequest"
+    }
+  },
+  "required": [
+    "CreateApplicationRequest"
+  ]
+}

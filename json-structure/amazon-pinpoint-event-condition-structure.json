@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-event-condition-structure.json",
+  "name": "EventCondition",
+  "description": "Specifies the conditions to evaluate for an event that applies to an activity in a journey.",
+  "type": "object",
+  "properties": {
+    "Dimensions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EventDimensions"
+        },
+        {
+          "description": "The dimensions for the event filter to use for the activity."
+        }
+      ]
+    },
+    "MessageActivity": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The message identifier (message_id) for the message to use when determining whether message events meet the condition."
+        }
+      ]
+    }
+  }
+}

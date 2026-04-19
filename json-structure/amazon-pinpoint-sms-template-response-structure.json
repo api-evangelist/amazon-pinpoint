@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-sms-template-response-structure.json",
+  "name": "SMSTemplateResponse",
+  "description": "Provides information about the content and settings for a message template that can be used in text messages that are sent through the SMS channel.",
+  "type": "object",
+  "properties": {
+    "Arn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of the message template."
+        }
+      ]
+    },
+    "Body": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The message body that's used in text messages that are based on the message template."
+        }
+      ]
+    },
+    "CreationDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date, in ISO 8601 format, when the message template was created."
+        }
+      ]
+    },
+    "DefaultSubstitutions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The JSON object that specifies the default values that are used for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable."
+        }
+      ]
+    },
+    "LastModifiedDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date, in ISO 8601 format, when the message template was last modified."
+        }
+      ]
+    },
+    "RecommenderId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the recommender model that's used by the message template."
+        }
+      ]
+    },
+    "tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOf__string"
+        },
+        {
+          "description": "A string-to-string map of key-value pairs that identifies the tags that are associated with the message template. Each tag consists of a required tag key and an associated tag value."
+        }
+      ]
+    },
+    "TemplateDescription": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The custom description of the message template."
+        }
+      ]
+    },
+    "TemplateName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The name of the message template."
+        }
+      ]
+    },
+    "TemplateType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TemplateType"
+        },
+        {
+          "description": "The type of channel that the message template is designed for. For an SMS template, this value is SMS."
+        }
+      ]
+    },
+    "Version": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier, as an integer, for the active version of the message template, or the version of the template that you specified by using the version parameter in your request."
+        }
+      ]
+    }
+  },
+  "required": [
+    "LastModifiedDate",
+    "CreationDate",
+    "TemplateName",
+    "TemplateType"
+  ]
+}

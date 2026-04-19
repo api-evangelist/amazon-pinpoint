@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-apns-voip-channel-response-structure.json",
+  "name": "APNSVoipChannelResponse",
+  "description": "Provides information about the status and settings of the APNs (Apple Push Notification service) VoIP channel for an application.",
+  "type": "object",
+  "properties": {
+    "ApplicationId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the application that the APNs VoIP channel applies to."
+        }
+      ]
+    },
+    "CreationDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date and time when the APNs VoIP channel was enabled."
+        }
+      ]
+    },
+    "DefaultAuthenticationMethod": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The default authentication method that Amazon Pinpoint uses to authenticate with APNs for this channel, key or certificate."
+        }
+      ]
+    },
+    "Enabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "description": "Specifies whether the APNs VoIP channel is enabled for the application."
+        }
+      ]
+    },
+    "HasCredential": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "description": "(Not used) This property is retained only for backward compatibility."
+        }
+      ]
+    },
+    "HasTokenKey": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "description": "Specifies whether the APNs VoIP channel is configured to communicate with APNs by using APNs tokens. To provide an authentication key for APNs tokens, set the TokenKey property of the channel."
+        }
+      ]
+    },
+    "Id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "(Deprecated) An identifier for the APNs VoIP channel. This property is retained only for backward compatibility."
+        }
+      ]
+    },
+    "IsArchived": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "description": "Specifies whether the APNs VoIP channel is archived."
+        }
+      ]
+    },
+    "LastModifiedBy": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The user who last modified the APNs VoIP channel."
+        }
+      ]
+    },
+    "LastModifiedDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date and time when the APNs VoIP channel was last modified."
+        }
+      ]
+    },
+    "Platform": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The type of messaging or notification platform for the channel. For the APNs VoIP channel, this value is APNS_VOIP."
+        }
+      ]
+    },
+    "Version": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The current version of the APNs VoIP channel."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Platform"
+  ]
+}

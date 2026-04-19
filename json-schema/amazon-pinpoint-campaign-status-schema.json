@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-campaign-status-schema.json",
+  "title": "CampaignStatus",
+  "description": "CampaignStatus schema from Amazon Pinpoint API",
+  "type": "string",
+  "enum": [
+    "SCHEDULED",
+    "EXECUTING",
+    "PENDING_NEXT_RUN",
+    "COMPLETED",
+    "PAUSED",
+    "DELETED",
+    "INVALID"
+  ]
+}

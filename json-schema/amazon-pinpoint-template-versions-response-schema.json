@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-template-versions-response-schema.json",
+  "title": "TemplateVersionsResponse",
+  "description": "Provides information about all the versions of a specific message template.",
+  "type": "object",
+  "properties": {
+    "Item": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOfTemplateVersionResponse"
+        },
+        {
+          "description": "An array of responses, one for each version of the message template."
+        }
+      ]
+    },
+    "Message": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The message that's returned from the API for the request to retrieve information about all the versions of the message template."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages."
+        }
+      ]
+    },
+    "RequestID": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the request to retrieve information about all the versions of the message template."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Item"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-open-hours-schema.json",
+  "title": "OpenHours",
+  "description": "The time when journey allow to send messages. QuietTime should be configured first and SendingSchedule should be set to true.",
+  "type": "object",
+  "properties": {
+    "EMAIL": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOfListOfOpenHoursRules"
+        },
+        {
+          "description": "Rules for Email Channel."
+        }
+      ]
+    },
+    "SMS": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOfListOfOpenHoursRules"
+        },
+        {
+          "description": "Rules for SMS Channel."
+        }
+      ]
+    },
+    "PUSH": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOfListOfOpenHoursRules"
+        },
+        {
+          "description": "Rules for Push Channel."
+        }
+      ]
+    },
+    "VOICE": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOfListOfOpenHoursRules"
+        },
+        {
+          "description": "Rules for Voice Channel."
+        }
+      ]
+    },
+    "CUSTOM": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOfListOfOpenHoursRules"
+        },
+        {
+          "description": "Rules for Custom Channel."
+        }
+      ]
+    }
+  }
+}

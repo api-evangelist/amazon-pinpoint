@@ -1,0 +1,341 @@
+vocabulary: 1.0.0
+info:
+  provider: Amazon Pinpoint
+  description: Vocabulary for Amazon Pinpoint multi-channel customer engagement API
+  created: '2026-04-19'
+  modified: '2026-04-19'
+operational:
+  apis:
+  - namespace: amazon-pinpoint
+    version: '2016-12-01'
+    baseUrl: https://pinpoint.{region}.amazonaws.com
+    status: deprecated
+    description: Amazon Pinpoint multi-channel marketing communications API
+  resources:
+  - name: apps
+    api: amazon-pinpoint
+    operations:
+    - GetApps
+  - name: app
+    api: amazon-pinpoint
+    operations:
+    - CreateApp
+    - GetApp
+    - DeleteApp
+  - name: campaigns
+    api: amazon-pinpoint
+    operations:
+    - GetCampaigns
+  - name: campaign
+    api: amazon-pinpoint
+    operations:
+    - CreateCampaign
+    - GetCampaign
+    - UpdateCampaign
+    - DeleteCampaign
+  - name: email-template
+    api: amazon-pinpoint
+    operations:
+    - GetEmailTemplate
+    - CreateEmailTemplate
+    - UpdateEmailTemplate
+    - DeleteEmailTemplate
+  - name: export-jobs
+    api: amazon-pinpoint
+    operations:
+    - GetExportJobs
+  - name: export-job
+    api: amazon-pinpoint
+    operations:
+    - CreateExportJob
+    - GetExportJob
+  - name: import-jobs
+    api: amazon-pinpoint
+    operations:
+    - GetImportJobs
+  - name: import-job
+    api: amazon-pinpoint
+    operations:
+    - CreateImportJob
+    - GetImportJob
+  - name: in-app-template
+    api: amazon-pinpoint
+    operations:
+    - GetInAppTemplate
+    - CreateInAppTemplate
+    - UpdateInAppTemplate
+    - DeleteInAppTemplate
+  - name: journeys
+    api: amazon-pinpoint
+    operations:
+    - ListJourneys
+  - name: journey
+    api: amazon-pinpoint
+    operations:
+    - CreateJourney
+    - GetJourney
+    - UpdateJourney
+    - DeleteJourney
+  - name: push-template
+    api: amazon-pinpoint
+    operations:
+    - GetPushTemplate
+    - CreatePushTemplate
+    - UpdatePushTemplate
+    - DeletePushTemplate
+  - name: recommender-configurations
+    api: amazon-pinpoint
+    operations:
+    - GetRecommenderConfigurations
+  - name: recommender-configuration
+    api: amazon-pinpoint
+    operations:
+    - CreateRecommenderConfiguration
+    - GetRecommenderConfiguration
+    - UpdateRecommenderConfiguration
+    - DeleteRecommenderConfiguration
+  - name: segments
+    api: amazon-pinpoint
+    operations:
+    - GetSegments
+  - name: segment
+    api: amazon-pinpoint
+    operations:
+    - CreateSegment
+    - GetSegment
+    - UpdateSegment
+    - DeleteSegment
+  - name: sms-template
+    api: amazon-pinpoint
+    operations:
+    - GetSmsTemplate
+    - CreateSmsTemplate
+    - UpdateSmsTemplate
+    - DeleteSmsTemplate
+  - name: voice-template
+    api: amazon-pinpoint
+    operations:
+    - GetVoiceTemplate
+    - CreateVoiceTemplate
+    - UpdateVoiceTemplate
+    - DeleteVoiceTemplate
+  - name: adm-channel
+    api: amazon-pinpoint
+    operations:
+    - GetAdmChannel
+    - UpdateAdmChannel
+    - DeleteAdmChannel
+  - name: apns-channel
+    api: amazon-pinpoint
+    operations:
+    - GetApnsChannel
+    - UpdateApnsChannel
+    - DeleteApnsChannel
+  - name: apns-sandbox-channel
+    api: amazon-pinpoint
+    operations:
+    - GetApnsSandboxChannel
+    - UpdateApnsSandboxChannel
+    - DeleteApnsSandboxChannel
+  - name: apns-voip-channel
+    api: amazon-pinpoint
+    operations:
+    - GetApnsVoipChannel
+    - UpdateApnsVoipChannel
+    - DeleteApnsVoipChannel
+  - name: apns-voip-sandbox-channel
+    api: amazon-pinpoint
+    operations:
+    - GetApnsVoipSandboxChannel
+    - UpdateApnsVoipSandboxChannel
+    - DeleteApnsVoipSandboxChannel
+  - name: baidu-channel
+    api: amazon-pinpoint
+    operations:
+    - GetBaiduChannel
+    - UpdateBaiduChannel
+    - DeleteBaiduChannel
+  - name: email-channel
+    api: amazon-pinpoint
+    operations:
+    - GetEmailChannel
+    - UpdateEmailChannel
+    - DeleteEmailChannel
+  - name: endpoint
+    api: amazon-pinpoint
+    operations:
+    - GetEndpoint
+    - UpdateEndpoint
+    - DeleteEndpoint
+  - name: event-stream
+    api: amazon-pinpoint
+    operations:
+    - GetEventStream
+    - PutEventStream
+    - DeleteEventStream
+  - name: gcm-channel
+    api: amazon-pinpoint
+    operations:
+    - GetGcmChannel
+    - UpdateGcmChannel
+    - DeleteGcmChannel
+  - name: sms-channel
+    api: amazon-pinpoint
+    operations:
+    - GetSmsChannel
+    - UpdateSmsChannel
+    - DeleteSmsChannel
+  actions:
+  - verb: get
+    httpMethod: GET
+    pattern: read
+    count: 46
+  - verb: create
+    httpMethod: POST
+    pattern: write
+    count: 12
+  - verb: update
+    httpMethod: PUT
+    pattern: write
+    count: 24
+  - verb: delete
+    httpMethod: DELETE
+    pattern: destructive
+    count: 23
+  - verb: list
+    httpMethod: GET
+    pattern: read
+    count: 4
+  - verb: put
+    httpMethod: PUT
+    pattern: write
+    count: 2
+  - verb: tag
+    httpMethod: POST
+    pattern: read
+    count: 1
+  - verb: phone
+    httpMethod: POST
+    pattern: read
+    count: 1
+  - verb: remove
+    httpMethod: PUT
+    pattern: read
+    count: 1
+  - verb: send
+    httpMethod: POST
+    pattern: write
+    count: 3
+  - verb: untag
+    httpMethod: DELETE
+    pattern: read
+    count: 1
+  - verb: verify
+    httpMethod: POST
+    pattern: read
+    count: 1
+  schemas:
+    core:
+    - ApplicationResponse
+    - CampaignResponse
+    - SegmentResponse
+    - JourneyResponse
+    messaging:
+    - MessageRequest
+    - DirectMessageConfiguration
+    - AddressConfiguration
+    analytics:
+    - ApplicationMetrics
+    - CampaignActivities
+    templates:
+    - EmailTemplateResponse
+    - SMSTemplateResponse
+    - PushNotificationTemplateResponse
+  authentication:
+    schemes:
+    - AWS Signature Version 4 (SigV4)
+    description: All requests must be signed with AWS SigV4 using mobiletargeting
+      signing name
+capability:
+  workflows:
+  - name: Customer Engagement
+    file: capabilities/customer-engagement.yaml
+    description: Multi-channel customer engagement workflow
+    apisUsed:
+    - Amazon Pinpoint API
+    personas:
+    - Marketing Manager
+    - Growth Engineer
+  personas:
+  - id: marketing-manager
+    name: Marketing Manager
+    description: Manages campaigns, segments, and journeys
+    workflows:
+    - Customer Engagement
+  - id: growth-engineer
+    name: Growth Engineer
+    description: Integrates messaging APIs and manages endpoints
+    workflows:
+    - Customer Engagement
+  domains:
+  - Marketing
+  - Messaging
+  - Customer Engagement
+  - Analytics
+  namespaces:
+  - name: amazon-pinpoint
+    type: consumed
+    baseUri: https://pinpoint.{region}.amazonaws.com
+  - name: customer-engagement-api
+    type: rest
+    port: 8080
+  - name: customer-engagement-mcp
+    type: mcp
+    port: 9090
+  binds:
+  - AWS_ACCESS_KEY_ID
+  - AWS_SECRET_ACCESS_KEY
+  - AWS_REGION
+crossReference:
+- resource: campaigns
+  operations:
+  - CreateCampaign
+  - GetCampaigns
+  - GetCampaign
+  - UpdateCampaign
+  - DeleteCampaign
+  workflows:
+  - Customer Engagement
+  personas:
+  - Marketing Manager
+- resource: segments
+  operations:
+  - CreateSegment
+  - GetSegments
+  - GetSegment
+  - UpdateSegment
+  - DeleteSegment
+  workflows:
+  - Customer Engagement
+  personas:
+  - Marketing Manager
+  - Growth Engineer
+- resource: journeys
+  operations:
+  - CreateJourney
+  - ListJourneys
+  - GetJourney
+  - UpdateJourney
+  - DeleteJourney
+  workflows:
+  - Customer Engagement
+  personas:
+  - Marketing Manager
+- resource: messages
+  operations:
+  - SendMessages
+  - SendUsersMessages
+  workflows:
+  - Customer Engagement
+  personas:
+  - Growth Engineer

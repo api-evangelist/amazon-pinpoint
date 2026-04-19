@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-template-configuration-structure.json",
+  "name": "TemplateConfiguration",
+  "description": "Specifies the message template to use for the message, for each type of channel.",
+  "type": "object",
+  "properties": {
+    "EmailTemplate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Template"
+        },
+        {
+          "description": "The email template to use for the message."
+        }
+      ]
+    },
+    "PushTemplate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Template"
+        },
+        {
+          "description": "The push notification template to use for the message."
+        }
+      ]
+    },
+    "SMSTemplate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Template"
+        },
+        {
+          "description": "The SMS template to use for the message."
+        }
+      ]
+    },
+    "VoiceTemplate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Template"
+        },
+        {
+          "description": "The voice template to use for the message. This object isn't supported for campaigns."
+        }
+      ]
+    }
+  }
+}

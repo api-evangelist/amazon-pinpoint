@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-update-gcm-channel-request-schema.json",
+  "title": "UpdateGcmChannelRequest",
+  "description": "UpdateGcmChannelRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "GCMChannelRequest": {
+      "$ref": "#/components/schemas/GCMChannelRequest"
+    }
+  },
+  "required": [
+    "GCMChannelRequest"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "DailyCap": "example-DailyCap",
+  "EndpointReentryCap": "example-EndpointReentryCap",
+  "MessagesPerSecond": "example-MessagesPerSecond",
+  "EndpointReentryInterval": "example-EndpointReentryInterval"
+}

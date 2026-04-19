@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-item-response-schema.json",
+  "title": "ItemResponse",
+  "description": "Provides information about the results of a request to create or update an endpoint that's associated with an event.",
+  "type": "object",
+  "properties": {
+    "EndpointItemResponse": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EndpointItemResponse"
+        },
+        {
+          "description": "The response that was received after the endpoint data was accepted."
+        }
+      ]
+    },
+    "EventsItemResponse": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOfEventItemResponse"
+        },
+        {
+          "description": "A multipart response object that contains a key and a value for each event in the request. In each object, the event ID is the key and an EventItemResponse object is the value."
+        }
+      ]
+    }
+  }
+}

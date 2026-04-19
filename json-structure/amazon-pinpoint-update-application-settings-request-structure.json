@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-update-application-settings-request-structure.json",
+  "name": "UpdateApplicationSettingsRequest",
+  "description": "UpdateApplicationSettingsRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "WriteApplicationSettingsRequest": {
+      "$ref": "#/components/schemas/WriteApplicationSettingsRequest"
+    }
+  },
+  "required": [
+    "WriteApplicationSettingsRequest"
+  ]
+}

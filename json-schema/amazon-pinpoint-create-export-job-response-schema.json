@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-create-export-job-response-schema.json",
+  "title": "CreateExportJobResponse",
+  "description": "CreateExportJobResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "ExportJobResponse": {
+      "$ref": "#/components/schemas/ExportJobResponse"
+    }
+  },
+  "required": [
+    "ExportJobResponse"
+  ]
+}

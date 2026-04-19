@@ -1,0 +1,54 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "pinpoint": "https://pinpoint.amazonaws.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "GetAppRequest": "pinpoint:GetAppRequest",
+    "DeleteAppRequest": "pinpoint:DeleteAppRequest",
+    "GetAppsRequest": "pinpoint:GetAppsRequest",
+    "CreateAppRequest": "pinpoint:CreateAppRequest",
+    "CreateApplicationRequest": "pinpoint:CreateApplicationRequest",
+    "WriteApplicationSettingsRequest": "pinpoint:WriteApplicationSettingsRequest",
+    "CampaignHook": {
+      "@id": "pinpoint:CampaignHook",
+      "@type": "xsd:string"
+    },
+    "CloudWatchMetricsEnabled": {
+      "@id": "pinpoint:CloudWatchMetricsEnabled",
+      "@type": "xsd:string"
+    },
+    "EventTaggingEnabled": {
+      "@id": "pinpoint:EventTaggingEnabled",
+      "@type": "xsd:string"
+    },
+    "Limits": {
+      "@id": "pinpoint:Limits",
+      "@type": "xsd:string"
+    },
+    "QuietTime": {
+      "@id": "pinpoint:QuietTime",
+      "@type": "xsd:string"
+    },
+    "UpdateApplicationSettingsRequest": "pinpoint:UpdateApplicationSettingsRequest",
+    "GetApplicationSettingsRequest": "pinpoint:GetApplicationSettingsRequest",
+    "ApplicationSettingsResource": "pinpoint:ApplicationSettingsResource",
+    "ApplicationId": {
+      "@id": "pinpoint:ApplicationId",
+      "@type": "xsd:string"
+    },
+    "LastModifiedDate": {
+      "@id": "pinpoint:LastModifiedDate",
+      "@type": "xsd:string"
+    },
+    "Name": {
+      "@id": "pinpoint:Name",
+      "@type": "xsd:string"
+    },
+    "tags": {
+      "@id": "pinpoint:tags",
+      "@type": "xsd:string"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-start-condition-schema.json",
+  "title": "StartCondition",
+  "description": "Specifies the conditions for the first activity in a journey. This activity and its conditions determine which users are participants in a journey.",
+  "type": "object",
+  "properties": {
+    "Description": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The custom description of the condition."
+        }
+      ]
+    },
+    "EventStartCondition": {
+      "$ref": "#/components/schemas/EventStartCondition"
+    },
+    "SegmentStartCondition": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SegmentCondition"
+        },
+        {
+          "description": "The segment that's associated with the first activity in the journey. This segment determines which users are participants in the journey."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-simple-email-part-structure.json",
+  "name": "SimpleEmailPart",
+  "description": "Specifies the subject or body of an email message, represented as textual email data and the applicable character set.",
+  "type": "object",
+  "properties": {
+    "Charset": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The applicable character set for the message content."
+        }
+      ]
+    },
+    "Data": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The textual data of the message content."
+        }
+      ]
+    }
+  }
+}

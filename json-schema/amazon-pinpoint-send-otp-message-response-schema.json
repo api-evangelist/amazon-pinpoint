@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-send-otp-message-response-schema.json",
+  "title": "SendOTPMessageResponse",
+  "description": "SendOTPMessageResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "MessageResponse": {
+      "$ref": "#/components/schemas/MessageResponse"
+    }
+  },
+  "required": [
+    "MessageResponse"
+  ]
+}

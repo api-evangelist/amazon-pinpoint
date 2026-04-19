@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-raw-email-structure.json",
+  "name": "RawEmail",
+  "description": "Specifies the contents of an email message, represented as a raw MIME message.",
+  "type": "object",
+  "properties": {
+    "Data": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__blob"
+        },
+        {
+          "description": "The email message, represented as a raw MIME message. The entire message must be base64 encoded."
+        }
+      ]
+    }
+  }
+}

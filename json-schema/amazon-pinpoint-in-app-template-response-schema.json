@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-in-app-template-response-schema.json",
+  "title": "InAppTemplateResponse",
+  "description": "In-App Template Response.",
+  "type": "object",
+  "properties": {
+    "Arn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The resource arn of the template."
+        }
+      ]
+    },
+    "Content": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOfInAppMessageContent"
+        },
+        {
+          "description": "The content of the message, can include up to 5 modals. Each modal must contain a message, a header, and background color. ImageUrl and buttons are optional."
+        }
+      ]
+    },
+    "CreationDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The creation date of the template."
+        }
+      ]
+    },
+    "CustomConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOf__string"
+        },
+        {
+          "description": "Custom config to be sent to client."
+        }
+      ]
+    },
+    "LastModifiedDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The last modified date of the template."
+        }
+      ]
+    },
+    "Layout": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Layout"
+        },
+        {
+          "description": "The layout of the message."
+        }
+      ]
+    },
+    "tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOf__string"
+        },
+        {
+          "description": "A string-to-string map of key-value pairs that defines the tags to associate with the message template. Each tag consists of a required tag key and an associated tag value."
+        }
+      ]
+    },
+    "TemplateDescription": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The description of the template."
+        }
+      ]
+    },
+    "TemplateName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The name of the template."
+        }
+      ]
+    },
+    "TemplateType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TemplateType"
+        },
+        {
+          "description": "The type of the template."
+        }
+      ]
+    },
+    "Version": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The version id of the template."
+        }
+      ]
+    }
+  },
+  "required": [
+    "LastModifiedDate",
+    "CreationDate",
+    "TemplateName",
+    "TemplateType"
+  ]
+}

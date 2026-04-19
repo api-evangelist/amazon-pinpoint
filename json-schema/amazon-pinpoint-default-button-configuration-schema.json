@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-default-button-configuration-schema.json",
+  "title": "DefaultButtonConfiguration",
+  "description": "Default button configuration.",
+  "type": "object",
+  "properties": {
+    "BackgroundColor": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The background color of the button."
+        }
+      ]
+    },
+    "BorderRadius": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The border radius of the button."
+        }
+      ]
+    },
+    "ButtonAction": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ButtonAction"
+        },
+        {
+          "description": "Action triggered by the button."
+        }
+      ]
+    },
+    "Link": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "Button destination."
+        }
+      ]
+    },
+    "Text": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "Button text."
+        }
+      ]
+    },
+    "TextColor": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The text color of the button."
+        }
+      ]
+    }
+  },
+  "required": [
+    "ButtonAction",
+    "Text"
+  ]
+}

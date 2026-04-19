@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-segment-response-schema.json",
+  "title": "SegmentResponse",
+  "description": "Provides information about the configuration, dimension, and other settings for a segment.",
+  "type": "object",
+  "properties": {
+    "ApplicationId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the application that the segment is associated with."
+        }
+      ]
+    },
+    "Arn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of the segment."
+        }
+      ]
+    },
+    "CreationDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date and time when the segment was created."
+        }
+      ]
+    },
+    "Dimensions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SegmentDimensions"
+        },
+        {
+          "description": "The dimension settings for the segment."
+        }
+      ]
+    },
+    "Id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the segment."
+        }
+      ]
+    },
+    "ImportDefinition": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SegmentImportResource"
+        },
+        {
+          "description": "The settings for the import job that's associated with the segment."
+        }
+      ]
+    },
+    "LastModifiedDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date and time when the segment was last modified."
+        }
+      ]
+    },
+    "Name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The name of the segment."
+        }
+      ]
+    },
+    "SegmentGroups": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SegmentGroupList"
+        },
+        {
+          "description": "A list of one or more segment groups that apply to the segment. Each segment group consists of zero or more base segments and the dimensions that are applied to those base segments."
+        }
+      ]
+    },
+    "SegmentType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SegmentType"
+        },
+        {
+          "description": "<p>The segment type. Valid values are:</p> <ul><li><p>DIMENSIONAL - A dynamic segment, which is a segment that uses selection criteria that you specify and is based on endpoint data that's reported by your app. Dynamic segments can change over time.</p></li> <li><p>IMPORT - A static segment, which is a segment that uses selection criteria that you specify and is based on endpoint definitions that you import from a file. Imported segments are static; they don't change over time.</p></li></ul>"
+        }
+      ]
+    },
+    "tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOf__string"
+        },
+        {
+          "description": "A string-to-string map of key-value pairs that identifies the tags that are associated with the segment. Each tag consists of a required tag key and an associated tag value."
+        }
+      ]
+    },
+    "Version": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The version number of the segment."
+        }
+      ]
+    }
+  },
+  "required": [
+    "SegmentType",
+    "CreationDate",
+    "Id",
+    "Arn",
+    "ApplicationId"
+  ]
+}

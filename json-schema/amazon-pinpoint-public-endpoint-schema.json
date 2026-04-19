@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-public-endpoint-schema.json",
+  "title": "PublicEndpoint",
+  "description": "Specifies the properties and attributes of an endpoint that's associated with an event.",
+  "type": "object",
+  "properties": {
+    "Address": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the recipient, such as a device token, email address, or mobile phone number."
+        }
+      ]
+    },
+    "Attributes": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOfListOf__string"
+        },
+        {
+          "description": "One or more custom attributes that describe the endpoint by associating a name with an array of values. You can use these attributes as filter criteria when you create segments."
+        }
+      ]
+    },
+    "ChannelType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ChannelType"
+        },
+        {
+          "description": "The channel that's used when sending messages or push notifications to the endpoint."
+        }
+      ]
+    },
+    "Demographic": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EndpointDemographic"
+        },
+        {
+          "description": "The demographic information for the endpoint, such as the time zone and platform."
+        }
+      ]
+    },
+    "EffectiveDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date and time, in ISO 8601 format, when the endpoint was last updated."
+        }
+      ]
+    },
+    "EndpointStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "<p>Specifies whether to send messages or push notifications to the endpoint. Valid values are: ACTIVE, messages are sent to the endpoint; and, INACTIVE, messages aren\u2019t sent to the endpoint.</p> <p>Amazon Pinpoint automatically sets this value to ACTIVE when you create an endpoint or update an existing endpoint. Amazon Pinpoint automatically sets this value to INACTIVE if you update another endpoint that has the same address specified by the Address property.</p>"
+        }
+      ]
+    },
+    "Location": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EndpointLocation"
+        },
+        {
+          "description": "The geographic information for the endpoint."
+        }
+      ]
+    },
+    "Metrics": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOf__double"
+        },
+        {
+          "description": "One or more custom metrics that your app reports to Amazon Pinpoint for the endpoint."
+        }
+      ]
+    },
+    "OptOut": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "Specifies whether the user who's associated with the endpoint has opted out of receiving messages and push notifications from you. Possible values are: ALL, the user has opted out and doesn't want to receive any messages or push notifications; and, NONE, the user hasn't opted out and wants to receive all messages and push notifications."
+        }
+      ]
+    },
+    "RequestId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "A unique identifier that's generated each time the endpoint is updated."
+        }
+      ]
+    },
+    "User": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EndpointUser"
+        },
+        {
+          "description": "One or more custom user attributes that your app reports to Amazon Pinpoint for the user who's associated with the endpoint."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-verify-otp-message-request-parameters-schema.json",
+  "title": "VerifyOTPMessageRequestParameters",
+  "description": "Verify OTP message request.",
+  "type": "object",
+  "properties": {
+    "DestinationIdentity": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The destination identity to send OTP to."
+        }
+      ]
+    },
+    "Otp": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The OTP the end user provided for verification."
+        }
+      ]
+    },
+    "ReferenceId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The reference identifier provided when the OTP was previously sent."
+        }
+      ]
+    }
+  },
+  "required": [
+    "ReferenceId",
+    "Otp",
+    "DestinationIdentity"
+  ]
+}

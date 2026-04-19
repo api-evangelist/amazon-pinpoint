@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-put-event-stream-response-structure.json",
+  "name": "PutEventStreamResponse",
+  "description": "PutEventStreamResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "EventStream": {
+      "$ref": "#/components/schemas/EventStream"
+    }
+  },
+  "required": [
+    "EventStream"
+  ]
+}

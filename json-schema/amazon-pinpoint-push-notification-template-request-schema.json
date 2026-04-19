@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-push-notification-template-request-schema.json",
+  "title": "PushNotificationTemplateRequest",
+  "description": "Specifies the content and settings for a message template that can be used in messages that are sent through a push notification channel.",
+  "type": "object",
+  "properties": {
+    "ADM": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AndroidPushNotificationTemplate"
+        },
+        {
+          "description": "The message template to use for the ADM (Amazon Device Messaging) channel. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate)."
+        }
+      ]
+    },
+    "APNS": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/APNSPushNotificationTemplate"
+        },
+        {
+          "description": "The message template to use for the APNs (Apple Push Notification service) channel. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate)."
+        }
+      ]
+    },
+    "Baidu": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AndroidPushNotificationTemplate"
+        },
+        {
+          "description": "The message template to use for the Baidu (Baidu Cloud Push) channel. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate)."
+        }
+      ]
+    },
+    "Default": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DefaultPushNotificationTemplate"
+        },
+        {
+          "description": "The default message template to use for push notification channels."
+        }
+      ]
+    },
+    "DefaultSubstitutions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "A JSON object that specifies the default values to use for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable. When you create a message that's based on the template, you can override these defaults with message-specific and address-specific variables and values."
+        }
+      ]
+    },
+    "GCM": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AndroidPushNotificationTemplate"
+        },
+        {
+          "description": "The message template to use for the GCM channel, which is used to send notifications through the Firebase Cloud Messaging (FCM), formerly Google Cloud Messaging (GCM), service. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate)."
+        }
+      ]
+    },
+    "RecommenderId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the recommender model to use for the message template. Amazon Pinpoint uses this value to determine how to retrieve and process data from a recommender model when it sends messages that use the template, if the template contains message variables for recommendation data."
+        }
+      ]
+    },
+    "tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOf__string"
+        },
+        {
+          "description": "A string-to-string map of key-value pairs that defines the tags to associate with the message template. Each tag consists of a required tag key and an associated tag value."
+        }
+      ]
+    },
+    "TemplateDescription": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "A custom description of the message template."
+        }
+      ]
+    }
+  }
+}

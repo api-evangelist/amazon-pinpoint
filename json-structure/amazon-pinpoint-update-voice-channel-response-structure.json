@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-update-voice-channel-response-structure.json",
+  "name": "UpdateVoiceChannelResponse",
+  "description": "UpdateVoiceChannelResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "VoiceChannelResponse": {
+      "$ref": "#/components/schemas/VoiceChannelResponse"
+    }
+  },
+  "required": [
+    "VoiceChannelResponse"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-update-adm-channel-request-schema.json",
+  "title": "UpdateAdmChannelRequest",
+  "description": "UpdateAdmChannelRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "ADMChannelRequest": {
+      "$ref": "#/components/schemas/ADMChannelRequest"
+    }
+  },
+  "required": [
+    "ADMChannelRequest"
+  ]
+}

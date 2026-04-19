@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-get-sms-channel-request-schema.json",
+  "title": "GetSmsChannelRequest",
+  "description": "GetSmsChannelRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {}
+}

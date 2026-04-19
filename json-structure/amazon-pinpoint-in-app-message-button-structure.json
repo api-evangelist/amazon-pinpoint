@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-in-app-message-button-structure.json",
+  "name": "InAppMessageButton",
+  "description": "Button Config for an in-app message.",
+  "type": "object",
+  "properties": {
+    "Android": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OverrideButtonConfiguration"
+        },
+        {
+          "description": "Default button content."
+        }
+      ]
+    },
+    "DefaultConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DefaultButtonConfiguration"
+        },
+        {
+          "description": "Default button content."
+        }
+      ]
+    },
+    "IOS": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OverrideButtonConfiguration"
+        },
+        {
+          "description": "Default button content."
+        }
+      ]
+    },
+    "Web": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OverrideButtonConfiguration"
+        },
+        {
+          "description": "Default button content."
+        }
+      ]
+    }
+  }
+}

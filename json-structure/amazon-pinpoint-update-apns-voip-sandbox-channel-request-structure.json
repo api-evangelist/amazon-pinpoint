@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-update-apns-voip-sandbox-channel-request-structure.json",
+  "name": "UpdateApnsVoipSandboxChannelRequest",
+  "description": "UpdateApnsVoipSandboxChannelRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "APNSVoipSandboxChannelRequest": {
+      "$ref": "#/components/schemas/APNSVoipSandboxChannelRequest"
+    }
+  },
+  "required": [
+    "APNSVoipSandboxChannelRequest"
+  ]
+}

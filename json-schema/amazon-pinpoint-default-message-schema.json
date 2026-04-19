@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-default-message-schema.json",
+  "title": "DefaultMessage",
+  "description": "Specifies the default message for all channels.",
+  "type": "object",
+  "properties": {
+    "Body": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The default body of the message."
+        }
+      ]
+    },
+    "Substitutions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOfListOf__string"
+        },
+        {
+          "description": "The default message variables to use in the message. You can override these default variables with individual address variables."
+        }
+      ]
+    }
+  }
+}

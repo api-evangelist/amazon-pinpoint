@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-segment-reference-structure.json",
+  "name": "SegmentReference",
+  "description": "Specifies the segment identifier and version of a segment.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the segment."
+        }
+      ]
+    },
+    "Version": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The version number of the segment."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Id"
+  ]
+}

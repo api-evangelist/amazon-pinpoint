@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-get-journey-execution-activity-metrics-response-schema.json",
+  "title": "GetJourneyExecutionActivityMetricsResponse",
+  "description": "GetJourneyExecutionActivityMetricsResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "JourneyExecutionActivityMetricsResponse": {
+      "$ref": "#/components/schemas/JourneyExecutionActivityMetricsResponse"
+    }
+  },
+  "required": [
+    "JourneyExecutionActivityMetricsResponse"
+  ]
+}

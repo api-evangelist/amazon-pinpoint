@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-create-in-app-template-response-schema.json",
+  "title": "CreateInAppTemplateResponse",
+  "description": "CreateInAppTemplateResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "TemplateCreateMessageBody": {
+      "$ref": "#/components/schemas/TemplateCreateMessageBody"
+    }
+  },
+  "required": [
+    "TemplateCreateMessageBody"
+  ]
+}

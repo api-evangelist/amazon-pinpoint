@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-multi-conditional-branch-structure.json",
+  "name": "MultiConditionalBranch",
+  "description": "Specifies a condition to evaluate for an activity path in a journey.",
+  "type": "object",
+  "properties": {
+    "Condition": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SimpleCondition"
+        },
+        {
+          "description": "The condition to evaluate for the activity path."
+        }
+      ]
+    },
+    "NextActivity": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the next activity to perform, after completing the activity for the path."
+        }
+      ]
+    }
+  }
+}

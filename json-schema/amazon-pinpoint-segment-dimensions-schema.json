@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-segment-dimensions-schema.json",
+  "title": "SegmentDimensions",
+  "description": "Specifies the dimension settings for a segment.",
+  "type": "object",
+  "properties": {
+    "Attributes": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOfAttributeDimension"
+        },
+        {
+          "description": "One or more custom attributes to use as criteria for the segment."
+        }
+      ]
+    },
+    "Behavior": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SegmentBehaviors"
+        },
+        {
+          "description": "The behavior-based criteria, such as how recently users have used your app, for the segment."
+        }
+      ]
+    },
+    "Demographic": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SegmentDemographics"
+        },
+        {
+          "description": "The demographic-based criteria, such as device platform, for the segment."
+        }
+      ]
+    },
+    "Location": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SegmentLocation"
+        },
+        {
+          "description": "The location-based criteria, such as region or GPS coordinates, for the segment."
+        }
+      ]
+    },
+    "Metrics": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOfMetricDimension"
+        },
+        {
+          "description": "One or more custom metrics to use as criteria for the segment."
+        }
+      ]
+    },
+    "UserAttributes": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOfAttributeDimension"
+        },
+        {
+          "description": "One or more custom user attributes to use as criteria for the segment."
+        }
+      ]
+    }
+  }
+}

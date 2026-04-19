@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-delete-email-channel-response-schema.json",
+  "title": "DeleteEmailChannelResponse",
+  "description": "DeleteEmailChannelResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "EmailChannelResponse": {
+      "$ref": "#/components/schemas/EmailChannelResponse"
+    }
+  },
+  "required": [
+    "EmailChannelResponse"
+  ]
+}

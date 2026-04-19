@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-delete-in-app-template-response-structure.json",
+  "name": "DeleteInAppTemplateResponse",
+  "description": "DeleteInAppTemplateResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "MessageBody": {
+      "$ref": "#/components/schemas/MessageBody"
+    }
+  },
+  "required": [
+    "MessageBody"
+  ]
+}

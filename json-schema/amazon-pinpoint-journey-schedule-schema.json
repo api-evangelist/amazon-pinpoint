@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-journey-schedule-schema.json",
+  "title": "JourneySchedule",
+  "description": "Specifies the schedule settings for a journey.",
+  "type": "object",
+  "properties": {
+    "EndTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__timestampIso8601"
+        },
+        {
+          "description": "The scheduled time, in ISO 8601 format, when the journey ended or will end."
+        }
+      ]
+    },
+    "StartTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__timestampIso8601"
+        },
+        {
+          "description": "The scheduled time, in ISO 8601 format, when the journey began or will begin."
+        }
+      ]
+    },
+    "Timezone": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The starting UTC offset for the journey schedule, if the value of the journey's LocalTime property is true. Valid values are: UTC,\n                  UTC+01, UTC+02, UTC+03, UTC+03:30, UTC+04, UTC+04:30, UTC+05, UTC+05:30,\n                  UTC+05:45, UTC+06, UTC+06:30, UTC+07, UTC+08, UTC+08:45, UTC+09, UTC+09:30,\n                  UTC+10, UTC+10:30, UTC+11, UTC+12, UTC+12:45, UTC+13, UTC+13:45, UTC-02,\n                  UTC-02:30, UTC-03, UTC-03:30, UTC-04, UTC-05, UTC-06, UTC-07, UTC-08, UTC-09,\n                  UTC-09:30, UTC-10, and UTC-11."
+        }
+      ]
+    }
+  }
+}

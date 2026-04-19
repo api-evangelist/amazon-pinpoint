@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-multi-conditional-split-activity-structure.json",
+  "name": "MultiConditionalSplitActivity",
+  "description": "<p>Specifies the settings for a multivariate split activity in a journey. This type of activity sends participants down one of as many as five paths (including a default <i>Else</i> path) in a journey, based on conditions that you specify.</p> <note><p>To create multivariate split activities that send participants down different paths based on push notification events (such as Open or Received events), your mobile app has to specify the User ID and Endpoint ID values. For more information, see <a href=\"https://docs.aws.amazon.com/pinpoint/latest/developerguide/integrate.html\">Integrating Amazon Pinpoint with your application</a> in the <i>Amazon Pinpoint Developer Guide</i>.</p></note>",
+  "type": "object",
+  "properties": {
+    "Branches": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOfMultiConditionalBranch"
+        },
+        {
+          "description": "The paths for the activity, including the conditions for entering each path and the activity to perform for each path."
+        }
+      ]
+    },
+    "DefaultActivity": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the activity to perform for participants who don't meet any of the conditions specified for other paths in the activity."
+        }
+      ]
+    },
+    "EvaluationWaitTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/WaitTime"
+        },
+        {
+          "description": "The amount of time to wait or the date and time when Amazon Pinpoint determines whether the conditions are met."
+        }
+      ]
+    }
+  }
+}

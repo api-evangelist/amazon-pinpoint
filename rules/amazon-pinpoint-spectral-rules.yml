@@ -1,0 +1,340 @@
+rules:
+
+  # INFO / METADATA
+  info-title-contains-amazon-pinpoint:
+    description: API title must reference Amazon Pinpoint
+    message: Info title should contain 'Amazon Pinpoint'
+    severity: warn
+    given: $.info.title
+    then:
+      function: pattern
+      functionOptions:
+        match: "Amazon Pinpoint"
+
+  info-description-required:
+    description: API must have a description
+    message: Info object must have a description
+    severity: error
+    given: $.info
+    then:
+      field: description
+      function: truthy
+
+  info-version-required:
+    description: API version must be defined
+    message: Info object must have a version
+    severity: error
+    given: $.info
+    then:
+      field: version
+      function: truthy
+
+  info-contact-required:
+    description: API must provide contact information
+    message: Info object should have contact information
+    severity: warn
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+
+  # OPENAPI VERSION
+  openapi-version-3:
+    description: API should use OpenAPI 3.x
+    message: Spec must use OpenAPI 3.0 or higher
+    severity: error
+    given: $.openapi
+    then:
+      function: pattern
+      functionOptions:
+        match: "^3\\."
+
+  # SERVERS
+  servers-defined:
+    description: Servers must be defined
+    message: At least one server must be defined
+    severity: error
+    given: $
+    then:
+      field: servers
+      function: truthy
+
+  servers-https:
+    description: All server URLs must use HTTPS
+    message: Server URL must use HTTPS
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https"
+
+  # PATHS
+  paths-kebab-case:
+    description: Path segments must use kebab-case
+    message: Path segments must use kebab-case (lowercase, hyphens allowed)
+    severity: warn
+    given: $.paths
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        match: "^(/[a-z0-9{}_/-]+)+$"
+
+  paths-no-trailing-slash:
+    description: Paths must not have trailing slashes
+    message: Path must not end with a slash
+    severity: warn
+    given: $.paths
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        notMatch: "/$"
+
+  paths-v1-prefix:
+    description: All paths must start with /v1/
+    message: Paths must be prefixed with /v1/
+    severity: info
+    given: $.paths
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        match: "^/v1/"
+
+  # OPERATIONS
+  operation-summary-required:
+    description: All operations must have a summary
+    message: Operation must have a summary
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete,options,head]
+    then:
+      field: summary
+      function: truthy
+
+  operation-summary-amazon-pinpoint-prefix:
+    description: Summaries must begin with 'Amazon Pinpoint'
+    message: Operation summary must start with 'Amazon Pinpoint'
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Amazon Pinpoint"
+
+  operation-description-required:
+    description: All operations must have a description
+    message: Operation must have a description
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete,options,head]
+    then:
+      field: description
+      function: truthy
+
+  operation-id-required:
+    description: All operations must have an operationId
+    message: Operation must have an operationId
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete,options,head]
+    then:
+      field: operationId
+      function: truthy
+
+  operation-id-pascal-case:
+    description: OperationId must use PascalCase
+    message: OperationId must be in PascalCase format
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9]+$"
+
+  operation-tags-required:
+    description: All operations must have tags
+    message: Operation must have at least one tag
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete,options,head]
+    then:
+      field: tags
+      function: truthy
+
+  # TAGS
+  tags-global-defined:
+    description: Global tags must be defined
+    message: Global tags array should be defined
+    severity: warn
+    given: $
+    then:
+      field: tags
+      function: truthy
+
+  tags-title-case:
+    description: Tag names must use Title Case
+    message: Tag name must use Title Case
+    severity: warn
+    given: $.tags[*].name
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z]"
+
+  tags-description-required:
+    description: Tags must have descriptions
+    message: Tag must have a description
+    severity: warn
+    given: $.tags[*]
+    then:
+      field: description
+      function: truthy
+
+  # PARAMETERS
+  parameter-description-required:
+    description: All parameters must have descriptions
+    message: Parameter must have a description
+    severity: error
+    given: $.paths[*][*].parameters[*]
+    then:
+      field: description
+      function: truthy
+
+  parameter-schema-required:
+    description: All parameters must have a schema
+    message: Parameter must have a schema
+    severity: error
+    given: $.paths[*][*].parameters[*]
+    then:
+      field: schema
+      function: truthy
+
+  # REQUEST BODIES
+  request-body-description:
+    description: Request bodies should have descriptions
+    message: Request body should have a description
+    severity: warn
+    given: $.paths[*][post,put,patch].requestBody
+    then:
+      field: description
+      function: truthy
+
+  request-body-json-content:
+    description: Request bodies should support application/json
+    message: Request body should have application/json content type
+    severity: warn
+    given: $.paths[*][post,put,patch].requestBody.content
+    then:
+      field: application/json
+      function: truthy
+
+  # RESPONSES
+  response-success-required:
+    description: All operations must have a success response
+    message: Operation must define at least one 2xx response
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: responses
+      function: truthy
+
+  response-description-required:
+    description: All responses must have descriptions
+    message: Response must have a description
+    severity: error
+    given: $.paths[*][*].responses[*]
+    then:
+      field: description
+      function: truthy
+
+  response-401-defined:
+    description: Operations should define 401 unauthorized responses
+    message: Operation should define a 401 Unauthorized response
+    severity: info
+    given: $.paths[*][get,post,put,patch,delete].responses
+    then:
+      field: "401"
+      function: truthy
+
+  response-404-defined:
+    description: Operations should define 404 not found responses
+    message: Operation should define a 404 Not Found response
+    severity: info
+    given: $.paths[*][get,put,patch,delete].responses
+    then:
+      field: "404"
+      function: truthy
+
+  # SCHEMAS
+  schema-property-description:
+    description: Schema properties should have descriptions
+    message: Schema property should have a description
+    severity: info
+    given: $.components.schemas[*].properties[*]
+    then:
+      field: description
+      function: truthy
+
+  schema-type-defined:
+    description: Schemas must define a type
+    message: Schema must have a type defined
+    severity: warn
+    given: $.components.schemas[*]
+    then:
+      field: type
+      function: truthy
+
+  # SECURITY
+  security-schemes-defined:
+    description: Security schemes must be defined
+    message: Components must define securitySchemes
+    severity: error
+    given: $.components
+    then:
+      field: securitySchemes
+      function: truthy
+
+  security-global-defined:
+    description: Global security must be defined
+    message: Global security requirements should be defined
+    severity: warn
+    given: $
+    then:
+      field: security
+      function: truthy
+
+  # HTTP METHOD CONVENTIONS
+  get-no-request-body:
+    description: GET operations must not have a request body
+    message: GET operations must not have a request body
+    severity: error
+    given: $.paths[*].get
+    then:
+      field: requestBody
+      function: falsy
+
+  delete-no-request-body:
+    description: DELETE operations should not have a request body
+    message: DELETE operations should not have a request body
+    severity: warn
+    given: $.paths[*].delete
+    then:
+      field: requestBody
+      function: falsy
+
+  # GENERAL QUALITY
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings
+    message: Description must not be empty
+    severity: warn
+    given: $..description
+    then:
+      function: truthy
+
+  operation-examples-encouraged:
+    description: Operations should provide examples for responses
+    message: Consider adding examples to operation responses
+    severity: info
+    given: $.paths[*][*].responses[*].content[*]
+    then:
+      field: examples
+      function: truthy

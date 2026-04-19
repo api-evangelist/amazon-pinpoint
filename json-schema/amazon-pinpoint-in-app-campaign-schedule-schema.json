@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-in-app-campaign-schedule-schema.json",
+  "title": "InAppCampaignSchedule",
+  "description": "Schedule of the campaign.",
+  "type": "object",
+  "properties": {
+    "EndDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The scheduled time after which the in-app message should not be shown. Timestamp is in ISO 8601 format."
+        }
+      ]
+    },
+    "EventFilter": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CampaignEventFilter"
+        },
+        {
+          "description": "The event filter the SDK has to use to show the in-app message in the application."
+        }
+      ]
+    },
+    "QuietTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/QuietTime"
+        },
+        {
+          "description": "Time during which the in-app message should not be shown to the user."
+        }
+      ]
+    }
+  }
+}

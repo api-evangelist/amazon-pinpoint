@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-update-sms-channel-response-schema.json",
+  "title": "UpdateSmsChannelResponse",
+  "description": "UpdateSmsChannelResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "SMSChannelResponse": {
+      "$ref": "#/components/schemas/SMSChannelResponse"
+    }
+  },
+  "required": [
+    "SMSChannelResponse"
+  ]
+}

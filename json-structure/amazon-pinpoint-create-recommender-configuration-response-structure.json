@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-create-recommender-configuration-response-structure.json",
+  "name": "CreateRecommenderConfigurationResponse",
+  "description": "CreateRecommenderConfigurationResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "RecommenderConfigurationResponse": {
+      "$ref": "#/components/schemas/RecommenderConfigurationResponse"
+    }
+  },
+  "required": [
+    "RecommenderConfigurationResponse"
+  ]
+}

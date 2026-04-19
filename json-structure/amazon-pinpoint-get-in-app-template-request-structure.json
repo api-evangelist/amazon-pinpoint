@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-get-in-app-template-request-structure.json",
+  "name": "GetInAppTemplateRequest",
+  "description": "GetInAppTemplateRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {}
+}

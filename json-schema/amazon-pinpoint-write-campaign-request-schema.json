@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-write-campaign-request-schema.json",
+  "title": "WriteCampaignRequest",
+  "description": "Specifies the configuration and other settings for a campaign.",
+  "type": "object",
+  "properties": {
+    "AdditionalTreatments": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ListOfWriteTreatmentResource"
+        },
+        {
+          "description": "An array of requests that defines additional treatments for the campaign, in addition to the default treatment for the campaign."
+        }
+      ]
+    },
+    "CustomDeliveryConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CustomDeliveryConfiguration"
+        },
+        {
+          "description": "The delivery configuration settings for sending the campaign through a custom channel. This object is required if the MessageConfiguration object for the campaign specifies a CustomMessage object."
+        }
+      ]
+    },
+    "Description": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "A custom description of the campaign."
+        }
+      ]
+    },
+    "HoldoutPercent": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The allocated percentage of users (segment members) who shouldn't receive messages from the campaign."
+        }
+      ]
+    },
+    "Hook": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CampaignHook"
+        },
+        {
+          "description": "The settings for the AWS Lambda function to invoke as a code hook for the campaign. You can use this hook to customize the segment that's used by the campaign."
+        }
+      ]
+    },
+    "IsPaused": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "description": "Specifies whether to pause the campaign. A paused campaign doesn't run unless you resume it by changing this value to false."
+        }
+      ]
+    },
+    "Limits": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CampaignLimits"
+        },
+        {
+          "description": "The messaging limits for the campaign."
+        }
+      ]
+    },
+    "MessageConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MessageConfiguration"
+        },
+        {
+          "description": "The message configuration settings for the campaign."
+        }
+      ]
+    },
+    "Name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "A custom name for the campaign."
+        }
+      ]
+    },
+    "Schedule": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Schedule"
+        },
+        {
+          "description": "The schedule settings for the campaign."
+        }
+      ]
+    },
+    "SegmentId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The unique identifier for the segment to associate with the campaign."
+        }
+      ]
+    },
+    "SegmentVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "The version of the segment to associate with the campaign."
+        }
+      ]
+    },
+    "tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOf__string"
+        },
+        {
+          "description": "A string-to-string map of key-value pairs that defines the tags to associate with the campaign. Each tag consists of a required tag key and an associated tag value."
+        }
+      ]
+    },
+    "TemplateConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TemplateConfiguration"
+        },
+        {
+          "description": "The message template to use for the campaign."
+        }
+      ]
+    },
+    "TreatmentDescription": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "A custom description of the default treatment for the campaign."
+        }
+      ]
+    },
+    "TreatmentName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "A custom name of the default treatment for the campaign, if the campaign has multiple treatments. A <i>treatment</i> is a variation of a campaign that's used for A/B testing."
+        }
+      ]
+    },
+    "Priority": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "description": "Defines the priority of the campaign, used to decide the order of messages displayed to user if there are multiple messages scheduled to be displayed at the same moment."
+        }
+      ]
+    }
+  }
+}

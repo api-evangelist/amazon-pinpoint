@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-update-endpoint-request-schema.json",
+  "title": "UpdateEndpointRequest",
+  "description": "UpdateEndpointRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "EndpointRequest": {
+      "$ref": "#/components/schemas/EndpointRequest"
+    }
+  },
+  "required": [
+    "EndpointRequest"
+  ]
+}

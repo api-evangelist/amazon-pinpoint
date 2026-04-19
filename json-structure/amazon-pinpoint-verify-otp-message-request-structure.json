@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-verify-otp-message-request-structure.json",
+  "name": "VerifyOTPMessageRequest",
+  "description": "VerifyOTPMessageRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "VerifyOTPMessageRequestParameters": {
+      "$ref": "#/components/schemas/VerifyOTPMessageRequestParameters"
+    }
+  },
+  "required": [
+    "VerifyOTPMessageRequestParameters"
+  ]
+}

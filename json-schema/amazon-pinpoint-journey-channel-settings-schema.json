@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-journey-channel-settings-schema.json",
+  "title": "JourneyChannelSettings",
+  "description": "The channel-specific configurations for the journey.",
+  "type": "object",
+  "properties": {
+    "ConnectCampaignArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "Amazon Resource Name (ARN) of the Connect Campaign."
+        }
+      ]
+    },
+    "ConnectCampaignExecutionRoleArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "IAM role ARN to be assumed when invoking Connect campaign execution APIs for dialing."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-get-segment-request-structure.json",
+  "name": "GetSegmentRequest",
+  "description": "GetSegmentRequest schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {}
+}

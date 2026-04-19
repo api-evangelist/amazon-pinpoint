@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-schema/amazon-pinpoint-remove-attributes-response-schema.json",
+  "title": "RemoveAttributesResponse",
+  "description": "RemoveAttributesResponse schema from Amazon Pinpoint API",
+  "type": "object",
+  "properties": {
+    "AttributesResource": {
+      "$ref": "#/components/schemas/AttributesResource"
+    }
+  },
+  "required": [
+    "AttributesResource"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-duration-structure.json",
+  "name": "Duration",
+  "description": "Duration schema from Amazon Pinpoint API",
+  "type": "string",
+  "enum": [
+    "HR_24",
+    "DAY_7",
+    "DAY_14",
+    "DAY_30"
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/json-structure/amazon-pinpoint-event-structure.json",
+  "name": "Event",
+  "description": "Specifies information about an event that reports data to Amazon Pinpoint.",
+  "type": "object",
+  "properties": {
+    "AppPackageName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The package name of the app that's recording the event."
+        }
+      ]
+    },
+    "AppTitle": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The title of the app that's recording the event."
+        }
+      ]
+    },
+    "AppVersionCode": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The version number of the app that's recording the event."
+        }
+      ]
+    },
+    "Attributes": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOf__string"
+        },
+        {
+          "description": "One or more custom attributes that are associated with the event."
+        }
+      ]
+    },
+    "ClientSdkVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The version of the SDK that's running on the client device."
+        }
+      ]
+    },
+    "EventType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The name of the event."
+        }
+      ]
+    },
+    "Metrics": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MapOf__double"
+        },
+        {
+          "description": "One or more custom metrics that are associated with the event."
+        }
+      ]
+    },
+    "SdkName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The name of the SDK that's being used to record the event."
+        }
+      ]
+    },
+    "Session": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Session"
+        },
+        {
+          "description": "Information about the session in which the event occurred."
+        }
+      ]
+    },
+    "Timestamp": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "description": "The date and time, in ISO 8601 format, when the event occurred."
+        }
+      ]
+    }
+  },
+  "required": [
+    "EventType",
+    "Timestamp"
+  ]
+}
