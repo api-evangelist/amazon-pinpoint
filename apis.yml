@@ -114,13 +114,13 @@ common:
   url: json-schema/amazon-pinpoint-journey-response-schema.json
 - type: JSONSchema
   url: json-schema/amazon-pinpoint-message-request-schema.json
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/amazon-pinpoint-campaigns-context.jsonld
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/amazon-pinpoint-segments-context.jsonld
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/amazon-pinpoint-journeys-context.jsonld
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/amazon-pinpoint-messages-context.jsonld
 - type: Features
   data:
@@ -168,17 +168,17 @@ common:
     description: The successor service for SMS, voice, push, OTP, and phone number validation APIs continuing after Pinpoint deprecation.
   - name: Amazon SES
     description: Amazon Simple Email Service provides the email delivery infrastructure for Pinpoint email campaigns.
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/amazon-pinpoint-analytics-context.jsonld
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/amazon-pinpoint-apps-context.jsonld
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/amazon-pinpoint-channels-context.jsonld
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/amazon-pinpoint-endpoints-context.jsonld
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/amazon-pinpoint-general-context.jsonld
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/amazon-pinpoint-templates-context.jsonld
 - type: JSONSchema
   url: json-schema/amazon-pinpoint-action-schema.json
