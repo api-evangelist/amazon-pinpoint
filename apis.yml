@@ -1,7 +1,8 @@
 name: Amazon Pinpoint
-description: Amazon Pinpoint is a flexible and scalable outbound and inbound marketing communications service that enables you to engage with customers across multiple messaging channels including 
-  email, SMS, push notifications, and voice messages. Note - AWS will end support for Amazon Pinpoint on October 30, 2026. SMS, voice, mobile push, OTP, and phone number validation APIs will continue 
-  through AWS End User Messaging.
+description: Amazon Pinpoint is a flexible and scalable outbound and inbound marketing communications service that enables
+  you to engage with customers across multiple messaging channels including email, SMS, push notifications, and voice messages.
+  Note - AWS will end support for Amazon Pinpoint on October 30, 2026. SMS, voice, mobile push, OTP, and phone number validation
+  APIs will continue through AWS End User Messaging.
 url: https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/apis.yml
 type: Index
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
@@ -20,11 +21,12 @@ tags:
 - Journeys
 - Analytics
 created: '2024-01-15'
-modified: '2026-04-19'
+modified: '2026-05-19'
 apis:
 - name: Amazon Pinpoint API
-  description: The Amazon Pinpoint API enables you to create and manage marketing campaigns, send transactional messages, define audience segments, manage message templates, configure messaging 
-    channels (email, SMS, push, voice), and analyze engagement metrics for multi-channel communications.
+  description: The Amazon Pinpoint API enables you to create and manage marketing campaigns, send transactional messages,
+    define audience segments, manage message templates, configure messaging channels (email, SMS, push, voice), and analyze
+    engagement metrics for multi-channel communications.
   image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
   humanURL: https://aws.amazon.com/pinpoint/
   baseURL: https://pinpoint.amazonaws.com
@@ -63,6 +65,8 @@ apis:
     url: https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html
   - type: RateLimits
     url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html
+  - type: NaftikoCapability
+    url: capabilities/amazon-pinpoint-applications.yaml
 common:
 - type: Portal
   url: https://console.aws.amazon.com/pinpoint/
@@ -100,8 +104,6 @@ common:
   url: https://aws.amazon.com/compliance/
 - type: SpectralRules
   url: rules/amazon-pinpoint-spectral-rules.yml
-- type: NaftikoCapability
-  url: capabilities/customer-engagement.yaml
 - type: Vocabulary
   url: vocabulary/amazon-pinpoint-vocabulary.yaml
 - type: JSONSchema
@@ -165,7 +167,8 @@ common:
   - name: Amazon CloudWatch
     description: Monitor Pinpoint service metrics and set alarms using CloudWatch.
   - name: AWS End User Messaging
-    description: The successor service for SMS, voice, push, OTP, and phone number validation APIs continuing after Pinpoint deprecation.
+    description: The successor service for SMS, voice, push, OTP, and phone number validation APIs continuing after Pinpoint
+      deprecation.
   - name: Amazon SES
     description: Amazon Simple Email Service provides the email delivery infrastructure for Pinpoint email campaigns.
 - type: JSONLD
@@ -2156,8 +2159,6 @@ common:
   url: examples/amazon-pinpoint-write-event-stream-example.json
 - type: Example
   url: examples/amazon-pinpoint-write-segment-request-example.json
-- type: NaftikoCapability
-  url: capabilities/shared/amazon-pinpoint.yaml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
