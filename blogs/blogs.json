@@ -2,12 +2,20 @@
   "repo": "amazon-pinpoint",
   "feeds": [
     {
-      "source": "https://aws.amazon.com/blogs/messaging-and-targeting/",
+      "source": "https://aws.amazon.com/blogs/messaging-and-targeting/feed/",
       "feed_url": "https://aws.amazon.com/blogs/messaging-and-targeting/feed/",
-      "title": "AWS Messaging Blog",
-      "saved": 14
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://console.aws.amazon.com/pinpoint/",
+      "feed_url": "https://console.aws.amazon.com/pinpoint/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 24,
-  "fetched": "2026-05-17T20:20:35Z"
+  "fetched": "2026-06-01T23:35:02Z"
 }
