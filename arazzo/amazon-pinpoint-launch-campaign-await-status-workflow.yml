@@ -1,0 +1,94 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Pinpoint Launch Campaign and Await Status
+  summary: Create a campaign then poll its status until it leaves the scheduled state.
+  description: >-
+    Creates a campaign in a project and then polls the campaign resource until its
+    status advances past SCHEDULED — for example to EXECUTING or COMPLETED — using
+    a retry branch on the poll step. This lets an orchestration block until the
+    campaign actually begins running. Each step spells out its request inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: pinpointApi
+  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+  type: openapi
+workflows:
+- workflowId: launch-campaign-await-status
+  summary: Create a campaign and poll until its status leaves SCHEDULED.
+  description: >-
+    Creates a campaign targeting the supplied segment, then repeatedly reads the
+    campaign status, retrying while it is still SCHEDULED.
+  inputs:
+    type: object
+    required:
+    - applicationId
+    - segmentId
+    - campaignName
+    - schedule
+    - messageConfiguration
+    properties:
+      applicationId:
+        type: string
+        description: The application that owns the campaign.
+      segmentId:
+        type: string
+        description: The segment the campaign targets.
+      campaignName:
+        type: string
+        description: The name of the campaign to create.
+      schedule:
+        type: object
+        description: The Schedule object that controls when the campaign runs.
+      messageConfiguration:
+        type: object
+        description: The MessageConfiguration object describing the campaign message.
+  steps:
+  - stepId: createCampaign
+    description: Create the campaign targeting the supplied segment.
+    operationId: CreateCampaign
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    requestBody:
+      contentType: application/json
+      payload:
+        WriteCampaignRequest:
+          Name: $inputs.campaignName
+          SegmentId: $inputs.segmentId
+          Schedule: $inputs.schedule
+          MessageConfiguration: $inputs.messageConfiguration
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      campaignId: $response.body#/CampaignResponse/Id
+  - stepId: pollCampaignStatus
+    description: >-
+      Read the campaign status and retry while it remains SCHEDULED, so the flow
+      proceeds only once the campaign has begun executing.
+    operationId: GetCampaign
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    - name: campaign-id
+      in: path
+      value: $steps.createCampaign.outputs.campaignId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      campaignStatus: $response.body#/CampaignResponse/State/CampaignStatus
+    onSuccess:
+    - name: stillScheduled
+      type: retry
+      retryAfter: 5
+      retryLimit: 12
+      criteria:
+      - context: $response.body
+        condition: $.CampaignResponse.State.CampaignStatus == 'SCHEDULED'
+        type: jsonpath
+  outputs:
+    campaignId: $steps.createCampaign.outputs.campaignId
+    campaignStatus: $steps.pollCampaignStatus.outputs.campaignStatus

@@ -1,0 +1,97 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Pinpoint Message User Across Endpoints
+  summary: Look up all endpoints for a user then send them a message across every channel.
+  description: >-
+    Retrieves every endpoint registered for a single user id — they may span SMS,
+    email, and push channels — and then sends a message to that user, letting
+    Pinpoint fan the message out across all of the user's endpoints. The flow
+    branches to stop early when the user has no endpoints to message. Each step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: pinpointApi
+  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+  type: openapi
+workflows:
+- workflowId: message-user-across-endpoints
+  summary: Resolve a user's endpoints then send a cross-channel message to the user.
+  description: >-
+    Reads all endpoints for a user id, and if any exist, sends a user-targeted
+    message that Pinpoint delivers across the user's endpoints.
+  inputs:
+    type: object
+    required:
+    - applicationId
+    - userId
+    - messageConfiguration
+    properties:
+      applicationId:
+        type: string
+        description: The application that owns the user's endpoints.
+      userId:
+        type: string
+        description: The user id whose endpoints should be resolved and messaged.
+      messageConfiguration:
+        type: object
+        description: The DirectMessageConfiguration describing the message to send.
+      users:
+        type: object
+        description: >-
+          The Users map keyed by the user id, each value an
+          EndpointSendConfiguration. Supplied as a whole object because the map
+          key is the dynamic user id, which cannot be templated as a literal map
+          key in this request body.
+  steps:
+  - stepId: getUserEndpoints
+    description: >-
+      Retrieve all endpoints registered for the user id so the flow can confirm
+      the user is reachable before sending.
+    operationId: GetUserEndpoints
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    - name: user-id
+      in: path
+      value: $inputs.userId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      endpoints: $response.body#/EndpointsResponse/Item
+    onSuccess:
+    - name: hasEndpoints
+      type: goto
+      stepId: sendUsersMessage
+      criteria:
+      - context: $response.body
+        condition: $.EndpointsResponse.Item.length > 0
+        type: jsonpath
+    - name: noEndpoints
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.EndpointsResponse.Item.length == 0
+        type: jsonpath
+  - stepId: sendUsersMessage
+    description: >-
+      Send a message targeted at the user id; Pinpoint delivers it across all of
+      the user's endpoints.
+    operationId: SendUsersMessages
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    requestBody:
+      contentType: application/json
+      payload:
+        SendUsersMessageRequest:
+          MessageConfiguration: $inputs.messageConfiguration
+          Users: $inputs.users
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      requestId: $response.body#/SendUsersMessageResponse/RequestId
+  outputs:
+    requestId: $steps.sendUsersMessage.outputs.requestId

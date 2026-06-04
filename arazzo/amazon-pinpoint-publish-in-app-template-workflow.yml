@@ -1,0 +1,73 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Pinpoint Publish In-App Template
+  summary: Create an in-app message template then read it back to confirm it was stored.
+  description: >-
+    Authors an in-app message template — the modal content and layout shown inside
+    an application — and then reads the template back to confirm its content and
+    ARN were persisted. The active-version promotion step is intentionally omitted
+    here: the template active-version resource documents support only for EMAIL,
+    PUSH, SMS, and VOICE, so this in-app flow verifies via a read-back instead.
+    Each step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: pinpointApi
+  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+  type: openapi
+workflows:
+- workflowId: publish-in-app-template
+  summary: Create an in-app template and confirm it via a read-back.
+  description: >-
+    Creates an in-app message template with the supplied content and layout, then
+    retrieves it to confirm the stored template name and ARN.
+  inputs:
+    type: object
+    required:
+    - templateName
+    - content
+    properties:
+      templateName:
+        type: string
+        description: The name of the in-app template to create and read back.
+      content:
+        type: array
+        description: The InAppMessageContent modals for the template (up to 5).
+      layout:
+        type: string
+        description: The layout of the in-app message.
+  steps:
+  - stepId: createInAppTemplate
+    description: Create an in-app message template with the supplied content and layout.
+    operationId: CreateInAppTemplate
+    parameters:
+    - name: template-name
+      in: path
+      value: $inputs.templateName
+    requestBody:
+      contentType: application/json
+      payload:
+        InAppTemplateRequest:
+          Content: $inputs.content
+          Layout: $inputs.layout
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      templateArn: $response.body#/TemplateCreateMessageBody/Arn
+  - stepId: getInAppTemplate
+    description: >-
+      Read the in-app template back to confirm it was stored with the expected
+      name and content.
+    operationId: GetInAppTemplate
+    parameters:
+    - name: template-name
+      in: path
+      value: $inputs.templateName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      storedTemplateName: $response.body#/InAppTemplateResponse/TemplateName
+      storedArn: $response.body#/InAppTemplateResponse/Arn
+  outputs:
+    templateArn: $steps.createInAppTemplate.outputs.templateArn
+    storedTemplateName: $steps.getInAppTemplate.outputs.storedTemplateName

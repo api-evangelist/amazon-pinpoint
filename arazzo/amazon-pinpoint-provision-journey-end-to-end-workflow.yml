@@ -1,0 +1,128 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Pinpoint Provision Journey End to End
+  summary: Create a project, define a segment, build a journey on it, and activate it.
+  description: >-
+    Stands up a complete customer journey from nothing: it creates the
+    application, defines the audience segment that will gate journey entry, builds
+    the journey using that segment as its start condition, and finally activates
+    the journey. The journey's start condition is wired to the segment created
+    earlier in the flow. Each step spells out its request inline so the flow can
+    be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: pinpointApi
+  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+  type: openapi
+workflows:
+- workflowId: provision-journey-end-to-end
+  summary: Create project, segment, and journey, then activate the journey.
+  description: >-
+    Creates an application, a segment, and a journey whose start condition uses
+    that segment, then activates the journey so it begins running.
+  inputs:
+    type: object
+    required:
+    - projectName
+    - segmentName
+    - dimensions
+    - journeyName
+    - startActivity
+    - activities
+    properties:
+      projectName:
+        type: string
+        description: The display name of the application to create.
+      segmentName:
+        type: string
+        description: The name of the segment that gates journey entry.
+      dimensions:
+        type: object
+        description: The SegmentDimensions criteria for the segment.
+      journeyName:
+        type: string
+        description: The name of the journey to create.
+      startActivity:
+        type: string
+        description: The id of the first activity in the journey.
+      activities:
+        type: object
+        description: A map of activity id to Activity settings for the journey.
+  steps:
+  - stepId: createApp
+    description: Create the application that owns the segment and journey.
+    operationId: CreateApp
+    requestBody:
+      contentType: application/json
+      payload:
+        CreateApplicationRequest:
+          Name: $inputs.projectName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      applicationId: $response.body#/ApplicationResponse/Id
+  - stepId: createSegment
+    description: Create the segment that will gate entry into the journey.
+    operationId: CreateSegment
+    parameters:
+    - name: application-id
+      in: path
+      value: $steps.createApp.outputs.applicationId
+    requestBody:
+      contentType: application/json
+      payload:
+        WriteSegmentRequest:
+          Name: $inputs.segmentName
+          Dimensions: $inputs.dimensions
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      segmentId: $response.body#/SegmentResponse/Id
+  - stepId: createJourney
+    description: >-
+      Create the journey in DRAFT state, wiring its start condition to the segment
+      created earlier so only segment members enter.
+    operationId: CreateJourney
+    parameters:
+    - name: application-id
+      in: path
+      value: $steps.createApp.outputs.applicationId
+    requestBody:
+      contentType: application/json
+      payload:
+        WriteJourneyRequest:
+          Name: $inputs.journeyName
+          StartActivity: $inputs.startActivity
+          Activities: $inputs.activities
+          State: DRAFT
+          StartCondition:
+            SegmentStartCondition:
+              SegmentId: $steps.createSegment.outputs.segmentId
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      journeyId: $response.body#/JourneyResponse/Id
+  - stepId: activateJourney
+    description: Activate the journey so it begins running.
+    operationId: UpdateJourneyState
+    parameters:
+    - name: application-id
+      in: path
+      value: $steps.createApp.outputs.applicationId
+    - name: journey-id
+      in: path
+      value: $steps.createJourney.outputs.journeyId
+    requestBody:
+      contentType: application/json
+      payload:
+        JourneyStateRequest:
+          State: ACTIVE
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      state: $response.body#/JourneyResponse/State
+  outputs:
+    applicationId: $steps.createApp.outputs.applicationId
+    segmentId: $steps.createSegment.outputs.segmentId
+    journeyId: $steps.createJourney.outputs.journeyId
+    state: $steps.activateJourney.outputs.state

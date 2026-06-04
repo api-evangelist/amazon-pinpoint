@@ -1,0 +1,93 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Pinpoint Update Endpoint and Send Message
+  summary: Register or update an endpoint, then send a direct message to it.
+  description: >-
+    Registers (or updates) an endpoint for a user — for example an email address,
+    phone number, or push token — and then immediately sends a direct message to
+    that same endpoint id. The send step references the endpoint id supplied to
+    the update step, so the message lands on the freshly written endpoint. Each
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: pinpointApi
+  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+  type: openapi
+workflows:
+- workflowId: update-endpoint-send-message
+  summary: Upsert an endpoint and then send a direct message to it.
+  description: >-
+    Updates (or creates) an endpoint with channel and address details, then sends
+    a direct message addressed to that endpoint id.
+  inputs:
+    type: object
+    required:
+    - applicationId
+    - endpointId
+    - channelType
+    - address
+    - messageConfiguration
+    properties:
+      applicationId:
+        type: string
+        description: The application that owns the endpoint.
+      endpointId:
+        type: string
+        description: The unique identifier for the endpoint to upsert and message.
+      channelType:
+        type: string
+        description: The channel for the endpoint (e.g. EMAIL, SMS, GCM, APNS).
+      address:
+        type: string
+        description: The destination address for the endpoint (email, phone, or token).
+      messageRequest:
+        type: object
+        description: >-
+          The full MessageRequest payload to send, including the Endpoints map
+          keyed by the endpoint id and the MessageConfiguration. Supplied as a
+          whole object because the Endpoints map key is the dynamic endpoint id,
+          which cannot be templated as a literal map key in this request body.
+  steps:
+  - stepId: updateEndpoint
+    description: >-
+      Create or update the endpoint with the supplied channel type and address so
+      it is active and ready to receive messages.
+    operationId: UpdateEndpoint
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    - name: endpoint-id
+      in: path
+      value: $inputs.endpointId
+    requestBody:
+      contentType: application/json
+      payload:
+        EndpointRequest:
+          ChannelType: $inputs.channelType
+          Address: $inputs.address
+          EndpointStatus: ACTIVE
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      message: $response.body#/MessageBody/Message
+  - stepId: sendMessage
+    description: >-
+      Send a direct message to the endpoint that was just written, addressing it
+      by endpoint id.
+    operationId: SendMessages
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    requestBody:
+      contentType: application/json
+      payload:
+        MessageRequest: $inputs.messageRequest
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      requestId: $response.body#/MessageResponse/RequestId
+  outputs:
+    requestId: $steps.sendMessage.outputs.requestId

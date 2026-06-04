@@ -1,0 +1,75 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Pinpoint Configure Event Stream
+  summary: Attach a Kinesis event stream to a project then read it back to confirm.
+  description: >-
+    Wires application engagement and analytics events to an Amazon Kinesis data
+    stream or Firehose delivery stream by configuring the event stream for a
+    project, then reads the event stream back to confirm the destination ARN and
+    role were stored. Each step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: pinpointApi
+  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+  type: openapi
+workflows:
+- workflowId: configure-event-stream
+  summary: Configure a project event stream and verify the stored destination.
+  description: >-
+    Sets the event stream destination ARN and IAM role for the project, then
+    reads the event stream back and confirms the destination ARN matches.
+  inputs:
+    type: object
+    required:
+    - applicationId
+    - destinationStreamArn
+    - roleArn
+    properties:
+      applicationId:
+        type: string
+        description: The application to publish event data for.
+      destinationStreamArn:
+        type: string
+        description: The ARN of the Kinesis stream or Firehose delivery stream.
+      roleArn:
+        type: string
+        description: The IAM role that authorizes Pinpoint to publish event data.
+  steps:
+  - stepId: putEventStream
+    description: >-
+      Configure the project event stream to publish event data to the supplied
+      Kinesis or Firehose destination using the supplied IAM role.
+    operationId: PutEventStream
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    requestBody:
+      contentType: application/json
+      payload:
+        WriteEventStream:
+          DestinationStreamArn: $inputs.destinationStreamArn
+          RoleArn: $inputs.roleArn
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      configuredArn: $response.body#/EventStream/DestinationStreamArn
+  - stepId: getEventStream
+    description: >-
+      Read the event stream back to confirm the destination ARN and role were
+      stored for the project.
+    operationId: GetEventStream
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    successCriteria:
+    - condition: $statusCode == 200
+    - condition: $response.body#/EventStream/DestinationStreamArn == $inputs.destinationStreamArn
+    outputs:
+      destinationStreamArn: $response.body#/EventStream/DestinationStreamArn
+      roleArn: $response.body#/EventStream/RoleArn
+  outputs:
+    destinationStreamArn: $steps.getEventStream.outputs.destinationStreamArn
+    roleArn: $steps.getEventStream.outputs.roleArn

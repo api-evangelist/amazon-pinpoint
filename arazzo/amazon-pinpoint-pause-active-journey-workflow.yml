@@ -1,0 +1,77 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Pinpoint Pause Active Journey
+  summary: Activate a draft journey then immediately pause it for review.
+  description: >-
+    Transitions a journey through two state changes in sequence: first it
+    activates a draft journey so it begins running, then it pauses the same
+    journey. Pausing holds new endpoints from entering while preserving in-flight
+    activities, which is useful for a controlled review window. Each step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: pinpointApi
+  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+  type: openapi
+workflows:
+- workflowId: pause-active-journey
+  summary: Activate a journey then pause it.
+  description: >-
+    Sets an existing journey to ACTIVE, then immediately sets it to PAUSED to hold
+    new entrants while in-flight activities continue.
+  inputs:
+    type: object
+    required:
+    - applicationId
+    - journeyId
+    properties:
+      applicationId:
+        type: string
+        description: The application that owns the journey.
+      journeyId:
+        type: string
+        description: The journey to activate and then pause.
+  steps:
+  - stepId: activateJourney
+    description: Activate the journey so it begins running.
+    operationId: UpdateJourneyState
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    - name: journey-id
+      in: path
+      value: $inputs.journeyId
+    requestBody:
+      contentType: application/json
+      payload:
+        JourneyStateRequest:
+          State: ACTIVE
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      activeState: $response.body#/JourneyResponse/State
+  - stepId: pauseJourney
+    description: >-
+      Pause the now-active journey so new endpoints stop entering while in-flight
+      activities continue to completion.
+    operationId: UpdateJourneyState
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    - name: journey-id
+      in: path
+      value: $inputs.journeyId
+    requestBody:
+      contentType: application/json
+      payload:
+        JourneyStateRequest:
+          State: PAUSED
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      pausedState: $response.body#/JourneyResponse/State
+  outputs:
+    pausedState: $steps.pauseJourney.outputs.pausedState

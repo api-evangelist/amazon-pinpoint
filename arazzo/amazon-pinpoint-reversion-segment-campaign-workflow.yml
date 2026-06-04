@@ -1,0 +1,99 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Pinpoint Reversion Segment and Campaign
+  summary: Update a segment's dimensions then repoint a campaign at the new segment version.
+  description: >-
+    When an audience definition changes, the segment gets a new version. This
+    workflow updates a segment's dimension criteria — producing a new version —
+    and then updates a campaign so it targets that freshly minted segment version,
+    keeping the campaign aligned with the latest audience. Each step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: pinpointApi
+  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+  type: openapi
+workflows:
+- workflowId: reversion-segment-campaign
+  summary: Update a segment then repoint a campaign at the new segment version.
+  description: >-
+    Updates the segment dimensions to create a new version, then updates the
+    campaign to target the new segment id and version.
+  inputs:
+    type: object
+    required:
+    - applicationId
+    - segmentId
+    - segmentName
+    - dimensions
+    - campaignId
+    - campaignName
+    properties:
+      applicationId:
+        type: string
+        description: The application that owns the segment and campaign.
+      segmentId:
+        type: string
+        description: The segment to update.
+      segmentName:
+        type: string
+        description: The name to keep on the segment.
+      dimensions:
+        type: object
+        description: The new SegmentDimensions criteria for the segment.
+      campaignId:
+        type: string
+        description: The campaign to repoint at the new segment version.
+      campaignName:
+        type: string
+        description: The name to keep on the campaign.
+  steps:
+  - stepId: updateSegment
+    description: >-
+      Update the segment's dimension criteria, which produces a new segment
+      version.
+    operationId: UpdateSegment
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    - name: segment-id
+      in: path
+      value: $inputs.segmentId
+    requestBody:
+      contentType: application/json
+      payload:
+        WriteSegmentRequest:
+          Name: $inputs.segmentName
+          Dimensions: $inputs.dimensions
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      newSegmentVersion: $response.body#/SegmentResponse/Version
+  - stepId: updateCampaign
+    description: >-
+      Update the campaign so it targets the newly produced segment version.
+    operationId: UpdateCampaign
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    - name: campaign-id
+      in: path
+      value: $inputs.campaignId
+    requestBody:
+      contentType: application/json
+      payload:
+        WriteCampaignRequest:
+          Name: $inputs.campaignName
+          SegmentId: $inputs.segmentId
+          SegmentVersion: $steps.updateSegment.outputs.newSegmentVersion
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      campaignId: $response.body#/CampaignResponse/Id
+      campaignVersion: $response.body#/CampaignResponse/Version
+  outputs:
+    newSegmentVersion: $steps.updateSegment.outputs.newSegmentVersion
+    campaignId: $steps.updateCampaign.outputs.campaignId

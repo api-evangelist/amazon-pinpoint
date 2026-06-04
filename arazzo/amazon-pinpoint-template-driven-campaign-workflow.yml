@@ -1,0 +1,103 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Pinpoint Template Driven Campaign
+  summary: Create an email message template then launch a campaign that uses it.
+  description: >-
+    Builds a reusable email message template and then creates a campaign whose
+    message configuration points at that template by name. This is the canonical
+    "create template then create campaign using it" pattern, letting marketing
+    content be authored once and reused across campaigns. Each step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: pinpointApi
+  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+  type: openapi
+workflows:
+- workflowId: template-driven-campaign
+  summary: Author an email template and launch a campaign that references it.
+  description: >-
+    Creates an email message template, then creates a campaign in the supplied
+    application whose TemplateConfiguration references the template by name.
+  inputs:
+    type: object
+    required:
+    - applicationId
+    - templateName
+    - subject
+    - htmlPart
+    - segmentId
+    - campaignName
+    - schedule
+    properties:
+      applicationId:
+        type: string
+        description: The application that the campaign belongs to.
+      templateName:
+        type: string
+        description: The name of the email template to create and reference.
+      subject:
+        type: string
+        description: The subject line for the email template.
+      htmlPart:
+        type: string
+        description: The HTML body for the email template.
+      textPart:
+        type: string
+        description: The plain text body for the email template.
+      segmentId:
+        type: string
+        description: The segment the campaign targets.
+      campaignName:
+        type: string
+        description: The name of the campaign to create.
+      schedule:
+        type: object
+        description: The Schedule object that controls when the campaign runs.
+  steps:
+  - stepId: createEmailTemplate
+    description: >-
+      Create an email message template with the supplied subject and body content.
+    operationId: CreateEmailTemplate
+    parameters:
+    - name: template-name
+      in: path
+      value: $inputs.templateName
+    requestBody:
+      contentType: application/json
+      payload:
+        EmailTemplateRequest:
+          Subject: $inputs.subject
+          HtmlPart: $inputs.htmlPart
+          TextPart: $inputs.textPart
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      templateArn: $response.body#/CreateTemplateMessageBody/Arn
+  - stepId: createCampaign
+    description: >-
+      Create a campaign that targets the supplied segment and renders its message
+      from the email template created in the previous step.
+    operationId: CreateCampaign
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    requestBody:
+      contentType: application/json
+      payload:
+        WriteCampaignRequest:
+          Name: $inputs.campaignName
+          SegmentId: $inputs.segmentId
+          Schedule: $inputs.schedule
+          TemplateConfiguration:
+            EmailTemplate:
+              Name: $inputs.templateName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      campaignId: $response.body#/CampaignResponse/Id
+  outputs:
+    templateArn: $steps.createEmailTemplate.outputs.templateArn
+    campaignId: $steps.createCampaign.outputs.campaignId

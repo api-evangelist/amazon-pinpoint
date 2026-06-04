@@ -1,0 +1,93 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Pinpoint Launch Journey
+  summary: Create a draft journey then activate it by updating its state to ACTIVE.
+  description: >-
+    Creates a multi-step customer journey in DRAFT state and then activates it by
+    updating the journey state to ACTIVE. Splitting creation from activation
+    mirrors the Pinpoint model, where a draft journey can be assembled and
+    reviewed before it begins running. Each step spells out its request inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: pinpointApi
+  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+  type: openapi
+workflows:
+- workflowId: launch-journey
+  summary: Create a draft journey and activate it.
+  description: >-
+    Creates a journey in DRAFT state with the supplied activities and start
+    condition, then transitions it to ACTIVE using the journey state resource.
+  inputs:
+    type: object
+    required:
+    - applicationId
+    - journeyName
+    - startActivity
+    - activities
+    - startCondition
+    properties:
+      applicationId:
+        type: string
+        description: The application that owns the journey.
+      journeyName:
+        type: string
+        description: The name of the journey to create.
+      startActivity:
+        type: string
+        description: The unique identifier for the first activity in the journey.
+      activities:
+        type: object
+        description: A map of activity id to Activity settings defining the journey.
+      startCondition:
+        type: object
+        description: The StartCondition (segment) that defines journey participants.
+  steps:
+  - stepId: createJourney
+    description: >-
+      Create the journey in DRAFT state with the supplied activities, start
+      activity, and start condition.
+    operationId: CreateJourney
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    requestBody:
+      contentType: application/json
+      payload:
+        WriteJourneyRequest:
+          Name: $inputs.journeyName
+          StartActivity: $inputs.startActivity
+          Activities: $inputs.activities
+          StartCondition: $inputs.startCondition
+          State: DRAFT
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      journeyId: $response.body#/JourneyResponse/Id
+  - stepId: activateJourney
+    description: >-
+      Activate the newly created journey by updating its state to ACTIVE so it
+      begins running.
+    operationId: UpdateJourneyState
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    - name: journey-id
+      in: path
+      value: $steps.createJourney.outputs.journeyId
+    requestBody:
+      contentType: application/json
+      payload:
+        JourneyStateRequest:
+          State: ACTIVE
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      state: $response.body#/JourneyResponse/State
+  outputs:
+    journeyId: $steps.createJourney.outputs.journeyId
+    state: $steps.activateJourney.outputs.state

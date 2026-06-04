@@ -1,0 +1,87 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Pinpoint Publish Voice Template
+  summary: Create a voice message template then promote a version to active.
+  description: >-
+    Authors a voice (text-to-speech) message template — including the spoken
+    script, language, and Polly voice — and then sets a chosen version of that
+    template as the active version used by default. Each step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: pinpointApi
+  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+  type: openapi
+workflows:
+- workflowId: publish-voice-template
+  summary: Create a voice template and mark a version active.
+  description: >-
+    Creates a voice message template with the supplied script and voice, then
+    promotes the chosen version to be the active version of the template.
+  inputs:
+    type: object
+    required:
+    - templateName
+    - body
+    - voiceId
+    - languageCode
+    properties:
+      templateName:
+        type: string
+        description: The name of the voice template to create and activate.
+      body:
+        type: string
+        description: The spoken script for the voice template.
+      voiceId:
+        type: string
+        description: The Amazon Polly voice to use when delivering the message.
+      languageCode:
+        type: string
+        description: The language code for synthesizing the script.
+      version:
+        type: string
+        description: The template version to make active. Defaults to latest.
+        default: latest
+  steps:
+  - stepId: createVoiceTemplate
+    description: Create a voice message template with the supplied script and voice.
+    operationId: CreateVoiceTemplate
+    parameters:
+    - name: template-name
+      in: path
+      value: $inputs.templateName
+    requestBody:
+      contentType: application/json
+      payload:
+        VoiceTemplateRequest:
+          Body: $inputs.body
+          VoiceId: $inputs.voiceId
+          LanguageCode: $inputs.languageCode
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      templateArn: $response.body#/CreateTemplateMessageBody/Arn
+  - stepId: activateVersion
+    description: >-
+      Promote the chosen voice template version to the active version so it is
+      used by default when the template is referenced.
+    operationId: UpdateTemplateActiveVersion
+    parameters:
+    - name: template-name
+      in: path
+      value: $inputs.templateName
+    - name: template-type
+      in: path
+      value: VOICE
+    requestBody:
+      contentType: application/json
+      payload:
+        TemplateActiveVersionRequest:
+          Version: $inputs.version
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      message: $response.body#/MessageBody/Message
+  outputs:
+    templateArn: $steps.createVoiceTemplate.outputs.templateArn

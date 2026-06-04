@@ -1,0 +1,77 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Pinpoint Provision Project with Settings
+  summary: Create a project then apply its default campaign limits and quiet time settings.
+  description: >-
+    Provisions a new Pinpoint application and immediately applies account-wide
+    defaults to it — the default campaign sending limits, quiet time window, and
+    CloudWatch metrics toggle — so every campaign and journey in the project
+    inherits sensible defaults. Each step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: pinpointApi
+  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+  type: openapi
+workflows:
+- workflowId: provision-project-with-settings
+  summary: Create a project and apply default settings to it.
+  description: >-
+    Creates an application, then updates the application settings to set default
+    limits, quiet time, and CloudWatch metrics for the project.
+  inputs:
+    type: object
+    required:
+    - projectName
+    - limits
+    - quietTime
+    properties:
+      projectName:
+        type: string
+        description: The display name of the application to create.
+      limits:
+        type: object
+        description: The default CampaignLimits for campaigns in the application.
+      quietTime:
+        type: object
+        description: The default QuietTime window for the application.
+      cloudWatchMetricsEnabled:
+        type: boolean
+        description: Whether to enable application-related alarms in CloudWatch.
+        default: true
+  steps:
+  - stepId: createApp
+    description: Create the application that the settings will be applied to.
+    operationId: CreateApp
+    requestBody:
+      contentType: application/json
+      payload:
+        CreateApplicationRequest:
+          Name: $inputs.projectName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      applicationId: $response.body#/ApplicationResponse/Id
+  - stepId: updateSettings
+    description: >-
+      Apply the default campaign limits, quiet time, and CloudWatch metrics
+      setting to the newly created application.
+    operationId: UpdateApplicationSettings
+    parameters:
+    - name: application-id
+      in: path
+      value: $steps.createApp.outputs.applicationId
+    requestBody:
+      contentType: application/json
+      payload:
+        WriteApplicationSettingsRequest:
+          Limits: $inputs.limits
+          QuietTime: $inputs.quietTime
+          CloudWatchMetricsEnabled: $inputs.cloudWatchMetricsEnabled
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      settingsApplicationId: $response.body#/ApplicationSettingsResource/ApplicationId
+  outputs:
+    applicationId: $steps.createApp.outputs.applicationId

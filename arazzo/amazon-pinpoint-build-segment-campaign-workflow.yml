@@ -1,0 +1,110 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Pinpoint Build Segment and Campaign
+  summary: Create a project, define an audience segment, then launch a campaign targeting it.
+  description: >-
+    The core Pinpoint marketing flow. The workflow provisions a new application,
+    defines a dimensional audience segment within it, and then creates a campaign
+    that targets that segment. The campaign step reuses the segment id and version
+    returned by the create-segment step. Each step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: pinpointApi
+  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+  type: openapi
+workflows:
+- workflowId: build-segment-campaign
+  summary: Provision a project, create a segment, and launch a campaign against it.
+  description: >-
+    Creates an application, then a dimensional segment, then a campaign that
+    targets the segment using the segment id and version returned upstream.
+  inputs:
+    type: object
+    required:
+    - projectName
+    - segmentName
+    - campaignName
+    - dimensions
+    - schedule
+    - messageConfiguration
+    properties:
+      projectName:
+        type: string
+        description: The display name of the application to create.
+      segmentName:
+        type: string
+        description: The name of the segment to create.
+      campaignName:
+        type: string
+        description: The name of the campaign to create.
+      dimensions:
+        type: object
+        description: The SegmentDimensions criteria that define the segment audience.
+      schedule:
+        type: object
+        description: The Schedule object that controls when the campaign runs.
+      messageConfiguration:
+        type: object
+        description: The MessageConfiguration object describing the campaign message.
+  steps:
+  - stepId: createApp
+    description: Create the application that will own the segment and campaign.
+    operationId: CreateApp
+    requestBody:
+      contentType: application/json
+      payload:
+        CreateApplicationRequest:
+          Name: $inputs.projectName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      applicationId: $response.body#/ApplicationResponse/Id
+  - stepId: createSegment
+    description: >-
+      Create a dimensional segment within the application using the supplied
+      dimension criteria.
+    operationId: CreateSegment
+    parameters:
+    - name: application-id
+      in: path
+      value: $steps.createApp.outputs.applicationId
+    requestBody:
+      contentType: application/json
+      payload:
+        WriteSegmentRequest:
+          Name: $inputs.segmentName
+          Dimensions: $inputs.dimensions
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      segmentId: $response.body#/SegmentResponse/Id
+      segmentVersion: $response.body#/SegmentResponse/Version
+  - stepId: createCampaign
+    description: >-
+      Create a campaign that targets the new segment, referencing the segment id
+      and version returned by the create-segment step.
+    operationId: CreateCampaign
+    parameters:
+    - name: application-id
+      in: path
+      value: $steps.createApp.outputs.applicationId
+    requestBody:
+      contentType: application/json
+      payload:
+        WriteCampaignRequest:
+          Name: $inputs.campaignName
+          SegmentId: $steps.createSegment.outputs.segmentId
+          SegmentVersion: $steps.createSegment.outputs.segmentVersion
+          Schedule: $inputs.schedule
+          MessageConfiguration: $inputs.messageConfiguration
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      campaignId: $response.body#/CampaignResponse/Id
+      campaignArn: $response.body#/CampaignResponse/Arn
+  outputs:
+    applicationId: $steps.createApp.outputs.applicationId
+    segmentId: $steps.createSegment.outputs.segmentId
+    campaignId: $steps.createCampaign.outputs.campaignId

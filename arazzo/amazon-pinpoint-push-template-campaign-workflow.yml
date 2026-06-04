@@ -1,0 +1,92 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Pinpoint Push Template Campaign
+  summary: Create a push notification template then launch a campaign that uses it.
+  description: >-
+    Authors a reusable push notification message template and then creates a
+    campaign whose template configuration points at it by name, so a push campaign
+    renders its content from the shared template. Each step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: pinpointApi
+  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+  type: openapi
+workflows:
+- workflowId: push-template-campaign
+  summary: Author a push template and launch a campaign referencing it.
+  description: >-
+    Creates a push notification template, then creates a campaign whose
+    TemplateConfiguration references the push template by name.
+  inputs:
+    type: object
+    required:
+    - applicationId
+    - templateName
+    - defaultPush
+    - segmentId
+    - campaignName
+    - schedule
+    properties:
+      applicationId:
+        type: string
+        description: The application the campaign belongs to.
+      templateName:
+        type: string
+        description: The name of the push template to create and reference.
+      defaultPush:
+        type: object
+        description: The DefaultPushNotificationTemplate content for the template.
+      segmentId:
+        type: string
+        description: The segment the campaign targets.
+      campaignName:
+        type: string
+        description: The name of the campaign to create.
+      schedule:
+        type: object
+        description: The Schedule object that controls when the campaign runs.
+  steps:
+  - stepId: createPushTemplate
+    description: Create a push notification template with the supplied default content.
+    operationId: CreatePushTemplate
+    parameters:
+    - name: template-name
+      in: path
+      value: $inputs.templateName
+    requestBody:
+      contentType: application/json
+      payload:
+        PushNotificationTemplateRequest:
+          Default: $inputs.defaultPush
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      templateArn: $response.body#/CreateTemplateMessageBody/Arn
+  - stepId: createCampaign
+    description: >-
+      Create a campaign that targets the supplied segment and renders from the
+      push template created in the previous step.
+    operationId: CreateCampaign
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    requestBody:
+      contentType: application/json
+      payload:
+        WriteCampaignRequest:
+          Name: $inputs.campaignName
+          SegmentId: $inputs.segmentId
+          Schedule: $inputs.schedule
+          TemplateConfiguration:
+            PushTemplate:
+              Name: $inputs.templateName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      campaignId: $response.body#/CampaignResponse/Id
+  outputs:
+    templateArn: $steps.createPushTemplate.outputs.templateArn
+    campaignId: $steps.createCampaign.outputs.campaignId

@@ -1,0 +1,75 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Pinpoint Batch Update Endpoints and Send
+  summary: Upsert a batch of endpoints then send a direct message to the project.
+  description: >-
+    Bulk-registers or updates up to a hundred endpoints in one call and then sends
+    a direct message in the same project. This is the efficient ingestion pattern
+    for syncing an audience from an external system and then immediately reaching
+    them. Each step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: pinpointApi
+  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+  type: openapi
+workflows:
+- workflowId: batch-update-endpoints-send
+  summary: Bulk upsert endpoints then send a direct message.
+  description: >-
+    Updates a batch of endpoints in one request, then sends a direct message in
+    the same application using the supplied MessageRequest payload.
+  inputs:
+    type: object
+    required:
+    - applicationId
+    - endpointBatchItems
+    - messageRequest
+    properties:
+      applicationId:
+        type: string
+        description: The application that owns the endpoints.
+      endpointBatchItems:
+        type: array
+        description: The array of EndpointBatchItem objects to create or update (max 100).
+      messageRequest:
+        type: object
+        description: The full MessageRequest payload to send after the batch upsert.
+  steps:
+  - stepId: updateEndpointsBatch
+    description: >-
+      Create or update the batch of endpoints in a single request so the audience
+      is current before sending.
+    operationId: UpdateEndpointsBatch
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    requestBody:
+      contentType: application/json
+      payload:
+        EndpointBatchRequest:
+          Item: $inputs.endpointBatchItems
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      message: $response.body#/MessageBody/Message
+  - stepId: sendMessage
+    description: >-
+      Send a direct message in the same application now that the endpoint batch
+      has been written.
+    operationId: SendMessages
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    requestBody:
+      contentType: application/json
+      payload:
+        MessageRequest: $inputs.messageRequest
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      requestId: $response.body#/MessageResponse/RequestId
+  outputs:
+    requestId: $steps.sendMessage.outputs.requestId

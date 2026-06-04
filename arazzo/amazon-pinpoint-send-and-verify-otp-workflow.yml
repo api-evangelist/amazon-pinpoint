@@ -1,0 +1,101 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Pinpoint Send and Verify OTP
+  summary: Send a one-time passcode to a recipient then verify the code they supply.
+  description: >-
+    Implements the two-leg one-time passcode flow: first an OTP is generated and
+    delivered to a destination identity over SMS, then the code the recipient
+    enters is verified against the same reference id. The verify step branches on
+    whether the OTP was valid. Each step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: pinpointApi
+  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+  type: openapi
+workflows:
+- workflowId: send-and-verify-otp
+  summary: Send an OTP and verify the code the recipient enters.
+  description: >-
+    Sends an OTP to a destination identity using a reference id, then verifies a
+    submitted code against that reference id and branches on validity.
+  inputs:
+    type: object
+    required:
+    - applicationId
+    - brandName
+    - destinationIdentity
+    - originationIdentity
+    - referenceId
+    - otp
+    properties:
+      applicationId:
+        type: string
+        description: The application used to send and verify the OTP.
+      brandName:
+        type: string
+        description: The brand name substituted into the OTP message body.
+      destinationIdentity:
+        type: string
+        description: The phone number to send the OTP to, in E.164 format.
+      originationIdentity:
+        type: string
+        description: The origination identity used to send the OTP from.
+      referenceId:
+        type: string
+        description: The reference id that must match during verification.
+      otp:
+        type: string
+        description: The code the recipient entered, to verify.
+  steps:
+  - stepId: sendOtp
+    description: >-
+      Generate and send a one-time passcode over SMS to the destination identity,
+      tagged with the supplied reference id.
+    operationId: SendOTPMessage
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    requestBody:
+      contentType: application/json
+      payload:
+        SendOTPMessageRequestParameters:
+          Channel: SMS
+          BrandName: $inputs.brandName
+          DestinationIdentity: $inputs.destinationIdentity
+          OriginationIdentity: $inputs.originationIdentity
+          ReferenceId: $inputs.referenceId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      requestId: $response.body#/MessageResponse/RequestId
+  - stepId: verifyOtp
+    description: >-
+      Verify the code the recipient entered against the reference id used when the
+      OTP was sent, branching on whether the code is valid.
+    operationId: VerifyOTPMessage
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    requestBody:
+      contentType: application/json
+      payload:
+        VerifyOTPMessageRequestParameters:
+          DestinationIdentity: $inputs.destinationIdentity
+          ReferenceId: $inputs.referenceId
+          Otp: $inputs.otp
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      valid: $response.body#/VerificationResponse/Valid
+    onSuccess:
+    - name: otpValid
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.VerificationResponse.Valid == true
+        type: jsonpath
+  outputs:
+    valid: $steps.verifyOtp.outputs.valid

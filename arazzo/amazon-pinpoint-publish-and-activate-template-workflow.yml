@@ -1,0 +1,78 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Pinpoint Publish and Activate Template
+  summary: Create an SMS template then promote a chosen version to the active version.
+  description: >-
+    Authors an SMS message template and then sets a specific version of that
+    template as the active version, which is the version Pinpoint uses by default
+    when a message or campaign references the template without pinning a version.
+    Each step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: pinpointApi
+  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+  type: openapi
+workflows:
+- workflowId: publish-and-activate-template
+  summary: Create an SMS template and mark a version active.
+  description: >-
+    Creates an SMS message template, then promotes the supplied version (or
+    latest) to be the active version of the template.
+  inputs:
+    type: object
+    required:
+    - templateName
+    - body
+    properties:
+      templateName:
+        type: string
+        description: The name of the SMS template to create and activate.
+      body:
+        type: string
+        description: The message body for the SMS template.
+      version:
+        type: string
+        description: >-
+          The template version to make active. Defaults to latest when omitted.
+        default: latest
+  steps:
+  - stepId: createSmsTemplate
+    description: Create an SMS message template with the supplied body content.
+    operationId: CreateSmsTemplate
+    parameters:
+    - name: template-name
+      in: path
+      value: $inputs.templateName
+    requestBody:
+      contentType: application/json
+      payload:
+        SMSTemplateRequest:
+          Body: $inputs.body
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      templateArn: $response.body#/CreateTemplateMessageBody/Arn
+  - stepId: activateVersion
+    description: >-
+      Promote the chosen template version to the active version so it is used by
+      default when the template is referenced.
+    operationId: UpdateTemplateActiveVersion
+    parameters:
+    - name: template-name
+      in: path
+      value: $inputs.templateName
+    - name: template-type
+      in: path
+      value: SMS
+    requestBody:
+      contentType: application/json
+      payload:
+        TemplateActiveVersionRequest:
+          Version: $inputs.version
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      message: $response.body#/MessageBody/Message
+  outputs:
+    templateArn: $steps.createSmsTemplate.outputs.templateArn

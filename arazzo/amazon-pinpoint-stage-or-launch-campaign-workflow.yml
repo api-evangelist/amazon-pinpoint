@@ -1,0 +1,110 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Pinpoint Stage or Launch Campaign
+  summary: Create a paused campaign then branch to launch it or leave it staged for review.
+  description: >-
+    Creates a campaign in a paused state and then branches on a launch flag: when
+    the caller wants the campaign live, a follow-up update flips it to running;
+    otherwise the campaign is left staged for manual review. This separates
+    authoring a campaign from the decision to send. Each step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: pinpointApi
+  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+  type: openapi
+workflows:
+- workflowId: stage-or-launch-campaign
+  summary: Create a paused campaign and optionally launch it.
+  description: >-
+    Creates a campaign with IsPaused set to true, then if the launch flag is set,
+    updates the campaign to set IsPaused to false so it begins running.
+  inputs:
+    type: object
+    required:
+    - applicationId
+    - segmentId
+    - campaignName
+    - schedule
+    - messageConfiguration
+    - launch
+    properties:
+      applicationId:
+        type: string
+        description: The application that owns the campaign.
+      segmentId:
+        type: string
+        description: The segment the campaign targets.
+      campaignName:
+        type: string
+        description: The name of the campaign to create.
+      schedule:
+        type: object
+        description: The Schedule object that controls when the campaign runs.
+      messageConfiguration:
+        type: object
+        description: The MessageConfiguration object describing the campaign message.
+      launch:
+        type: boolean
+        description: Whether to launch the campaign now (true) or leave it staged (false).
+  steps:
+  - stepId: createPausedCampaign
+    description: >-
+      Create the campaign in a paused state so it is staged but not yet running.
+    operationId: CreateCampaign
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    requestBody:
+      contentType: application/json
+      payload:
+        WriteCampaignRequest:
+          Name: $inputs.campaignName
+          SegmentId: $inputs.segmentId
+          Schedule: $inputs.schedule
+          MessageConfiguration: $inputs.messageConfiguration
+          IsPaused: true
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      campaignId: $response.body#/CampaignResponse/Id
+    onSuccess:
+    - name: launchNow
+      type: goto
+      stepId: launchCampaign
+      criteria:
+      - condition: $inputs.launch == true
+    - name: leaveStaged
+      type: end
+      criteria:
+      - condition: $inputs.launch == false
+  - stepId: launchCampaign
+    description: >-
+      Launch the staged campaign by updating it to set IsPaused to false so it
+      begins running.
+    operationId: UpdateCampaign
+    parameters:
+    - name: application-id
+      in: path
+      value: $inputs.applicationId
+    - name: campaign-id
+      in: path
+      value: $steps.createPausedCampaign.outputs.campaignId
+    requestBody:
+      contentType: application/json
+      payload:
+        WriteCampaignRequest:
+          Name: $inputs.campaignName
+          SegmentId: $inputs.segmentId
+          Schedule: $inputs.schedule
+          MessageConfiguration: $inputs.messageConfiguration
+          IsPaused: false
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      campaignVersion: $response.body#/CampaignResponse/Version
+  outputs:
+    campaignId: $steps.createPausedCampaign.outputs.campaignId
+    campaignVersion: $steps.launchCampaign.outputs.campaignVersion

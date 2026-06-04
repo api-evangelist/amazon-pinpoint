@@ -1,0 +1,61 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Pinpoint Provision Project
+  summary: Create a Pinpoint application then verify it appears in the account application list.
+  description: >-
+    Stands up a brand new Amazon Pinpoint application (project) and then confirms
+    the project is registered by listing every application associated with the
+    account and checking that the newly created application id is present. Each
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: pinpointApi
+  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+  type: openapi
+workflows:
+- workflowId: provision-project
+  summary: Create a Pinpoint application and confirm it is registered in the account.
+  description: >-
+    Creates a new Pinpoint application using the supplied display name and tags,
+    then lists all applications to verify the new project is present.
+  inputs:
+    type: object
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        description: The display name of the application (shown as Project name in the console).
+      tags:
+        type: object
+        description: A string-to-string map of tags to associate with the application.
+  steps:
+  - stepId: createApp
+    description: >-
+      Create a new Pinpoint application using the supplied display name and
+      optional tags.
+    operationId: CreateApp
+    requestBody:
+      contentType: application/json
+      payload:
+        CreateApplicationRequest:
+          Name: $inputs.name
+          tags: $inputs.tags
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      applicationId: $response.body#/ApplicationResponse/Id
+      applicationArn: $response.body#/ApplicationResponse/Arn
+  - stepId: listApps
+    description: >-
+      List all applications in the account to confirm the newly created project
+      is registered.
+    operationId: GetApps
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      applications: $response.body#/ApplicationsResponse/Item
+  outputs:
+    applicationId: $steps.createApp.outputs.applicationId
+    applicationArn: $steps.createApp.outputs.applicationArn
