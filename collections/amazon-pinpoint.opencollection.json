@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon Pinpoint API",
+    "version": "2016-12-01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Applications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon Pinpoint List Applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pinpoint.{region}.amazonaws.com/v1/apps"
+          },
+          "docs": "Retrieves information about all applications associated with your account."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Create an Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://pinpoint.{region}.amazonaws.com/v1/apps",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Pinpoint application (project)."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Application Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pinpoint.{region}.amazonaws.com/v1/apps/:application-id",
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves information about an application."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
