@@ -61,7 +61,7 @@ apis:
         url: https://aws.amazon.com/pinpoint/faqs/
       - type: Features
         url: https://aws.amazon.com/pinpoint/features/
-      - type: Quotas
+      - type: RateLimits
         url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html
       - type: Authentication
         url: https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html
@@ -70,66 +70,63 @@ apis:
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/amazon-pinpoint/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/amazon-pinpoint-batch-update-endpoints-send-workflow.yml
-        name: Amazon Pinpoint Batch Update Endpoints and Send
-        summary: Upsert a batch of endpoints then send a direct message to the project.
-      - url: arazzo/amazon-pinpoint-build-segment-campaign-workflow.yml
-        name: Amazon Pinpoint Build Segment and Campaign
-        summary: Create a project, define an audience segment, then launch a campaign targeting it.
-      - url: arazzo/amazon-pinpoint-configure-event-stream-workflow.yml
-        name: Amazon Pinpoint Configure Event Stream
-        summary: Attach a Kinesis event stream to a project then read it back to confirm.
-      - url: arazzo/amazon-pinpoint-launch-campaign-await-status-workflow.yml
-        name: Amazon Pinpoint Launch Campaign and Await Status
-        summary: Create a campaign then poll its status until it leaves the scheduled state.
-      - url: arazzo/amazon-pinpoint-launch-journey-workflow.yml
-        name: Amazon Pinpoint Launch Journey
-        summary: Create a draft journey then activate it by updating its state to ACTIVE.
-      - url: arazzo/amazon-pinpoint-message-user-across-endpoints-workflow.yml
-        name: Amazon Pinpoint Message User Across Endpoints
-        summary: Look up all endpoints for a user then send them a message across every channel.
-      - url: arazzo/amazon-pinpoint-pause-active-journey-workflow.yml
-        name: Amazon Pinpoint Pause Active Journey
-        summary: Activate a draft journey then immediately pause it for review.
-      - url: arazzo/amazon-pinpoint-provision-journey-end-to-end-workflow.yml
-        name: Amazon Pinpoint Provision Journey End to End
-        summary: Create a project, define a segment, build a journey on it, and activate it.
-      - url: arazzo/amazon-pinpoint-provision-project-with-settings-workflow.yml
-        name: Amazon Pinpoint Provision Project with Settings
-        summary: Create a project then apply its default campaign limits and quiet time settings.
-      - url: arazzo/amazon-pinpoint-provision-project-workflow.yml
-        name: Amazon Pinpoint Provision Project
-        summary: Create a Pinpoint application then verify it appears in the account application list.
-      - url: arazzo/amazon-pinpoint-publish-and-activate-template-workflow.yml
-        name: Amazon Pinpoint Publish and Activate Template
-        summary: Create an SMS template then promote a chosen version to the active version.
-      - url: arazzo/amazon-pinpoint-publish-in-app-template-workflow.yml
-        name: Amazon Pinpoint Publish In-App Template
-        summary: Create an in-app message template then read it back to confirm it was stored.
-      - url: arazzo/amazon-pinpoint-publish-voice-template-workflow.yml
-        name: Amazon Pinpoint Publish Voice Template
-        summary: Create a voice message template then promote a version to active.
-      - url: arazzo/amazon-pinpoint-push-template-campaign-workflow.yml
-        name: Amazon Pinpoint Push Template Campaign
-        summary: Create a push notification template then launch a campaign that uses it.
-      - url: arazzo/amazon-pinpoint-reversion-segment-campaign-workflow.yml
-        name: Amazon Pinpoint Reversion Segment and Campaign
-        summary: Update a segment's dimensions then repoint a campaign at the new segment version.
-      - url: arazzo/amazon-pinpoint-send-and-verify-otp-workflow.yml
-        name: Amazon Pinpoint Send and Verify OTP
-        summary: Send a one-time passcode to a recipient then verify the code they supply.
-      - url: arazzo/amazon-pinpoint-stage-or-launch-campaign-workflow.yml
-        name: Amazon Pinpoint Stage or Launch Campaign
-        summary: Create a paused campaign then branch to launch it or leave it staged for review.
-      - url: arazzo/amazon-pinpoint-template-driven-campaign-workflow.yml
-        name: Amazon Pinpoint Template Driven Campaign
-        summary: Create an email message template then launch a campaign that uses it.
-      - url: arazzo/amazon-pinpoint-update-endpoint-send-message-workflow.yml
-        name: Amazon Pinpoint Update Endpoint and Send Message
-        summary: Register or update an endpoint, then send a direct message to it.
+  - type: Arazzo
+    url: arazzo/amazon-pinpoint-batch-update-endpoints-send-workflow.yml
+    name: Amazon Pinpoint Batch Update Endpoints and Send
+  - type: Arazzo
+    url: arazzo/amazon-pinpoint-build-segment-campaign-workflow.yml
+    name: Amazon Pinpoint Build Segment and Campaign
+  - type: Arazzo
+    url: arazzo/amazon-pinpoint-configure-event-stream-workflow.yml
+    name: Amazon Pinpoint Configure Event Stream
+  - type: Arazzo
+    url: arazzo/amazon-pinpoint-launch-campaign-await-status-workflow.yml
+    name: Amazon Pinpoint Launch Campaign and Await Status
+  - type: Arazzo
+    url: arazzo/amazon-pinpoint-launch-journey-workflow.yml
+    name: Amazon Pinpoint Launch Journey
+  - type: Arazzo
+    url: arazzo/amazon-pinpoint-message-user-across-endpoints-workflow.yml
+    name: Amazon Pinpoint Message User Across Endpoints
+  - type: Arazzo
+    url: arazzo/amazon-pinpoint-pause-active-journey-workflow.yml
+    name: Amazon Pinpoint Pause Active Journey
+  - type: Arazzo
+    url: arazzo/amazon-pinpoint-provision-journey-end-to-end-workflow.yml
+    name: Amazon Pinpoint Provision Journey End to End
+  - type: Arazzo
+    url: arazzo/amazon-pinpoint-provision-project-with-settings-workflow.yml
+    name: Amazon Pinpoint Provision Project with Settings
+  - type: Arazzo
+    url: arazzo/amazon-pinpoint-provision-project-workflow.yml
+    name: Amazon Pinpoint Provision Project
+  - type: Arazzo
+    url: arazzo/amazon-pinpoint-publish-and-activate-template-workflow.yml
+    name: Amazon Pinpoint Publish and Activate Template
+  - type: Arazzo
+    url: arazzo/amazon-pinpoint-publish-in-app-template-workflow.yml
+    name: Amazon Pinpoint Publish In-App Template
+  - type: Arazzo
+    url: arazzo/amazon-pinpoint-publish-voice-template-workflow.yml
+    name: Amazon Pinpoint Publish Voice Template
+  - type: Arazzo
+    url: arazzo/amazon-pinpoint-push-template-campaign-workflow.yml
+    name: Amazon Pinpoint Push Template Campaign
+  - type: Arazzo
+    url: arazzo/amazon-pinpoint-reversion-segment-campaign-workflow.yml
+    name: Amazon Pinpoint Reversion Segment and Campaign
+  - type: Arazzo
+    url: arazzo/amazon-pinpoint-send-and-verify-otp-workflow.yml
+    name: Amazon Pinpoint Send and Verify OTP
+  - type: Arazzo
+    url: arazzo/amazon-pinpoint-stage-or-launch-campaign-workflow.yml
+    name: Amazon Pinpoint Stage or Launch Campaign
+  - type: Arazzo
+    url: arazzo/amazon-pinpoint-template-driven-campaign-workflow.yml
+    name: Amazon Pinpoint Template Driven Campaign
+  - type: Arazzo
+    url: arazzo/amazon-pinpoint-update-endpoint-send-message-workflow.yml
+    name: Amazon Pinpoint Update Endpoint and Send Message
   - type: Portal
     url: https://console.aws.amazon.com/pinpoint/
   - type: Blog
@@ -138,7 +135,7 @@ common:
     url: https://aws.amazon.com/premiumsupport/
   - type: CLI
     url: https://docs.aws.amazon.com/cli/latest/reference/pinpoint/
-  - type: SDK
+  - type: SDKs
     url: https://aws.amazon.com/tools/
   - type: StatusPage
     url: https://status.aws.amazon.com/
@@ -154,7 +151,7 @@ common:
     url: https://aws.amazon.com/pinpoint/getting-started/
   - type: FAQ
     url: https://aws.amazon.com/pinpoint/faqs/
-  - type: SignUp
+  - type: Signup
     url: https://portal.aws.amazon.com/billing/signup
   - type: GitHubOrganization
     url: https://github.com/aws
@@ -2056,171 +2053,171 @@ common:
     url: json-structure/amazon-pinpoint-write-segment-request-structure.json
   - type: JSONStructure
     url: json-structure/amazon-pinpoint-write-treatment-resource-structure.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-activity-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-android-push-notification-template-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-apns-channel-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-applications-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-attributes-resource-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-baidu-channel-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-campaign-date-range-kpi-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-campaign-hook-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-campaign-state-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-create-campaign-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-create-sms-template-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-create-voice-template-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-delete-campaign-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-delete-email-channel-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-delete-journey-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-delete-sms-template-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-delete-voice-channel-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-direct-message-configuration-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-email-message-activity-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-email-template-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-endpoint-demographic-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-endpoint-message-result-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-events-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-export-jobs-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-gcm-message-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-get-adm-channel-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-get-apns-voip-channel-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-get-apns-voip-sandbox-channel-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-get-campaign-activities-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-get-campaign-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-get-campaigns-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-get-email-template-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-get-gcm-channel-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-get-import-jobs-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-get-in-app-messages-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-get-push-template-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-get-recommender-configurations-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-get-segment-versions-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-get-sms-channel-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-gps-coordinates-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-holdout-activity-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-import-job-resource-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-in-app-messages-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-journey-email-message-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-journey-execution-activity-metrics-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-journey-limits-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-journey-state-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-list-journeys-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-list-recommender-configurations-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-message-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-number-validate-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-open-hours-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-open-hours-rule-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-phone-number-validate-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-random-split-entry-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-result-row-value-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-segment-group-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-segment-location-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-send-messages-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-send-otp-message-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-send-otp-message-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-send-users-message-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-session-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-set-dimension-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-simple-condition-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-tag-resource-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-template-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-template-versions-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-treatment-resource-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-update-apns-channel-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-update-campaign-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-update-email-channel-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-update-email-template-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-update-in-app-template-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-update-journey-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-update-recommender-configuration-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-update-recommender-configuration-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-update-sms-template-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-verify-otp-message-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-voice-template-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-wait-time-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-write-event-stream-example.json
-  - type: Example
+  - type: Examples
     url: examples/amazon-pinpoint-write-segment-request-example.json
 maintainers:
   - FN: Kin Lane
