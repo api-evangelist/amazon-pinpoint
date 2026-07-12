@@ -68,6 +68,12 @@ apis:
       - type: RateLimits
         url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html
 common:
+  - type: VulnerabilityDisclosure
+    url: security/amazon-pinpoint-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/amazon-pinpoint-domain-security.yml
+  - type: Authentication
+    url: authentication/amazon-pinpoint-authentication.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/amazon-pinpoint/overview
   - type: Arazzo
