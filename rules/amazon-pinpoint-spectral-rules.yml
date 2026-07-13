@@ -1,6 +1,22 @@
+# amazon-pinpoint — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 60% of servers already https (warn)
+#   - path-params-casing: kebab @ 99% (n=152)
+#   - query-params-casing: kebab @ 57% (n=67)
+#   - operationid-casing: pascal @ 100% (n=122)
+#   - schema-names-casing: pascal @ 98% (n=528)
+#   - schema-properties-casing: pascal @ 97% (n=1305)
+#   - security: global (root) — NOT emitting operation-security-required
+#   - error-schema-defined: InternalServerErrorException
+#   - merge: kept 35 existing, added 4 measured, upgraded 0
+#   - added: query-params-casing, schema-names-casing, schema-properties-casing, error-schema-defined
+extends:
+  - spectral:oas
 rules:
-
-  # INFO / METADATA
   info-title-contains-amazon-pinpoint:
     description: API title must reference Amazon Pinpoint
     message: Info title should contain 'Amazon Pinpoint'
@@ -9,8 +25,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "Amazon Pinpoint"
-
+        match: Amazon Pinpoint
   info-description-required:
     description: API must have a description
     message: Info object must have a description
@@ -19,7 +34,6 @@ rules:
     then:
       field: description
       function: truthy
-
   info-version-required:
     description: API version must be defined
     message: Info object must have a version
@@ -28,7 +42,6 @@ rules:
     then:
       field: version
       function: truthy
-
   info-contact-required:
     description: API must provide contact information
     message: Info object should have contact information
@@ -37,8 +50,6 @@ rules:
     then:
       field: contact
       function: truthy
-
-  # OPENAPI VERSION
   openapi-version-3:
     description: API should use OpenAPI 3.x
     message: Spec must use OpenAPI 3.0 or higher
@@ -47,9 +58,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^3\\."
-
-  # SERVERS
+        match: ^3\.
   servers-defined:
     description: Servers must be defined
     message: At least one server must be defined
@@ -58,7 +67,6 @@ rules:
     then:
       field: servers
       function: truthy
-
   servers-https:
     description: All server URLs must use HTTPS
     message: Server URL must use HTTPS
@@ -67,43 +75,37 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^https"
-
-  # PATHS
+        match: ^https
   paths-kebab-case:
     description: Path segments must use kebab-case
     message: Path segments must use kebab-case (lowercase, hyphens allowed)
     severity: warn
     given: $.paths
     then:
-      field: "@key"
+      field: '@key'
       function: pattern
       functionOptions:
-        match: "^(/[a-z0-9{}_/-]+)+$"
-
+        match: ^(/[a-z0-9{}_/-]+)+$
   paths-no-trailing-slash:
     description: Paths must not have trailing slashes
     message: Path must not end with a slash
     severity: warn
     given: $.paths
     then:
-      field: "@key"
+      field: '@key'
       function: pattern
       functionOptions:
-        notMatch: "/$"
-
+        notMatch: /$
   paths-v1-prefix:
     description: All paths must start with /v1/
     message: Paths must be prefixed with /v1/
     severity: info
     given: $.paths
     then:
-      field: "@key"
+      field: '@key'
       function: pattern
       functionOptions:
-        match: "^/v1/"
-
-  # OPERATIONS
+        match: ^/v1/
   operation-summary-required:
     description: All operations must have a summary
     message: Operation must have a summary
@@ -112,7 +114,6 @@ rules:
     then:
       field: summary
       function: truthy
-
   operation-summary-amazon-pinpoint-prefix:
     description: Summaries must begin with 'Amazon Pinpoint'
     message: Operation summary must start with 'Amazon Pinpoint'
@@ -121,8 +122,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^Amazon Pinpoint"
-
+        match: ^Amazon Pinpoint
   operation-description-required:
     description: All operations must have a description
     message: Operation must have a description
@@ -131,7 +131,6 @@ rules:
     then:
       field: description
       function: truthy
-
   operation-id-required:
     description: All operations must have an operationId
     message: Operation must have an operationId
@@ -140,7 +139,6 @@ rules:
     then:
       field: operationId
       function: truthy
-
   operation-id-pascal-case:
     description: OperationId must use PascalCase
     message: OperationId must be in PascalCase format
@@ -149,8 +147,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^[A-Z][a-zA-Z0-9]+$"
-
+        match: ^[A-Z][a-zA-Z0-9]+$
   operation-tags-required:
     description: All operations must have tags
     message: Operation must have at least one tag
@@ -159,8 +156,6 @@ rules:
     then:
       field: tags
       function: truthy
-
-  # TAGS
   tags-global-defined:
     description: Global tags must be defined
     message: Global tags array should be defined
@@ -169,7 +164,6 @@ rules:
     then:
       field: tags
       function: truthy
-
   tags-title-case:
     description: Tag names must use Title Case
     message: Tag name must use Title Case
@@ -178,8 +172,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^[A-Z]"
-
+        match: ^[A-Z]
   tags-description-required:
     description: Tags must have descriptions
     message: Tag must have a description
@@ -188,8 +181,6 @@ rules:
     then:
       field: description
       function: truthy
-
-  # PARAMETERS
   parameter-description-required:
     description: All parameters must have descriptions
     message: Parameter must have a description
@@ -198,7 +189,6 @@ rules:
     then:
       field: description
       function: truthy
-
   parameter-schema-required:
     description: All parameters must have a schema
     message: Parameter must have a schema
@@ -207,8 +197,6 @@ rules:
     then:
       field: schema
       function: truthy
-
-  # REQUEST BODIES
   request-body-description:
     description: Request bodies should have descriptions
     message: Request body should have a description
@@ -217,7 +205,6 @@ rules:
     then:
       field: description
       function: truthy
-
   request-body-json-content:
     description: Request bodies should support application/json
     message: Request body should have application/json content type
@@ -226,8 +213,6 @@ rules:
     then:
       field: application/json
       function: truthy
-
-  # RESPONSES
   response-success-required:
     description: All operations must have a success response
     message: Operation must define at least one 2xx response
@@ -236,7 +221,6 @@ rules:
     then:
       field: responses
       function: truthy
-
   response-description-required:
     description: All responses must have descriptions
     message: Response must have a description
@@ -245,26 +229,22 @@ rules:
     then:
       field: description
       function: truthy
-
   response-401-defined:
     description: Operations should define 401 unauthorized responses
     message: Operation should define a 401 Unauthorized response
     severity: info
     given: $.paths[*][get,post,put,patch,delete].responses
     then:
-      field: "401"
+      field: '401'
       function: truthy
-
   response-404-defined:
     description: Operations should define 404 not found responses
     message: Operation should define a 404 Not Found response
     severity: info
     given: $.paths[*][get,put,patch,delete].responses
     then:
-      field: "404"
+      field: '404'
       function: truthy
-
-  # SCHEMAS
   schema-property-description:
     description: Schema properties should have descriptions
     message: Schema property should have a description
@@ -273,7 +253,6 @@ rules:
     then:
       field: description
       function: truthy
-
   schema-type-defined:
     description: Schemas must define a type
     message: Schema must have a type defined
@@ -282,8 +261,6 @@ rules:
     then:
       field: type
       function: truthy
-
-  # SECURITY
   security-schemes-defined:
     description: Security schemes must be defined
     message: Components must define securitySchemes
@@ -292,7 +269,6 @@ rules:
     then:
       field: securitySchemes
       function: truthy
-
   security-global-defined:
     description: Global security must be defined
     message: Global security requirements should be defined
@@ -301,8 +277,6 @@ rules:
     then:
       field: security
       function: truthy
-
-  # HTTP METHOD CONVENTIONS
   get-no-request-body:
     description: GET operations must not have a request body
     message: GET operations must not have a request body
@@ -311,7 +285,6 @@ rules:
     then:
       field: requestBody
       function: falsy
-
   delete-no-request-body:
     description: DELETE operations should not have a request body
     message: DELETE operations should not have a request body
@@ -320,8 +293,6 @@ rules:
     then:
       field: requestBody
       function: falsy
-
-  # GENERAL QUALITY
   no-empty-descriptions:
     description: Descriptions must not be empty strings
     message: Description must not be empty
@@ -329,7 +300,6 @@ rules:
     given: $..description
     then:
       function: truthy
-
   operation-examples-encouraged:
     description: Operations should provide examples for responses
     message: Consider adding examples to operation responses
@@ -337,4 +307,38 @@ rules:
     given: $.paths[*][*].responses[*].content[*]
     then:
       field: examples
+      function: truthy
+  query-params-casing:
+    description: Query parameters should be kebab-case (the dominant convention in this API).
+    severity: info
+    given: $.paths[*][get,post,put,patch,delete].parameters[?(@.in=='query')]
+    then:
+      field: name
+      function: casing
+      functionOptions:
+        type: kebab
+  schema-names-casing:
+    description: Component schema names should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: ^[A-Z][A-Za-z0-9]*$
+  schema-properties-casing:
+    description: Schema properties should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: ^[A-Z][A-Za-z0-9]*$
+  error-schema-defined:
+    description: A shared error schema (InternalServerErrorException) should be defined for error payloads.
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: InternalServerErrorException
       function: truthy
