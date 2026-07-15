@@ -68,6 +68,8 @@ apis:
       - type: RateLimits
         url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html
 common:
+  - type: AgenticAccess
+    url: agentic-access/amazon-pinpoint-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/amazon-pinpoint-vulnerability-disclosure.yml
   - type: DomainSecurity
