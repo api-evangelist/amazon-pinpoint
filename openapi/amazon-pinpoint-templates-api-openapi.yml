@@ -1,0 +1,3140 @@
+openapi: 3.0.0
+info:
+  version: 2016-12-01
+  x-release: v4
+  title: Amazon Pinpoint Applications Templates API
+  description: Doc Engage API - Amazon Pinpoint API
+  x-logo:
+    url: https://api.apis.guru/v2/cache/logo/https_twitter.com_awscloud_profile_image.png
+    backgroundColor: '#FFFFFF'
+  termsOfService: https://aws.amazon.com/service-terms/
+  contact:
+    name: Mike Ralphson
+    email: mike.ralphson@gmail.com
+    url: https://github.com/mermade/aws2openapi
+    x-twitter: PermittedSoc
+  license:
+    name: Apache 2.0 License
+    url: http://www.apache.org/licenses/
+  x-providerName: amazonaws.com
+  x-serviceName: pinpoint
+  x-aws-signingName: mobiletargeting
+  x-origin:
+  - contentType: application/json
+    url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/pinpoint-2016-12-01.normal.json
+    converter:
+      url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
+    x-apisguru-driver: external
+  x-apiClientRegistration:
+    url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
+  x-apisguru-categories:
+  - cloud
+  x-preferred: true
+servers:
+- url: http://pinpoint.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The Amazon Pinpoint multi-region endpoint
+- url: https://pinpoint.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The Amazon Pinpoint multi-region endpoint
+- url: http://pinpoint.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The Amazon Pinpoint endpoint for China (Beijing) and China (Ningxia)
+- url: https://pinpoint.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The Amazon Pinpoint endpoint for China (Beijing) and China (Ningxia)
+security:
+- hmac: []
+tags:
+- name: Templates
+paths:
+  /v1/templates/{template-name}/email:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: CreateEmailTemplate
+      description: Creates a message template for messages that are sent through the email channel.
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateEmailTemplateResponse'
+        '480':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '481':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+        '482':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '483':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '484':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+      parameters:
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - EmailTemplateRequest
+              properties:
+                EmailTemplateRequest:
+                  description: Specifies the content and settings for a message template that can be used in messages that are sent through the email channel.
+                  type: object
+                  properties:
+                    DefaultSubstitutions:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: A JSON object that specifies the default values to use for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable. When you create a message that's based on the template, you can override these defaults with message-specific and address-specific variables and values.
+                    HtmlPart:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The message body, in HTML format, to use in email messages that are based on the message template. We recommend using HTML format for email clients that render HTML content. You can include links, formatted text, and more in an HTML message.
+                    RecommenderId:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The unique identifier for the recommender model to use for the message template. Amazon Pinpoint uses this value to determine how to retrieve and process data from a recommender model when it sends messages that use the template, if the template contains message variables for recommendation data.
+                    Subject:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The subject line, or title, to use in email messages that are based on the message template.
+                    tags:
+                      allOf:
+                      - $ref: '#/components/schemas/MapOf__string'
+                      - description: A string-to-string map of key-value pairs that defines the tags to associate with the message template. Each tag consists of a required tag key and an associated tag value.
+                    TemplateDescription:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: A custom description of the message template.
+                    TextPart:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The message body, in plain text format, to use in email messages that are based on the message template. We recommend using plain text format for email clients that don't render HTML content and clients that are connected to high-latency networks, such as mobile devices.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Create Email Template
+      tags:
+      - Templates
+    delete:
+      operationId: DeleteEmailTemplate
+      description: Deletes a message template for messages that were sent through the email channel.
+      responses:
+        '202':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteEmailTemplateResponse'
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '482':
+          description: PayloadTooLargeException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeException'
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+        '484':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+        '485':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '486':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+      parameters:
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        description: <p>The unique identifier for the version of the message template to update, retrieve information about, or delete. To retrieve identifiers and other information for all the versions of a template, use the <link  linkend="templates-template-name-template-type-versions">Template Versions</link> resource.</p> <p>If specified, this value must match the identifier for an existing template version. If specified for an update operation, this value must match the identifier for the latest existing version of the template. This restriction helps ensure that race conditions don't occur.</p> <p>If you don't specify a value for this parameter, Amazon Pinpoint does the following:</p> <ul><li><p>For a get operation, retrieves information about the active version of the template.</p></li> <li><p>For an update operation, saves the updates to (overwrites) the latest existing version of the template, if the create-new-version parameter isn't used or is set to false.</p></li> <li><p>For a delete operation, deletes the template, including all versions of the template.</p></li></ul>
+        schema:
+          type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Delete Email Template
+      tags:
+      - Templates
+    get:
+      operationId: GetEmailTemplate
+      description: Retrieves the content and settings of a message template for messages that are sent through the email channel.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetEmailTemplateResponse'
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '482':
+          description: PayloadTooLargeException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeException'
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+        '484':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+        '485':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '486':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+      parameters:
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        description: <p>The unique identifier for the version of the message template to update, retrieve information about, or delete. To retrieve identifiers and other information for all the versions of a template, use the <link  linkend="templates-template-name-template-type-versions">Template Versions</link> resource.</p> <p>If specified, this value must match the identifier for an existing template version. If specified for an update operation, this value must match the identifier for the latest existing version of the template. This restriction helps ensure that race conditions don't occur.</p> <p>If you don't specify a value for this parameter, Amazon Pinpoint does the following:</p> <ul><li><p>For a get operation, retrieves information about the active version of the template.</p></li> <li><p>For an update operation, saves the updates to (overwrites) the latest existing version of the template, if the create-new-version parameter isn't used or is set to false.</p></li> <li><p>For a delete operation, deletes the template, including all versions of the template.</p></li></ul>
+        schema:
+          type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Get Email Template
+      tags:
+      - Templates
+    put:
+      operationId: UpdateEmailTemplate
+      description: Updates an existing message template for messages that are sent through the email channel.
+      responses:
+        '202':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateEmailTemplateResponse'
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '482':
+          description: PayloadTooLargeException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeException'
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+        '484':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+        '485':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '486':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+      parameters:
+      - name: create-new-version
+        in: query
+        required: false
+        description: '<p>Specifies whether to save the updates as a new version of the message template. Valid values are: true, save the updates as a new version; and, false, save the updates to (overwrite) the latest existing version of the template.</p> <p>If you don''t specify a value for this parameter, Amazon Pinpoint saves the updates to (overwrites) the latest existing version of the template. If you specify a value of true for this parameter, don''t specify a value for the version parameter. Otherwise, an error will occur.</p>'
+        schema:
+          type: boolean
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        description: <p>The unique identifier for the version of the message template to update, retrieve information about, or delete. To retrieve identifiers and other information for all the versions of a template, use the <link  linkend="templates-template-name-template-type-versions">Template Versions</link> resource.</p> <p>If specified, this value must match the identifier for an existing template version. If specified for an update operation, this value must match the identifier for the latest existing version of the template. This restriction helps ensure that race conditions don't occur.</p> <p>If you don't specify a value for this parameter, Amazon Pinpoint does the following:</p> <ul><li><p>For a get operation, retrieves information about the active version of the template.</p></li> <li><p>For an update operation, saves the updates to (overwrites) the latest existing version of the template, if the create-new-version parameter isn't used or is set to false.</p></li> <li><p>For a delete operation, deletes the template, including all versions of the template.</p></li></ul>
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - EmailTemplateRequest
+              properties:
+                EmailTemplateRequest:
+                  description: Specifies the content and settings for a message template that can be used in messages that are sent through the email channel.
+                  type: object
+                  properties:
+                    DefaultSubstitutions:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: A JSON object that specifies the default values to use for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable. When you create a message that's based on the template, you can override these defaults with message-specific and address-specific variables and values.
+                    HtmlPart:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The message body, in HTML format, to use in email messages that are based on the message template. We recommend using HTML format for email clients that render HTML content. You can include links, formatted text, and more in an HTML message.
+                    RecommenderId:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The unique identifier for the recommender model to use for the message template. Amazon Pinpoint uses this value to determine how to retrieve and process data from a recommender model when it sends messages that use the template, if the template contains message variables for recommendation data.
+                    Subject:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The subject line, or title, to use in email messages that are based on the message template.
+                    tags:
+                      allOf:
+                      - $ref: '#/components/schemas/MapOf__string'
+                      - description: A string-to-string map of key-value pairs that defines the tags to associate with the message template. Each tag consists of a required tag key and an associated tag value.
+                    TemplateDescription:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: A custom description of the message template.
+                    TextPart:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The message body, in plain text format, to use in email messages that are based on the message template. We recommend using plain text format for email clients that don't render HTML content and clients that are connected to high-latency networks, such as mobile devices.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Update Email Template
+      tags:
+      - Templates
+  /v1/templates/{template-name}/inapp:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: CreateInAppTemplate
+      description: Creates a new message template for messages using the in-app message channel.
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateInAppTemplateResponse'
+        '480':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '481':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+        '482':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '483':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '484':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+      parameters:
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - InAppTemplateRequest
+              properties:
+                InAppTemplateRequest:
+                  description: InApp Template Request.
+                  type: object
+                  properties:
+                    Content:
+                      allOf:
+                      - $ref: '#/components/schemas/ListOfInAppMessageContent'
+                      - description: The content of the message, can include up to 5 modals. Each modal must contain a message, a header, and background color. ImageUrl and buttons are optional.
+                    CustomConfig:
+                      allOf:
+                      - $ref: '#/components/schemas/MapOf__string'
+                      - description: Custom config to be sent to client.
+                    Layout:
+                      allOf:
+                      - $ref: '#/components/schemas/Layout'
+                      - description: The layout of the message.
+                    tags:
+                      allOf:
+                      - $ref: '#/components/schemas/MapOf__string'
+                      - description: A string-to-string map of key-value pairs that defines the tags to associate with the message template. Each tag consists of a required tag key and an associated tag value.
+                    TemplateDescription:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The description of the template.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Create in App Template
+      tags:
+      - Templates
+    delete:
+      operationId: DeleteInAppTemplate
+      description: Deletes a message template for messages sent using the in-app message channel.
+      responses:
+        '202':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteInAppTemplateResponse'
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '482':
+          description: PayloadTooLargeException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeException'
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+        '484':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+        '485':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '486':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+      parameters:
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        description: <p>The unique identifier for the version of the message template to update, retrieve information about, or delete. To retrieve identifiers and other information for all the versions of a template, use the <link  linkend="templates-template-name-template-type-versions">Template Versions</link> resource.</p> <p>If specified, this value must match the identifier for an existing template version. If specified for an update operation, this value must match the identifier for the latest existing version of the template. This restriction helps ensure that race conditions don't occur.</p> <p>If you don't specify a value for this parameter, Amazon Pinpoint does the following:</p> <ul><li><p>For a get operation, retrieves information about the active version of the template.</p></li> <li><p>For an update operation, saves the updates to (overwrites) the latest existing version of the template, if the create-new-version parameter isn't used or is set to false.</p></li> <li><p>For a delete operation, deletes the template, including all versions of the template.</p></li></ul>
+        schema:
+          type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Delete in App Template
+      tags:
+      - Templates
+    get:
+      operationId: GetInAppTemplate
+      description: Retrieves the content and settings of a message template for messages sent through the in-app channel.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetInAppTemplateResponse'
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '482':
+          description: PayloadTooLargeException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeException'
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+        '484':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+        '485':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '486':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+      parameters:
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        description: <p>The unique identifier for the version of the message template to update, retrieve information about, or delete. To retrieve identifiers and other information for all the versions of a template, use the <link  linkend="templates-template-name-template-type-versions">Template Versions</link> resource.</p> <p>If specified, this value must match the identifier for an existing template version. If specified for an update operation, this value must match the identifier for the latest existing version of the template. This restriction helps ensure that race conditions don't occur.</p> <p>If you don't specify a value for this parameter, Amazon Pinpoint does the following:</p> <ul><li><p>For a get operation, retrieves information about the active version of the template.</p></li> <li><p>For an update operation, saves the updates to (overwrites) the latest existing version of the template, if the create-new-version parameter isn't used or is set to false.</p></li> <li><p>For a delete operation, deletes the template, including all versions of the template.</p></li></ul>
+        schema:
+          type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Get in App Template
+      tags:
+      - Templates
+    put:
+      operationId: UpdateInAppTemplate
+      description: Updates an existing message template for messages sent through the in-app message channel.
+      responses:
+        '202':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateInAppTemplateResponse'
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '482':
+          description: PayloadTooLargeException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeException'
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+        '484':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+        '485':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '486':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+      parameters:
+      - name: create-new-version
+        in: query
+        required: false
+        description: '<p>Specifies whether to save the updates as a new version of the message template. Valid values are: true, save the updates as a new version; and, false, save the updates to (overwrite) the latest existing version of the template.</p> <p>If you don''t specify a value for this parameter, Amazon Pinpoint saves the updates to (overwrites) the latest existing version of the template. If you specify a value of true for this parameter, don''t specify a value for the version parameter. Otherwise, an error will occur.</p>'
+        schema:
+          type: boolean
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        description: <p>The unique identifier for the version of the message template to update, retrieve information about, or delete. To retrieve identifiers and other information for all the versions of a template, use the <link  linkend="templates-template-name-template-type-versions">Template Versions</link> resource.</p> <p>If specified, this value must match the identifier for an existing template version. If specified for an update operation, this value must match the identifier for the latest existing version of the template. This restriction helps ensure that race conditions don't occur.</p> <p>If you don't specify a value for this parameter, Amazon Pinpoint does the following:</p> <ul><li><p>For a get operation, retrieves information about the active version of the template.</p></li> <li><p>For an update operation, saves the updates to (overwrites) the latest existing version of the template, if the create-new-version parameter isn't used or is set to false.</p></li> <li><p>For a delete operation, deletes the template, including all versions of the template.</p></li></ul>
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - InAppTemplateRequest
+              properties:
+                InAppTemplateRequest:
+                  description: InApp Template Request.
+                  type: object
+                  properties:
+                    Content:
+                      allOf:
+                      - $ref: '#/components/schemas/ListOfInAppMessageContent'
+                      - description: The content of the message, can include up to 5 modals. Each modal must contain a message, a header, and background color. ImageUrl and buttons are optional.
+                    CustomConfig:
+                      allOf:
+                      - $ref: '#/components/schemas/MapOf__string'
+                      - description: Custom config to be sent to client.
+                    Layout:
+                      allOf:
+                      - $ref: '#/components/schemas/Layout'
+                      - description: The layout of the message.
+                    tags:
+                      allOf:
+                      - $ref: '#/components/schemas/MapOf__string'
+                      - description: A string-to-string map of key-value pairs that defines the tags to associate with the message template. Each tag consists of a required tag key and an associated tag value.
+                    TemplateDescription:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The description of the template.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Update in App Template
+      tags:
+      - Templates
+  /v1/templates/{template-name}/push:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: CreatePushTemplate
+      description: Creates a message template for messages that are sent through a push notification channel.
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePushTemplateResponse'
+        '480':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '481':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+        '482':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '483':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '484':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+      parameters:
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - PushNotificationTemplateRequest
+              properties:
+                PushNotificationTemplateRequest:
+                  description: Specifies the content and settings for a message template that can be used in messages that are sent through a push notification channel.
+                  type: object
+                  properties:
+                    ADM:
+                      allOf:
+                      - $ref: '#/components/schemas/AndroidPushNotificationTemplate'
+                      - description: The message template to use for the ADM (Amazon Device Messaging) channel. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate).
+                    APNS:
+                      allOf:
+                      - $ref: '#/components/schemas/APNSPushNotificationTemplate'
+                      - description: The message template to use for the APNs (Apple Push Notification service) channel. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate).
+                    Baidu:
+                      allOf:
+                      - $ref: '#/components/schemas/AndroidPushNotificationTemplate'
+                      - description: The message template to use for the Baidu (Baidu Cloud Push) channel. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate).
+                    Default:
+                      allOf:
+                      - $ref: '#/components/schemas/DefaultPushNotificationTemplate'
+                      - description: The default message template to use for push notification channels.
+                    DefaultSubstitutions:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: A JSON object that specifies the default values to use for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable. When you create a message that's based on the template, you can override these defaults with message-specific and address-specific variables and values.
+                    GCM:
+                      allOf:
+                      - $ref: '#/components/schemas/AndroidPushNotificationTemplate'
+                      - description: The message template to use for the GCM channel, which is used to send notifications through the Firebase Cloud Messaging (FCM), formerly Google Cloud Messaging (GCM), service. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate).
+                    RecommenderId:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The unique identifier for the recommender model to use for the message template. Amazon Pinpoint uses this value to determine how to retrieve and process data from a recommender model when it sends messages that use the template, if the template contains message variables for recommendation data.
+                    tags:
+                      allOf:
+                      - $ref: '#/components/schemas/MapOf__string'
+                      - description: A string-to-string map of key-value pairs that defines the tags to associate with the message template. Each tag consists of a required tag key and an associated tag value.
+                    TemplateDescription:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: A custom description of the message template.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Create Push Template
+      tags:
+      - Templates
+    delete:
+      operationId: DeletePushTemplate
+      description: Deletes a message template for messages that were sent through a push notification channel.
+      responses:
+        '202':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletePushTemplateResponse'
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '482':
+          description: PayloadTooLargeException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeException'
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+        '484':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+        '485':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '486':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+      parameters:
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        description: <p>The unique identifier for the version of the message template to update, retrieve information about, or delete. To retrieve identifiers and other information for all the versions of a template, use the <link  linkend="templates-template-name-template-type-versions">Template Versions</link> resource.</p> <p>If specified, this value must match the identifier for an existing template version. If specified for an update operation, this value must match the identifier for the latest existing version of the template. This restriction helps ensure that race conditions don't occur.</p> <p>If you don't specify a value for this parameter, Amazon Pinpoint does the following:</p> <ul><li><p>For a get operation, retrieves information about the active version of the template.</p></li> <li><p>For an update operation, saves the updates to (overwrites) the latest existing version of the template, if the create-new-version parameter isn't used or is set to false.</p></li> <li><p>For a delete operation, deletes the template, including all versions of the template.</p></li></ul>
+        schema:
+          type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Delete Push Template
+      tags:
+      - Templates
+    get:
+      operationId: GetPushTemplate
+      description: Retrieves the content and settings of a message template for messages that are sent through a push notification channel.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPushTemplateResponse'
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '482':
+          description: PayloadTooLargeException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeException'
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+        '484':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+        '485':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '486':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+      parameters:
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        description: <p>The unique identifier for the version of the message template to update, retrieve information about, or delete. To retrieve identifiers and other information for all the versions of a template, use the <link  linkend="templates-template-name-template-type-versions">Template Versions</link> resource.</p> <p>If specified, this value must match the identifier for an existing template version. If specified for an update operation, this value must match the identifier for the latest existing version of the template. This restriction helps ensure that race conditions don't occur.</p> <p>If you don't specify a value for this parameter, Amazon Pinpoint does the following:</p> <ul><li><p>For a get operation, retrieves information about the active version of the template.</p></li> <li><p>For an update operation, saves the updates to (overwrites) the latest existing version of the template, if the create-new-version parameter isn't used or is set to false.</p></li> <li><p>For a delete operation, deletes the template, including all versions of the template.</p></li></ul>
+        schema:
+          type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Get Push Template
+      tags:
+      - Templates
+    put:
+      operationId: UpdatePushTemplate
+      description: Updates an existing message template for messages that are sent through a push notification channel.
+      responses:
+        '202':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePushTemplateResponse'
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '482':
+          description: PayloadTooLargeException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeException'
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+        '484':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+        '485':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '486':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+      parameters:
+      - name: create-new-version
+        in: query
+        required: false
+        description: '<p>Specifies whether to save the updates as a new version of the message template. Valid values are: true, save the updates as a new version; and, false, save the updates to (overwrite) the latest existing version of the template.</p> <p>If you don''t specify a value for this parameter, Amazon Pinpoint saves the updates to (overwrites) the latest existing version of the template. If you specify a value of true for this parameter, don''t specify a value for the version parameter. Otherwise, an error will occur.</p>'
+        schema:
+          type: boolean
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        description: <p>The unique identifier for the version of the message template to update, retrieve information about, or delete. To retrieve identifiers and other information for all the versions of a template, use the <link  linkend="templates-template-name-template-type-versions">Template Versions</link> resource.</p> <p>If specified, this value must match the identifier for an existing template version. If specified for an update operation, this value must match the identifier for the latest existing version of the template. This restriction helps ensure that race conditions don't occur.</p> <p>If you don't specify a value for this parameter, Amazon Pinpoint does the following:</p> <ul><li><p>For a get operation, retrieves information about the active version of the template.</p></li> <li><p>For an update operation, saves the updates to (overwrites) the latest existing version of the template, if the create-new-version parameter isn't used or is set to false.</p></li> <li><p>For a delete operation, deletes the template, including all versions of the template.</p></li></ul>
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - PushNotificationTemplateRequest
+              properties:
+                PushNotificationTemplateRequest:
+                  description: Specifies the content and settings for a message template that can be used in messages that are sent through a push notification channel.
+                  type: object
+                  properties:
+                    ADM:
+                      allOf:
+                      - $ref: '#/components/schemas/AndroidPushNotificationTemplate'
+                      - description: The message template to use for the ADM (Amazon Device Messaging) channel. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate).
+                    APNS:
+                      allOf:
+                      - $ref: '#/components/schemas/APNSPushNotificationTemplate'
+                      - description: The message template to use for the APNs (Apple Push Notification service) channel. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate).
+                    Baidu:
+                      allOf:
+                      - $ref: '#/components/schemas/AndroidPushNotificationTemplate'
+                      - description: The message template to use for the Baidu (Baidu Cloud Push) channel. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate).
+                    Default:
+                      allOf:
+                      - $ref: '#/components/schemas/DefaultPushNotificationTemplate'
+                      - description: The default message template to use for push notification channels.
+                    DefaultSubstitutions:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: A JSON object that specifies the default values to use for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable. When you create a message that's based on the template, you can override these defaults with message-specific and address-specific variables and values.
+                    GCM:
+                      allOf:
+                      - $ref: '#/components/schemas/AndroidPushNotificationTemplate'
+                      - description: The message template to use for the GCM channel, which is used to send notifications through the Firebase Cloud Messaging (FCM), formerly Google Cloud Messaging (GCM), service. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate).
+                    RecommenderId:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The unique identifier for the recommender model to use for the message template. Amazon Pinpoint uses this value to determine how to retrieve and process data from a recommender model when it sends messages that use the template, if the template contains message variables for recommendation data.
+                    tags:
+                      allOf:
+                      - $ref: '#/components/schemas/MapOf__string'
+                      - description: A string-to-string map of key-value pairs that defines the tags to associate with the message template. Each tag consists of a required tag key and an associated tag value.
+                    TemplateDescription:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: A custom description of the message template.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Update Push Template
+      tags:
+      - Templates
+  /v1/templates/{template-name}/sms:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: CreateSmsTemplate
+      description: Creates a message template for messages that are sent through the SMS channel.
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateSmsTemplateResponse'
+        '480':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '481':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+        '482':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '483':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '484':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+      parameters:
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - SMSTemplateRequest
+              properties:
+                SMSTemplateRequest:
+                  description: Specifies the content and settings for a message template that can be used in text messages that are sent through the SMS channel.
+                  type: object
+                  properties:
+                    Body:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The message body to use in text messages that are based on the message template.
+                    DefaultSubstitutions:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: A JSON object that specifies the default values to use for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable. When you create a message that's based on the template, you can override these defaults with message-specific and address-specific variables and values.
+                    RecommenderId:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The unique identifier for the recommender model to use for the message template. Amazon Pinpoint uses this value to determine how to retrieve and process data from a recommender model when it sends messages that use the template, if the template contains message variables for recommendation data.
+                    tags:
+                      allOf:
+                      - $ref: '#/components/schemas/MapOf__string'
+                      - description: A string-to-string map of key-value pairs that defines the tags to associate with the message template. Each tag consists of a required tag key and an associated tag value.
+                    TemplateDescription:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: A custom description of the message template.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Create Sms Template
+      tags:
+      - Templates
+    delete:
+      operationId: DeleteSmsTemplate
+      description: Deletes a message template for messages that were sent through the SMS channel.
+      responses:
+        '202':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteSmsTemplateResponse'
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '482':
+          description: PayloadTooLargeException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeException'
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+        '484':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+        '485':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '486':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+      parameters:
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        description: <p>The unique identifier for the version of the message template to update, retrieve information about, or delete. To retrieve identifiers and other information for all the versions of a template, use the <link  linkend="templates-template-name-template-type-versions">Template Versions</link> resource.</p> <p>If specified, this value must match the identifier for an existing template version. If specified for an update operation, this value must match the identifier for the latest existing version of the template. This restriction helps ensure that race conditions don't occur.</p> <p>If you don't specify a value for this parameter, Amazon Pinpoint does the following:</p> <ul><li><p>For a get operation, retrieves information about the active version of the template.</p></li> <li><p>For an update operation, saves the updates to (overwrites) the latest existing version of the template, if the create-new-version parameter isn't used or is set to false.</p></li> <li><p>For a delete operation, deletes the template, including all versions of the template.</p></li></ul>
+        schema:
+          type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Delete Sms Template
+      tags:
+      - Templates
+    get:
+      operationId: GetSmsTemplate
+      description: Retrieves the content and settings of a message template for messages that are sent through the SMS channel.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSmsTemplateResponse'
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '482':
+          description: PayloadTooLargeException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeException'
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+        '484':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+        '485':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '486':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+      parameters:
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        description: <p>The unique identifier for the version of the message template to update, retrieve information about, or delete. To retrieve identifiers and other information for all the versions of a template, use the <link  linkend="templates-template-name-template-type-versions">Template Versions</link> resource.</p> <p>If specified, this value must match the identifier for an existing template version. If specified for an update operation, this value must match the identifier for the latest existing version of the template. This restriction helps ensure that race conditions don't occur.</p> <p>If you don't specify a value for this parameter, Amazon Pinpoint does the following:</p> <ul><li><p>For a get operation, retrieves information about the active version of the template.</p></li> <li><p>For an update operation, saves the updates to (overwrites) the latest existing version of the template, if the create-new-version parameter isn't used or is set to false.</p></li> <li><p>For a delete operation, deletes the template, including all versions of the template.</p></li></ul>
+        schema:
+          type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Get Sms Template
+      tags:
+      - Templates
+    put:
+      operationId: UpdateSmsTemplate
+      description: Updates an existing message template for messages that are sent through the SMS channel.
+      responses:
+        '202':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateSmsTemplateResponse'
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '482':
+          description: PayloadTooLargeException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeException'
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+        '484':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+        '485':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '486':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+      parameters:
+      - name: create-new-version
+        in: query
+        required: false
+        description: '<p>Specifies whether to save the updates as a new version of the message template. Valid values are: true, save the updates as a new version; and, false, save the updates to (overwrite) the latest existing version of the template.</p> <p>If you don''t specify a value for this parameter, Amazon Pinpoint saves the updates to (overwrites) the latest existing version of the template. If you specify a value of true for this parameter, don''t specify a value for the version parameter. Otherwise, an error will occur.</p>'
+        schema:
+          type: boolean
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        description: <p>The unique identifier for the version of the message template to update, retrieve information about, or delete. To retrieve identifiers and other information for all the versions of a template, use the <link  linkend="templates-template-name-template-type-versions">Template Versions</link> resource.</p> <p>If specified, this value must match the identifier for an existing template version. If specified for an update operation, this value must match the identifier for the latest existing version of the template. This restriction helps ensure that race conditions don't occur.</p> <p>If you don't specify a value for this parameter, Amazon Pinpoint does the following:</p> <ul><li><p>For a get operation, retrieves information about the active version of the template.</p></li> <li><p>For an update operation, saves the updates to (overwrites) the latest existing version of the template, if the create-new-version parameter isn't used or is set to false.</p></li> <li><p>For a delete operation, deletes the template, including all versions of the template.</p></li></ul>
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - SMSTemplateRequest
+              properties:
+                SMSTemplateRequest:
+                  description: Specifies the content and settings for a message template that can be used in text messages that are sent through the SMS channel.
+                  type: object
+                  properties:
+                    Body:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The message body to use in text messages that are based on the message template.
+                    DefaultSubstitutions:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: A JSON object that specifies the default values to use for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable. When you create a message that's based on the template, you can override these defaults with message-specific and address-specific variables and values.
+                    RecommenderId:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The unique identifier for the recommender model to use for the message template. Amazon Pinpoint uses this value to determine how to retrieve and process data from a recommender model when it sends messages that use the template, if the template contains message variables for recommendation data.
+                    tags:
+                      allOf:
+                      - $ref: '#/components/schemas/MapOf__string'
+                      - description: A string-to-string map of key-value pairs that defines the tags to associate with the message template. Each tag consists of a required tag key and an associated tag value.
+                    TemplateDescription:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: A custom description of the message template.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Update Sms Template
+      tags:
+      - Templates
+  /v1/templates/{template-name}/voice:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: CreateVoiceTemplate
+      description: Creates a message template for messages that are sent through the voice channel.
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateVoiceTemplateResponse'
+        '480':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '481':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+        '482':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '483':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '484':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+      parameters:
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - VoiceTemplateRequest
+              properties:
+                VoiceTemplateRequest:
+                  description: Specifies the content and settings for a message template that can be used in messages that are sent through the voice channel.
+                  type: object
+                  properties:
+                    Body:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The text of the script to use in messages that are based on the message template, in plain text format.
+                    DefaultSubstitutions:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: A JSON object that specifies the default values to use for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable. When you create a message that's based on the template, you can override these defaults with message-specific and address-specific variables and values.
+                    LanguageCode:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The code for the language to use when synthesizing the text of the script in messages that are based on the message template. For a list of supported languages and the code for each one, see the <a href="https://docs.aws.amazon.com/polly/latest/dg/what-is.html">Amazon Polly Developer Guide</a>.
+                    tags:
+                      allOf:
+                      - $ref: '#/components/schemas/MapOf__string'
+                      - description: A string-to-string map of key-value pairs that defines the tags to associate with the message template. Each tag consists of a required tag key and an associated tag value.
+                    TemplateDescription:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: A custom description of the message template.
+                    VoiceId:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The name of the voice to use when delivering messages that are based on the message template. For a list of supported voices, see the <a href="https://docs.aws.amazon.com/polly/latest/dg/what-is.html">Amazon Polly Developer Guide</a>.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Create Voice Template
+      tags:
+      - Templates
+    delete:
+      operationId: DeleteVoiceTemplate
+      description: Deletes a message template for messages that were sent through the voice channel.
+      responses:
+        '202':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteVoiceTemplateResponse'
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '482':
+          description: PayloadTooLargeException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeException'
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+        '484':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+        '485':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '486':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+      parameters:
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        description: <p>The unique identifier for the version of the message template to update, retrieve information about, or delete. To retrieve identifiers and other information for all the versions of a template, use the <link  linkend="templates-template-name-template-type-versions">Template Versions</link> resource.</p> <p>If specified, this value must match the identifier for an existing template version. If specified for an update operation, this value must match the identifier for the latest existing version of the template. This restriction helps ensure that race conditions don't occur.</p> <p>If you don't specify a value for this parameter, Amazon Pinpoint does the following:</p> <ul><li><p>For a get operation, retrieves information about the active version of the template.</p></li> <li><p>For an update operation, saves the updates to (overwrites) the latest existing version of the template, if the create-new-version parameter isn't used or is set to false.</p></li> <li><p>For a delete operation, deletes the template, including all versions of the template.</p></li></ul>
+        schema:
+          type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Delete Voice Template
+      tags:
+      - Templates
+    get:
+      operationId: GetVoiceTemplate
+      description: Retrieves the content and settings of a message template for messages that are sent through the voice channel.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetVoiceTemplateResponse'
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '482':
+          description: PayloadTooLargeException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeException'
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+        '484':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+        '485':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '486':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+      parameters:
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        description: <p>The unique identifier for the version of the message template to update, retrieve information about, or delete. To retrieve identifiers and other information for all the versions of a template, use the <link  linkend="templates-template-name-template-type-versions">Template Versions</link> resource.</p> <p>If specified, this value must match the identifier for an existing template version. If specified for an update operation, this value must match the identifier for the latest existing version of the template. This restriction helps ensure that race conditions don't occur.</p> <p>If you don't specify a value for this parameter, Amazon Pinpoint does the following:</p> <ul><li><p>For a get operation, retrieves information about the active version of the template.</p></li> <li><p>For an update operation, saves the updates to (overwrites) the latest existing version of the template, if the create-new-version parameter isn't used or is set to false.</p></li> <li><p>For a delete operation, deletes the template, including all versions of the template.</p></li></ul>
+        schema:
+          type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Get Voice Template
+      tags:
+      - Templates
+    put:
+      operationId: UpdateVoiceTemplate
+      description: Updates an existing message template for messages that are sent through the voice channel.
+      responses:
+        '202':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateVoiceTemplateResponse'
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '482':
+          description: PayloadTooLargeException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeException'
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+        '484':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+        '485':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '486':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+      parameters:
+      - name: create-new-version
+        in: query
+        required: false
+        description: '<p>Specifies whether to save the updates as a new version of the message template. Valid values are: true, save the updates as a new version; and, false, save the updates to (overwrite) the latest existing version of the template.</p> <p>If you don''t specify a value for this parameter, Amazon Pinpoint saves the updates to (overwrites) the latest existing version of the template. If you specify a value of true for this parameter, don''t specify a value for the version parameter. Otherwise, an error will occur.</p>'
+        schema:
+          type: boolean
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        description: <p>The unique identifier for the version of the message template to update, retrieve information about, or delete. To retrieve identifiers and other information for all the versions of a template, use the <link  linkend="templates-template-name-template-type-versions">Template Versions</link> resource.</p> <p>If specified, this value must match the identifier for an existing template version. If specified for an update operation, this value must match the identifier for the latest existing version of the template. This restriction helps ensure that race conditions don't occur.</p> <p>If you don't specify a value for this parameter, Amazon Pinpoint does the following:</p> <ul><li><p>For a get operation, retrieves information about the active version of the template.</p></li> <li><p>For an update operation, saves the updates to (overwrites) the latest existing version of the template, if the create-new-version parameter isn't used or is set to false.</p></li> <li><p>For a delete operation, deletes the template, including all versions of the template.</p></li></ul>
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - VoiceTemplateRequest
+              properties:
+                VoiceTemplateRequest:
+                  description: Specifies the content and settings for a message template that can be used in messages that are sent through the voice channel.
+                  type: object
+                  properties:
+                    Body:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The text of the script to use in messages that are based on the message template, in plain text format.
+                    DefaultSubstitutions:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: A JSON object that specifies the default values to use for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable. When you create a message that's based on the template, you can override these defaults with message-specific and address-specific variables and values.
+                    LanguageCode:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The code for the language to use when synthesizing the text of the script in messages that are based on the message template. For a list of supported languages and the code for each one, see the <a href="https://docs.aws.amazon.com/polly/latest/dg/what-is.html">Amazon Polly Developer Guide</a>.
+                    tags:
+                      allOf:
+                      - $ref: '#/components/schemas/MapOf__string'
+                      - description: A string-to-string map of key-value pairs that defines the tags to associate with the message template. Each tag consists of a required tag key and an associated tag value.
+                    TemplateDescription:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: A custom description of the message template.
+                    VoiceId:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The name of the voice to use when delivering messages that are based on the message template. For a list of supported voices, see the <a href="https://docs.aws.amazon.com/polly/latest/dg/what-is.html">Amazon Polly Developer Guide</a>.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Update Voice Template
+      tags:
+      - Templates
+  /v1/templates/{template-name}/{template-type}/versions:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    get:
+      operationId: ListTemplateVersions
+      description: Retrieves information about all the versions of a specific message template.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTemplateVersionsResponse'
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '482':
+          description: PayloadTooLargeException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeException'
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+        '484':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+        '485':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '486':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+      parameters:
+      - name: next-token
+        in: query
+        required: false
+        description: The  string that specifies which page of results to return in a paginated response. This parameter is not supported for application, campaign, and journey metrics.
+        schema:
+          type: string
+      - name: page-size
+        in: query
+        required: false
+        description: The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics.
+        schema:
+          type: string
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      - name: template-type
+        in: path
+        required: true
+        description: 'The type of channel that the message template is designed for. Valid values are: EMAIL, PUSH, SMS, and VOICE.'
+        schema:
+          type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint List Template Versions
+      tags:
+      - Templates
+  /v1/templates:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    get:
+      operationId: ListTemplates
+      description: Retrieves information about all the message templates that are associated with your Amazon Pinpoint account.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTemplatesResponse'
+        '480':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '481':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+        '482':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '483':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '484':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+      parameters:
+      - name: next-token
+        in: query
+        required: false
+        description: The  string that specifies which page of results to return in a paginated response. This parameter is not supported for application, campaign, and journey metrics.
+        schema:
+          type: string
+      - name: page-size
+        in: query
+        required: false
+        description: The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics.
+        schema:
+          type: string
+      - name: prefix
+        in: query
+        required: false
+        description: The substring to match in the names of the message templates to include in the results. If you specify this value, Amazon Pinpoint returns only those templates whose names begin with the value that you specify.
+        schema:
+          type: string
+      - name: template-type
+        in: query
+        required: false
+        description: 'The type of message template to include in the results. Valid values are: EMAIL, PUSH, SMS, and VOICE. To include all types of templates in the results, don''t include this parameter in your request.'
+        schema:
+          type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint List Templates
+      tags:
+      - Templates
+  /v1/templates/{template-name}/{template-type}/active-version:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    put:
+      operationId: UpdateTemplateActiveVersion
+      description: Changes the status of a specific version of a message template to <i>active</i>.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateTemplateActiveVersionResponse'
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '482':
+          description: PayloadTooLargeException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeException'
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+        '484':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+        '485':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '486':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+      parameters:
+      - name: template-name
+        in: path
+        required: true
+        description: The name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+        schema:
+          type: string
+      - name: template-type
+        in: path
+        required: true
+        description: 'The type of channel that the message template is designed for. Valid values are: EMAIL, PUSH, SMS, and VOICE.'
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - TemplateActiveVersionRequest
+              properties:
+                TemplateActiveVersionRequest:
+                  description: Specifies which version of a message template to use as the active version of the template.
+                  type: object
+                  properties:
+                    Version:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: 'The version of the message template to use as the active version of the template. Valid values are: latest, for the most recent version of the template; or, the unique identifier for any existing version of the template. If you specify an identifier, the value must match the identifier for an existing template version. To retrieve a list of versions and version identifiers for a template, use the <link  linkend="templates-template-name-template-type-versions">Template Versions</link> resource.'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Update Template Active Version
+      tags:
+      - Templates
+components:
+  schemas:
+    UpdateVoiceTemplateResponse:
+      type: object
+      required:
+      - MessageBody
+      properties:
+        MessageBody:
+          $ref: '#/components/schemas/MessageBody'
+    MethodNotAllowedException: {}
+    DeleteInAppTemplateResponse:
+      type: object
+      required:
+      - MessageBody
+      properties:
+        MessageBody:
+          $ref: '#/components/schemas/MessageBody'
+    TemplateCreateMessageBody:
+      type: object
+      properties:
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The Amazon Resource Name (ARN) of the message template that was created.
+        Message:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The message that's returned from the API for the request to create the message template.
+        RequestID:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The unique identifier for the request to create the message template.
+      description: Provides information about a request to create a message template.
+    UpdateTemplateActiveVersionResponse:
+      type: object
+      required:
+      - MessageBody
+      properties:
+        MessageBody:
+          $ref: '#/components/schemas/MessageBody'
+    ButtonAction:
+      type: string
+      enum:
+      - LINK
+      - DEEP_LINK
+      - CLOSE
+    OverrideButtonConfiguration:
+      type: object
+      required:
+      - ButtonAction
+      properties:
+        ButtonAction:
+          allOf:
+          - $ref: '#/components/schemas/ButtonAction'
+          - description: Action triggered by the button.
+        Link:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: Button destination.
+      description: Override button configuration.
+    TemplatesResponse:
+      type: object
+      required:
+      - Item
+      properties:
+        Item:
+          allOf:
+          - $ref: '#/components/schemas/ListOfTemplateResponse'
+          - description: An array of responses, one for each message template that's associated with your Amazon Pinpoint account and meets any filter criteria that you specified in the request.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
+      description: Provides information about all the message templates that are associated with your Amazon Pinpoint account.
+    InAppTemplateResponse:
+      type: object
+      required:
+      - LastModifiedDate
+      - CreationDate
+      - TemplateName
+      - TemplateType
+      properties:
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The resource arn of the template.
+        Content:
+          allOf:
+          - $ref: '#/components/schemas/ListOfInAppMessageContent'
+          - description: The content of the message, can include up to 5 modals. Each modal must contain a message, a header, and background color. ImageUrl and buttons are optional.
+        CreationDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The creation date of the template.
+        CustomConfig:
+          allOf:
+          - $ref: '#/components/schemas/MapOf__string'
+          - description: Custom config to be sent to client.
+        LastModifiedDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The last modified date of the template.
+        Layout:
+          allOf:
+          - $ref: '#/components/schemas/Layout'
+          - description: The layout of the message.
+        tags:
+          allOf:
+          - $ref: '#/components/schemas/MapOf__string'
+          - description: A string-to-string map of key-value pairs that defines the tags to associate with the message template. Each tag consists of a required tag key and an associated tag value.
+        TemplateDescription:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The description of the template.
+        TemplateName:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The name of the template.
+        TemplateType:
+          allOf:
+          - $ref: '#/components/schemas/TemplateType'
+          - description: The type of the template.
+        Version:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The version id of the template.
+      description: In-App Template Response.
+    DefaultPushNotificationTemplate:
+      type: object
+      properties:
+        Action:
+          allOf:
+          - $ref: '#/components/schemas/Action'
+          - description: <p>The action to occur if a recipient taps a push notification that's based on the message template. Valid values are:</p> <ul><li><p>OPEN_APP - Your app opens or it becomes the foreground app if it was sent to the background. This is the default action.</p></li> <li><p>DEEP_LINK - Your app opens and displays a designated user interface in the app. This setting uses the deep-linking features of the iOS and Android platforms.</p></li> <li><p>URL - The default mobile browser on the recipient's device opens and loads the web page at a URL that you specify.</p></li></ul>
+        Body:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The message body to use in push notifications that are based on the message template.
+        Sound:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: <p>The sound to play when a recipient receives a push notification that's based on the message template. You can use the default stream or specify the file name of a sound resource that's bundled in your app. On an Android platform, the sound file must reside in /res/raw/.</p> <p>For an iOS platform, this value is the key for the name of a sound file in your app's main bundle or the Library/Sounds folder in your app's data container. If the sound file can't be found or you specify default for the value, the system plays the default alert sound.</p>
+        Title:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The title to use in push notifications that are based on the message template. This title appears above the notification message on a recipient's device.
+        Url:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The URL to open in a recipient's default mobile browser, if a recipient taps a push notification that's based on the message template and the value of the Action property is URL.
+      description: Specifies the default settings and content for a message template that can be used in messages that are sent through a push notification channel.
+    DefaultButtonConfiguration:
+      type: object
+      required:
+      - ButtonAction
+      - Text
+      properties:
+        BackgroundColor:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The background color of the button.
+        BorderRadius:
+          allOf:
+          - $ref: '#/components/schemas/__integer'
+          - description: The border radius of the button.
+        ButtonAction:
+          allOf:
+          - $ref: '#/components/schemas/ButtonAction'
+          - description: Action triggered by the button.
+        Link:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: Button destination.
+        Text:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: Button text.
+        TextColor:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The text color of the button.
+      description: Default button configuration.
+    DeleteVoiceTemplateResponse:
+      type: object
+      required:
+      - MessageBody
+      properties:
+        MessageBody:
+          $ref: '#/components/schemas/MessageBody'
+    PushNotificationTemplateResponse:
+      type: object
+      required:
+      - LastModifiedDate
+      - CreationDate
+      - TemplateType
+      - TemplateName
+      properties:
+        ADM:
+          allOf:
+          - $ref: '#/components/schemas/AndroidPushNotificationTemplate'
+          - description: The message template that's used for the ADM (Amazon Device Messaging) channel. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate).
+        APNS:
+          allOf:
+          - $ref: '#/components/schemas/APNSPushNotificationTemplate'
+          - description: The message template that's used for the APNs (Apple Push Notification service) channel. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate).
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The Amazon Resource Name (ARN) of the message template.
+        Baidu:
+          allOf:
+          - $ref: '#/components/schemas/AndroidPushNotificationTemplate'
+          - description: The message template that's used for the Baidu (Baidu Cloud Push) channel. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate).
+        CreationDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The date, in ISO 8601 format, when the message template was created.
+        Default:
+          allOf:
+          - $ref: '#/components/schemas/DefaultPushNotificationTemplate'
+          - description: The default message template that's used for push notification channels.
+        DefaultSubstitutions:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The JSON object that specifies the default values that are used for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable.
+        GCM:
+          allOf:
+          - $ref: '#/components/schemas/AndroidPushNotificationTemplate'
+          - description: The message template that's used for the GCM channel, which is used to send notifications through the Firebase Cloud Messaging (FCM), formerly Google Cloud Messaging (GCM), service. This message template overrides the default template for push notification channels (DefaultPushNotificationTemplate).
+        LastModifiedDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The date, in ISO 8601 format, when the message template was last modified.
+        RecommenderId:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The unique identifier for the recommender model that's used by the message template.
+        tags:
+          allOf:
+          - $ref: '#/components/schemas/MapOf__string'
+          - description: A string-to-string map of key-value pairs that identifies the tags that are associated with the message template. Each tag consists of a required tag key and an associated tag value.
+        TemplateDescription:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The custom description of the message template.
+        TemplateName:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The name of the message template.
+        TemplateType:
+          allOf:
+          - $ref: '#/components/schemas/TemplateType'
+          - description: The type of channel that the message template is designed for. For a push notification template, this value is PUSH.
+        Version:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The unique identifier, as an integer, for the active version of the message template, or the version of the template that you specified by using the version parameter in your request.
+      description: Provides information about the content and settings for a message template that can be used in messages that are sent through a push notification channel.
+    ForbiddenException: {}
+    InAppMessageButton:
+      type: object
+      properties:
+        Android:
+          allOf:
+          - $ref: '#/components/schemas/OverrideButtonConfiguration'
+          - description: Default button content.
+        DefaultConfig:
+          allOf:
+          - $ref: '#/components/schemas/DefaultButtonConfiguration'
+          - description: Default button content.
+        IOS:
+          allOf:
+          - $ref: '#/components/schemas/OverrideButtonConfiguration'
+          - description: Default button content.
+        Web:
+          allOf:
+          - $ref: '#/components/schemas/OverrideButtonConfiguration'
+          - description: Default button content.
+      description: Button Config for an in-app message.
+    __string:
+      type: string
+    APNSPushNotificationTemplate:
+      type: object
+      properties:
+        Action:
+          allOf:
+          - $ref: '#/components/schemas/Action'
+          - description: <p>The action to occur if a recipient taps a push notification that's based on the message template. Valid values are:</p> <ul><li><p>OPEN_APP - Your app opens or it becomes the foreground app if it was sent to the background. This is the default action.</p></li> <li><p>DEEP_LINK - Your app opens and displays a designated user interface in the app. This setting uses the deep-linking features of the iOS platform.</p></li> <li><p>URL - The default mobile browser on the recipient's device opens and loads the web page at a URL that you specify.</p></li></ul>
+        Body:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The message body to use in push notifications that are based on the message template.
+        MediaUrl:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The URL of an image or video to display in push notifications that are based on the message template.
+        RawContent:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The raw, JSON-formatted string to use as the payload for push notifications that are based on the message template. If specified, this value overrides all other content for the message template.
+        Sound:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The key for the sound to play when the recipient receives a push notification that's based on the message template. The value for this key is the name of a sound file in your app's main bundle or the Library/Sounds folder in your app's data container. If the sound file can't be found or you specify default for the value, the system plays the default alert sound.
+        Title:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The title to use in push notifications that are based on the message template. This title appears above the notification message on a recipient's device.
+        Url:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The URL to open in the recipient's default mobile browser, if a recipient taps a push notification that's based on the message template and the value of the Action property is URL.
+      description: Specifies channel-specific content and settings for a message template that can be used in push notifications that are sent through the APNs (Apple Push Notification service) channel.
+    EmailTemplateResponse:
+      type: object
+      required:
+      - LastModifiedDate
+      - CreationDate
+      - TemplateName
+      - TemplateType
+      properties:
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The Amazon Resource Name (ARN) of the message template.
+        CreationDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The date, in ISO 8601 format, when the message template was created.
+        DefaultSubstitutions:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The JSON object that specifies the default values that are used for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable.
+        HtmlPart:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The message body, in HTML format, that's used in email messages that are based on the message template.
+        LastModifiedDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The date, in ISO 8601 format, when the message template was last modified.
+        RecommenderId:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The unique identifier for the recommender model that's used by the message template.
+        Subject:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The subject line, or title, that's used in email messages that are based on the message template.
+        tags:
+          allOf:
+          - $ref: '#/components/schemas/MapOf__string'
+          - description: A string-to-string map of key-value pairs that identifies the tags that are associated with the message template. Each tag consists of a required tag key and an associated tag value.
+        TemplateDescription:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The custom description of the message template.
+        TemplateName:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The name of the message template.
+        TemplateType:
+          allOf:
+          - $ref: '#/components/schemas/TemplateType'
+          - description: The type of channel that the message template is designed for. For an email template, this value is EMAIL.
+        TextPart:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The message body, in plain text format, that's used in email messages that are based on the message template.
+        Version:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The unique identifier, as an integer, for the active version of the message template, or the version of the template that you specified by using the version parameter in your request.
+      description: Provides information about the content and settings for a message template that can be used in messages that are sent through the email channel.
+    TemplateVersionsResponse:
+      type: object
+      required:
+      - Item
+      properties:
+        Item:
+          allOf:
+          - $ref: '#/components/schemas/ListOfTemplateVersionResponse'
+          - description: An array of responses, one for each version of the message template.
+        Message:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The message that's returned from the API for the request to retrieve information about all the versions of the message template.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
+        RequestID:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The unique identifier for the request to retrieve information about all the versions of the message template.
+      description: Provides information about all the versions of a specific message template.
+    UpdateSmsTemplateResponse:
+      type: object
+      required:
+      - MessageBody
+      properties:
+        MessageBody:
+          $ref: '#/components/schemas/MessageBody'
+    CreateSmsTemplateResponse:
+      type: object
+      required:
+      - CreateTemplateMessageBody
+      properties:
+        CreateTemplateMessageBody:
+          $ref: '#/components/schemas/CreateTemplateMessageBody'
+    GetVoiceTemplateResponse:
+      type: object
+      required:
+      - VoiceTemplateResponse
+      properties:
+        VoiceTemplateResponse:
+          $ref: '#/components/schemas/VoiceTemplateResponse'
+    GetPushTemplateResponse:
+      type: object
+      required:
+      - PushNotificationTemplateResponse
+      properties:
+        PushNotificationTemplateResponse:
+          $ref: '#/components/schemas/PushNotificationTemplateResponse'
+    GetEmailTemplateResponse:
+      type: object
+      required:
+      - EmailTemplateResponse
+      properties:
+        EmailTemplateResponse:
+          $ref: '#/components/schemas/EmailTemplateResponse'
+    __integer:
+      type: integer
+    InAppMessageHeaderConfig:
+      type: object
+      required:
+      - Alignment
+      - Header
+      - TextColor
+      properties:
+        Alignment:
+          allOf:
+          - $ref: '#/components/schemas/Alignment'
+          - description: 'The alignment of the text. Valid values: LEFT, CENTER, RIGHT.'
+        Header:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: Message Header.
+        TextColor:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The text color.
+      description: Text config for Message Header.
+    PayloadTooLargeException: {}
+    VoiceTemplateResponse:
+      type: object
+      required:
+      - LastModifiedDate
+      - CreationDate
+      - TemplateName
+      - TemplateType
+      properties:
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The Amazon Resource Name (ARN) of the message template.
+        Body:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The text of the script that's used in messages that are based on the message template, in plain text format.
+        CreationDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The date, in ISO 8601 format, when the message template was created.
+        DefaultSubstitutions:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The JSON object that specifies the default values that are used for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable.
+        LanguageCode:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The code for the language that's used when synthesizing the text of the script in messages that are based on the message template. For a list of supported languages and the code for each one, see the <a href="https://docs.aws.amazon.com/polly/latest/dg/what-is.html">Amazon Polly Developer Guide</a>.
+        LastModifiedDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The date, in ISO 8601 format, when the message template was last modified.
+        tags:
+          allOf:
+          - $ref: '#/components/schemas/MapOf__string'
+          - description: A string-to-string map of key-value pairs that identifies the tags that are associated with the message template. Each tag consists of a required tag key and an associated tag value.
+        TemplateDescription:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The custom description of the message template.
+        TemplateName:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The name of the message template.
+        TemplateType:
+          allOf:
+          - $ref: '#/components/schemas/TemplateType'
+          - description: The type of channel that the message template is designed for. For a voice template, this value is VOICE.
+        Version:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The unique identifier, as an integer, for the active version of the message template, or the version of the template that you specified by using the version parameter in your request.
+        VoiceId:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The name of the voice that's used when delivering messages that are based on the message template. For a list of supported voices, see the <a href="https://docs.aws.amazon.com/polly/latest/dg/what-is.html">Amazon Polly Developer Guide</a>.
+      description: Provides information about the content and settings for a message template that can be used in messages that are sent through the voice channel.
+    Alignment:
+      type: string
+      enum:
+      - LEFT
+      - CENTER
+      - RIGHT
+    ListTemplatesResponse:
+      type: object
+      required:
+      - TemplatesResponse
+      properties:
+        TemplatesResponse:
+          $ref: '#/components/schemas/TemplatesResponse'
+    NotFoundException: {}
+    ListOfTemplateVersionResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/TemplateVersionResponse'
+    CreateEmailTemplateResponse:
+      type: object
+      required:
+      - CreateTemplateMessageBody
+      properties:
+        CreateTemplateMessageBody:
+          $ref: '#/components/schemas/CreateTemplateMessageBody'
+    DeletePushTemplateResponse:
+      type: object
+      required:
+      - MessageBody
+      properties:
+        MessageBody:
+          $ref: '#/components/schemas/MessageBody'
+    GetInAppTemplateResponse:
+      type: object
+      required:
+      - InAppTemplateResponse
+      properties:
+        InAppTemplateResponse:
+          $ref: '#/components/schemas/InAppTemplateResponse'
+    CreateTemplateMessageBody:
+      type: object
+      properties:
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The Amazon Resource Name (ARN) of the message template that was created.
+        Message:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The message that's returned from the API for the request to create the message template.
+        RequestID:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The unique identifier for the request to create the message template.
+      description: Provides information about a request to create a message template.
+    ListOfTemplateResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/TemplateResponse'
+    MessageBody:
+      type: object
+      properties:
+        Message:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The message that's returned from the API.
+        RequestID:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The unique identifier for the request or response.
+      description: Provides information about an API request or response.
+    Layout:
+      type: string
+      enum:
+      - BOTTOM_BANNER
+      - TOP_BANNER
+      - OVERLAYS
+      - MOBILE_FEED
+      - MIDDLE_BANNER
+      - CAROUSEL
+    DeleteSmsTemplateResponse:
+      type: object
+      required:
+      - MessageBody
+      properties:
+        MessageBody:
+          $ref: '#/components/schemas/MessageBody'
+    TemplateResponse:
+      type: object
+      required:
+      - LastModifiedDate
+      - CreationDate
+      - TemplateName
+      - TemplateType
+      properties:
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The Amazon Resource Name (ARN) of the message template. This value isn't included in a TemplateResponse object. To retrieve the ARN of a template, use the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or GetVoiceTemplate operation, depending on the type of template that you want to retrieve the ARN for.
+        CreationDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The date, in ISO 8601 format, when the message template was created.
+        DefaultSubstitutions:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The JSON object that specifies the default values that are used for message variables in the message template. This object isn't included in a TemplateResponse object. To retrieve this object for a template, use the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or GetVoiceTemplate operation, depending on the type of template that you want to retrieve the object for.
+        LastModifiedDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The date, in ISO 8601 format, when the message template was last modified.
+        tags:
+          allOf:
+          - $ref: '#/components/schemas/MapOf__string'
+          - description: A map of key-value pairs that identifies the tags that are associated with the message template. This object isn't included in a TemplateResponse object. To retrieve this object for a template, use the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or GetVoiceTemplate operation, depending on the type of template that you want to retrieve the object for.
+        TemplateDescription:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The custom description of the message template. This value isn't included in a TemplateResponse object. To retrieve the description of a template, use the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or GetVoiceTemplate operation, depending on the type of template that you want to retrieve the description for.
+        TemplateName:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The name of the message template.
+        TemplateType:
+          allOf:
+          - $ref: '#/components/schemas/TemplateType'
+          - description: 'The type of channel that the message template is designed for. Possible values are: EMAIL, PUSH, SMS, and VOICE.'
+        Version:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The unique identifier, as an integer, for the active version of the message template.
+      description: Provides information about a message template that's associated with your Amazon Pinpoint account.
+    InAppMessageBodyConfig:
+      type: object
+      required:
+      - Alignment
+      - TextColor
+      - Body
+      properties:
+        Alignment:
+          allOf:
+          - $ref: '#/components/schemas/Alignment'
+          - description: 'The alignment of the text. Valid values: LEFT, CENTER, RIGHT.'
+        Body:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: Message Body.
+        TextColor:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The text color.
+      description: Text config for Message Body.
+    BadRequestException: {}
+    Action:
+      type: string
+      enum:
+      - OPEN_APP
+      - DEEP_LINK
+      - URL
+    ListTemplateVersionsResponse:
+      type: object
+      required:
+      - TemplateVersionsResponse
+      properties:
+        TemplateVersionsResponse:
+          $ref: '#/components/schemas/TemplateVersionsResponse'
+    InternalServerErrorException: {}
+    TemplateType:
+      type: string
+      enum:
+      - EMAIL
+      - SMS
+      - VOICE
+      - PUSH
+      - INAPP
+    CreateVoiceTemplateResponse:
+      type: object
+      required:
+      - CreateTemplateMessageBody
+      properties:
+        CreateTemplateMessageBody:
+          $ref: '#/components/schemas/CreateTemplateMessageBody'
+    UpdateInAppTemplateResponse:
+      type: object
+      required:
+      - MessageBody
+      properties:
+        MessageBody:
+          $ref: '#/components/schemas/MessageBody'
+    GetSmsTemplateResponse:
+      type: object
+      required:
+      - SMSTemplateResponse
+      properties:
+        SMSTemplateResponse:
+          $ref: '#/components/schemas/SMSTemplateResponse'
+    UpdatePushTemplateResponse:
+      type: object
+      required:
+      - MessageBody
+      properties:
+        MessageBody:
+          $ref: '#/components/schemas/MessageBody'
+    CreateInAppTemplateResponse:
+      type: object
+      required:
+      - TemplateCreateMessageBody
+      properties:
+        TemplateCreateMessageBody:
+          $ref: '#/components/schemas/TemplateCreateMessageBody'
+    ListOfInAppMessageContent:
+      type: array
+      items:
+        $ref: '#/components/schemas/InAppMessageContent'
+    UpdateEmailTemplateResponse:
+      type: object
+      required:
+      - MessageBody
+      properties:
+        MessageBody:
+          $ref: '#/components/schemas/MessageBody'
+    TemplateVersionResponse:
+      type: object
+      required:
+      - LastModifiedDate
+      - CreationDate
+      - TemplateName
+      - TemplateType
+      properties:
+        CreationDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The date, in ISO 8601 format, when the version of the message template was created.
+        DefaultSubstitutions:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: A JSON object that specifies the default values that are used for message variables in the version of the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable.
+        LastModifiedDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The date, in ISO 8601 format, when the version of the message template was last modified.
+        TemplateDescription:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The custom description of the version of the message template.
+        TemplateName:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The name of the message template.
+        TemplateType:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: 'The type of channel that the message template is designed for. Possible values are: EMAIL, PUSH, SMS, and VOICE.'
+        Version:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The unique identifier for the version of the message template. This value is an integer that Amazon Pinpoint automatically increments and assigns to each new version of a template.
+      description: Provides information about a specific version of a message template.
+    TooManyRequestsException: {}
+    AndroidPushNotificationTemplate:
+      type: object
+      properties:
+        Action:
+          allOf:
+          - $ref: '#/components/schemas/Action'
+          - description: <p>The action to occur if a recipient taps a push notification that's based on the message template. Valid values are:</p> <ul><li><p>OPEN_APP - Your app opens or it becomes the foreground app if it was sent to the background. This is the default action.</p></li> <li><p>DEEP_LINK - Your app opens and displays a designated user interface in the app. This action uses the deep-linking features of the Android platform.</p></li> <li><p>URL - The default mobile browser on the recipient's device opens and loads the web page at a URL that you specify.</p></li></ul>
+        Body:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The message body to use in a push notification that's based on the message template.
+        ImageIconUrl:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The URL of the large icon image to display in the content view of a push notification that's based on the message template.
+        ImageUrl:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The URL of an image to display in a push notification that's based on the message template.
+        RawContent:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The raw, JSON-formatted string to use as the payload for a push notification that's based on the message template. If specified, this value overrides all other content for the message template.
+        SmallImageIconUrl:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The URL of the small icon image to display in the status bar and the content view of a push notification that's based on the message template.
+        Sound:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The sound to play when a recipient receives a push notification that's based on the message template. You can use the default stream or specify the file name of a sound resource that's bundled in your app. On an Android platform, the sound file must reside in /res/raw/.
+        Title:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The title to use in a push notification that's based on the message template. This title appears above the notification message on a recipient's device.
+        Url:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The URL to open in a recipient's default mobile browser, if a recipient taps a push notification that's based on the message template and the value of the Action property is URL.
+      description: Specifies channel-specific content and settings for a message template that can be used in push notifications that are sent through the ADM (Amazon Device Messaging), Baidu (Baidu Cloud Push), or GCM (Firebase Cloud Messaging, formerly Google Cloud Messaging) channel.
+    DeleteEmailTemplateResponse:
+      type: object
+      required:
+      - MessageBody
+      properties:
+        MessageBody:
+          $ref: '#/components/schemas/MessageBody'
+    SMSTemplateResponse:
+      type: object
+      required:
+      - LastModifiedDate
+      - CreationDate
+      - TemplateName
+      - TemplateType
+      properties:
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The Amazon Resource Name (ARN) of the message template.
+        Body:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The message body that's used in text messages that are based on the message template.
+        CreationDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The date, in ISO 8601 format, when the message template was created.
+        DefaultSubstitutions:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The JSON object that specifies the default values that are used for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable.
+        LastModifiedDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The date, in ISO 8601 format, when the message template was last modified.
+        RecommenderId:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The unique identifier for the recommender model that's used by the message template.
+        tags:
+          allOf:
+          - $ref: '#/components/schemas/MapOf__string'
+          - description: A string-to-string map of key-value pairs that identifies the tags that are associated with the message template. Each tag consists of a required tag key and an associated tag value.
+        TemplateDescription:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The custom description of the message template.
+        TemplateName:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The name of the message template.
+        TemplateType:
+          allOf:
+          - $ref: '#/components/schemas/TemplateType'
+          - description: The type of channel that the message template is designed for. For an SMS template, this value is SMS.
+        Version:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The unique identifier, as an integer, for the active version of the message template, or the version of the template that you specified by using the version parameter in your request.
+      description: Provides information about the content and settings for a message template that can be used in text messages that are sent through the SMS channel.
+    MapOf__string:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/__string'
+    CreatePushTemplateResponse:
+      type: object
+      required:
+      - CreateTemplateMessageBody
+      properties:
+        CreateTemplateMessageBody:
+          $ref: '#/components/schemas/CreateTemplateMessageBody'
+    InAppMessageContent:
+      type: object
+      properties:
+        BackgroundColor:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The background color for the message.
+        BodyConfig:
+          allOf:
+          - $ref: '#/components/schemas/InAppMessageBodyConfig'
+          - description: The configuration for the message body.
+        HeaderConfig:
+          allOf:
+          - $ref: '#/components/schemas/InAppMessageHeaderConfig'
+          - description: The configuration for the message header.
+        ImageUrl:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The image url for the background of message.
+        PrimaryBtn:
+          allOf:
+          - $ref: '#/components/schemas/InAppMessageButton'
+          - description: The first button inside the message.
+        SecondaryBtn:
+          allOf:
+          - $ref: '#/components/schemas/InAppMessageButton'
+          - description: The second button inside message.
+      description: The configuration for the message content.
+  parameters:
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+  securitySchemes:
+    hmac:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Amazon Signature authorization v4
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon Web Services documentation
+  url: https://docs.aws.amazon.com/pinpoint/
+x-hasEquivalentPaths: true

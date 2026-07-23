@@ -1,0 +1,340 @@
+openapi: 3.0.0
+info:
+  version: 2016-12-01
+  x-release: v4
+  title: Amazon Pinpoint Applications Phone API
+  description: Doc Engage API - Amazon Pinpoint API
+  x-logo:
+    url: https://api.apis.guru/v2/cache/logo/https_twitter.com_awscloud_profile_image.png
+    backgroundColor: '#FFFFFF'
+  termsOfService: https://aws.amazon.com/service-terms/
+  contact:
+    name: Mike Ralphson
+    email: mike.ralphson@gmail.com
+    url: https://github.com/mermade/aws2openapi
+    x-twitter: PermittedSoc
+  license:
+    name: Apache 2.0 License
+    url: http://www.apache.org/licenses/
+  x-providerName: amazonaws.com
+  x-serviceName: pinpoint
+  x-aws-signingName: mobiletargeting
+  x-origin:
+  - contentType: application/json
+    url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/pinpoint-2016-12-01.normal.json
+    converter:
+      url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
+    x-apisguru-driver: external
+  x-apiClientRegistration:
+    url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
+  x-apisguru-categories:
+  - cloud
+  x-preferred: true
+servers:
+- url: http://pinpoint.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The Amazon Pinpoint multi-region endpoint
+- url: https://pinpoint.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The Amazon Pinpoint multi-region endpoint
+- url: http://pinpoint.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The Amazon Pinpoint endpoint for China (Beijing) and China (Ningxia)
+- url: https://pinpoint.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The Amazon Pinpoint endpoint for China (Beijing) and China (Ningxia)
+security:
+- hmac: []
+tags:
+- name: Phone
+paths:
+  /v1/phone/number/validate:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: PhoneNumberValidate
+      description: Retrieves information about a phone number.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PhoneNumberValidateResponse'
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+        '482':
+          description: PayloadTooLargeException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeException'
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+        '484':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+        '485':
+          description: MethodNotAllowedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MethodNotAllowedException'
+        '486':
+          description: TooManyRequestsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsException'
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - NumberValidateRequest
+              properties:
+                NumberValidateRequest:
+                  description: Specifies a phone number to validate and retrieve information about.
+                  type: object
+                  properties:
+                    IsoCountryCode:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The two-character code, in ISO 3166-1 alpha-2 format, for the country or region where the phone number was originally registered.
+                    PhoneNumber:
+                      allOf:
+                      - $ref: '#/components/schemas/__string'
+                      - description: The phone number to retrieve information about. The phone number that you provide should include a valid numeric country code. Otherwise, the operation might result in an error.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon Pinpoint Phone Number Validate
+      tags:
+      - Phone
+components:
+  schemas:
+    __string:
+      type: string
+    NumberValidateResponse:
+      type: object
+      properties:
+        Carrier:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The carrier or service provider that the phone number is currently registered with. In some countries and regions, this value may be the carrier or service provider that the phone number was originally registered with.
+        City:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The name of the city where the phone number was originally registered.
+        CleansedPhoneNumberE164:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The cleansed phone number, in E.164 format, for the location where the phone number was originally registered.
+        CleansedPhoneNumberNational:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The cleansed phone number, in the format for the location where the phone number was originally registered.
+        Country:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The name of the country or region where the phone number was originally registered.
+        CountryCodeIso2:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The two-character code, in ISO 3166-1 alpha-2 format, for the country or region where the phone number was originally registered.
+        CountryCodeNumeric:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The numeric code for the country or region where the phone number was originally registered.
+        County:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The name of the county where the phone number was originally registered.
+        OriginalCountryCodeIso2:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The two-character code, in ISO 3166-1 alpha-2 format, that was sent in the request body.
+        OriginalPhoneNumber:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The phone number that was sent in the request body.
+        PhoneType:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: "The description of the phone type. Valid values are: MOBILE, LANDLINE, VOIP,\n                  INVALID, PREPAID, and OTHER."
+        PhoneTypeCode:
+          allOf:
+          - $ref: '#/components/schemas/__integer'
+          - description: 'The phone type, represented by an integer. Valid values are: 0 (mobile), 1 (landline), 2 (VoIP), 3 (invalid), 4 (other), and 5 (prepaid).'
+        Timezone:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The time zone for the location where the phone number was originally registered.
+        ZipCode:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The postal or ZIP code for the location where the phone number was originally registered.
+      description: Provides information about a phone number.
+    PayloadTooLargeException: {}
+    MethodNotAllowedException: {}
+    __integer:
+      type: integer
+    NotFoundException: {}
+    PhoneNumberValidateResponse:
+      type: object
+      required:
+      - NumberValidateResponse
+      properties:
+        NumberValidateResponse:
+          $ref: '#/components/schemas/NumberValidateResponse'
+    TooManyRequestsException: {}
+    ForbiddenException: {}
+    BadRequestException: {}
+    InternalServerErrorException: {}
+  parameters:
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+  securitySchemes:
+    hmac:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Amazon Signature authorization v4
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon Web Services documentation
+  url: https://docs.aws.amazon.com/pinpoint/
+x-hasEquivalentPaths: true
