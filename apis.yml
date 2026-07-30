@@ -6,6 +6,19 @@ description: >-
   validation APIs will continue through AWS End User Messaging.
 url: https://raw.githubusercontent.com/api-evangelist/amazon-pinpoint/refs/heads/main/apis.yml
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 tags:
   - AWS
@@ -24,49 +37,162 @@ tags:
 created: '2024-01-15'
 modified: '2026-05-19'
 apis:
-  - name: Amazon Pinpoint API
-    description: >-
-      The Amazon Pinpoint API enables you to create and manage marketing campaigns, send transactional messages, define
-      audience segments, manage message templates, configure messaging channels (email, SMS, push, voice), and analyze
-      engagement metrics for multi-channel communications.
-    image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
-    humanURL: https://aws.amazon.com/pinpoint/
-    baseURL: https://pinpoint.amazonaws.com
-    tags:
-      - Communications
-      - Marketing
-      - Messaging
-      - Campaigns
-      - Segmentation
-      - Journeys
-      - Analytics
-      - Email
-      - SMS
-      - Push Notifications
-      - Voice
-    properties:
-      - type: Documentation
-        url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html
-      - type: APIReference
-        url: https://docs.aws.amazon.com/pinpoint/latest/apireference/welcome.html
-      - type: OpenAPI
-        url: openapi/amazon-pinpoint-openapi.yml
-      - type: OpenAPI
-        url: openapi/amazon-pinpoint-openapi-original.yaml
-      - type: Pricing
-        url: https://aws.amazon.com/pinpoint/pricing/
-      - type: GettingStarted
-        url: https://aws.amazon.com/pinpoint/getting-started/
-      - type: FAQ
-        url: https://aws.amazon.com/pinpoint/faqs/
-      - type: Features
-        url: https://aws.amazon.com/pinpoint/features/
-      - type: RateLimits
-        url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html
-      - type: Authentication
-        url: https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html
-      - type: RateLimits
-        url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html
+- aid: amazon-pinpoint:amazon-pinpoint-applications-api
+  name: Amazon Pinpoint Applications API
+  description: Operations for managing Pinpoint applications (projects)
+  humanURL: https://aws.amazon.com/pinpoint/
+  baseURL: https://pinpoint.amazonaws.com
+  tags:
+  - Applications
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-pinpoint-applications-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/pinpoint/latest/apireference/welcome.html
+  - type: Pricing
+    url: https://aws.amazon.com/pinpoint/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/pinpoint/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/pinpoint/faqs/
+  - type: Features
+    url: https://aws.amazon.com/pinpoint/features/
+  - type: RateLimits
+    url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html
+- aid: amazon-pinpoint:amazon-pinpoint-apps-api
+  name: Amazon Pinpoint Apps API
+  description: The Apps API from Amazon Pinpoint — 48 operation(s) for apps.
+  humanURL: https://aws.amazon.com/pinpoint/
+  baseURL: https://pinpoint.amazonaws.com
+  tags:
+  - Apps
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-pinpoint-apps-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/pinpoint/latest/apireference/welcome.html
+  - type: Pricing
+    url: https://aws.amazon.com/pinpoint/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/pinpoint/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/pinpoint/faqs/
+  - type: Features
+    url: https://aws.amazon.com/pinpoint/features/
+  - type: RateLimits
+    url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html
+- aid: amazon-pinpoint:amazon-pinpoint-phone-api
+  name: Amazon Pinpoint Phone API
+  description: The Phone API from Amazon Pinpoint — 1 operation(s) for phone.
+  humanURL: https://aws.amazon.com/pinpoint/
+  baseURL: https://pinpoint.amazonaws.com
+  tags:
+  - Phone
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-pinpoint-phone-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/pinpoint/latest/apireference/welcome.html
+  - type: Pricing
+    url: https://aws.amazon.com/pinpoint/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/pinpoint/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/pinpoint/faqs/
+  - type: Features
+    url: https://aws.amazon.com/pinpoint/features/
+  - type: RateLimits
+    url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html
+- aid: amazon-pinpoint:amazon-pinpoint-recommenders-api
+  name: Amazon Pinpoint Recommenders API
+  description: The Recommenders API from Amazon Pinpoint — 2 operation(s) for recommenders.
+  humanURL: https://aws.amazon.com/pinpoint/
+  baseURL: https://pinpoint.amazonaws.com
+  tags:
+  - Recommenders
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-pinpoint-recommenders-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/pinpoint/latest/apireference/welcome.html
+  - type: Pricing
+    url: https://aws.amazon.com/pinpoint/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/pinpoint/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/pinpoint/faqs/
+  - type: Features
+    url: https://aws.amazon.com/pinpoint/features/
+  - type: RateLimits
+    url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html
+- aid: amazon-pinpoint:amazon-pinpoint-tags-api
+  name: Amazon Pinpoint Tags API
+  description: The Tags API from Amazon Pinpoint — 2 operation(s) for tags.
+  humanURL: https://aws.amazon.com/pinpoint/
+  baseURL: https://pinpoint.amazonaws.com
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-pinpoint-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/pinpoint/latest/apireference/welcome.html
+  - type: Pricing
+    url: https://aws.amazon.com/pinpoint/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/pinpoint/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/pinpoint/faqs/
+  - type: Features
+    url: https://aws.amazon.com/pinpoint/features/
+  - type: RateLimits
+    url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html
+- aid: amazon-pinpoint:amazon-pinpoint-templates-api
+  name: Amazon Pinpoint Templates API
+  description: The Templates API from Amazon Pinpoint — 8 operation(s) for templates.
+  humanURL: https://aws.amazon.com/pinpoint/
+  baseURL: https://pinpoint.amazonaws.com
+  tags:
+  - Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-pinpoint-templates-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/pinpoint/latest/apireference/welcome.html
+  - type: Pricing
+    url: https://aws.amazon.com/pinpoint/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/pinpoint/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/pinpoint/faqs/
+  - type: Features
+    url: https://aws.amazon.com/pinpoint/features/
+  - type: RateLimits
+    url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html
 common:
   - type: AgenticAccess
     url: agentic-access/amazon-pinpoint-agentic-access.yml
