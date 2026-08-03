@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: 2016-12-01
+  version: "1.0.0"
   x-release: v4
   title: Amazon Pinpoint Applications Apps API
   description: Doc Engage API - Amazon Pinpoint API
@@ -24,7 +24,6 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/pinpoint-2016-12-01.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
-      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct

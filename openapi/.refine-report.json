@@ -1,0 +1,24 @@
+{
+  "provider": "amazon-pinpoint",
+  "sources": [
+    "amazon-pinpoint-applications-api-openapi.yml",
+    "amazon-pinpoint-apps-api-openapi.yml",
+    "amazon-pinpoint-phone-api-openapi.yml",
+    "amazon-pinpoint-recommenders-api-openapi.yml",
+    "amazon-pinpoint-tags-api-openapi.yml",
+    "amazon-pinpoint-templates-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-pinpoint-applications-api-openapi.yml",
+    "amazon-pinpoint-apps-api-openapi.yml",
+    "amazon-pinpoint-phone-api-openapi.yml",
+    "amazon-pinpoint-recommenders-api-openapi.yml",
+    "amazon-pinpoint-tags-api-openapi.yml",
+    "amazon-pinpoint-templates-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

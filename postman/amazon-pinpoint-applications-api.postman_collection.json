@@ -1,0 +1,325 @@
+{
+  "info": {
+    "_postman_id": "6176ab07-5682-4817-a3b9-519482a2bdb7",
+    "name": "Amazon Pinpoint Applications API",
+    "description": "Doc Engage API - Amazon Pinpoint API\n\nContact Support:\n Name: Mike Ralphson\n Email: mike.ralphson@gmail.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:41:28.000Z",
+    "updatedAt": "2026-07-28T10:41:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6176ab07-5682-4817-a3b9-519482a2bdb7"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "apps",
+          "item": [
+            {
+              "name": "{application-id}",
+              "item": [
+                {
+                  "name": "Amazon Pinpoint Get Application Details",
+                  "id": "88d33dcd-8dcf-4fbe-94e3-afb0b902626a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/apps/:application-id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "apps",
+                        ":application-id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e5890a9e-4685-4ff3-a098-c9815fd634d7",
+                          "key": "application-id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Retrieves information about an application."
+                  },
+                  "response": [
+                    {
+                      "id": "43c5f483-3648-4487-9a2e-d8a3f7b7c56d",
+                      "name": "Application details retrieved successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/apps/:application-id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "apps",
+                            ":application-id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "application-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Id\": \"<string>\",\n  \"Arn\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"tags\": {\n    \"ullamco_f\": \"<string>\",\n    \"nisibe\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T10:41:29.000Z",
+                      "updatedAt": "2026-07-28T10:41:29.000Z",
+                      "uid": "35240-43c5f483-3648-4487-9a2e-d8a3f7b7c56d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:41:29.000Z",
+                  "updatedAt": "2026-07-28T10:41:29.000Z",
+                  "uid": "35240-88d33dcd-8dcf-4fbe-94e3-afb0b902626a"
+                }
+              ],
+              "id": "3b094ded-30dc-4df8-b187-02c31da8ae75",
+              "createdAt": "2026-07-28T10:41:29.000Z",
+              "updatedAt": "2026-07-28T10:41:29.000Z",
+              "uid": "35240-3b094ded-30dc-4df8-b187-02c31da8ae75"
+            },
+            {
+              "name": "Amazon Pinpoint Create an Application",
+              "id": "fe8fb6ff-11d1-4fd5-9cf8-2894564f056e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"tags\": {\n    \"sed_a\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/apps",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps"
+                  ]
+                },
+                "description": "Creates a new Pinpoint application (project)."
+              },
+              "response": [
+                {
+                  "id": "c7b537f9-6c1d-47ef-8d38-63bdcd116a71",
+                  "name": "Application created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Name\": \"<string>\",\n  \"tags\": {\n    \"sed_a\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/apps",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "apps"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Id\": \"<string>\",\n  \"Arn\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"tags\": {\n    \"ullamco_f\": \"<string>\",\n    \"nisibe\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T10:41:29.000Z",
+                  "updatedAt": "2026-07-28T10:41:29.000Z",
+                  "uid": "35240-c7b537f9-6c1d-47ef-8d38-63bdcd116a71"
+                }
+              ],
+              "createdAt": "2026-07-28T10:41:29.000Z",
+              "updatedAt": "2026-07-28T10:41:29.000Z",
+              "uid": "35240-fe8fb6ff-11d1-4fd5-9cf8-2894564f056e"
+            },
+            {
+              "name": "Amazon Pinpoint List Applications",
+              "id": "c0d56f2c-c89f-4343-9d3f-3b2aceb3f73c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/apps",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps"
+                  ]
+                },
+                "description": "Retrieves information about all applications associated with your account."
+              },
+              "response": [
+                {
+                  "id": "facd8a32-305b-4659-86ee-4868b604aed2",
+                  "name": "Applications retrieved successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/apps",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "apps"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T10:41:29.000Z",
+                  "updatedAt": "2026-07-28T10:41:29.000Z",
+                  "uid": "35240-facd8a32-305b-4659-86ee-4868b604aed2"
+                }
+              ],
+              "createdAt": "2026-07-28T10:41:29.000Z",
+              "updatedAt": "2026-07-28T10:41:29.000Z",
+              "uid": "35240-c0d56f2c-c89f-4343-9d3f-3b2aceb3f73c"
+            }
+          ],
+          "id": "df093cc5-af29-4236-843d-7c4716a88eb7",
+          "createdAt": "2026-07-28T10:41:29.000Z",
+          "updatedAt": "2026-07-28T10:41:29.000Z",
+          "uid": "35240-df093cc5-af29-4236-843d-7c4716a88eb7"
+        }
+      ],
+      "id": "43dce8b9-4ddd-4239-95cc-eac658b159a7",
+      "createdAt": "2026-07-28T10:41:29.000Z",
+      "updatedAt": "2026-07-28T10:41:29.000Z",
+      "uid": "35240-43dce8b9-4ddd-4239-95cc-eac658b159a7"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "http://pinpoint.{{region}}.amazonaws.com"
+    }
+  ]
+}
