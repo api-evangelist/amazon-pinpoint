@@ -1,0 +1,86 @@
+generated: '2026-08-13'
+method: searched
+source: live GET probes 2026-08-13
+note: >-
+  Three hosts were probed: the regional API host (pinpoint.us-east-1.amazonaws.com, the only real
+  Pinpoint API endpoint - see apis.yml baseURL), the marketing/console host aws.amazon.com, and the
+  docs host docs.aws.amazon.com. The API host answers 403 {"message":"Forbidden"} to every path
+  because it is a SigV4-only service endpoint with no unauthenticated discovery surface. The single
+  real document found is the RFC 9116 security.txt served by aws.amazon.com, saved verbatim.
+  aws.amazon.com returns a 404 HTML shell (327 KB) for the other paths; docs.aws.amazon.com returns
+  a 404 HTML error page - neither is a document.
+hosts:
+  - https://pinpoint.us-east-1.amazonaws.com
+  - https://aws.amazon.com
+  - https://docs.aws.amazon.com
+documents:
+  - host: https://aws.amazon.com
+    path: /.well-known/security.txt
+    status: 200
+    content_type: text/plain;charset=UTF-8
+    file: amazon-pinpoint-security.txt
+    spec: RFC 9116
+  - host: https://aws.amazon.com
+    path: /.well-known/openid-configuration
+    status: 404
+  - host: https://aws.amazon.com
+    path: /.well-known/oauth-authorization-server
+    status: 404
+  - host: https://aws.amazon.com
+    path: /.well-known/api-catalog
+    status: 404
+  - host: https://aws.amazon.com
+    path: /.well-known/ai-plugin.json
+    status: 404
+  - host: https://aws.amazon.com
+    path: /.well-known/agent-card.json
+    status: 404
+  - host: https://aws.amazon.com
+    path: /.well-known/agent.json
+    status: 404
+  - host: https://pinpoint.us-east-1.amazonaws.com
+    path: /.well-known/security.txt
+    status: 403
+  - host: https://pinpoint.us-east-1.amazonaws.com
+    path: /.well-known/openid-configuration
+    status: 403
+  - host: https://pinpoint.us-east-1.amazonaws.com
+    path: /.well-known/oauth-authorization-server
+    status: 403
+  - host: https://pinpoint.us-east-1.amazonaws.com
+    path: /.well-known/api-catalog
+    status: 403
+  - host: https://pinpoint.us-east-1.amazonaws.com
+    path: /.well-known/ai-plugin.json
+    status: 403
+  - host: https://pinpoint.us-east-1.amazonaws.com
+    path: /.well-known/agent-card.json
+    status: 403
+  - host: https://pinpoint.us-east-1.amazonaws.com
+    path: /.well-known/agent.json
+    status: 403
+  - host: https://docs.aws.amazon.com
+    path: /.well-known/security.txt
+    status: 404
+  - host: https://docs.aws.amazon.com
+    path: /.well-known/openid-configuration
+    status: 404
+  - host: https://docs.aws.amazon.com
+    path: /.well-known/oauth-authorization-server
+    status: 404
+  - host: https://docs.aws.amazon.com
+    path: /.well-known/api-catalog
+    status: 404
+  - host: https://docs.aws.amazon.com
+    path: /.well-known/ai-plugin.json
+    status: 404
+  - host: https://docs.aws.amazon.com
+    path: /.well-known/agent-card.json
+    status: 404
+  - host: https://docs.aws.amazon.com
+    path: /.well-known/agent.json
+    status: 404
+summary:
+  probed: 21
+  hits: 1
+  agent_card: none

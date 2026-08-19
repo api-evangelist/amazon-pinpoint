@@ -1,0 +1,119 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  Public package-registry metadata endpoints (registry.npmjs.org, pypi.org, rubygems.org,
+  search.maven.org, api.nuget.org, proxy.golang.org, packagist.org) queried 2026-08-13, plus
+  https://aws.amazon.com/tools/ and https://docs.aws.amazon.com/pinpoint/latest/developerguide/service_code_examples.html
+note: >-
+  Amazon Pinpoint has no standalone SDK. It is a service client inside the multi-service AWS SDK
+  family, so each entry below is either the Pinpoint-specific client package (npm, Maven, NuGet,
+  RubyGems, Go) or the umbrella SDK that carries the Pinpoint client (boto3/botocore for Python,
+  aws/aws-sdk-php for PHP). Every entry is first-party AWS. Release dates are read from the
+  registry metadata endpoint, not from prose.
+packages:
+  - language: javascript
+    registry: npm
+    name: '@aws-sdk/client-pinpoint'
+    url: https://www.npmjs.com/package/@aws-sdk/client-pinpoint
+    install: npm install @aws-sdk/client-pinpoint
+    official: true
+    version: 3.1109.0
+    published: '2026-08-12'
+    note: AWS SDK for JavaScript v3, Pinpoint client. Actively released on the AWS SDK train.
+  - language: javascript
+    registry: npm
+    name: aws-sdk
+    url: https://www.npmjs.com/package/aws-sdk
+    install: npm install aws-sdk
+    official: true
+    version: 2.1693.0
+    published: '2025-12-09'
+    note: >-
+      AWS SDK for JavaScript v2 (umbrella, includes Pinpoint). In maintenance mode - the latest
+      release predates the v3 client by eight months, which is the decay signal, not a defect.
+  - language: python
+    registry: pypi
+    name: boto3
+    url: https://pypi.org/project/boto3/
+    install: pip install boto3
+    official: true
+    version: 1.43.70
+    published: '2026-08-12'
+    note: AWS SDK for Python. Pinpoint is reached via boto3.client('pinpoint'); no separate package.
+  - language: python
+    registry: pypi
+    name: botocore
+    url: https://pypi.org/project/botocore/
+    install: pip install botocore
+    official: true
+    version: 1.43.70
+    published: '2026-08-12'
+    note: Low-level core that carries the pinpoint-2016-12-01 service model boto3 loads.
+  - language: java
+    registry: maven
+    name: com.amazonaws:aws-java-sdk-pinpoint
+    url: https://central.sonatype.com/artifact/com.amazonaws/aws-java-sdk-pinpoint
+    install: 'implementation "com.amazonaws:aws-java-sdk-pinpoint:1.12.797"'
+    official: true
+    version: 1.12.797
+    published: '2025-12-29'
+    note: >-
+      AWS SDK for Java v1 Pinpoint client. Java v1 reached end-of-support; the v2 equivalent is
+      software.amazon.awssdk:pinpoint.
+  - language: dotnet
+    registry: nuget
+    name: AWSSDK.Pinpoint
+    url: https://www.nuget.org/packages/AWSSDK.Pinpoint
+    install: dotnet add package AWSSDK.Pinpoint
+    official: true
+    version: 4.0.100.8
+    published: '2026-08-11'
+  - language: ruby
+    registry: rubygems
+    name: aws-sdk-pinpoint
+    url: https://rubygems.org/gems/aws-sdk-pinpoint
+    install: gem install aws-sdk-pinpoint
+    official: true
+    version: 1.125.0
+    published: '2026-07-09'
+  - language: go
+    registry: go-modules
+    name: github.com/aws/aws-sdk-go-v2/service/pinpoint
+    url: https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/pinpoint
+    install: go get github.com/aws/aws-sdk-go-v2/service/pinpoint
+    official: true
+    version: v1.42.5
+    published: '2026-08-10'
+  - language: php
+    registry: packagist
+    name: aws/aws-sdk-php
+    url: https://packagist.org/packages/aws/aws-sdk-php
+    install: composer require aws/aws-sdk-php
+    official: true
+    version: 3.392.0
+    published: '2026-08-11'
+    note: Umbrella SDK; Pinpoint is reached via Aws\Pinpoint\PinpointClient.
+  - language: rust
+    registry: crates.io
+    name: aws-sdk-pinpoint
+    url: https://crates.io/crates/aws-sdk-pinpoint
+    install: cargo add aws-sdk-pinpoint
+    official: true
+    version: null
+    published: null
+    note: >-
+      Version not recorded. crates.io returned HTTP 403 to the unauthenticated metadata endpoint
+      on 2026-08-13 citing its API data-access policy, so the release could not be read. Checked,
+      nothing to record - not a guess and not an assertion the crate is absent.
+  - language: cli
+    registry: pypi
+    name: awscli
+    url: https://pypi.org/project/awscli/
+    install: pip install awscli
+    official: true
+    version: null
+    published: null
+    note: >-
+      The AWS CLI carries the `aws pinpoint` command surface (see cli/amazon-pinpoint-cli.yml).
+      AWS CLI v2 is distributed as a signed platform installer rather than a pinned registry
+      artifact, so no single registry version represents what a consumer installs.

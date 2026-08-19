@@ -1,0 +1,99 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  Derived from openapi/ and openapi/_original/, confirmed against
+  https://docs.aws.amazon.com/pinpoint/latest/developerguide/security-compliance-validation.html,
+  https://docs.aws.amazon.com/pinpoint/latest/developerguide/security-data-protection-encryption.html,
+  https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html and
+  https://aws.amazon.com/compliance/services-in-scope/
+standards:
+  - id: aws-sigv4
+    conforms: true
+    evidence: >-
+      Every spec declares the `hmac` security scheme with x-amazon-apigateway-authtype awsSigv4 and
+      the X-Amz-* signing parameters; the AWS General Reference documents the algorithm.
+  - id: oauth2
+    conforms: false
+    evidence: No oauth2 securityScheme in any spec; authorization is IAM policy, not OAuth.
+  - id: oidc
+    conforms: false
+    evidence: No openIdConnect securityScheme and no /.well-known/openid-configuration on any host (404/403).
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors are AWS JSON exceptions with a Message field and an x-amzn-ErrorType header; no
+      application/problem+json media type appears in the contract.
+  - id: rfc9116-security-txt
+    conforms: true
+    evidence: >-
+      https://aws.amazon.com/.well-known/security.txt returns 200 with Policy, Contact,
+      Preferred-Languages, Encryption and Expires fields. Saved at
+      well-known/amazon-pinpoint-security.txt.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: >-
+      Amazon Pinpoint has a dated end of support (2026-10-30) but emits no Sunset or Deprecation
+      response headers and marks no operation `deprecated` in the contract.
+  - id: pagination-cursor
+    conforms: true
+    evidence: >-
+      Opaque cursor pagination via page-size + token / next-token query parameters and a NextToken
+      response field on 13 response schemas.
+  - id: idempotency
+    conforms: false
+    evidence: >-
+      No idempotency key header and no ClientToken field anywhere in the contract; write
+      operations are not safely retryable.
+  - id: json-api
+    conforms: false
+    evidence: Plain JSON resource representations; no JSON:API document structure.
+  - id: odata
+    conforms: false
+  - id: scim2
+    conforms: false
+  - id: fhir-r4
+    conforms: false
+  - id: psd2
+    conforms: false
+  - id: fapi
+    conforms: false
+  - id: tls-1-2
+    conforms: true
+    evidence: >-
+      HTTPS with TLS 1.2 or later required; TLS 1.0 support ended 2023-03-22. Live TLS probe of the
+      AWS hosts recorded TLSv1.3 - see security/amazon-pinpoint-domain-security.yml.
+  - id: rest-resource-oriented
+    conforms: true
+    evidence: >-
+      119 operations across resource-oriented /v1/ paths using GET/POST/PUT/DELETE with unique
+      operationIds; a real REST contract rather than an RPC action list.
+  - id: openapi-3-0
+    conforms: true
+    evidence: >-
+      openapi/_original/amazon-pinpoint-openapi-original.yaml is OpenAPI 3.0.0, converted from AWS's
+      own pinpoint-2016-12-01 service model by aws2openapi. AWS itself does not publish OpenAPI.
+  - id: asyncapi
+    conforms: false
+    evidence: >-
+      Pinpoint has a real event surface (Kinesis/Firehose event streams plus custom-channel
+      webhooks) but publishes no AsyncAPI document. See asyncapi/amazon-pinpoint-events.yml.
+compliance_programs:
+  published: true
+  url: https://aws.amazon.com/compliance/services-in-scope/
+  service_scope_doc: https://docs.aws.amazon.com/pinpoint/latest/developerguide/security-compliance-validation.html
+  certifications:
+    - SOC 1
+    - SOC 2
+    - SOC 3
+    - FedRAMP
+    - HIPAA
+    - ISO/IEC 27001:2013
+    - ISO/IEC 27017:2015
+    - ISO/IEC 27018:2014
+    - ISO/IEC 9001:2015
+  hipaa_note: >-
+    Amazon Pinpoint is a HIPAA-eligible service only on the email, push notification and SMS
+    channels. AWS states the VOICE channel is NOT HIPAA eligible and must not carry PHI; PHI over
+    SMS must use a dedicated short code.
+  audit_reports: https://docs.aws.amazon.com/artifact/latest/ug/downloading-documents.html
+  shared_responsibility: https://aws.amazon.com/compliance/shared-responsibility-model/

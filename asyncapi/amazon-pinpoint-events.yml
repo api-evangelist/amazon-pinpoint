@@ -1,0 +1,101 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams.html,
+  https://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams-data-app.html,
+  https://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams-data-campaign.html,
+  https://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams-data-email.html,
+  https://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams-data-sms.html,
+  https://docs.aws.amazon.com/pinpoint/latest/developerguide/channels-custom.html
+spec_type: none
+asyncapi_published: false
+asyncapi_note: >-
+  Amazon Pinpoint has a real, documented event surface but AWS publishes NO AsyncAPI document for
+  it - not on the docs host, not in the aws GitHub org, not at any /asyncapi path. This file
+  captures the event surface as AWS documents it. It is deliberately not an AsyncAPI: writing one
+  on AWS's behalf would assert a contract AWS does not publish.
+surfaces:
+  - kind: event-stream
+    name: Pinpoint event stream
+    transport: Amazon Kinesis Data Streams or Amazon Data Firehose
+    direction: outbound (Pinpoint -> your stream)
+    configured_by:
+      - openapi/amazon-pinpoint-apps-api-openapi.yml#PutEventStream
+      - openapi/amazon-pinpoint-apps-api-openapi.yml#GetEventStream
+      - openapi/amazon-pinpoint-apps-api-openapi.yml#DeleteEventStream
+    envelope:
+      fields: [event_type, event_timestamp, arrival_timestamp, event_version, application, client, device, session, attributes, metrics, awsAccountId]
+      encoding: JSON, one record per event
+    excluded:
+      - transactional push notifications
+      - transactional voice messages
+    note: >-
+      Pinpoint does not stream events for transactional push or voice - a documented gap in the
+      event surface, stated by AWS.
+  - kind: webhook
+    name: Custom channel webhook
+    direction: outbound (Pinpoint -> your HTTPS endpoint)
+    trigger: A campaign whose delivery is configured as a custom channel with a webhook URL
+    requirements:
+      - URL must begin with https://
+      - URL must comply with RFC 3986 and use only alphanumerics plus - . _ ~ ? / # :
+      - >-
+        Pinpoint first issues an HTTP HEAD to the URL; the response MUST carry an
+        X-Amz-Pinpoint-AccountId header whose value equals your AWS account ID, or the campaign is
+        rejected. This is the ownership handshake.
+    payload_fields: [Message, Data, ApplicationId, CampaignId, TreatmentId, ActivityId, ScheduledTime, Endpoints]
+    alternative: An AWS Lambda function receiving the same payload shape instead of an HTTPS endpoint
+    source: https://docs.aws.amazon.com/pinpoint/latest/developerguide/channels-custom.html
+event_catalog:
+  app:
+    version: '3.0'
+    events:
+      - {type: _session.start, description: An app session began}
+      - {type: _session.stop, description: An app session ended}
+      - {type: custom, description: Any custom event name recorded through PutEvents}
+    source: https://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams-data-app.html
+  campaign:
+    version: '3.1'
+    events:
+      - {type: _campaign.send, description: Pinpoint executed the campaign}
+      - {type: _campaign.opened_notification, description: Push recipient tapped the notification (AWS Amplify only)}
+      - {type: _campaign.received_foreground, description: Push received as a foreground notification (AWS Amplify only)}
+      - {type: _campaign.received_background, description: Push received as a background notification (AWS Amplify only)}
+    source: https://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams-data-campaign.html
+  email:
+    version: '3.1'
+    events:
+      - {type: _email.send, description: Email accepted for sending}
+      - {type: _email.delivered, description: Email delivered to the recipient}
+      - {type: _email.hardbounce, description: Permanent bounce}
+      - {type: _email.softbounce, description: Transient bounce}
+      - {type: _email.complaint, description: Recipient marked the message as spam}
+      - {type: _email.open, description: Recipient opened the message}
+      - {type: _email.click, description: Recipient clicked a link}
+      - {type: _email.rejected, description: Message rejected before sending}
+      - {type: _email.unsubscribe, description: Recipient unsubscribed}
+      - {type: _email.rendering_failure, description: Template rendering failed}
+    source: https://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams-data-email.html
+  sms:
+    version: '3.1'
+    events:
+      - {type: _SMS.SUCCESS, description: Message delivered}
+      - {type: _SMS.BUFFERED, description: Message accepted and queued by the carrier}
+      - {type: _SMS.FAILURE, description: Delivery failed}
+      - {type: _SMS.OPTOUT, description: Recipient opted out}
+    record_status_note: >-
+      SMS events carry a record_status (for example DELIVERED) alongside the event type.
+    source: https://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams-data-sms.html
+  journey:
+    events_note: >-
+      Journey event data is documented at
+      https://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams-data-journey.html
+      and shares the app/campaign envelope.
+inbound_events:
+  - name: PutEvents
+    direction: inbound (your app -> Pinpoint)
+    operation: openapi/amazon-pinpoint-apps-api-openapi.yml#PutEvents
+    note: The write side of the same event model - how engagement events enter Pinpoint.
+lifecycle_note: >-
+  The event stream and custom-channel webhook go away with the service on 2026-10-30. AWS
+  recommends Amazon Kinesis directly for event collection after that date.

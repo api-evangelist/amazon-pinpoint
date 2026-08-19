@@ -1,6 +1,8 @@
-generated: '2026-07-11'
+generated: '2026-08-13'
 method: derived
-source: openapi/amazon-pinpoint-openapi-original.yaml, openapi/amazon-pinpoint-openapi.yml
+source: openapi/amazon-pinpoint-applications-api-openapi.yml, openapi/amazon-pinpoint-apps-api-openapi.yml,
+  openapi/amazon-pinpoint-phone-api-openapi.yml, openapi/amazon-pinpoint-recommenders-api-openapi.yml,
+  openapi/amazon-pinpoint-tags-api-openapi.yml, openapi/amazon-pinpoint-templates-api-openapi.yml
 summary:
   types:
   - apiKey
@@ -13,5 +15,9 @@ schemes:
   parameter: Authorization
   description: Amazon Signature authorization v4
   sources:
-  - openapi/amazon-pinpoint-openapi-original.yaml
-  - openapi/amazon-pinpoint-openapi.yml
+  - openapi/amazon-pinpoint-applications-api-openapi.yml
+  - openapi/amazon-pinpoint-apps-api-openapi.yml
+  - openapi/amazon-pinpoint-phone-api-openapi.yml
+  - openapi/amazon-pinpoint-recommenders-api-openapi.yml
+  - openapi/amazon-pinpoint-tags-api-openapi.yml
+  - openapi/amazon-pinpoint-templates-api-openapi.yml

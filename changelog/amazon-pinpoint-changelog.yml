@@ -1,0 +1,124 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://docs.aws.amazon.com/pinpoint/latest/apireference/doc-history.html,
+  https://docs.aws.amazon.com/pinpoint/latest/developerguide/doc-history.html
+scheme: dated-document-history
+current_version: '2016-12-01'
+current_version_note: >-
+  AWS versions this API by service API version, not by release. 2016-12-01 has been the only API
+  version since general availability; changes ship as additive model updates under it.
+latest_documentation_update: '2024-04-04'
+cadence_note: >-
+  The API reference has recorded exactly one change since April 2024 - the end-of-support notice on
+  2025-05-20. The contract is frozen; the changelog is now a retirement log, not a feature log.
+entries:
+  - date: '2025-05-20'
+    api_version: '2016-12-01'
+    kind: end-of-support
+    breaking: true
+    highlight: >-
+      AWS will end support for Amazon Pinpoint on 2026-10-30. Console and Pinpoint resources
+      (endpoints, segments, campaigns, journeys, analytics) become unavailable. SMS, voice, mobile
+      push, OTP and PhoneNumberValidate APIs are unaffected and continue under AWS End User
+      Messaging.
+    source: api-reference + developer guide
+  - date: '2025-02-17'
+    kind: changed
+    breaking: false
+    highlight: CloudTrail logging added for PutEvents, SendUserMessages and SendMessages.
+    source: developer guide
+  - date: '2024-07-22'
+    kind: docs
+    breaking: false
+    highlight: Push resource documentation moved to the End User Messaging Push User Guide.
+    source: developer guide
+  - date: '2024-05-07'
+    api_version: '2016-12-01'
+    kind: added
+    breaking: false
+    highlight: Support for email headers (including unsubscribe headers) on email messages.
+    source: api-reference + developer guide
+  - date: '2024-04-30'
+    kind: changed
+    breaking: false
+    highlight: Email orchestration changed - Pinpoint now uses your Amazon SES resources to send email.
+    source: developer guide
+  - date: '2024-04-04'
+    api_version: '2016-12-01'
+    kind: changed
+    breaking: false
+    highlight: RawContent samples for push notifications updated.
+    source: api-reference
+  - date: '2024-02-08'
+    kind: docs
+    breaking: false
+    highlight: SMS and Voice resource management topics redirected to the AWS End User Messaging SMS User Guide.
+    source: developer guide
+  - date: '2023-12-19'
+    kind: changed
+    breaking: false
+    highlight: >-
+      Quotas added for closed-days rules and open-hours rules (max rules, max name length, max days
+      between start and end).
+    source: developer guide
+  - date: '2023-07-28'
+    api_version: '2016-12-01'
+    kind: added
+    breaking: false
+    highlight: Token Credentials supported when authenticating with GCM.
+    source: api-reference
+  - date: '2023-06-26'
+    api_version: '2016-12-01'
+    kind: added
+    breaking: false
+    highlight: Journey maximum number of messages per endpoint in a given timeframe.
+    source: api-reference
+  - date: '2023-04-25'
+    api_version: '2016-12-01'
+    kind: added
+    breaking: false
+    highlight: Journey run metrics.
+    source: api-reference
+  - date: '2023-04-18'
+    api_version: '2016-12-01'
+    kind: changed
+    breaking: false
+    highlight: >-
+      Tags support updated across UpdateCampaign, UpdateSegment and the five UpdateTemplate
+      operations.
+    source: api-reference
+  - date: '2023-03-20'
+    kind: changed
+    breaking: true
+    highlight: >-
+      TLS 1.0 no longer supported from 2023-03-22; TLS 1.2 or later required. See
+      security/amazon-pinpoint-domain-security.yml.
+    source: developer guide
+  - date: '2022-04-01'
+    kind: added
+    breaking: false
+    highlight: >-
+      A dedicated SMS and Voice API v2 shipped alongside Pinpoint, with configuration sets, pools
+      and opt-out lists. That API is the surface that survives as AWS End User Messaging.
+    source: developer guide
+  - date: '2021-11-26'
+    api_version: '2016-12-01'
+    kind: added
+    breaking: false
+    highlight: SendOTPMessage and VerifyOTPMessage - one-time password send and validation.
+    source: api-reference
+  - date: '2021-11-01'
+    api_version: '2016-12-01'
+    kind: added
+    breaking: false
+    highlight: In-app messages (GetInAppMessages, in-app templates).
+    source: api-reference
+  - date: '2020-04-23'
+    api_version: '2016-12-01'
+    kind: deprecated
+    breaking: true
+    highlight: >-
+      Custom-channel campaigns reworked - CustomDeliveryConfiguration and CampaignCustomMessage
+      added; the CampaignHook.Delivery value from the public beta deprecated.
+    source: api-reference

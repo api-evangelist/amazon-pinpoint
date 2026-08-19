@@ -1,0 +1,92 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://docs.aws.amazon.com/pinpoint/latest/userguide/migrate.html,
+  https://docs.aws.amazon.com/pinpoint/latest/apireference/doc-history.html,
+  https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html,
+  https://aws.amazon.com/pinpoint/faqs/
+headline: >-
+  Amazon Pinpoint is being retired. AWS ends support on 2026-10-30 and has already closed the
+  service to new customers (2025-05-20). This is not a soft deprecation notice on one operation -
+  it is a dated end-of-life for the whole engagement surface.
+versioning:
+  scheme: uri-path-plus-service-api-version
+  current: v1
+  api_version: '2016-12-01'
+  note: >-
+    Every path is prefixed /v1/. The service API version 2016-12-01 has never been superseded -
+    there is no v2 of the Amazon Pinpoint API. AWS SDK clients pin the 2016-12-01 model.
+  docs: https://docs.aws.amazon.com/pinpoint/latest/apireference/welcome.html
+deprecation:
+  status: end-of-life-announced
+  policy_url: https://docs.aws.amazon.com/pinpoint/latest/userguide/migrate.html
+  announced: '2025-05-20'
+  new_customers_blocked: '2025-05-20'
+  end_of_support: '2026-10-30'
+  sunset_header: false
+  note: >-
+    AWS publishes the end-of-support date in prose on every Pinpoint documentation page and in the
+    API reference document history; it does not emit RFC 8594 Sunset or Deprecation response
+    headers, and no operation in openapi/ carries `deprecated: true`. An agent cannot learn the
+    retirement from the wire - only from the docs.
+  scope_ending:
+    - Amazon Pinpoint console
+    - endpoints
+    - segments
+    - campaigns
+    - journeys
+    - analytics
+  scope_continuing:
+    - SMS
+    - MMS
+    - voice
+    - mobile push
+    - OTP
+    - PhoneNumberValidate
+  continuing_under: AWS End User Messaging
+  migration_paths:
+    - from: engagement (segments, campaigns, journeys, analytics)
+      to: Amazon Connect outbound campaigns
+      url: https://aws.amazon.com/connect/outbound/
+    - from: endpoints and segments as customer records
+      to: Amazon Connect Customer Profiles
+      url: https://aws.amazon.com/connect/customer-profiles/
+    - from: email sending
+      to: Amazon Simple Email Service (SES)
+      url: https://aws.amazon.com/ses
+    - from: email deliverability dashboard
+      to: SES Virtual Deliverability Manager
+      url: https://docs.aws.amazon.com/ses/latest/dg/vdm-global-deliverability.html
+    - from: event collection and mobile analytics
+      to: Amazon Kinesis
+      url: https://aws.amazon.com/kinesis
+    - from: SMS, MMS, voice, push, OTP, phone validate
+      to: AWS End User Messaging
+      url: https://aws.amazon.com/end-user-messaging
+      note: Rebrand rather than migration - these APIs are unaffected by the end of support.
+sla:
+  url: https://aws.amazon.com/pinpoint/sla/
+  name: AWS User Engagement Service Level Agreement
+  uptime_target: 99.9%
+  window: monthly billing cycle, per AWS region
+  covers:
+    - Amazon Simple Email Service
+    - Amazon Pinpoint
+    - AWS End User Messaging
+  note: >-
+    Verified 2026-08-13. The AWS Messaging SLA (aws.amazon.com/messaging/sla) covers only SNS and
+    SQS and does NOT name Pinpoint - the correct instrument is the User Engagement SLA above.
+status_page: https://health.aws.amazon.com/health/status
+status_page_legacy: https://status.aws.amazon.com/
+deprecated_operations: []
+deprecated_fields:
+  - field: CampaignHook.Delivery
+    note: >-
+      Deprecated 2020-04-23 when custom-channel support moved to CustomDeliveryConfiguration and
+      CampaignCustomMessage. Recorded in the API reference document history; the value is not
+      flagged `deprecated` in the machine-readable contract.
+regional_availability:
+  docs: https://docs.aws.amazon.com/general/latest/gr/pinpoint.html
+  note: >-
+    Pinpoint is a regional service. There is no global endpoint - see conventions/ and the
+    baseURL repair recorded in apis.yml.

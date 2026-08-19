@@ -1,0 +1,108 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  Derived from the error responses in openapi/_original/amazon-pinpoint-openapi-original.yaml and
+  the six refined specs, then reconciled against the published status tables in
+  https://docs.aws.amazon.com/pinpoint/latest/apireference/apps.html and
+  https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id.html
+format: aws-json-exception
+rfc9457: false
+envelope:
+  body_field: MessageBody.Message
+  type_header: x-amzn-ErrorType
+  note: >-
+    Errors are returned as a JSON MessageBody object carrying a human-readable Message, with the
+    exception class identified by the x-amzn-ErrorType response header. There is no
+    application/problem+json media type and no type/title/detail/instance members, so the surface
+    is not RFC 9457.
+spec_status_code_caveat: >-
+  IMPORTANT. The harvested contract encodes errors under the placeholder status codes 480-487, an
+  artifact of the aws2openapi conversion used to build the source spec - those are not wire
+  statuses. The `status` values below are the real HTTP statuses AWS documents in the API
+  reference; `spec_status` records what the OpenAPI says, so the divergence is visible rather than
+  silently corrected.
+coverage:
+  operations_total: 119
+  operations_with_error_responses: 116
+  distinct_problem_types: 8
+problems:
+  - name: BadRequestException
+    status: 400
+    spec_status: 480
+    title: The request contains a syntax error
+    remediation: >-
+      Validate the request body against the operation schema in openapi/. Common causes are a
+      malformed segment dimension, an invalid schedule expression, or an attribute name/value over
+      the 50/100 character quota.
+    operations: 116
+    source_schema: '#/components/schemas/BadRequestException'
+  - name: InternalServerErrorException
+    status: 500
+    spec_status: 481
+    title: Unknown internal server error, exception, or failure
+    remediation: Retry with exponential backoff and jitter. Capture x-amzn-RequestId for AWS Support.
+    operations: 116
+    source_schema: '#/components/schemas/InternalServerErrorException'
+  - name: PayloadTooLargeException
+    status: 413
+    spec_status: 482
+    title: The payload for the body of the request is too large
+    aws_reference_name: RequestEntityTooLargeException
+    remediation: >-
+      The maximum invocation payload is 7 MB, an endpoint is 15 KB and an email message is 10 MB.
+      Split UpdateEndpointsBatch requests or reduce attribute volume.
+    operations: 116
+    source_schema: '#/components/schemas/PayloadTooLargeException'
+  - name: ForbiddenException
+    status: 403
+    spec_status: 483
+    title: Access to the specified resource is forbidden
+    remediation: >-
+      The caller's IAM principal lacks the mobiletargeting:* action for this resource, or the SigV4
+      signature/region does not match the endpoint being called.
+    operations: 116
+    source_schema: '#/components/schemas/ForbiddenException'
+  - name: NotFoundException
+    status: 404
+    spec_status: 484
+    title: The specified resource was not found
+    remediation: >-
+      Check that the application-id, campaign-id, segment-id, journey-id or template-name exists in
+      THIS region - Pinpoint resources do not cross regions.
+    operations: 116
+    source_schema: '#/components/schemas/NotFoundException'
+  - name: MethodNotAllowedException
+    status: 405
+    spec_status: 485
+    title: The method is not allowed for the specified resource
+    remediation: Use the HTTP method the resource declares in openapi/.
+    operations: 116
+    source_schema: '#/components/schemas/MethodNotAllowedException'
+  - name: TooManyRequestsException
+    status: 429
+    spec_status: 486
+    title: Too many requests were sent during a certain amount of time
+    remediation: >-
+      Back off and retry. Throttling is per account, per operation, per region against the
+      published per-second quota; no Retry-After header is returned, so the client must choose the
+      delay. See rate-limits/amazon-pinpoint-rate-limits.yml.
+    operations: 116
+    source_schema: '#/components/schemas/TooManyRequestsException'
+  - name: ConflictException
+    status: 409
+    spec_status: 487
+    title: Conflict with the current state of the specified resource
+    remediation: >-
+      Raised by UpdateJourney when the journey's current state does not permit the change (for
+      example editing an ACTIVE journey). Read the journey, transition it with UpdateJourneyState,
+      then retry.
+    operations: 1
+    source_operation: openapi/amazon-pinpoint-apps-api-openapi.yml#UpdateJourney
+    source_schema: '#/components/schemas/ConflictException'
+gaps:
+  - >-
+    The exception schemas in the published contract are empty objects - AWS declares the error
+    types but not their body shape, so a generated client cannot type an error response.
+  - >-
+    No error identifier, no documentation URI and no remediation hint travels on the wire; an agent
+    must map x-amzn-ErrorType against this catalog.

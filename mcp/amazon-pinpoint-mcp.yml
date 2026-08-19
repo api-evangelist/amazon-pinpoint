@@ -1,0 +1,132 @@
+generated: '2026-08-13'
+method: searched
+status: candidate
+source: >-
+  https://github.com/awslabs/mcp (src/ listing read via the GitHub contents API 2026-08-13),
+  https://knowledge-mcp.global.api.aws/mcp (tools/list probed 2026-08-13),
+  https://pypi.org/pypi/awslabs.aws-api-mcp-server/json
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+finding: >-
+  AWS ships no Amazon Pinpoint MCP server. The awslabs/mcp repository - AWS's official MCP
+  distribution - carried 62 servers on 2026-08-13 and none of them is Pinpoint, End User Messaging,
+  or messaging/engagement. There is therefore no MCP surface that exposes the Pinpoint operations in
+  openapi/ as tools, and this file does not claim one. The tools[] list below is a DERIVED candidate
+  set: what a Pinpoint MCP server would expose if someone built one from the published contract.
+related_first_party_servers:
+  - name: AWS Knowledge MCP Server
+    scope: AWS documentation, regions and skills - NOT the Pinpoint API
+    mode: remote
+    endpoint: https://knowledge-mcp.global.api.aws/mcp
+    auth: none
+    verified: probed
+    probed: '2026-08-13'
+    http_status: 200
+    tools:
+      - aws___read_documentation
+      - aws___search_documentation
+      - aws___list_regions
+      - aws___get_regional_availability
+      - aws___retrieve_skill
+    note: >-
+      Anonymous tools/list returned 200 with five tools. It can read the Amazon Pinpoint docs pages
+      for an agent, but it cannot call CreateCampaign or SendMessages. Recorded as context, not as
+      a Pinpoint agent surface.
+  - name: AWS API MCP Server
+    scope: every AWS API reachable through the AWS CLI, including `aws pinpoint`
+    mode: local-stdio
+    install: uvx awslabs.aws-api-mcp-server@latest
+    package: https://pypi.org/project/awslabs.aws-api-mcp-server/
+    version: 1.5.1
+    published: '2026-08-10'
+    auth: api-key
+    verified: searched
+    note: >-
+      Generic first-party AWS server that executes AWS CLI commands under the caller's IAM
+      credentials. It reaches Pinpoint incidentally because Pinpoint is in the CLI, not because AWS
+      published a Pinpoint tool contract. A human must install and run it before any agent sees it.
+tools_note: >-
+  Candidate tools only. Each is derived from a real operationId in openapi/; none is published by
+  AWS. Input schemas are the parameters + requestBody of the named operation in the linked spec.
+tools:
+  - name: create_app
+    description: Create a Pinpoint application (project)
+    source_operation: openapi/amazon-pinpoint-apps-api-openapi.yml#CreateApp
+  - name: get_apps
+    description: List the Pinpoint applications in the account
+    source_operation: openapi/amazon-pinpoint-apps-api-openapi.yml#GetApps
+  - name: create_segment
+    description: Create an audience segment in a project
+    source_operation: openapi/amazon-pinpoint-apps-api-openapi.yml#CreateSegment
+  - name: get_segments
+    description: List the segments in a project
+    source_operation: openapi/amazon-pinpoint-apps-api-openapi.yml#GetSegments
+  - name: create_campaign
+    description: Create a campaign that targets a segment
+    source_operation: openapi/amazon-pinpoint-apps-api-openapi.yml#CreateCampaign
+  - name: update_campaign
+    description: Update a campaign, including its schedule and state
+    source_operation: openapi/amazon-pinpoint-apps-api-openapi.yml#UpdateCampaign
+  - name: get_campaign
+    description: Retrieve a campaign and its execution state
+    source_operation: openapi/amazon-pinpoint-apps-api-openapi.yml#GetCampaign
+  - name: create_journey
+    description: Create a multi-step journey
+    source_operation: openapi/amazon-pinpoint-apps-api-openapi.yml#CreateJourney
+  - name: update_journey_state
+    description: Move a journey between DRAFT, ACTIVE, PAUSED, CANCELLED and CLOSED
+    source_operation: openapi/amazon-pinpoint-apps-api-openapi.yml#UpdateJourneyState
+  - name: update_endpoint
+    description: Create or update a single endpoint (a channel address for a user)
+    source_operation: openapi/amazon-pinpoint-apps-api-openapi.yml#UpdateEndpoint
+  - name: update_endpoints_batch
+    description: Create or update endpoints in bulk
+    source_operation: openapi/amazon-pinpoint-apps-api-openapi.yml#UpdateEndpointsBatch
+  - name: send_messages
+    description: Send a transactional message to specific addresses or endpoints
+    source_operation: openapi/amazon-pinpoint-apps-api-openapi.yml#SendMessages
+  - name: send_users_messages
+    description: Send a transactional message to all endpoints of one or more users
+    source_operation: openapi/amazon-pinpoint-apps-api-openapi.yml#SendUsersMessages
+  - name: send_otp_message
+    description: Send a one-time password over SMS
+    source_operation: openapi/amazon-pinpoint-apps-api-openapi.yml#SendOTPMessage
+  - name: verify_otp_message
+    description: Verify a one-time password a user entered
+    source_operation: openapi/amazon-pinpoint-apps-api-openapi.yml#VerifyOTPMessage
+  - name: put_events
+    description: Record engagement events against endpoints
+    source_operation: openapi/amazon-pinpoint-apps-api-openapi.yml#PutEvents
+  - name: put_event_stream
+    description: Point a project's event stream at a Kinesis stream or Firehose delivery stream
+    source_operation: openapi/amazon-pinpoint-apps-api-openapi.yml#PutEventStream
+  - name: create_email_template
+    description: Create a reusable email message template
+    source_operation: openapi/amazon-pinpoint-templates-api-openapi.yml#CreateEmailTemplate
+  - name: create_sms_template
+    description: Create a reusable SMS message template
+    source_operation: openapi/amazon-pinpoint-templates-api-openapi.yml#CreateSmsTemplate
+  - name: list_templates
+    description: List the message templates in the account
+    source_operation: openapi/amazon-pinpoint-templates-api-openapi.yml#ListTemplates
+  - name: update_template_active_version
+    description: Promote a template version to active
+    source_operation: openapi/amazon-pinpoint-templates-api-openapi.yml#UpdateTemplateActiveVersion
+  - name: phone_number_validate
+    description: Validate and enrich a phone number
+    source_operation: openapi/amazon-pinpoint-phone-api-openapi.yml#PhoneNumberValidate
+  - name: create_recommender_configuration
+    description: Register an Amazon Personalize recommender for use in templates
+    source_operation: openapi/amazon-pinpoint-recommenders-api-openapi.yml#CreateRecommenderConfiguration
+  - name: list_tags_for_resource
+    description: List the tags on a Pinpoint resource
+    source_operation: openapi/amazon-pinpoint-tags-api-openapi.yml#ListTagsForResource
+lifecycle_warning: >-
+  Amazon Pinpoint reaches end of support on 2026-10-30 (see lifecycle/amazon-pinpoint-lifecycle.yml).
+  Anyone considering building the candidate server above should target AWS End User Messaging or
+  Amazon Connect outbound campaigns instead for the engagement surface.

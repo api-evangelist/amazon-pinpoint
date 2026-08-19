@@ -4,94 +4,114 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Amazon Pinpoint
 providerId: amazon-pinpoint
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-08-13'
+generated: '2026-08-13'
+method: searched
+source: https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html
+provenance_note: >-
+  Replaces the 2026-05-04 bulk-sweep scaffold, which carried invented free/professional/enterprise
+  tiers and X-RateLimit-* headers that Amazon Pinpoint does not return. Every value below is read
+  from the AWS-published quotas page on 2026-08-13.
 tags:
   - AWS
-  - Campaigns
-  - Communications
-  - Email
-  - Marketing
   - Messaging
-  - Push Notifications
-  - SMS
-  - Voice
-  - Customer Engagement
-  - Segmentation
-  - Journeys
-  - Analytics
   - Rate Limiting
   - Quotas
   - Throttling
-description: Machine-readable rate limit definitions for the Amazon Pinpoint API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
+description: >-
+  Published rate and burst quotas for the Amazon Pinpoint API. AWS applies two quota types - a rate
+  quota (requests per second per operation) and a burst quota (concurrent in-flight requests) -
+  calculated independently per operation, per account, per AWS region. There are no plan tiers:
+  every account gets the same defaults and increases are requested through Service Quotas.
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  limit: null
+  remaining: null
+  reset: null
+  retryAfter: null
+  policy: null
+headers_note: >-
+  Amazon Pinpoint returns NO rate-limit response headers. There is no RateLimit-*, no
+  X-RateLimit-* and no Retry-After. A client discovers exhaustion only by receiving a
+  TooManyRequestsException, and must choose its own backoff. This is the runtime signal an agent
+  needs and it is absent.
 responseCodes:
   throttled: 429
   quotaExceeded: 429
-  serviceUnavailable: 503
+  errorType: TooManyRequestsException
+scope: per AWS account, per operation, per AWS region
+limit_count: 26
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Amazon Pinpoint API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Amazon Pinpoint API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Amazon Pinpoint API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Amazon Pinpoint API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Amazon Pinpoint API
+  - name: CreateCampaign
+    scope: account-operation-region
+    metric: requests_per_second
+    limit: 25
+    burst: 25
+    timeFrame: second
+    eligible_for_increase: true
+  - {name: CreateEmailTemplate, scope: account-operation-region, metric: requests_per_second, limit: 10, burst: 10, timeFrame: second}
+  - {name: CreateInAppTemplate, scope: account-operation-region, metric: requests_per_second, limit: 10, burst: 10, timeFrame: second}
+  - {name: CreateImportJob, scope: account-operation-region, metric: requests_per_second, limit: 300, burst: 300, timeFrame: second}
+  - {name: CreatePushTemplate, scope: account-operation-region, metric: requests_per_second, limit: 10, burst: 10, timeFrame: second}
+  - {name: CreateSegment, scope: account-operation-region, metric: requests_per_second, limit: 25, burst: 25, timeFrame: second}
+  - {name: CreateSmsTemplate, scope: account-operation-region, metric: requests_per_second, limit: 10, burst: 10, timeFrame: second}
+  - {name: CreateVoiceTemplate, scope: account-operation-region, metric: requests_per_second, limit: 10, burst: 10, timeFrame: second}
+  - {name: DeleteCampaign, scope: account-operation-region, metric: requests_per_second, limit: 25, burst: 25, timeFrame: second}
+  - {name: DeleteEndpoint, scope: account-operation-region, metric: requests_per_second, limit: 5, burst: 5, timeFrame: second}
+  - {name: DeleteSegment, scope: account-operation-region, metric: requests_per_second, limit: 25, burst: 25, timeFrame: second}
+  - {name: GetEndpoint, scope: account-operation-region, metric: requests_per_second, limit: 10, burst: 10, timeFrame: second}
+  - {name: PhoneNumberValidate, scope: account-operation-region, metric: requests_per_second, limit: 20, burst: 20, timeFrame: second}
+  - {name: PutEvents, scope: account-operation-region, metric: requests_per_second, limit: 15, burst: 15, timeFrame: second}
+  - {name: SendMessages, scope: account-operation-region, metric: requests_per_second, limit: 4000, burst: 4000, timeFrame: second}
+  - {name: SendUsersMessages, scope: account-operation-region, metric: requests_per_second, limit: 6000, burst: 6000, timeFrame: second}
+  - {name: UpdateCampaign, scope: account-operation-region, metric: requests_per_second, limit: 25, burst: 25, timeFrame: second}
+  - {name: UpdateEmailTemplate, scope: account-operation-region, metric: requests_per_second, limit: 10, burst: 10, timeFrame: second}
+  - {name: UpdateEndpoint, scope: account-operation-region, metric: requests_per_second, limit: 10, burst: 10, timeFrame: second}
+  - {name: UpdateEndpointsBatch, scope: account-operation-region, metric: requests_per_second, limit: 2, burst: 2, timeFrame: second}
+  - {name: UpdateInAppTemplate, scope: account-operation-region, metric: requests_per_second, limit: 10, burst: 10, timeFrame: second}
+  - {name: UpdatePushTemplate, scope: account-operation-region, metric: requests_per_second, limit: 10, burst: 10, timeFrame: second}
+  - {name: UpdateSegment, scope: account-operation-region, metric: requests_per_second, limit: 25, burst: 25, timeFrame: second}
+  - {name: UpdateSmsTemplate, scope: account-operation-region, metric: requests_per_second, limit: 10, burst: 10, timeFrame: second}
+  - {name: UpdateVoiceTemplate, scope: account-operation-region, metric: requests_per_second, limit: 10, burst: 10, timeFrame: second}
+  - name: All other operations
+    scope: account-operation-region
+    metric: requests_per_second
+    limit: 300
+    burst: 300
+    timeFrame: second
+    note: Default applied to every operation not named above.
+resource_quotas:
+  - {resource: Projects, limit: 100, unit: per region, eligible_for_increase: false}
+  - {resource: Active campaigns, limit: 200, unit: per account, eligible_for_increase: false, note: "SCHEDULED, EXECUTING or PENDING_NEXT_RUN"}
+  - {resource: Event-based campaigns, limit: 25, unit: per project, eligible_for_increase: false}
+  - {resource: Maximum invocation payload, limit: 7, unit: MB, eligible_for_increase: false}
+  - {resource: Import files per import job, limit: 10000, unit: files, eligible_for_increase: false}
+  - {resource: Endpoint size, limit: 15, unit: KB, eligible_for_increase: false}
+  - {resource: Endpoint attributes, limit: 250, unit: attributes per application, eligible_for_increase: false}
+  - {resource: Attribute name length, limit: 50, unit: characters, eligible_for_increase: false}
+  - {resource: Attribute value length, limit: 100, unit: characters, eligible_for_increase: false}
+  - {resource: Email message size, limit: 10, unit: MB including attachments, eligible_for_increase: false}
+  - {resource: Verified email identities, limit: 10000, unit: per region, eligible_for_increase: false}
+  - {resource: Recipients per email message, limit: 50, unit: recipients, eligible_for_increase: false}
+  - {resource: Imported segment size, limit: 100000000, unit: endpoints per campaign, eligible_for_increase: false}
+  - {resource: Tags per resource, limit: 50, unit: tags, eligible_for_increase: false}
+sandbox_limits:
+  - {resource: Email sending quota (sandbox), limit: 200, unit: emails per 24 hours, eligible_for_increase: true}
+  - {resource: Email sending rate (sandbox), limit: 1, unit: email per second, eligible_for_increase: true}
+  - note: See sandbox/amazon-pinpoint-sandbox.yml for the full sandbox posture.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Independent per-operation throttling
+    description: >-
+      Throttling decisions are calculated independently for each operation. A throttled SendMessages
+      call does not throttle a concurrent UpdateEndpoint call.
+  - name: Backoff strategy
+    description: >-
+      No Retry-After is returned. AWS SDK clients implement exponential backoff with jitter by
+      default; direct HTTP callers must implement it themselves.
+  - name: Quota increases
+    description: >-
+      Increases are requested through AWS Service Quotas or an AWS Support case, not by upgrading a
+      plan. Some quotas are marked not eligible for increase.
+    url: https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

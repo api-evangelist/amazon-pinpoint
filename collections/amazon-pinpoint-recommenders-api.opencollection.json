@@ -1,0 +1,277 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon Pinpoint Applications Recommenders API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recommenders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Recommender Configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/recommenders",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "The NextToken string that specifies which page of results to return in a paginated response."
+              }
+            ]
+          },
+          "docs": "Retrieves information about all the recommender model configurations that are associated with your Amazon Pinpoint account."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Create Recommender Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/recommenders",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an Amazon Pinpoint configuration for a recommender model."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Recommender Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/recommenders/:recommender-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "recommender-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the recommender model configuration. This identifier is displayed as the <b>Recommender ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Retrieves information about an Amazon Pinpoint configuration for a recommender model."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Update Recommender Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/recommenders/:recommender-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "recommender-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the recommender model configuration. This identifier is displayed as the <b>Recommender ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an Amazon Pinpoint configuration for a recommender model."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Delete Recommender Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/recommenders/:recommender-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "recommender-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the recommender model configuration. This identifier is displayed as the <b>Recommender ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Deletes an Amazon Pinpoint configuration for a recommender model."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

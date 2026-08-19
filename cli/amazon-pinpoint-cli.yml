@@ -1,0 +1,91 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.aws.amazon.com/cli/latest/reference/pinpoint/index.html
+name: AWS CLI - pinpoint
+binary: aws
+namespace: aws pinpoint
+official: true
+description: >-
+  Amazon Pinpoint has no dedicated CLI. Its command surface is the `pinpoint` service namespace
+  inside the AWS CLI, generated one-to-one from the same 2016-12-01 service model that produced
+  openapi/. Every command is the kebab-cased operationId.
+version_note: >-
+  AWS CLI v2 is the current line; v1 (pip-installable `awscli`) still carries the namespace. The
+  binary is catalogued in packages/amazon-pinpoint-packages.yml.
+install:
+  - platform: macos
+    method: signed package installer
+    command: >-
+      curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg" && sudo installer -pkg
+      AWSCLIV2.pkg -target /
+  - platform: linux
+    method: zip installer
+    command: >-
+      curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip
+      awscliv2.zip && sudo ./aws/install
+  - platform: windows
+    method: msi
+    command: msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi
+  - platform: any
+    method: pip (v1 only)
+    command: pip install awscli
+auth:
+  method: aws-sigv4 via configured IAM credentials
+  setup: aws configure
+  note: >-
+    The CLI signs with SigV4 using the profile's credentials and requires --region, because Pinpoint
+    has no global endpoint.
+command_count: 122
+command_groups:
+  - group: projects
+    commands: [create-app, get-app, get-apps, delete-app, get-application-settings, update-application-settings]
+  - group: segments
+    commands: [create-segment, get-segment, get-segments, get-segment-version, get-segment-versions, update-segment, delete-segment, get-segment-export-jobs, get-segment-import-jobs]
+  - group: campaigns
+    commands: [create-campaign, get-campaign, get-campaigns, get-campaign-version, get-campaign-versions, get-campaign-activities, update-campaign, delete-campaign]
+  - group: journeys
+    commands: [create-journey, get-journey, list-journeys, update-journey, update-journey-state, delete-journey, get-journey-runs, get-journey-execution-metrics, get-journey-execution-activity-metrics, get-journey-run-execution-metrics, get-journey-run-execution-activity-metrics, get-journey-date-range-kpi]
+  - group: endpoints-and-users
+    commands: [update-endpoint, update-endpoints-batch, get-endpoint, delete-endpoint, get-user-endpoints, delete-user-endpoints, remove-attributes]
+  - group: messaging
+    commands: [send-messages, send-users-messages, send-otp-message, verify-otp-message, get-in-app-messages, phone-number-validate]
+  - group: channels
+    commands: [get-channels, update-email-channel, get-email-channel, delete-email-channel, update-sms-channel, get-sms-channel, delete-sms-channel, update-voice-channel, get-voice-channel, delete-voice-channel, update-apns-channel, get-apns-channel, delete-apns-channel, update-apns-sandbox-channel, get-apns-sandbox-channel, delete-apns-sandbox-channel, update-apns-voip-channel, get-apns-voip-channel, delete-apns-voip-channel, update-apns-voip-sandbox-channel, get-apns-voip-sandbox-channel, delete-apns-voip-sandbox-channel, update-gcm-channel, get-gcm-channel, delete-gcm-channel, update-adm-channel, get-adm-channel, delete-adm-channel, update-baidu-channel, get-baidu-channel, delete-baidu-channel]
+  - group: templates
+    commands: [create-email-template, create-sms-template, create-push-template, create-voice-template, create-in-app-template, get-email-template, get-sms-template, get-push-template, get-voice-template, get-in-app-template, update-email-template, update-sms-template, update-push-template, update-voice-template, update-in-app-template, delete-email-template, delete-sms-template, delete-push-template, delete-voice-template, delete-in-app-template, list-templates, list-template-versions, update-template-active-version]
+  - group: events-and-analytics
+    commands: [put-events, put-event-stream, get-event-stream, delete-event-stream, get-application-date-range-kpi, get-campaign-date-range-kpi]
+  - group: import-export
+    commands: [create-import-job, get-import-job, get-import-jobs, create-export-job, get-export-job, get-export-jobs]
+  - group: recommenders
+    commands: [create-recommender-configuration, get-recommender-configuration, get-recommender-configurations, update-recommender-configuration, delete-recommender-configuration]
+  - group: tagging
+    commands: [tag-resource, untag-resource, list-tags-for-resource]
+key_flows:
+  - name: Stand up a project and send
+    steps:
+      - aws pinpoint create-app --create-application-request Name=demo --region us-east-1
+      - aws pinpoint update-email-channel --application-id <id> --email-channel-request Enabled=true,FromAddress=...,Identity=...
+      - aws pinpoint send-messages --application-id <id> --message-request file://message.json
+  - name: Build an audience and launch a campaign
+    steps:
+      - aws pinpoint create-segment --application-id <id> --write-segment-request file://segment.json
+      - aws pinpoint create-campaign --application-id <id> --write-campaign-request file://campaign.json
+      - aws pinpoint get-campaign --application-id <id> --campaign-id <cid>
+  - name: Stream engagement events out
+    steps:
+      - aws pinpoint put-event-stream --application-id <id> --write-event-stream DestinationStreamArn=...,RoleArn=...
+      - aws pinpoint get-event-stream --application-id <id>
+divergence:
+  note: >-
+    The CLI exposes 122 commands; the harvested contract in openapi/ carries 119 operations. Three
+    commands have no operation in the spec - get-journey-runs,
+    get-journey-run-execution-metrics and get-journey-run-execution-activity-metrics - the journey
+    run metrics that shipped 2023-04-25. The contract we hold is that far behind the live service.
+  cli_only:
+    - get-journey-runs
+    - get-journey-run-execution-metrics
+    - get-journey-run-execution-activity-metrics
+lifecycle_note: >-
+  The `aws pinpoint` namespace goes away with the service on 2026-10-30; `aws pinpoint-sms-voice-v2`
+  (AWS End User Messaging) is the surface that continues.

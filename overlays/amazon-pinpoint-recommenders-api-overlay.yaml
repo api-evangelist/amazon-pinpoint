@@ -1,0 +1,64 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Amazon Pinpoint Recommenders API
+  version: 1.0.0
+extends: openapi/amazon-pinpoint-recommenders-api-openapi.yml
+x-generated: '2026-08-13'
+x-method: generated
+x-source: >-
+  Generated from openapi/amazon-pinpoint-recommenders-api-openapi.yml plus the artifacts harvested into this repo on 2026-08-13
+  (lifecycle, conventions, errors, rate-limits, sandbox, plans). The harvested spec is never
+  mutated; this overlay carries every API Evangelist annotation.
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: amazon-pinpoint
+      x-apievangelist-artifacts:
+        conventions: conventions/amazon-pinpoint-conventions.yml
+        errors: errors/amazon-pinpoint-problem-types.yml
+        lifecycle: lifecycle/amazon-pinpoint-lifecycle.yml
+        rate_limits: rate-limits/amazon-pinpoint-rate-limits.yml
+        authentication: authentication/amazon-pinpoint-authentication.yml
+        data_model: data-model/amazon-pinpoint-data-model.yml
+        events: asyncapi/amazon-pinpoint-events.yml
+        sandbox: sandbox/amazon-pinpoint-sandbox.yml
+        plans: plans/amazon-pinpoint-plans-pricing.yml
+      x-lifecycle:
+        status: end-of-life-announced
+        announced: '2025-05-20'
+        end_of_support: '2026-10-30'
+        new_customers_blocked: '2025-05-20'
+        successor: AWS End User Messaging / Amazon Connect outbound campaigns / Amazon SES
+        policy_url: https://docs.aws.amazon.com/pinpoint/latest/userguide/migrate.html
+        note: >-
+          AWS emits no RFC 8594 Sunset or Deprecation headers and marks no operation deprecated in
+          the contract - the retirement is documented only in prose.
+      x-error-status-caveat: >-
+        The 480-487 response codes in this document are aws2openapi conversion placeholders, not
+        wire statuses. The real statuses are 400, 500, 413, 403, 404, 405, 429 and 409 in that
+        order; see errors/amazon-pinpoint-problem-types.yml.
+      x-idempotency:
+        supported: false
+        note: No idempotency key or ClientToken exists on any operation.
+      x-pagination:
+        style: opaque-cursor
+        request: [page-size, token, next-token]
+        response_field: NextToken
+      x-rate-limit-signaling:
+        headers: none
+        exhaustion: TooManyRequestsException (HTTP 429)
+        note: No Retry-After and no RateLimit-* headers are returned.
+  - target: $.servers
+    update:
+      x-endpoint-note: >-
+        Regional only. There is no global pinpoint.amazonaws.com endpoint - it does not resolve
+        (verified 2026-08-13). Dual-stack endpoints are pinpoint.{region}.api.aws.
+      x-endpoints-reference: https://docs.aws.amazon.com/general/latest/gr/pinpoint.html
+  - target: $.components.securitySchemes.hmac
+    update:
+      x-auth-model: >-
+        AWS Signature Version 4 with IAM authorization on mobiletargeting:* actions. Modelled as
+        apiKey-in-header because OpenAPI has no SigV4 type; the real contract is a computed
+        signature plus X-Amz-Date and X-Amz-Content-Sha256.
+      x-authorization: iam-policy
+      x-scopes: none

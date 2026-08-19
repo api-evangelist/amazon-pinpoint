@@ -1,0 +1,79 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html,
+  https://docs.aws.amazon.com/sms-voice/latest/userguide/sandbox.html,
+  https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-channels-apns_sandbox.html
+model: account-mode-sandbox
+model_note: >-
+  Amazon Pinpoint has no separate test host, no test-vs-live key prefix and no fixture/trigger
+  tooling. Sandbox is an ACCOUNT STATE on the sending channel, enforced per region: a new account
+  starts restricted and is released to production by an AWS Support case. There are no magic test
+  values - you verify your own real addresses and send to those. Nothing below is invented; where
+  a sandbox concept simply does not exist for Pinpoint it is recorded as absent.
+key_separation:
+  test_keys: false
+  note: >-
+    Authentication is AWS SigV4 with IAM credentials. The same credentials call sandbox and
+    production; the difference is the account's channel state, not the key.
+sandboxes:
+  - channel: email
+    scope: per AWS region, shared with Amazon SES in the same region
+    restrictions:
+      - Recipient email addresses or domains must be verified while in the sandbox.
+      - 200 emails per 24-hour period.
+      - 1 email per second.
+      - All sending identities must be verified in sandbox and in production.
+    exit: Request production access; the SES and Pinpoint sending quota is shared per region.
+    source: https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html
+  - channel: sms-mms
+    operated_by: AWS End User Messaging SMS
+    restrictions:
+      - Monthly SMS spending limit of $1.00 USD.
+      - Monthly MMS spending limit of $1.00 USD.
+      - Send only to verified destination phone numbers; up to 10 verified numbers.
+      - Destination-country rules still apply (for example a US number must be requested and registered first).
+      - A verification code is sent to prove ownership; the first verification code per number is free of charge.
+      - A verified destination number cannot be deleted until 24 hours after it was added.
+    exit: >-
+      AWS Support case at
+      https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase -
+      Account and Billing / Service Quotas / "AWS End User Messaging SMS (Pinpoint)" / General Limits.
+      One case per region.
+    source: https://docs.aws.amazon.com/sms-voice/latest/userguide/sandbox.html
+  - channel: voice
+    operated_by: AWS End User Messaging Voice
+    restrictions:
+      - New accounts start in the voice sandbox with the same verified-destination model as SMS.
+    exit: Same AWS Support case path, category "AWS End User Messaging Voice (Pinpoint)".
+    source: https://docs.aws.amazon.com/sms-voice/latest/userguide/sandbox.html
+  - channel: push-apns
+    kind: platform-sandbox-passthrough
+    restrictions:
+      - >-
+        Apple's own APNs sandbox is exposed as first-class Pinpoint channels rather than a Pinpoint
+        test mode - APNSSandboxChannel and APNSVoIPSandboxChannel, each with its own
+        Update/Get/Delete operations. Messages sent to those channels reach APNs sandbox device
+        tokens, which is Apple's separation, not AWS's.
+    operations:
+      - UpdateApnsSandboxChannel
+      - GetApnsSandboxChannel
+      - DeleteApnsSandboxChannel
+      - UpdateApnsVoipSandboxChannel
+      - GetApnsVoipSandboxChannel
+      - DeleteApnsVoipSandboxChannel
+    source: openapi/amazon-pinpoint-apps-api-openapi.yml
+test_values:
+  cards: none
+  bank_accounts: none
+  magic_identifiers: none
+  note: >-
+    Pinpoint publishes no magic test addresses or reserved test numbers (unlike, for example,
+    Twilio's +1500555xxxx range). Testing uses your own verified identities.
+test_clock: false
+fixtures: false
+console:
+  url: https://console.aws.amazon.com/pinpoint/
+  note: >-
+    The Pinpoint console is the interactive surface, but it becomes unavailable on 2026-10-30 with
+    the rest of the service.

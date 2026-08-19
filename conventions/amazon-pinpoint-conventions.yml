@@ -1,0 +1,126 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  Derived from openapi/_original/amazon-pinpoint-openapi-original.yaml and the six refined specs in
+  openapi/, confirmed against
+  https://docs.aws.amazon.com/pinpoint/latest/apireference/welcome.html,
+  https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html,
+  https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html and
+  https://docs.aws.amazon.com/general/latest/gr/pinpoint.html
+authentication:
+  style: aws-sigv4
+  header: Authorization
+  scheme_name: hmac
+  signing_name: mobiletargeting
+  note: >-
+    AWS Signature Version 4 over the request, not a bearer token. The OpenAPI models it as an
+    apiKey-in-header scheme because SigV4 has no native OpenAPI type; the real contract is a
+    computed HMAC signature plus X-Amz-Date, X-Amz-Content-Sha256 and (for temporary credentials)
+    X-Amz-Security-Token. Authorization is by IAM policy on mobiletargeting:* actions, not by scope.
+  detail: authentication/amazon-pinpoint-authentication.yml
+  scopes: none
+  scopes_note: >-
+    There is no OAuth surface. Permissions are IAM actions (mobiletargeting:CreateCampaign,
+    mobiletargeting:SendMessages, ...), so scopes/ is deliberately absent rather than empty.
+idempotency:
+  supported: false
+  header: null
+  note: >-
+    The Amazon Pinpoint API publishes no idempotency contract. There is no Idempotency-Key header,
+    no ClientToken request field, and no idempotency language anywhere in the 855 KB source
+    contract or the API reference. Retrying SendMessages or CreateCampaign after a timeout can
+    duplicate the effect. This is a real gap for agent use, recorded rather than papered over.
+  verified: >-
+    grep of openapi/_original/amazon-pinpoint-openapi-original.yaml for idempoten|ClientToken
+    returned zero matches on 2026-08-13.
+pagination:
+  style: opaque-cursor
+  request_params:
+    - name: page-size
+      in: query
+      note: Used by 19 operations.
+    - name: token
+      in: query
+      note: The v1 cursor parameter; used by 12 operations.
+    - name: next-token
+      in: query
+      note: Used by 7 operations (the templates and recommenders surfaces).
+  response_field: NextToken
+  response_note: >-
+    Paged responses wrap results in a *Response object whose Item array carries the page and whose
+    NextToken carries the cursor for the next call. 13 response schemas expose NextToken, including
+    CampaignsResponse, SegmentsResponse, JourneysResponse, TemplatesResponse, ImportJobsResponse
+    and ExportJobsResponse.
+  termination: NextToken is absent from the final page.
+versioning:
+  style: uri-path + service api version
+  path_prefix: /v1
+  api_version: '2016-12-01'
+  detail: lifecycle/amazon-pinpoint-lifecycle.yml
+resource_versioning:
+  supported: true
+  note: >-
+    Campaigns, segments and message templates are themselves versioned resources. Writes accept
+    create-new-version (query, 5 operations) and reads accept version; templates additionally
+    expose ListTemplateVersions and UpdateTemplateActiveVersion. This is resource revisioning, not
+    API versioning.
+error_envelope:
+  format: aws-json-exception
+  rfc9457: false
+  shape: >-
+    A JSON body with a Message field, plus x-amzn-ErrorType identifying the exception class. The
+    published contract names eight exception types; see errors/amazon-pinpoint-problem-types.yml.
+  note: >-
+    The harvested contract encodes error statuses as the aws2openapi placeholder codes 480-487
+    rather than real HTTP statuses. The wire statuses are the ones in the AWS API reference and are
+    recorded in the error catalog.
+  detail: errors/amazon-pinpoint-problem-types.yml
+rate_limit_signaling:
+  headers: none
+  note: >-
+    Pinpoint publishes per-operation rate and burst quotas in requests per second but returns no
+    RateLimit-*, X-RateLimit-* or Retry-After headers. Exhaustion surfaces as a
+    TooManyRequestsException; a client learns its remaining budget only by being throttled.
+    Backoff is the caller's responsibility - the AWS SDKs implement exponential backoff with
+    jitter by default.
+  exhaustion_error: TooManyRequestsException
+  detail: rate-limits/amazon-pinpoint-rate-limits.yml
+request_tracing:
+  header: x-amzn-RequestId
+  note: >-
+    AWS services return a request id on every response and AWS Support asks for it when
+    investigating. It is an AWS-platform convention rather than something the Pinpoint contract
+    declares, so it does not appear in openapi/.
+regions:
+  style: regional-endpoints
+  host_template: https://pinpoint.{region}.amazonaws.com
+  dual_stack: https://pinpoint.{region}.api.aws
+  china: https://pinpoint.{region}.amazonaws.com.cn
+  note: >-
+    There is no global endpoint. pinpoint.amazonaws.com does not resolve (verified 2026-08-13);
+    a caller must pick a region, and resources do not cross regions.
+  docs: https://docs.aws.amazon.com/general/latest/gr/pinpoint.html
+payload_limits:
+  max_invocation_payload: 7 MB
+  max_email_message: 10 MB
+  max_endpoint: 15 KB
+  max_endpoint_attributes: 250
+  source: https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html
+tagging:
+  supported: true
+  operations: [TagResource, UntagResource, ListTagsForResource]
+  applies_to: [application, campaign, segment, message template]
+  max_tags: 50
+  key_max_length: 128
+  value_max_length: 256
+transport_security:
+  tls_minimum: TLS 1.2
+  note: TLS 1.0 support ended 2023-03-22.
+  source: https://docs.aws.amazon.com/pinpoint/latest/developerguide/security-data-protection-encryption.html
+cross_links:
+  authentication: authentication/amazon-pinpoint-authentication.yml
+  errors: errors/amazon-pinpoint-problem-types.yml
+  lifecycle: lifecycle/amazon-pinpoint-lifecycle.yml
+  rate_limits: rate-limits/amazon-pinpoint-rate-limits.yml
+  sandbox: sandbox/amazon-pinpoint-sandbox.yml
+  events: asyncapi/amazon-pinpoint-events.yml

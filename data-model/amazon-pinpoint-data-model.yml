@@ -1,0 +1,152 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/_original/amazon-pinpoint-openapi-original.yaml (524 component schemas, 119 operations),
+  cross-checked against
+  https://docs.aws.amazon.com/pinpoint/latest/apireference/resources.html
+derivation: >-
+  Entities are the resource families in the /v1/ path tree; relationships are read from id-reference
+  fields on the *Response schemas (ApplicationId, SegmentId, CampaignId, TreatmentId, UserId,
+  RecommenderId, Arn) and from $ref links between schemas. No relationship below is inferred from
+  naming alone - each names the field that carries it.
+root_entity: Application
+identifiers:
+  style: opaque 32-character hex strings
+  arn_pattern: 'arn:aws:mobiletargeting:{region}:{account}:apps/{application-id}[/{child}/{child-id}]'
+  prefixes: none
+  note: >-
+    Pinpoint does not use typed id prefixes (no cus_/camp_ convention). Ids are bare hex, so the
+    type of an id is only knowable from the field it sits in - which is why the relationships below
+    name the field.
+entities:
+  - name: Application
+    aka: [Project, App]
+    schema: ApplicationResponse
+    id_field: Id
+    arn: true
+    description: The container. Every other Pinpoint resource except templates and recommenders lives inside one application, in one region.
+    operations: [CreateApp, GetApp, GetApps, DeleteApp, GetApplicationSettings, UpdateApplicationSettings]
+  - name: Segment
+    schema: SegmentResponse
+    id_field: Id
+    parent: Application
+    versioned: true
+    description: An audience definition - either DIMENSIONAL (a live query over endpoints) or IMPORT (a fixed uploaded list).
+    operations: [CreateSegment, GetSegment, GetSegments, GetSegmentVersion, GetSegmentVersions, UpdateSegment, DeleteSegment]
+  - name: Campaign
+    schema: CampaignResponse
+    id_field: Id
+    parent: Application
+    versioned: true
+    description: A scheduled messaging initiative aimed at one segment, optionally split into treatments for A/B testing.
+    operations: [CreateCampaign, GetCampaign, GetCampaigns, GetCampaignVersion, GetCampaignVersions, UpdateCampaign, DeleteCampaign, GetCampaignActivities]
+  - name: Treatment
+    schema: TreatmentResource
+    id_field: Id
+    parent: Campaign
+    description: An A/B variant of a campaign - its own message configuration, schedule and size percent.
+  - name: Activity
+    schema: ActivityResponse
+    id_field: Id
+    parent: Campaign
+    description: One execution run of a campaign or treatment, with delivery counters.
+    operations: [GetCampaignActivities]
+  - name: Journey
+    schema: JourneyResponse
+    id_field: Id
+    parent: Application
+    description: A multi-step automated workflow over a segment, with a state machine (DRAFT, ACTIVE, PAUSED, CANCELLED, CLOSED, COMPLETED).
+    operations: [CreateJourney, GetJourney, ListJourneys, UpdateJourney, UpdateJourneyState, DeleteJourney]
+  - name: Endpoint
+    schema: EndpointResponse
+    id_field: Id
+    parent: Application
+    description: One addressable destination for one person on one channel (EMAIL, SMS, VOICE, CUSTOM, or a push platform). The unit Pinpoint bills as Monthly Targeted Audience.
+    operations: [UpdateEndpoint, UpdateEndpointsBatch, GetEndpoint, DeleteEndpoint, RemoveAttributes]
+  - name: User
+    schema: EndpointUser
+    id_field: UserId
+    description: A soft grouping - the same UserId across several endpoints. Not a stored resource; there is no CreateUser.
+    operations: [GetUserEndpoints, DeleteUserEndpoints, SendUsersMessages]
+  - name: Channel
+    schema: various (EmailChannelResponse, SMSChannelResponse, APNSChannelResponse, ...)
+    parent: Application
+    description: Per-application configuration for one delivery platform. Eleven channel types, each with its own Update/Get/Delete triple, plus GetChannels for the roll-up.
+  - name: MessageTemplate
+    schema: TemplateResponse
+    id_field: TemplateName
+    parent: account
+    versioned: true
+    description: >-
+      Reusable message content, keyed by name and type (EMAIL, SMS, PUSH, VOICE, INAPP). Account-
+      scoped, NOT inside an application - the one family that breaks the Application containment.
+    operations: [CreateEmailTemplate, CreateSmsTemplate, CreatePushTemplate, CreateVoiceTemplate, CreateInAppTemplate, ListTemplates, ListTemplateVersions, UpdateTemplateActiveVersion]
+  - name: RecommenderConfiguration
+    schema: RecommenderConfigurationResponse
+    id_field: Id
+    parent: account
+    description: A registered Amazon Personalize campaign that templates can pull personalized recommendations from.
+    operations: [CreateRecommenderConfiguration, GetRecommenderConfiguration, GetRecommenderConfigurations, UpdateRecommenderConfiguration, DeleteRecommenderConfiguration]
+  - name: EventStream
+    schema: EventStream
+    parent: Application
+    description: The single Kinesis/Firehose destination an application streams engagement events to.
+    operations: [PutEventStream, GetEventStream, DeleteEventStream]
+  - name: ImportJob
+    schema: ImportJobResponse
+    id_field: Id
+    parent: Application
+    description: An asynchronous load of endpoint definitions from S3 into an application (and optionally into a segment).
+    operations: [CreateImportJob, GetImportJob, GetImportJobs, GetSegmentImportJobs]
+  - name: ExportJob
+    schema: ExportJobResponse
+    id_field: Id
+    parent: Application
+    description: An asynchronous dump of endpoints (optionally one segment's) to S3.
+    operations: [CreateExportJob, GetExportJob, GetExportJobs, GetSegmentExportJobs]
+  - name: Message
+    schema: MessageResponse
+    parent: Application
+    description: The result of a transactional send - not a stored resource, only a response with per-endpoint results.
+    operations: [SendMessages, SendUsersMessages, SendOTPMessage, VerifyOTPMessage]
+relationships:
+  - {from: Segment, to: Application, type: belongs_to, via: ApplicationId}
+  - {from: Campaign, to: Application, type: belongs_to, via: ApplicationId}
+  - {from: Campaign, to: Segment, type: belongs_to, via: SegmentId}
+  - {from: Campaign, to: Treatment, type: has_many, via: AdditionalTreatments}
+  - {from: Campaign, to: MessageTemplate, type: has_one, via: TemplateConfiguration}
+  - {from: Activity, to: Campaign, type: belongs_to, via: CampaignId}
+  - {from: Activity, to: Treatment, type: belongs_to, via: TreatmentId}
+  - {from: Activity, to: Application, type: belongs_to, via: ApplicationId}
+  - {from: Journey, to: Application, type: belongs_to, via: ApplicationId}
+  - {from: Journey, to: Segment, type: belongs_to, via: StartCondition.SegmentStartCondition.SegmentId}
+  - {from: Journey, to: MessageTemplate, type: has_many, via: "Activities[].EMAIL/SMS/PUSH.TemplateName"}
+  - {from: Endpoint, to: Application, type: belongs_to, via: ApplicationId}
+  - {from: Endpoint, to: User, type: belongs_to, via: User.UserId}
+  - {from: Application, to: Endpoint, type: has_many, via: ApplicationId}
+  - {from: Application, to: EventStream, type: has_one, via: ApplicationId}
+  - {from: Application, to: Channel, type: has_many, via: "path /v1/apps/{application-id}/channels/*"}
+  - {from: ImportJob, to: Application, type: belongs_to, via: ApplicationId}
+  - {from: ImportJob, to: Segment, type: has_one, via: Definition.SegmentId}
+  - {from: ExportJob, to: Application, type: belongs_to, via: ApplicationId}
+  - {from: ExportJob, to: Segment, type: has_one, via: Definition.SegmentId}
+  - {from: MessageTemplate, to: RecommenderConfiguration, type: has_one, via: RecommenderId}
+  - {from: EventStream, to: 'AWS Kinesis/Firehose stream', type: has_one, via: DestinationStreamArn}
+  - {from: EventStream, to: 'IAM role', type: has_one, via: RoleArn}
+  - {from: RecommenderConfiguration, to: 'Amazon Personalize campaign', type: has_one, via: RecommendationProviderUri}
+  - {from: MessageResponse, to: Application, type: belongs_to, via: ApplicationId}
+  - {from: MessageResponse, to: EndpointMessageResult, type: has_many, via: EndpointResult}
+cardinality_notes:
+  - An Application has at most one EventStream.
+  - >-
+    Message templates and recommender configurations are ACCOUNT-scoped, not application-scoped -
+    the only two entities that do not hang off an Application.
+  - >-
+    A User is not a resource. It exists only as the UserId shared by several endpoints, which is
+    why SendUsersMessages fans out and GetUserEndpoints reads back.
+  - >-
+    Everything is region-scoped. The same Application id does not exist in another region; see
+    conventions/amazon-pinpoint-conventions.yml.
+tagging:
+  taggable: [Application, Campaign, Segment, MessageTemplate]
+  via: openapi/amazon-pinpoint-tags-api-openapi.yml (resource ARN)

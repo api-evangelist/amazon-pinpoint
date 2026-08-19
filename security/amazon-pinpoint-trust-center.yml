@@ -1,0 +1,44 @@
+generated: '2026-08-13'
+method: searched
+probe: true
+url: https://aws.amazon.com/compliance/
+source: >-
+  https://docs.aws.amazon.com/pinpoint/latest/developerguide/security-compliance-validation.html
+note: >-
+  probe-security-programs.py returned trust=none on 2026-08-13 because AWS does not run a
+  trust.amazonaws.com / trust.aws.amazon.com style trust portal - it publishes the same posture
+  across aws.amazon.com/compliance, the per-service compliance-validation page, and AWS Artifact.
+  Recorded from those pages, which name Amazon Pinpoint explicitly.
+pages:
+  - {label: AWS Compliance, url: https://aws.amazon.com/compliance/}
+  - {label: AWS Compliance Programs, url: https://aws.amazon.com/compliance/programs/}
+  - {label: AWS Services in Scope by Compliance Program, url: https://aws.amazon.com/compliance/services-in-scope/, status: 200}
+  - {label: Compliance validation for Amazon Pinpoint, url: https://docs.aws.amazon.com/pinpoint/latest/developerguide/security-compliance-validation.html, status: 200}
+  - {label: AWS Artifact (audit report download), url: https://docs.aws.amazon.com/artifact/latest/ug/downloading-documents.html}
+  - {label: Shared responsibility model, url: https://aws.amazon.com/compliance/shared-responsibility-model/}
+certifications:
+  - SOC 1
+  - SOC 2
+  - SOC 3
+  - FedRAMP
+  - HIPAA
+  - ISO/IEC 27001:2013
+  - ISO/IEC 27017:2015
+  - ISO/IEC 27018:2014
+  - ISO/IEC 9001:2015
+scope_caveats:
+  - >-
+    HIPAA eligibility is channel-scoped - email, push notification and SMS may carry PHI; the voice
+    channel is explicitly NOT HIPAA eligible. PHI over SMS requires a dedicated short code.
+data_protection:
+  encryption_at_rest: AWS-owned KMS keys, rotated by AWS; customer-managed keys are not supported.
+  encryption_in_transit: HTTPS with TLS 1.2 or later.
+  source: https://docs.aws.amazon.com/pinpoint/latest/developerguide/security-data-protection-encryption.html
+evidence:
+  - source: https://docs.aws.amazon.com/pinpoint/latest/developerguide/security-compliance-validation.html
+    keywords: [soc, fedramp, hipaa, iso/iec 27001, iso/iec 27017, iso/iec 27018, iso/iec 9001, aws artifact]
+    fetched: '2026-08-13'
+    http_status: 200
+  - source: https://aws.amazon.com/compliance/services-in-scope/
+    fetched: '2026-08-13'
+    http_status: 200

@@ -1,0 +1,36 @@
+generated: '2026-08-13'
+method: generated
+source: >-
+  Generated from openapi/ (every operationId verified against the spec), plus
+  conventions/amazon-pinpoint-conventions.yml, errors/amazon-pinpoint-problem-types.yml,
+  rate-limits/amazon-pinpoint-rate-limits.yml, sandbox/amazon-pinpoint-sandbox.yml and
+  lifecycle/amazon-pinpoint-lifecycle.yml. Mirrors the marquee flows already modelled in arazzo/.
+note: >-
+  AWS publishes no AGENTS.md or agent-skill files for Amazon Pinpoint - searched 2026-08-13. These
+  are API Evangelist skills grounded in the published contract. Every operationId named in a skill
+  exists verbatim in the referenced spec.
+skills:
+  - file: amazon-pinpoint-provision-project-and-channels.md
+    name: Provision an Amazon Pinpoint project and enable its channels
+    api: openapi/amazon-pinpoint-apps-api-openapi.yml
+    operations: [CreateApp, GetApp, UpdateApplicationSettings, GetApplicationSettings, UpdateEmailChannel, UpdateSmsChannel, GetChannels]
+  - file: amazon-pinpoint-build-segment-and-launch-campaign.md
+    name: Build an Amazon Pinpoint segment and launch a campaign against it
+    api: openapi/amazon-pinpoint-apps-api-openapi.yml
+    operations: [CreateSegment, GetSegment, CreateEmailTemplate, UpdateTemplateActiveVersion, CreateCampaign, GetCampaign, GetCampaignActivities, UpdateCampaign]
+  - file: amazon-pinpoint-send-transactional-message.md
+    name: Send a transactional message with Amazon Pinpoint
+    api: openapi/amazon-pinpoint-apps-api-openapi.yml
+    operations: [UpdateEndpoint, UpdateEndpointsBatch, GetEndpoint, GetUserEndpoints, SendMessages, SendUsersMessages]
+  - file: amazon-pinpoint-send-and-verify-otp.md
+    name: Send and verify a one-time password with Amazon Pinpoint
+    api: openapi/amazon-pinpoint-apps-api-openapi.yml
+    operations: [SendOTPMessage, VerifyOTPMessage]
+  - file: amazon-pinpoint-manage-journey-lifecycle.md
+    name: Create and drive an Amazon Pinpoint journey through its lifecycle
+    api: openapi/amazon-pinpoint-apps-api-openapi.yml
+    operations: [CreateJourney, GetJourney, ListJourneys, UpdateJourney, UpdateJourneyState, GetJourneyExecutionMetrics, GetJourneyExecutionActivityMetrics, GetJourneyDateRangeKpi, DeleteJourney]
+  - file: amazon-pinpoint-stream-engagement-events.md
+    name: Record and stream Amazon Pinpoint engagement events
+    api: openapi/amazon-pinpoint-apps-api-openapi.yml
+    operations: [PutEvents, PutEventStream, GetEventStream, DeleteEventStream, CreateExportJob, GetExportJob]

@@ -1,0 +1,4839 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon Pinpoint Applications Apps API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Apps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Apps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "The NextToken string that specifies which page of results to return in a paginated response."
+              }
+            ]
+          },
+          "docs": "Retrieves information about all the applications that are associated with your Amazon Pinpoint account."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Create App",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": " <p>Creates an application.</p>"
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Campaigns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/campaigns",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "The NextToken string that specifies which page of results to return in a paginated response."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status, configuration, and other settings for all the campaigns that are associated with an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Create Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/campaigns",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new campaign for an application or updates the settings of an existing campaign for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Export Jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/jobs/export",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "The NextToken string that specifies which page of results to return in a paginated response."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status and settings of all the export jobs for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Create Export Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/jobs/export",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an export job for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Import Jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/jobs/import",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "The NextToken string that specifies which page of results to return in a paginated response."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status and settings of all the import jobs for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Create Import Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/jobs/import",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an import job for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint List Journeys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/journeys",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "The NextToken string that specifies which page of results to return in a paginated response."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status, configuration, and other settings for all the journeys that are associated with an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Create Journey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/journeys",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a journey for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Segments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/segments",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "The NextToken string that specifies which page of results to return in a paginated response."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the configuration, dimension, and other settings for all the segments that are associated with an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Create Segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/segments",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new segment for an application or updates the configuration, dimension, and other settings for an existing segment that's associated with an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Adm Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/adm",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status and settings of the ADM channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Update Adm Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/adm",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enables the ADM channel for an application or updates the status and settings of the ADM channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Delete Adm Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/adm",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Disables the ADM channel for an application and deletes any existing settings for the channel."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Apns Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/apns",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status and settings of the APNs channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Update Apns Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/apns",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enables the APNs channel for an application or updates the status and settings of the APNs channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Delete Apns Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/apns",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Disables the APNs channel for an application and deletes any existing settings for the channel."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Apns Sandbox Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/apns_sandbox",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status and settings of the APNs sandbox channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Update Apns Sandbox Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/apns_sandbox",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enables the APNs sandbox channel for an application or updates the status and settings of the APNs sandbox channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Delete Apns Sandbox Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/apns_sandbox",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Disables the APNs sandbox channel for an application and deletes any existing settings for the channel."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Apns Voip Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/apns_voip",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status and settings of the APNs VoIP channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Update Apns Voip Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/apns_voip",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enables the APNs VoIP channel for an application or updates the status and settings of the APNs VoIP channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Delete Apns Voip Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/apns_voip",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Disables the APNs VoIP channel for an application and deletes any existing settings for the channel."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Apns Voip Sandbox Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/apns_voip_sandbox",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status and settings of the APNs VoIP sandbox channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Update Apns Voip Sandbox Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/apns_voip_sandbox",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enables the APNs VoIP sandbox channel for an application or updates the status and settings of the APNs VoIP sandbox channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Delete Apns Voip Sandbox Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/apns_voip_sandbox",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Disables the APNs VoIP sandbox channel for an application and deletes any existing settings for the channel."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get App",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Retrieves information about an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Delete App",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Deletes an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Baidu Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/baidu",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status and settings of the Baidu channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Update Baidu Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/baidu",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enables the Baidu channel for an application or updates the status and settings of the Baidu channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Delete Baidu Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/baidu",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Disables the Baidu channel for an application and deletes any existing settings for the channel."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/campaigns/:campaign-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "campaign-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the campaign."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status, configuration, and other settings for a campaign."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Update Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/campaigns/:campaign-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "campaign-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the campaign."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration and other settings for a campaign."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Delete Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/campaigns/:campaign-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "campaign-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the campaign."
+              }
+            ]
+          },
+          "docs": "Deletes a campaign from an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Email Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/email",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status and settings of the email channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Update Email Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/email",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enables the email channel for an application or updates the status and settings of the email channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Delete Email Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/email",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Disables the email channel for an application and deletes any existing settings for the channel."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/endpoints/:endpoint-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the endpoint."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the settings and attributes of a specific endpoint for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Update Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/endpoints/:endpoint-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the endpoint."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new endpoint for an application or updates the settings and attributes of an existing endpoint for an application. You can also use this operation to define custom attributes for an endpoint. If an update includes one or more values for a custom attribute, Amazon Pinpoint replaces (overwrites) any existing values with the new values."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Delete Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/endpoints/:endpoint-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the endpoint."
+              }
+            ]
+          },
+          "docs": "Deletes an endpoint from an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Event Stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/eventstream",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the event stream settings for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Put Event Stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/eventstream",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new event stream for an application or updates the settings of an existing event stream for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Delete Event Stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/eventstream",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Deletes the event stream for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Gcm Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/gcm",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status and settings of the GCM channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Update Gcm Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/gcm",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enables the GCM channel for an application or updates the status and settings of the GCM channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Delete Gcm Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/gcm",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Disables the GCM channel for an application and deletes any existing settings for the channel."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Journey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/journeys/:journey-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "journey-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the journey."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status, configuration, and other settings for a journey."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Update Journey",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/journeys/:journey-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "journey-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the journey."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration and other settings for a journey."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Delete Journey",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/journeys/:journey-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "journey-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the journey."
+              }
+            ]
+          },
+          "docs": "Deletes a journey from an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/segments/:segment-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "segment-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the segment."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the configuration, dimension, and other settings for a specific segment that's associated with an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Update Segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/segments/:segment-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "segment-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the segment."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new segment for an application or updates the configuration, dimension, and other settings for an existing segment that's associated with an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Delete Segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/segments/:segment-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "segment-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the segment."
+              }
+            ]
+          },
+          "docs": "Deletes a segment from an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Sms Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/sms",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status and settings of the SMS channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Update Sms Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/sms",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enables the SMS channel for an application or updates the status and settings of the SMS channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Delete Sms Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/sms",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Disables the SMS channel for an application and deletes any existing settings for the channel."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get User Endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/users/:user-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the user."
+              }
+            ]
+          },
+          "docs": "Retrieves information about all the endpoints that are associated with a specific user ID."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Delete User Endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/users/:user-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the user."
+              }
+            ]
+          },
+          "docs": "Deletes all the endpoints that are associated with a specific user ID."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Voice Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/voice",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status and settings of the voice channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Update Voice Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/voice",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enables the voice channel for an application or updates the status and settings of the voice channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Delete Voice Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels/voice",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Disables the voice channel for an application and deletes any existing settings for the channel."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Application Date Range Kpi",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/kpis/daterange/:kpi-name",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "end-time",
+                "value": "",
+                "type": "query",
+                "description": "The last date and time to retrieve data for, as part of an inclusive date range that filters the query results. This value should be in extended ISO 8601 format and use Coordinated Universal Time (UTC), for example: 2019-07-26T20:00:00Z for 8:00 PM UTC July 26, 2019."
+              },
+              {
+                "name": "kpi-name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the metric, also referred to as a <i>key performance indicator (KPI)</i>, to retrieve data for. This value describes the associated metric and consists of two or more terms, which are comprised of lowercase alphanumeric characters, separated by a hyphen. Examples are email-open-rate and successful-delivery-rate. For a list of valid values, see the <a href=\"https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics-standard-metrics.html\">Amazon Pinpoint Developer Guide</a>."
+              },
+              {
+                "name": "next-token",
+                "value": "",
+                "type": "query",
+                "description": "The  string that specifies which page of results to return in a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "start-time",
+                "value": "",
+                "type": "query",
+                "description": "The first date and time to retrieve data for, as part of an inclusive date range that filters the query results. This value should be in extended ISO 8601 format and use Coordinated Universal Time (UTC), for example: 2019-07-19T20:00:00Z for 8:00 PM UTC July 19, 2019. This value should also be fewer than 90 days from the current day."
+              }
+            ]
+          },
+          "docs": "Retrieves (queries) pre-aggregated data for a standard metric that applies to an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Application Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/settings",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the settings for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Update Application Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/settings",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the settings for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Campaign Activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/campaigns/:campaign-id/activities",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "campaign-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the campaign."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "The NextToken string that specifies which page of results to return in a paginated response."
+              }
+            ]
+          },
+          "docs": "Retrieves information about all the activities for a campaign."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Campaign Date Range Kpi",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/campaigns/:campaign-id/kpis/daterange/:kpi-name",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "campaign-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the campaign."
+              },
+              {
+                "name": "end-time",
+                "value": "",
+                "type": "query",
+                "description": "The last date and time to retrieve data for, as part of an inclusive date range that filters the query results. This value should be in extended ISO 8601 format and use Coordinated Universal Time (UTC), for example: 2019-07-26T20:00:00Z for 8:00 PM UTC July 26, 2019."
+              },
+              {
+                "name": "kpi-name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the metric, also referred to as a <i>key performance indicator (KPI)</i>, to retrieve data for. This value describes the associated metric and consists of two or more terms, which are comprised of lowercase alphanumeric characters, separated by a hyphen. Examples are email-open-rate and successful-delivery-rate. For a list of valid values, see the <a href=\"https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics-standard-metrics.html\">Amazon Pinpoint Developer Guide</a>."
+              },
+              {
+                "name": "next-token",
+                "value": "",
+                "type": "query",
+                "description": "The  string that specifies which page of results to return in a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "start-time",
+                "value": "",
+                "type": "query",
+                "description": "The first date and time to retrieve data for, as part of an inclusive date range that filters the query results. This value should be in extended ISO 8601 format and use Coordinated Universal Time (UTC), for example: 2019-07-19T20:00:00Z for 8:00 PM UTC July 19, 2019. This value should also be fewer than 90 days from the current day."
+              }
+            ]
+          },
+          "docs": "Retrieves (queries) pre-aggregated data for a standard metric that applies to a campaign."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Campaign Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/campaigns/:campaign-id/versions/:version",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "campaign-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the campaign."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "The unique version number (Version property) for the campaign version."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status, configuration, and other settings for a specific version of a campaign."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Campaign Versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/campaigns/:campaign-id/versions",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "campaign-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the campaign."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "The NextToken string that specifies which page of results to return in a paginated response."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status, configuration, and other settings for all versions of a campaign."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/channels",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the history and status of each channel for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Export Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/jobs/export/:job-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "job-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the job."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status and settings of a specific export job for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Import Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/jobs/import/:job-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "job-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the job."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status and settings of a specific import job for an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get in App Messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/endpoints/:endpoint-id/inappmessages",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "endpoint-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the endpoint."
+              }
+            ]
+          },
+          "docs": "Retrieves the in-app messages targeted for the provided endpoint ID."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Journey Date Range Kpi",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/journeys/:journey-id/kpis/daterange/:kpi-name",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "end-time",
+                "value": "",
+                "type": "query",
+                "description": "The last date and time to retrieve data for, as part of an inclusive date range that filters the query results. This value should be in extended ISO 8601 format and use Coordinated Universal Time (UTC), for example: 2019-07-26T20:00:00Z for 8:00 PM UTC July 26, 2019."
+              },
+              {
+                "name": "journey-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the journey."
+              },
+              {
+                "name": "kpi-name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the metric, also referred to as a <i>key performance indicator (KPI)</i>, to retrieve data for. This value describes the associated metric and consists of two or more terms, which are comprised of lowercase alphanumeric characters, separated by a hyphen. Examples are email-open-rate and successful-delivery-rate. For a list of valid values, see the <a href=\"https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics-standard-metrics.html\">Amazon Pinpoint Developer Guide</a>."
+              },
+              {
+                "name": "next-token",
+                "value": "",
+                "type": "query",
+                "description": "The  string that specifies which page of results to return in a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "start-time",
+                "value": "",
+                "type": "query",
+                "description": "The first date and time to retrieve data for, as part of an inclusive date range that filters the query results. This value should be in extended ISO 8601 format and use Coordinated Universal Time (UTC), for example: 2019-07-19T20:00:00Z for 8:00 PM UTC July 19, 2019. This value should also be fewer than 90 days from the current day."
+              }
+            ]
+          },
+          "docs": "Retrieves (queries) pre-aggregated data for a standard engagement metric that applies to a journey."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Journey Execution Activity Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/journeys/:journey-id/activities/:journey-activity-id/execution-metrics",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "journey-activity-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the journey activity."
+              },
+              {
+                "name": "journey-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the journey."
+              },
+              {
+                "name": "next-token",
+                "value": "",
+                "type": "query",
+                "description": "The  string that specifies which page of results to return in a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              }
+            ]
+          },
+          "docs": "Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey activity."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Journey Execution Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/journeys/:journey-id/execution-metrics",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "journey-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the journey."
+              },
+              {
+                "name": "next-token",
+                "value": "",
+                "type": "query",
+                "description": "The  string that specifies which page of results to return in a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              }
+            ]
+          },
+          "docs": "Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Segment Export Jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/segments/:segment-id/jobs/export",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "segment-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the segment."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "The NextToken string that specifies which page of results to return in a paginated response."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status and settings of the export jobs for a segment."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Segment Import Jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/segments/:segment-id/jobs/import",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "segment-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the segment."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "The NextToken string that specifies which page of results to return in a paginated response."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the status and settings of the import jobs for a segment."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Segment Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/segments/:segment-id/versions/:version",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "segment-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the segment."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "The unique version number (Version property) for the campaign version."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the configuration, dimension, and other settings for a specific version of a segment that's associated with an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Get Segment Versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/segments/:segment-id/versions",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics."
+              },
+              {
+                "name": "segment-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the segment."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "The NextToken string that specifies which page of results to return in a paginated response."
+              }
+            ]
+          },
+          "docs": "Retrieves information about the configuration, dimension, and other settings for all the versions of a specific segment that's associated with an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Put Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/events",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new event to record for endpoints, or creates or updates endpoint data that existing events are associated with."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Remove Attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/attributes/:attribute-type",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "attribute-type",
+                "value": "",
+                "type": "path",
+                "description": " <p>The type of attribute or attributes to remove. Valid values are:</p> <ul><li><p>endpoint-custom-attributes - Custom attributes that describe endpoints, such as the date when an associated user opted in or out of receiving communications from you through a specific type of channel.</p></li> <li><p>endpoint-metric-attributes - Custom metrics that your app reports to Amazon Pinpoint for endpoints, such as the number of app sessions or the number of items left in a cart.</p></li> <li><p>endpoint-user-attributes - Custom attributes that describe users, such as first name, last name, and age.</p></li></ul>"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Removes one or more attributes, of the same attribute type, from all the endpoints that are associated with an application."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Send Messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/messages",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates and sends a direct message."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Send O T P Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/otp",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID of your Amazon Pinpoint application."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send an OTP message"
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Send Users Messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/users-messages",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates and sends a message to a list of users."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Update Endpoints Batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/endpoints",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new batch of endpoints for an application or updates the settings and attributes of a batch of existing endpoints for an application. You can also use this operation to define custom attributes for a batch of endpoints. If an update includes one or more values for a custom attribute, Amazon Pinpoint replaces (overwrites) any existing values with the new values."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Update Journey State",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/journeys/:journey-id/state",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon Pinpoint console."
+              },
+              {
+                "name": "journey-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the journey."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancels (stops) an active journey."
+        },
+        {
+          "info": {
+            "name": "Amazon Pinpoint Verify O T P Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://pinpoint.{region}.amazonaws.com/v1/apps/:application-id/verify-otp",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "application-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID of your Amazon Pinpoint application."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify an OTP"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
