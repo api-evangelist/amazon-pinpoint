@@ -1,0 +1,58 @@
+# Kin Score artifact — amazon-pinpoint — 2026-08-25T133943
+# The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
+---
+kin_score:
+  slug: amazon-pinpoint
+  schema_version: 0.14.0
+  scored_at: '2026-08-25'
+  run_ts: 2026-08-25T133943
+  composite: 83.1
+  band: exemplar
+  facets:
+    discoverability: 75.9
+    contract_quality: 79.4
+    governance: 59.1
+    operational_transparency: 81.6
+    developer_ergonomics: 85.1
+    commercial_clarity: 89.5
+    contract_governance: 59.1
+    access_clarity: 89.5
+  agent_readiness:
+    score: 35.4
+    band: agent-ready
+    dimensions:
+      spec_presence: true
+      agentic_access: derived
+      reversibility_documented: false
+      mcp_server: false
+      auth_clarity: bearer
+      idempotency: false
+      error_semantics: verified
+      openapi_examples: partial
+      rate_limit_signal: documented
+      event_surface_described: true
+      agent_skills: derived
+      well_known_catalog: false
+      consent_identity: true
+      agent_card: false
+      dry_run_mode: false
+      delegated_identity: false
+      protected_resource_metadata: false
+      dynamic_client_registration: false
+      agentic_commerce: false
+  regulatory:
+    applies: true
+    regime: Telecommunications
+    regime_id: telecommunications
+    score: 50.0
+    matched_via: tags
+  provenance:
+    mcp: derived
+    skills: derived
+    agentic_access: derived
+    conformance: first-party
+    contracts:
+      total: 6
+      derived: 0
+      coverage: 0.0
+      callable: 100.0
