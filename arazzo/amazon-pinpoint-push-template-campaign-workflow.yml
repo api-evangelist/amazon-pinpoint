@@ -10,8 +10,11 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: pinpointApi
-  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+- name: appsApi
+  url: ../openapi/amazon-pinpoint-apps-api-openapi.yml
+  type: openapi
+- name: templatesApi
+  url: ../openapi/amazon-pinpoint-templates-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: push-template-campaign

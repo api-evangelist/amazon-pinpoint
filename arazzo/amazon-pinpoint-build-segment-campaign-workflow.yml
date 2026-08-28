@@ -11,8 +11,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: pinpointApi
-  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+- name: applicationsApi
+  url: ../openapi/amazon-pinpoint-applications-api-openapi.yml
+  type: openapi
+- name: appsApi
+  url: ../openapi/amazon-pinpoint-apps-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: build-segment-campaign

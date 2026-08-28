@@ -10,8 +10,8 @@ info:
     without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: pinpointApi
-  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+- name: templatesApi
+  url: ../openapi/amazon-pinpoint-templates-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: publish-and-activate-template

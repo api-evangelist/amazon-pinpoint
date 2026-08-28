@@ -10,8 +10,8 @@ info:
     without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: pinpointApi
-  url: ../openapi/amazon-pinpoint-openapi-original.yaml
+- name: applicationsApi
+  url: ../openapi/amazon-pinpoint-applications-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: provision-project
