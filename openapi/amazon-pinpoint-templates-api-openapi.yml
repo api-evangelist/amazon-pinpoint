@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  version: "1.0.0"
+  version: 1.0.0
   x-release: v4
   title: Amazon Pinpoint Applications Templates API
   description: Doc Engage API - Amazon Pinpoint API
@@ -2176,193 +2176,37 @@ paths:
       - Templates
 components:
   schemas:
-    UpdateVoiceTemplateResponse:
+    NotFoundException: {}
+    DeleteSmsTemplateResponse:
       type: object
       required:
       - MessageBody
       properties:
         MessageBody:
           $ref: '#/components/schemas/MessageBody'
-    MethodNotAllowedException: {}
-    DeleteInAppTemplateResponse:
-      type: object
-      required:
-      - MessageBody
-      properties:
-        MessageBody:
-          $ref: '#/components/schemas/MessageBody'
-    TemplateCreateMessageBody:
+    MessageBody:
       type: object
       properties:
-        Arn:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The Amazon Resource Name (ARN) of the message template that was created.
         Message:
           allOf:
           - $ref: '#/components/schemas/__string'
-          - description: The message that's returned from the API for the request to create the message template.
+          - description: The message that's returned from the API.
         RequestID:
           allOf:
           - $ref: '#/components/schemas/__string'
-          - description: The unique identifier for the request to create the message template.
-      description: Provides information about a request to create a message template.
-    UpdateTemplateActiveVersionResponse:
-      type: object
-      required:
-      - MessageBody
-      properties:
-        MessageBody:
-          $ref: '#/components/schemas/MessageBody'
-    ButtonAction:
+          - description: The unique identifier for the request or response.
+      description: Provides information about an API request or response.
+    ListOfTemplateVersionResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/TemplateVersionResponse'
+    Action:
       type: string
       enum:
-      - LINK
+      - OPEN_APP
       - DEEP_LINK
-      - CLOSE
-    OverrideButtonConfiguration:
-      type: object
-      required:
-      - ButtonAction
-      properties:
-        ButtonAction:
-          allOf:
-          - $ref: '#/components/schemas/ButtonAction'
-          - description: Action triggered by the button.
-        Link:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: Button destination.
-      description: Override button configuration.
-    TemplatesResponse:
-      type: object
-      required:
-      - Item
-      properties:
-        Item:
-          allOf:
-          - $ref: '#/components/schemas/ListOfTemplateResponse'
-          - description: An array of responses, one for each message template that's associated with your Amazon Pinpoint account and meets any filter criteria that you specified in the request.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
-      description: Provides information about all the message templates that are associated with your Amazon Pinpoint account.
-    InAppTemplateResponse:
-      type: object
-      required:
-      - LastModifiedDate
-      - CreationDate
-      - TemplateName
-      - TemplateType
-      properties:
-        Arn:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The resource arn of the template.
-        Content:
-          allOf:
-          - $ref: '#/components/schemas/ListOfInAppMessageContent'
-          - description: The content of the message, can include up to 5 modals. Each modal must contain a message, a header, and background color. ImageUrl and buttons are optional.
-        CreationDate:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The creation date of the template.
-        CustomConfig:
-          allOf:
-          - $ref: '#/components/schemas/MapOf__string'
-          - description: Custom config to be sent to client.
-        LastModifiedDate:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The last modified date of the template.
-        Layout:
-          allOf:
-          - $ref: '#/components/schemas/Layout'
-          - description: The layout of the message.
-        tags:
-          allOf:
-          - $ref: '#/components/schemas/MapOf__string'
-          - description: A string-to-string map of key-value pairs that defines the tags to associate with the message template. Each tag consists of a required tag key and an associated tag value.
-        TemplateDescription:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The description of the template.
-        TemplateName:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The name of the template.
-        TemplateType:
-          allOf:
-          - $ref: '#/components/schemas/TemplateType'
-          - description: The type of the template.
-        Version:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The version id of the template.
-      description: In-App Template Response.
-    DefaultPushNotificationTemplate:
-      type: object
-      properties:
-        Action:
-          allOf:
-          - $ref: '#/components/schemas/Action'
-          - description: <p>The action to occur if a recipient taps a push notification that's based on the message template. Valid values are:</p> <ul><li><p>OPEN_APP - Your app opens or it becomes the foreground app if it was sent to the background. This is the default action.</p></li> <li><p>DEEP_LINK - Your app opens and displays a designated user interface in the app. This setting uses the deep-linking features of the iOS and Android platforms.</p></li> <li><p>URL - The default mobile browser on the recipient's device opens and loads the web page at a URL that you specify.</p></li></ul>
-        Body:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The message body to use in push notifications that are based on the message template.
-        Sound:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: <p>The sound to play when a recipient receives a push notification that's based on the message template. You can use the default stream or specify the file name of a sound resource that's bundled in your app. On an Android platform, the sound file must reside in /res/raw/.</p> <p>For an iOS platform, this value is the key for the name of a sound file in your app's main bundle or the Library/Sounds folder in your app's data container. If the sound file can't be found or you specify default for the value, the system plays the default alert sound.</p>
-        Title:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The title to use in push notifications that are based on the message template. This title appears above the notification message on a recipient's device.
-        Url:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The URL to open in a recipient's default mobile browser, if a recipient taps a push notification that's based on the message template and the value of the Action property is URL.
-      description: Specifies the default settings and content for a message template that can be used in messages that are sent through a push notification channel.
-    DefaultButtonConfiguration:
-      type: object
-      required:
-      - ButtonAction
-      - Text
-      properties:
-        BackgroundColor:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The background color of the button.
-        BorderRadius:
-          allOf:
-          - $ref: '#/components/schemas/__integer'
-          - description: The border radius of the button.
-        ButtonAction:
-          allOf:
-          - $ref: '#/components/schemas/ButtonAction'
-          - description: Action triggered by the button.
-        Link:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: Button destination.
-        Text:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: Button text.
-        TextColor:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The text color of the button.
-      description: Default button configuration.
-    DeleteVoiceTemplateResponse:
-      type: object
-      required:
-      - MessageBody
-      properties:
-        MessageBody:
-          $ref: '#/components/schemas/MessageBody'
+      - URL
+    ForbiddenException: {}
     PushNotificationTemplateResponse:
       type: object
       required:
@@ -2432,29 +2276,21 @@ components:
           - $ref: '#/components/schemas/__string'
           - description: The unique identifier, as an integer, for the active version of the message template, or the version of the template that you specified by using the version parameter in your request.
       description: Provides information about the content and settings for a message template that can be used in messages that are sent through a push notification channel.
-    ForbiddenException: {}
-    InAppMessageButton:
+    UpdateTemplateActiveVersionResponse:
       type: object
+      required:
+      - MessageBody
       properties:
-        Android:
-          allOf:
-          - $ref: '#/components/schemas/OverrideButtonConfiguration'
-          - description: Default button content.
-        DefaultConfig:
-          allOf:
-          - $ref: '#/components/schemas/DefaultButtonConfiguration'
-          - description: Default button content.
-        IOS:
-          allOf:
-          - $ref: '#/components/schemas/OverrideButtonConfiguration'
-          - description: Default button content.
-        Web:
-          allOf:
-          - $ref: '#/components/schemas/OverrideButtonConfiguration'
-          - description: Default button content.
-      description: Button Config for an in-app message.
-    __string:
-      type: string
+        MessageBody:
+          $ref: '#/components/schemas/MessageBody'
+    MethodNotAllowedException: {}
+    GetInAppTemplateResponse:
+      type: object
+      required:
+      - InAppTemplateResponse
+      properties:
+        InAppTemplateResponse:
+          $ref: '#/components/schemas/InAppTemplateResponse'
     APNSPushNotificationTemplate:
       type: object
       properties:
@@ -2487,6 +2323,364 @@ components:
           - $ref: '#/components/schemas/__string'
           - description: The URL to open in the recipient's default mobile browser, if a recipient taps a push notification that's based on the message template and the value of the Action property is URL.
       description: Specifies channel-specific content and settings for a message template that can be used in push notifications that are sent through the APNs (Apple Push Notification service) channel.
+    CreateTemplateMessageBody:
+      type: object
+      properties:
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The Amazon Resource Name (ARN) of the message template that was created.
+        Message:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The message that's returned from the API for the request to create the message template.
+        RequestID:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The unique identifier for the request to create the message template.
+      description: Provides information about a request to create a message template.
+    InAppMessageBodyConfig:
+      type: object
+      required:
+      - Alignment
+      - TextColor
+      - Body
+      properties:
+        Alignment:
+          allOf:
+          - $ref: '#/components/schemas/Alignment'
+          - description: 'The alignment of the text. Valid values: LEFT, CENTER, RIGHT.'
+        Body:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: Message Body.
+        TextColor:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The text color.
+      description: Text config for Message Body.
+    DeleteEmailTemplateResponse:
+      type: object
+      required:
+      - MessageBody
+      properties:
+        MessageBody:
+          $ref: '#/components/schemas/MessageBody'
+    ListTemplatesResponse:
+      type: object
+      required:
+      - TemplatesResponse
+      properties:
+        TemplatesResponse:
+          $ref: '#/components/schemas/TemplatesResponse'
+    CreateVoiceTemplateResponse:
+      type: object
+      required:
+      - CreateTemplateMessageBody
+      properties:
+        CreateTemplateMessageBody:
+          $ref: '#/components/schemas/CreateTemplateMessageBody'
+    GetSmsTemplateResponse:
+      type: object
+      required:
+      - SMSTemplateResponse
+      properties:
+        SMSTemplateResponse:
+          $ref: '#/components/schemas/SMSTemplateResponse'
+    DefaultButtonConfiguration:
+      type: object
+      required:
+      - ButtonAction
+      - Text
+      properties:
+        BackgroundColor:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The background color of the button.
+        BorderRadius:
+          allOf:
+          - $ref: '#/components/schemas/__integer'
+          - description: The border radius of the button.
+        ButtonAction:
+          allOf:
+          - $ref: '#/components/schemas/ButtonAction'
+          - description: Action triggered by the button.
+        Link:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: Button destination.
+        Text:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: Button text.
+        TextColor:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The text color of the button.
+      description: Default button configuration.
+    UpdateVoiceTemplateResponse:
+      type: object
+      required:
+      - MessageBody
+      properties:
+        MessageBody:
+          $ref: '#/components/schemas/MessageBody'
+    TemplateCreateMessageBody:
+      type: object
+      properties:
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The Amazon Resource Name (ARN) of the message template that was created.
+        Message:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The message that's returned from the API for the request to create the message template.
+        RequestID:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The unique identifier for the request to create the message template.
+      description: Provides information about a request to create a message template.
+    ListOfTemplateResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/TemplateResponse'
+    GetEmailTemplateResponse:
+      type: object
+      required:
+      - EmailTemplateResponse
+      properties:
+        EmailTemplateResponse:
+          $ref: '#/components/schemas/EmailTemplateResponse'
+    __string:
+      type: string
+    OverrideButtonConfiguration:
+      type: object
+      required:
+      - ButtonAction
+      properties:
+        ButtonAction:
+          allOf:
+          - $ref: '#/components/schemas/ButtonAction'
+          - description: Action triggered by the button.
+        Link:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: Button destination.
+      description: Override button configuration.
+    __integer:
+      type: integer
+    GetVoiceTemplateResponse:
+      type: object
+      required:
+      - VoiceTemplateResponse
+      properties:
+        VoiceTemplateResponse:
+          $ref: '#/components/schemas/VoiceTemplateResponse'
+    PayloadTooLargeException: {}
+    SMSTemplateResponse:
+      type: object
+      required:
+      - LastModifiedDate
+      - CreationDate
+      - TemplateName
+      - TemplateType
+      properties:
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The Amazon Resource Name (ARN) of the message template.
+        Body:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The message body that's used in text messages that are based on the message template.
+        CreationDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The date, in ISO 8601 format, when the message template was created.
+        DefaultSubstitutions:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The JSON object that specifies the default values that are used for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable.
+        LastModifiedDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The date, in ISO 8601 format, when the message template was last modified.
+        RecommenderId:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The unique identifier for the recommender model that's used by the message template.
+        tags:
+          allOf:
+          - $ref: '#/components/schemas/MapOf__string'
+          - description: A string-to-string map of key-value pairs that identifies the tags that are associated with the message template. Each tag consists of a required tag key and an associated tag value.
+        TemplateDescription:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The custom description of the message template.
+        TemplateName:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The name of the message template.
+        TemplateType:
+          allOf:
+          - $ref: '#/components/schemas/TemplateType'
+          - description: The type of channel that the message template is designed for. For an SMS template, this value is SMS.
+        Version:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The unique identifier, as an integer, for the active version of the message template, or the version of the template that you specified by using the version parameter in your request.
+      description: Provides information about the content and settings for a message template that can be used in text messages that are sent through the SMS channel.
+    CreateInAppTemplateResponse:
+      type: object
+      required:
+      - TemplateCreateMessageBody
+      properties:
+        TemplateCreateMessageBody:
+          $ref: '#/components/schemas/TemplateCreateMessageBody'
+    InAppMessageHeaderConfig:
+      type: object
+      required:
+      - Alignment
+      - Header
+      - TextColor
+      properties:
+        Alignment:
+          allOf:
+          - $ref: '#/components/schemas/Alignment'
+          - description: 'The alignment of the text. Valid values: LEFT, CENTER, RIGHT.'
+        Header:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: Message Header.
+        TextColor:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The text color.
+      description: Text config for Message Header.
+    CreateSmsTemplateResponse:
+      type: object
+      required:
+      - CreateTemplateMessageBody
+      properties:
+        CreateTemplateMessageBody:
+          $ref: '#/components/schemas/CreateTemplateMessageBody'
+    TemplateType:
+      type: string
+      enum:
+      - EMAIL
+      - SMS
+      - VOICE
+      - PUSH
+      - INAPP
+    InAppMessageContent:
+      type: object
+      properties:
+        BackgroundColor:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The background color for the message.
+        BodyConfig:
+          allOf:
+          - $ref: '#/components/schemas/InAppMessageBodyConfig'
+          - description: The configuration for the message body.
+        HeaderConfig:
+          allOf:
+          - $ref: '#/components/schemas/InAppMessageHeaderConfig'
+          - description: The configuration for the message header.
+        ImageUrl:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The image url for the background of message.
+        PrimaryBtn:
+          allOf:
+          - $ref: '#/components/schemas/InAppMessageButton'
+          - description: The first button inside the message.
+        SecondaryBtn:
+          allOf:
+          - $ref: '#/components/schemas/InAppMessageButton'
+          - description: The second button inside message.
+      description: The configuration for the message content.
+    InAppTemplateResponse:
+      type: object
+      required:
+      - LastModifiedDate
+      - CreationDate
+      - TemplateName
+      - TemplateType
+      properties:
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The resource arn of the template.
+        Content:
+          allOf:
+          - $ref: '#/components/schemas/ListOfInAppMessageContent'
+          - description: The content of the message, can include up to 5 modals. Each modal must contain a message, a header, and background color. ImageUrl and buttons are optional.
+        CreationDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The creation date of the template.
+        CustomConfig:
+          allOf:
+          - $ref: '#/components/schemas/MapOf__string'
+          - description: Custom config to be sent to client.
+        LastModifiedDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The last modified date of the template.
+        Layout:
+          allOf:
+          - $ref: '#/components/schemas/Layout'
+          - description: The layout of the message.
+        tags:
+          allOf:
+          - $ref: '#/components/schemas/MapOf__string'
+          - description: A string-to-string map of key-value pairs that defines the tags to associate with the message template. Each tag consists of a required tag key and an associated tag value.
+        TemplateDescription:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The description of the template.
+        TemplateName:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The name of the template.
+        TemplateType:
+          allOf:
+          - $ref: '#/components/schemas/TemplateType'
+          - description: The type of the template.
+        Version:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The version id of the template.
+      description: In-App Template Response.
+    Alignment:
+      type: string
+      enum:
+      - LEFT
+      - CENTER
+      - RIGHT
+    ButtonAction:
+      type: string
+      enum:
+      - LINK
+      - DEEP_LINK
+      - CLOSE
+    TooManyRequestsException: {}
+    DeletePushTemplateResponse:
+      type: object
+      required:
+      - MessageBody
+      properties:
+        MessageBody:
+          $ref: '#/components/schemas/MessageBody'
+    UpdateEmailTemplateResponse:
+      type: object
+      required:
+      - MessageBody
+      properties:
+        MessageBody:
+          $ref: '#/components/schemas/MessageBody'
     EmailTemplateResponse:
       type: object
       required:
@@ -2570,6 +2764,33 @@ components:
           - $ref: '#/components/schemas/__string'
           - description: The unique identifier for the request to retrieve information about all the versions of the message template.
       description: Provides information about all the versions of a specific message template.
+    ListTemplateVersionsResponse:
+      type: object
+      required:
+      - TemplateVersionsResponse
+      properties:
+        TemplateVersionsResponse:
+          $ref: '#/components/schemas/TemplateVersionsResponse'
+    Layout:
+      type: string
+      enum:
+      - BOTTOM_BANNER
+      - TOP_BANNER
+      - OVERLAYS
+      - MOBILE_FEED
+      - MIDDLE_BANNER
+      - CAROUSEL
+    ListOfInAppMessageContent:
+      type: array
+      items:
+        $ref: '#/components/schemas/InAppMessageContent'
+    CreatePushTemplateResponse:
+      type: object
+      required:
+      - CreateTemplateMessageBody
+      properties:
+        CreateTemplateMessageBody:
+          $ref: '#/components/schemas/CreateTemplateMessageBody'
     UpdateSmsTemplateResponse:
       type: object
       required:
@@ -2577,20 +2798,192 @@ components:
       properties:
         MessageBody:
           $ref: '#/components/schemas/MessageBody'
-    CreateSmsTemplateResponse:
+    InAppMessageButton:
+      type: object
+      properties:
+        Android:
+          allOf:
+          - $ref: '#/components/schemas/OverrideButtonConfiguration'
+          - description: Default button content.
+        DefaultConfig:
+          allOf:
+          - $ref: '#/components/schemas/DefaultButtonConfiguration'
+          - description: Default button content.
+        IOS:
+          allOf:
+          - $ref: '#/components/schemas/OverrideButtonConfiguration'
+          - description: Default button content.
+        Web:
+          allOf:
+          - $ref: '#/components/schemas/OverrideButtonConfiguration'
+          - description: Default button content.
+      description: Button Config for an in-app message.
+    TemplateResponse:
+      type: object
+      required:
+      - LastModifiedDate
+      - CreationDate
+      - TemplateName
+      - TemplateType
+      properties:
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The Amazon Resource Name (ARN) of the message template. This value isn't included in a TemplateResponse object. To retrieve the ARN of a template, use the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or GetVoiceTemplate operation, depending on the type of template that you want to retrieve the ARN for.
+        CreationDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The date, in ISO 8601 format, when the message template was created.
+        DefaultSubstitutions:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The JSON object that specifies the default values that are used for message variables in the message template. This object isn't included in a TemplateResponse object. To retrieve this object for a template, use the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or GetVoiceTemplate operation, depending on the type of template that you want to retrieve the object for.
+        LastModifiedDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The date, in ISO 8601 format, when the message template was last modified.
+        tags:
+          allOf:
+          - $ref: '#/components/schemas/MapOf__string'
+          - description: A map of key-value pairs that identifies the tags that are associated with the message template. This object isn't included in a TemplateResponse object. To retrieve this object for a template, use the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or GetVoiceTemplate operation, depending on the type of template that you want to retrieve the object for.
+        TemplateDescription:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The custom description of the message template. This value isn't included in a TemplateResponse object. To retrieve the description of a template, use the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or GetVoiceTemplate operation, depending on the type of template that you want to retrieve the description for.
+        TemplateName:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The name of the message template.
+        TemplateType:
+          allOf:
+          - $ref: '#/components/schemas/TemplateType'
+          - description: 'The type of channel that the message template is designed for. Possible values are: EMAIL, PUSH, SMS, and VOICE.'
+        Version:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The unique identifier, as an integer, for the active version of the message template.
+      description: Provides information about a message template that's associated with your Amazon Pinpoint account.
+    CreateEmailTemplateResponse:
       type: object
       required:
       - CreateTemplateMessageBody
       properties:
         CreateTemplateMessageBody:
           $ref: '#/components/schemas/CreateTemplateMessageBody'
-    GetVoiceTemplateResponse:
+    InternalServerErrorException: {}
+    DefaultPushNotificationTemplate:
+      type: object
+      properties:
+        Action:
+          allOf:
+          - $ref: '#/components/schemas/Action'
+          - description: <p>The action to occur if a recipient taps a push notification that's based on the message template. Valid values are:</p> <ul><li><p>OPEN_APP - Your app opens or it becomes the foreground app if it was sent to the background. This is the default action.</p></li> <li><p>DEEP_LINK - Your app opens and displays a designated user interface in the app. This setting uses the deep-linking features of the iOS and Android platforms.</p></li> <li><p>URL - The default mobile browser on the recipient's device opens and loads the web page at a URL that you specify.</p></li></ul>
+        Body:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The message body to use in push notifications that are based on the message template.
+        Sound:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: <p>The sound to play when a recipient receives a push notification that's based on the message template. You can use the default stream or specify the file name of a sound resource that's bundled in your app. On an Android platform, the sound file must reside in /res/raw/.</p> <p>For an iOS platform, this value is the key for the name of a sound file in your app's main bundle or the Library/Sounds folder in your app's data container. If the sound file can't be found or you specify default for the value, the system plays the default alert sound.</p>
+        Title:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The title to use in push notifications that are based on the message template. This title appears above the notification message on a recipient's device.
+        Url:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The URL to open in a recipient's default mobile browser, if a recipient taps a push notification that's based on the message template and the value of the Action property is URL.
+      description: Specifies the default settings and content for a message template that can be used in messages that are sent through a push notification channel.
+    MapOf__string:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/__string'
+    BadRequestException: {}
+    UpdatePushTemplateResponse:
       type: object
       required:
-      - VoiceTemplateResponse
+      - MessageBody
       properties:
-        VoiceTemplateResponse:
-          $ref: '#/components/schemas/VoiceTemplateResponse'
+        MessageBody:
+          $ref: '#/components/schemas/MessageBody'
+    TemplateVersionResponse:
+      type: object
+      required:
+      - LastModifiedDate
+      - CreationDate
+      - TemplateName
+      - TemplateType
+      properties:
+        CreationDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The date, in ISO 8601 format, when the version of the message template was created.
+        DefaultSubstitutions:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: A JSON object that specifies the default values that are used for message variables in the version of the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable.
+        LastModifiedDate:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The date, in ISO 8601 format, when the version of the message template was last modified.
+        TemplateDescription:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The custom description of the version of the message template.
+        TemplateName:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The name of the message template.
+        TemplateType:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: 'The type of channel that the message template is designed for. Possible values are: EMAIL, PUSH, SMS, and VOICE.'
+        Version:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The unique identifier for the version of the message template. This value is an integer that Amazon Pinpoint automatically increments and assigns to each new version of a template.
+      description: Provides information about a specific version of a message template.
+    AndroidPushNotificationTemplate:
+      type: object
+      properties:
+        Action:
+          allOf:
+          - $ref: '#/components/schemas/Action'
+          - description: <p>The action to occur if a recipient taps a push notification that's based on the message template. Valid values are:</p> <ul><li><p>OPEN_APP - Your app opens or it becomes the foreground app if it was sent to the background. This is the default action.</p></li> <li><p>DEEP_LINK - Your app opens and displays a designated user interface in the app. This action uses the deep-linking features of the Android platform.</p></li> <li><p>URL - The default mobile browser on the recipient's device opens and loads the web page at a URL that you specify.</p></li></ul>
+        Body:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The message body to use in a push notification that's based on the message template.
+        ImageIconUrl:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The URL of the large icon image to display in the content view of a push notification that's based on the message template.
+        ImageUrl:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The URL of an image to display in a push notification that's based on the message template.
+        RawContent:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The raw, JSON-formatted string to use as the payload for a push notification that's based on the message template. If specified, this value overrides all other content for the message template.
+        SmallImageIconUrl:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The URL of the small icon image to display in the status bar and the content view of a push notification that's based on the message template.
+        Sound:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The sound to play when a recipient receives a push notification that's based on the message template. You can use the default stream or specify the file name of a sound resource that's bundled in your app. On an Android platform, the sound file must reside in /res/raw/.
+        Title:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The title to use in a push notification that's based on the message template. This title appears above the notification message on a recipient's device.
+        Url:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The URL to open in a recipient's default mobile browser, if a recipient taps a push notification that's based on the message template and the value of the Action property is URL.
+      description: Specifies channel-specific content and settings for a message template that can be used in push notifications that are sent through the ADM (Amazon Device Messaging), Baidu (Baidu Cloud Push), or GCM (Firebase Cloud Messaging, formerly Google Cloud Messaging) channel.
     GetPushTemplateResponse:
       type: object
       required:
@@ -2598,36 +2991,34 @@ components:
       properties:
         PushNotificationTemplateResponse:
           $ref: '#/components/schemas/PushNotificationTemplateResponse'
-    GetEmailTemplateResponse:
+    UpdateInAppTemplateResponse:
       type: object
       required:
-      - EmailTemplateResponse
+      - MessageBody
       properties:
-        EmailTemplateResponse:
-          $ref: '#/components/schemas/EmailTemplateResponse'
-    __integer:
-      type: integer
-    InAppMessageHeaderConfig:
+        MessageBody:
+          $ref: '#/components/schemas/MessageBody'
+    DeleteInAppTemplateResponse:
       type: object
       required:
-      - Alignment
-      - Header
-      - TextColor
+      - MessageBody
       properties:
-        Alignment:
+        MessageBody:
+          $ref: '#/components/schemas/MessageBody'
+    TemplatesResponse:
+      type: object
+      required:
+      - Item
+      properties:
+        Item:
           allOf:
-          - $ref: '#/components/schemas/Alignment'
-          - description: 'The alignment of the text. Valid values: LEFT, CENTER, RIGHT.'
-        Header:
+          - $ref: '#/components/schemas/ListOfTemplateResponse'
+          - description: An array of responses, one for each message template that's associated with your Amazon Pinpoint account and meets any filter criteria that you specified in the request.
+        NextToken:
           allOf:
           - $ref: '#/components/schemas/__string'
-          - description: Message Header.
-        TextColor:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The text color.
-      description: Text config for Message Header.
-    PayloadTooLargeException: {}
+          - description: The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
+      description: Provides information about all the message templates that are associated with your Amazon Pinpoint account.
     VoiceTemplateResponse:
       type: object
       required:
@@ -2685,419 +3076,28 @@ components:
           - $ref: '#/components/schemas/__string'
           - description: The name of the voice that's used when delivering messages that are based on the message template. For a list of supported voices, see the <a href="https://docs.aws.amazon.com/polly/latest/dg/what-is.html">Amazon Polly Developer Guide</a>.
       description: Provides information about the content and settings for a message template that can be used in messages that are sent through the voice channel.
-    Alignment:
-      type: string
-      enum:
-      - LEFT
-      - CENTER
-      - RIGHT
-    ListTemplatesResponse:
-      type: object
-      required:
-      - TemplatesResponse
-      properties:
-        TemplatesResponse:
-          $ref: '#/components/schemas/TemplatesResponse'
-    NotFoundException: {}
-    ListOfTemplateVersionResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/TemplateVersionResponse'
-    CreateEmailTemplateResponse:
-      type: object
-      required:
-      - CreateTemplateMessageBody
-      properties:
-        CreateTemplateMessageBody:
-          $ref: '#/components/schemas/CreateTemplateMessageBody'
-    DeletePushTemplateResponse:
+    DeleteVoiceTemplateResponse:
       type: object
       required:
       - MessageBody
       properties:
         MessageBody:
           $ref: '#/components/schemas/MessageBody'
-    GetInAppTemplateResponse:
-      type: object
-      required:
-      - InAppTemplateResponse
-      properties:
-        InAppTemplateResponse:
-          $ref: '#/components/schemas/InAppTemplateResponse'
-    CreateTemplateMessageBody:
-      type: object
-      properties:
-        Arn:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The Amazon Resource Name (ARN) of the message template that was created.
-        Message:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The message that's returned from the API for the request to create the message template.
-        RequestID:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The unique identifier for the request to create the message template.
-      description: Provides information about a request to create a message template.
-    ListOfTemplateResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/TemplateResponse'
-    MessageBody:
-      type: object
-      properties:
-        Message:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The message that's returned from the API.
-        RequestID:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The unique identifier for the request or response.
-      description: Provides information about an API request or response.
-    Layout:
-      type: string
-      enum:
-      - BOTTOM_BANNER
-      - TOP_BANNER
-      - OVERLAYS
-      - MOBILE_FEED
-      - MIDDLE_BANNER
-      - CAROUSEL
-    DeleteSmsTemplateResponse:
-      type: object
-      required:
-      - MessageBody
-      properties:
-        MessageBody:
-          $ref: '#/components/schemas/MessageBody'
-    TemplateResponse:
-      type: object
-      required:
-      - LastModifiedDate
-      - CreationDate
-      - TemplateName
-      - TemplateType
-      properties:
-        Arn:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The Amazon Resource Name (ARN) of the message template. This value isn't included in a TemplateResponse object. To retrieve the ARN of a template, use the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or GetVoiceTemplate operation, depending on the type of template that you want to retrieve the ARN for.
-        CreationDate:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The date, in ISO 8601 format, when the message template was created.
-        DefaultSubstitutions:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The JSON object that specifies the default values that are used for message variables in the message template. This object isn't included in a TemplateResponse object. To retrieve this object for a template, use the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or GetVoiceTemplate operation, depending on the type of template that you want to retrieve the object for.
-        LastModifiedDate:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The date, in ISO 8601 format, when the message template was last modified.
-        tags:
-          allOf:
-          - $ref: '#/components/schemas/MapOf__string'
-          - description: A map of key-value pairs that identifies the tags that are associated with the message template. This object isn't included in a TemplateResponse object. To retrieve this object for a template, use the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or GetVoiceTemplate operation, depending on the type of template that you want to retrieve the object for.
-        TemplateDescription:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The custom description of the message template. This value isn't included in a TemplateResponse object. To retrieve the description of a template, use the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or GetVoiceTemplate operation, depending on the type of template that you want to retrieve the description for.
-        TemplateName:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The name of the message template.
-        TemplateType:
-          allOf:
-          - $ref: '#/components/schemas/TemplateType'
-          - description: 'The type of channel that the message template is designed for. Possible values are: EMAIL, PUSH, SMS, and VOICE.'
-        Version:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The unique identifier, as an integer, for the active version of the message template.
-      description: Provides information about a message template that's associated with your Amazon Pinpoint account.
-    InAppMessageBodyConfig:
-      type: object
-      required:
-      - Alignment
-      - TextColor
-      - Body
-      properties:
-        Alignment:
-          allOf:
-          - $ref: '#/components/schemas/Alignment'
-          - description: 'The alignment of the text. Valid values: LEFT, CENTER, RIGHT.'
-        Body:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: Message Body.
-        TextColor:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The text color.
-      description: Text config for Message Body.
-    BadRequestException: {}
-    Action:
-      type: string
-      enum:
-      - OPEN_APP
-      - DEEP_LINK
-      - URL
-    ListTemplateVersionsResponse:
-      type: object
-      required:
-      - TemplateVersionsResponse
-      properties:
-        TemplateVersionsResponse:
-          $ref: '#/components/schemas/TemplateVersionsResponse'
-    InternalServerErrorException: {}
-    TemplateType:
-      type: string
-      enum:
-      - EMAIL
-      - SMS
-      - VOICE
-      - PUSH
-      - INAPP
-    CreateVoiceTemplateResponse:
-      type: object
-      required:
-      - CreateTemplateMessageBody
-      properties:
-        CreateTemplateMessageBody:
-          $ref: '#/components/schemas/CreateTemplateMessageBody'
-    UpdateInAppTemplateResponse:
-      type: object
-      required:
-      - MessageBody
-      properties:
-        MessageBody:
-          $ref: '#/components/schemas/MessageBody'
-    GetSmsTemplateResponse:
-      type: object
-      required:
-      - SMSTemplateResponse
-      properties:
-        SMSTemplateResponse:
-          $ref: '#/components/schemas/SMSTemplateResponse'
-    UpdatePushTemplateResponse:
-      type: object
-      required:
-      - MessageBody
-      properties:
-        MessageBody:
-          $ref: '#/components/schemas/MessageBody'
-    CreateInAppTemplateResponse:
-      type: object
-      required:
-      - TemplateCreateMessageBody
-      properties:
-        TemplateCreateMessageBody:
-          $ref: '#/components/schemas/TemplateCreateMessageBody'
-    ListOfInAppMessageContent:
-      type: array
-      items:
-        $ref: '#/components/schemas/InAppMessageContent'
-    UpdateEmailTemplateResponse:
-      type: object
-      required:
-      - MessageBody
-      properties:
-        MessageBody:
-          $ref: '#/components/schemas/MessageBody'
-    TemplateVersionResponse:
-      type: object
-      required:
-      - LastModifiedDate
-      - CreationDate
-      - TemplateName
-      - TemplateType
-      properties:
-        CreationDate:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The date, in ISO 8601 format, when the version of the message template was created.
-        DefaultSubstitutions:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: A JSON object that specifies the default values that are used for message variables in the version of the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable.
-        LastModifiedDate:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The date, in ISO 8601 format, when the version of the message template was last modified.
-        TemplateDescription:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The custom description of the version of the message template.
-        TemplateName:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The name of the message template.
-        TemplateType:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: 'The type of channel that the message template is designed for. Possible values are: EMAIL, PUSH, SMS, and VOICE.'
-        Version:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The unique identifier for the version of the message template. This value is an integer that Amazon Pinpoint automatically increments and assigns to each new version of a template.
-      description: Provides information about a specific version of a message template.
-    TooManyRequestsException: {}
-    AndroidPushNotificationTemplate:
-      type: object
-      properties:
-        Action:
-          allOf:
-          - $ref: '#/components/schemas/Action'
-          - description: <p>The action to occur if a recipient taps a push notification that's based on the message template. Valid values are:</p> <ul><li><p>OPEN_APP - Your app opens or it becomes the foreground app if it was sent to the background. This is the default action.</p></li> <li><p>DEEP_LINK - Your app opens and displays a designated user interface in the app. This action uses the deep-linking features of the Android platform.</p></li> <li><p>URL - The default mobile browser on the recipient's device opens and loads the web page at a URL that you specify.</p></li></ul>
-        Body:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The message body to use in a push notification that's based on the message template.
-        ImageIconUrl:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The URL of the large icon image to display in the content view of a push notification that's based on the message template.
-        ImageUrl:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The URL of an image to display in a push notification that's based on the message template.
-        RawContent:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The raw, JSON-formatted string to use as the payload for a push notification that's based on the message template. If specified, this value overrides all other content for the message template.
-        SmallImageIconUrl:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The URL of the small icon image to display in the status bar and the content view of a push notification that's based on the message template.
-        Sound:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The sound to play when a recipient receives a push notification that's based on the message template. You can use the default stream or specify the file name of a sound resource that's bundled in your app. On an Android platform, the sound file must reside in /res/raw/.
-        Title:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The title to use in a push notification that's based on the message template. This title appears above the notification message on a recipient's device.
-        Url:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The URL to open in a recipient's default mobile browser, if a recipient taps a push notification that's based on the message template and the value of the Action property is URL.
-      description: Specifies channel-specific content and settings for a message template that can be used in push notifications that are sent through the ADM (Amazon Device Messaging), Baidu (Baidu Cloud Push), or GCM (Firebase Cloud Messaging, formerly Google Cloud Messaging) channel.
-    DeleteEmailTemplateResponse:
-      type: object
-      required:
-      - MessageBody
-      properties:
-        MessageBody:
-          $ref: '#/components/schemas/MessageBody'
-    SMSTemplateResponse:
-      type: object
-      required:
-      - LastModifiedDate
-      - CreationDate
-      - TemplateName
-      - TemplateType
-      properties:
-        Arn:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The Amazon Resource Name (ARN) of the message template.
-        Body:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The message body that's used in text messages that are based on the message template.
-        CreationDate:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The date, in ISO 8601 format, when the message template was created.
-        DefaultSubstitutions:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The JSON object that specifies the default values that are used for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable.
-        LastModifiedDate:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The date, in ISO 8601 format, when the message template was last modified.
-        RecommenderId:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The unique identifier for the recommender model that's used by the message template.
-        tags:
-          allOf:
-          - $ref: '#/components/schemas/MapOf__string'
-          - description: A string-to-string map of key-value pairs that identifies the tags that are associated with the message template. Each tag consists of a required tag key and an associated tag value.
-        TemplateDescription:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The custom description of the message template.
-        TemplateName:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The name of the message template.
-        TemplateType:
-          allOf:
-          - $ref: '#/components/schemas/TemplateType'
-          - description: The type of channel that the message template is designed for. For an SMS template, this value is SMS.
-        Version:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The unique identifier, as an integer, for the active version of the message template, or the version of the template that you specified by using the version parameter in your request.
-      description: Provides information about the content and settings for a message template that can be used in text messages that are sent through the SMS channel.
-    MapOf__string:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/__string'
-    CreatePushTemplateResponse:
-      type: object
-      required:
-      - CreateTemplateMessageBody
-      properties:
-        CreateTemplateMessageBody:
-          $ref: '#/components/schemas/CreateTemplateMessageBody'
-    InAppMessageContent:
-      type: object
-      properties:
-        BackgroundColor:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The background color for the message.
-        BodyConfig:
-          allOf:
-          - $ref: '#/components/schemas/InAppMessageBodyConfig'
-          - description: The configuration for the message body.
-        HeaderConfig:
-          allOf:
-          - $ref: '#/components/schemas/InAppMessageHeaderConfig'
-          - description: The configuration for the message header.
-        ImageUrl:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The image url for the background of message.
-        PrimaryBtn:
-          allOf:
-          - $ref: '#/components/schemas/InAppMessageButton'
-          - description: The first button inside the message.
-        SecondaryBtn:
-          allOf:
-          - $ref: '#/components/schemas/InAppMessageButton'
-          - description: The second button inside message.
-      description: The configuration for the message content.
   parameters:
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
       required: false
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -3114,14 +3114,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string

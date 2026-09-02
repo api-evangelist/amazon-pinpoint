@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  version: "1.0.0"
+  version: 1.0.0
   x-release: v4
   title: Amazon Pinpoint Applications Phone API
   description: Doc Engage API - Amazon Pinpoint API
@@ -205,8 +205,19 @@ paths:
       - Phone
 components:
   schemas:
+    NotFoundException: {}
     __string:
       type: string
+    MethodNotAllowedException: {}
+    PhoneNumberValidateResponse:
+      type: object
+      required:
+      - NumberValidateResponse
+      properties:
+        NumberValidateResponse:
+          $ref: '#/components/schemas/NumberValidateResponse'
+    ForbiddenException: {}
+    PayloadTooLargeException: {}
     NumberValidateResponse:
       type: object
       properties:
@@ -267,37 +278,38 @@ components:
           - $ref: '#/components/schemas/__string'
           - description: The postal or ZIP code for the location where the phone number was originally registered.
       description: Provides information about a phone number.
-    PayloadTooLargeException: {}
-    MethodNotAllowedException: {}
+    TooManyRequestsException: {}
     __integer:
       type: integer
-    NotFoundException: {}
-    PhoneNumberValidateResponse:
-      type: object
-      required:
-      - NumberValidateResponse
-      properties:
-        NumberValidateResponse:
-          $ref: '#/components/schemas/NumberValidateResponse'
-    TooManyRequestsException: {}
-    ForbiddenException: {}
     BadRequestException: {}
     InternalServerErrorException: {}
   parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
       in: header
       schema:
         type: string
       required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Signature:
       name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
@@ -310,18 +322,6 @@ components:
       required: false
     X-Amz-Date:
       name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
