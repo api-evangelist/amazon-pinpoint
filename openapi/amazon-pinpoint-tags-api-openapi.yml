@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: 2016-12-01
   x-release: v4
-  title: Amazon Pinpoint Applications Tags API
+  title: Amazon Pinpoint Tags API
   description: Doc Engage API - Amazon Pinpoint API
   x-logo:
     url: https://api.apis.guru/v2/cache/logo/https_twitter.com_awscloud_profile_image.png
@@ -24,6 +24,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/pinpoint-2016-12-01.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -220,8 +221,8 @@ paths:
       - Tags
 components:
   parameters:
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
@@ -238,20 +239,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
@@ -262,13 +251,19 @@ components:
       schema:
         type: string
       required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
-    __string:
-      type: string
-    MapOf__string:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/__string'
     TagsModel:
       type: object
       required:
@@ -279,6 +274,10 @@ components:
           - $ref: '#/components/schemas/MapOf__string'
           - description: <p>A string-to-string map of key-value pairs that defines the tags for an application, campaign, message template, or segment. Each of these resources can have a maximum of 50 tags.</p> <p>Each tag consists of a required tag key and an associated tag value. The maximum length of a tag key is 128 characters. The maximum length of a tag value is 256 characters.</p>
       description: Specifies the tags (keys and values) for an application, campaign, message template, or segment.
+    MapOf__string:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/__string'
     ListTagsForResourceResponse:
       type: object
       required:
@@ -286,6 +285,8 @@ components:
       properties:
         TagsModel:
           $ref: '#/components/schemas/TagsModel'
+    __string:
+      type: string
   securitySchemes:
     hmac:
       type: apiKey
