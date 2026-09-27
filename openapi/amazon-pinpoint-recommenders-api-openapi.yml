@@ -557,57 +557,24 @@ paths:
       tags:
       - Recommenders
 components:
-  parameters:
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
-    GetRecommenderConfigurationsResponse:
+    __integer:
+      type: integer
+    NotFoundException: {}
+    UpdateRecommenderConfigurationResponse:
       type: object
       required:
-      - ListRecommenderConfigurationsResponse
+      - RecommenderConfigurationResponse
       properties:
-        ListRecommenderConfigurationsResponse:
-          $ref: '#/components/schemas/ListRecommenderConfigurationsResponse'
+        RecommenderConfigurationResponse:
+          $ref: '#/components/schemas/RecommenderConfigurationResponse'
+    GetRecommenderConfigurationResponse:
+      type: object
+      required:
+      - RecommenderConfigurationResponse
+      properties:
+        RecommenderConfigurationResponse:
+          $ref: '#/components/schemas/RecommenderConfigurationResponse'
     RecommenderConfigurationResponse:
       type: object
       required:
@@ -666,11 +633,9 @@ components:
           - $ref: '#/components/schemas/__integer'
           - description: The number of recommended items that are retrieved from the model for each endpoint or user, depending on the value for the RecommendationProviderIdType property. This number determines how many recommended items are available for use in message variables.
       description: Provides information about Amazon Pinpoint configuration settings for retrieving and processing data from a recommender model.
-    ListOfRecommenderConfigurationResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/RecommenderConfigurationResponse'
-    BadRequestException: {}
+    MethodNotAllowedException: {}
+    TooManyRequestsException: {}
+    InternalServerErrorException: {}
     CreateRecommenderConfigurationResponse:
       type: object
       required:
@@ -685,8 +650,17 @@ components:
       properties:
         RecommenderConfigurationResponse:
           $ref: '#/components/schemas/RecommenderConfigurationResponse'
-    PayloadTooLargeException: {}
-    NotFoundException: {}
+    ForbiddenException: {}
+    BadRequestException: {}
+    __string:
+      type: string
+    GetRecommenderConfigurationsResponse:
+      type: object
+      required:
+      - ListRecommenderConfigurationsResponse
+      properties:
+        ListRecommenderConfigurationsResponse:
+          $ref: '#/components/schemas/ListRecommenderConfigurationsResponse'
     MapOf__string:
       type: object
       additionalProperties:
@@ -705,28 +679,54 @@ components:
           - $ref: '#/components/schemas/__string'
           - description: The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
       description: Provides information about all the recommender model configurations that are associated with your Amazon Pinpoint account.
-    GetRecommenderConfigurationResponse:
-      type: object
-      required:
-      - RecommenderConfigurationResponse
-      properties:
-        RecommenderConfigurationResponse:
-          $ref: '#/components/schemas/RecommenderConfigurationResponse'
-    __string:
-      type: string
-    MethodNotAllowedException: {}
-    ForbiddenException: {}
-    UpdateRecommenderConfigurationResponse:
-      type: object
-      required:
-      - RecommenderConfigurationResponse
-      properties:
-        RecommenderConfigurationResponse:
-          $ref: '#/components/schemas/RecommenderConfigurationResponse'
-    TooManyRequestsException: {}
-    InternalServerErrorException: {}
-    __integer:
-      type: integer
+    PayloadTooLargeException: {}
+    ListOfRecommenderConfigurationResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/RecommenderConfigurationResponse'
+  parameters:
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

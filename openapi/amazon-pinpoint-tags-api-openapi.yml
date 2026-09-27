@@ -221,20 +221,20 @@ paths:
       - Tags
 components:
   parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Credential:
       name: X-Amz-Credential
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
@@ -257,13 +257,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
       required: false
   schemas:
+    ListTagsForResourceResponse:
+      type: object
+      required:
+      - TagsModel
+      properties:
+        TagsModel:
+          $ref: '#/components/schemas/TagsModel'
     TagsModel:
       type: object
       required:
@@ -274,19 +281,12 @@ components:
           - $ref: '#/components/schemas/MapOf__string'
           - description: <p>A string-to-string map of key-value pairs that defines the tags for an application, campaign, message template, or segment. Each of these resources can have a maximum of 50 tags.</p> <p>Each tag consists of a required tag key and an associated tag value. The maximum length of a tag key is 128 characters. The maximum length of a tag value is 256 characters.</p>
       description: Specifies the tags (keys and values) for an application, campaign, message template, or segment.
+    __string:
+      type: string
     MapOf__string:
       type: object
       additionalProperties:
         $ref: '#/components/schemas/__string'
-    ListTagsForResourceResponse:
-      type: object
-      required:
-      - TagsModel
-      properties:
-        TagsModel:
-          $ref: '#/components/schemas/TagsModel'
-    __string:
-      type: string
   securitySchemes:
     hmac:
       type: apiKey
