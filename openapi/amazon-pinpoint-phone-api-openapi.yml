@@ -206,10 +206,21 @@ paths:
       - Phone
 components:
   schemas:
-    __integer:
-      type: integer
+    __string:
+      type: string
     PayloadTooLargeException: {}
+    TooManyRequestsException: {}
+    PhoneNumberValidateResponse:
+      type: object
+      required:
+      - NumberValidateResponse
+      properties:
+        NumberValidateResponse:
+          $ref: '#/components/schemas/NumberValidateResponse'
+    ForbiddenException: {}
+    BadRequestException: {}
     MethodNotAllowedException: {}
+    InternalServerErrorException: {}
     NumberValidateResponse:
       type: object
       properties:
@@ -270,47 +281,12 @@ components:
           - $ref: '#/components/schemas/__string'
           - description: The postal or ZIP code for the location where the phone number was originally registered.
       description: Provides information about a phone number.
-    TooManyRequestsException: {}
-    ForbiddenException: {}
-    InternalServerErrorException: {}
+    __integer:
+      type: integer
     NotFoundException: {}
-    BadRequestException: {}
-    __string:
-      type: string
-    PhoneNumberValidateResponse:
-      type: object
-      required:
-      - NumberValidateResponse
-      properties:
-        NumberValidateResponse:
-          $ref: '#/components/schemas/NumberValidateResponse'
   parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -323,6 +299,30 @@ components:
       required: false
     X-Amz-Security-Token:
       name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
