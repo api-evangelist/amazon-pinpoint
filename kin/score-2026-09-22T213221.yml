@@ -1,24 +1,22 @@
-# Kin Score artifact — amazon-pinpoint — 2026-08-25T133943
+# Kin Score artifact — amazon-pinpoint — 2026-09-22T213221
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: amazon-pinpoint
-  schema_version: 0.14.0
-  scored_at: '2026-08-25'
-  run_ts: 2026-08-25T133943
-  composite: 83.1
+  schema_version: 0.22.0
+  scored_at: '2026-09-22'
+  run_ts: 2026-09-22T213221
+  composite: 82.4
   band: exemplar
   facets:
-    discoverability: 75.9
-    contract_quality: 79.4
-    governance: 59.1
+    discoverability: 70.4
+    contract_quality: 78.9
+    contract_governance: 47.0
     operational_transparency: 81.6
-    developer_ergonomics: 85.1
-    commercial_clarity: 89.5
-    contract_governance: 59.1
+    developer_ergonomics: 81.5
     access_clarity: 89.5
   agent_readiness:
-    score: 35.4
+    score: 33.3
     band: agent-ready
     dimensions:
       spec_presence: true
@@ -33,7 +31,7 @@ kin_score:
       event_surface_described: true
       agent_skills: derived
       well_known_catalog: false
-      consent_identity: true
+      consent_identity: false
       agent_card: false
       dry_run_mode: false
       delegated_identity: false
@@ -52,7 +50,7 @@ kin_score:
     agentic_access: derived
     conformance: first-party
     contracts:
-      total: 6
+      total: 5
       derived: 0
       coverage: 0.0
       callable: 100.0
