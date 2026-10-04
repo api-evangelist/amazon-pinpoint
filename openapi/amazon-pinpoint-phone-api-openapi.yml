@@ -206,21 +206,13 @@ paths:
       - Phone
 components:
   schemas:
+    InternalServerErrorException: {}
+    TooManyRequestsException: {}
+    PayloadTooLargeException: {}
+    ForbiddenException: {}
+    MethodNotAllowedException: {}
     __string:
       type: string
-    PayloadTooLargeException: {}
-    TooManyRequestsException: {}
-    PhoneNumberValidateResponse:
-      type: object
-      required:
-      - NumberValidateResponse
-      properties:
-        NumberValidateResponse:
-          $ref: '#/components/schemas/NumberValidateResponse'
-    ForbiddenException: {}
-    BadRequestException: {}
-    MethodNotAllowedException: {}
-    InternalServerErrorException: {}
     NumberValidateResponse:
       type: object
       properties:
@@ -281,6 +273,14 @@ components:
           - $ref: '#/components/schemas/__string'
           - description: The postal or ZIP code for the location where the phone number was originally registered.
       description: Provides information about a phone number.
+    BadRequestException: {}
+    PhoneNumberValidateResponse:
+      type: object
+      required:
+      - NumberValidateResponse
+      properties:
+        NumberValidateResponse:
+          $ref: '#/components/schemas/NumberValidateResponse'
     __integer:
       type: integer
     NotFoundException: {}
@@ -291,8 +291,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
@@ -303,14 +303,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
@@ -321,8 +321,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
