@@ -137,3 +137,24 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
     url: https://apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - metered
+  units:
+  - message
+  - period
+  - request
+  plans:
+  - name: Pay-as-you-go
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - message
+    - other
+    - period
+    - request
+    periods:
+    - month
