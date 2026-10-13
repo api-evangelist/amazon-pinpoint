@@ -1,0 +1,26 @@
+slug: amazon-pinpoint
+provider: Amazon Pinpoint
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Apps
+  spec_file: amazon-pinpoint-apps-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.75
+  evidence: POST /v1/apps/{application-id}/campaigns  Create Campaign; POST /v1/apps/{application-id}/journeys  Create
+    Journey; POST /v1/apps/{application-id}/segments  Create Segment
+  reason: Despite the generic 'Apps' tag, the operations manage marketing campaigns, customer journeys
+    and segments across email/SMS/push channels — multichannel marketing automation. Digital Marketing
+    Management is the best fit; some ambiguity vs Demand Generation and Customer Segmentation.
