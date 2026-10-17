@@ -558,10 +558,42 @@ paths:
       - Recommenders
 components:
   schemas:
-    TooManyRequestsException: {}
-    PayloadTooLargeException: {}
+    NotFoundException: {}
+    BadRequestException: {}
+    ListRecommenderConfigurationsResponse:
+      type: object
+      required:
+      - Item
+      properties:
+        Item:
+          allOf:
+          - $ref: '#/components/schemas/ListOfRecommenderConfigurationResponse'
+          - description: An array of responses, one for each recommender model configuration that's associated with your Amazon Pinpoint account.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - description: The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
+      description: Provides information about all the recommender model configurations that are associated with your Amazon Pinpoint account.
+    CreateRecommenderConfigurationResponse:
+      type: object
+      required:
+      - RecommenderConfigurationResponse
+      properties:
+        RecommenderConfigurationResponse:
+          $ref: '#/components/schemas/RecommenderConfigurationResponse'
+    ListOfRecommenderConfigurationResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/RecommenderConfigurationResponse'
     __string:
       type: string
+    DeleteRecommenderConfigurationResponse:
+      type: object
+      required:
+      - RecommenderConfigurationResponse
+      properties:
+        RecommenderConfigurationResponse:
+          $ref: '#/components/schemas/RecommenderConfigurationResponse'
     RecommenderConfigurationResponse:
       type: object
       required:
@@ -620,33 +652,24 @@ components:
           - $ref: '#/components/schemas/__integer'
           - description: The number of recommended items that are retrieved from the model for each endpoint or user, depending on the value for the RecommendationProviderIdType property. This number determines how many recommended items are available for use in message variables.
       description: Provides information about Amazon Pinpoint configuration settings for retrieving and processing data from a recommender model.
-    ListRecommenderConfigurationsResponse:
-      type: object
-      required:
-      - Item
-      properties:
-        Item:
-          allOf:
-          - $ref: '#/components/schemas/ListOfRecommenderConfigurationResponse'
-          - description: An array of responses, one for each recommender model configuration that's associated with your Amazon Pinpoint account.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - description: The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
-      description: Provides information about all the recommender model configurations that are associated with your Amazon Pinpoint account.
     __integer:
       type: integer
-    InternalServerErrorException: {}
-    CreateRecommenderConfigurationResponse:
+    PayloadTooLargeException: {}
+    UpdateRecommenderConfigurationResponse:
       type: object
       required:
       - RecommenderConfigurationResponse
       properties:
         RecommenderConfigurationResponse:
           $ref: '#/components/schemas/RecommenderConfigurationResponse'
-    ForbiddenException: {}
     MethodNotAllowedException: {}
-    DeleteRecommenderConfigurationResponse:
+    TooManyRequestsException: {}
+    MapOf__string:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/__string'
+    ForbiddenException: {}
+    GetRecommenderConfigurationResponse:
       type: object
       required:
       - RecommenderConfigurationResponse
@@ -660,33 +683,10 @@ components:
       properties:
         ListRecommenderConfigurationsResponse:
           $ref: '#/components/schemas/ListRecommenderConfigurationsResponse'
-    GetRecommenderConfigurationResponse:
-      type: object
-      required:
-      - RecommenderConfigurationResponse
-      properties:
-        RecommenderConfigurationResponse:
-          $ref: '#/components/schemas/RecommenderConfigurationResponse'
-    BadRequestException: {}
-    UpdateRecommenderConfigurationResponse:
-      type: object
-      required:
-      - RecommenderConfigurationResponse
-      properties:
-        RecommenderConfigurationResponse:
-          $ref: '#/components/schemas/RecommenderConfigurationResponse'
-    NotFoundException: {}
-    ListOfRecommenderConfigurationResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/RecommenderConfigurationResponse'
-    MapOf__string:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/__string'
+    InternalServerErrorException: {}
   parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -697,8 +697,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
@@ -709,20 +709,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Security-Token:
       name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
