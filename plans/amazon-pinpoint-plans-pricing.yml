@@ -1,0 +1,107 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://aws.amazon.com/pinpoint/pricing/
+sources:
+- https://aws.amazon.com/pinpoint/pricing/
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T120612
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: usage-other
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-28'
+published: true
+note: AWS Pinpoint usage pricing page; notes end of support October 30, 2026. Email/SMS pricing referred
+  to other pages.
+plan_count: 5
+currency: USD
+plans:
+- name: Monthly Targeted Audience (MTA)
+  price_text: $0.0012 per endpoint
+  price: 0.0012
+  currency: USD
+  period: per-use
+  unit: endpoint per month
+  included_quota: The first 5,000 endpoints that you target each month are free.
+- name: Events
+  price_text: $0.000001 per event
+  price: 1.0e-06
+  currency: USD
+  period: per-use
+  unit: event collected
+  included_quota: $0 for the first 100,000,000 events that you collect each month
+- name: In-app messaging
+  price_text: $0.00011 for each request after that
+  price: 0.00011
+  currency: USD
+  period: per-use
+  unit: in-app message API request
+  included_quota: $0 for the first 15,000 in-app message API requests that you make each month
+- name: Deliverability dashboard
+  price_text: USD $1,250 per month
+  price: 1250
+  currency: USD
+  period: month
+  unit: subscription
+  included_quota: reputation monitoring for up to five domains and 25 predictive email placement tests
+  overage: $25 per domain per month beyond five domains; $10 per test beyond 25 tests
+- name: Dedicated IP addresses
+  price_text: $24.95 per month
+  price: 24.95
+  currency: USD
+  period: month
+  unit: dedicated IP address
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - subscription
+  units:
+  - period
+  - request
+  plans:
+  - name: Monthly Targeted Audience (MTA)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Events
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: In-app messaging
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - request
+    periods:
+    - other
+  - name: Deliverability dashboard
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - period
+    periods:
+    - month
+  - name: Dedicated IP addresses
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
