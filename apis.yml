@@ -33,7 +33,7 @@ accessModel:
   - rate-limits
   - security
   - sandbox
-  generated: '2026-11-06'
+  generated: '2026-11-13'
   method: derived
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 tags:
@@ -2588,6 +2588,16 @@ common:
   url: examples/amazon-pinpoint-write-event-stream-example.json
 - type: Examples
   url: examples/amazon-pinpoint-write-segment-request-example.json
+- type: UsageTerms
+  url: terms/amazon-pinpoint-terms-of-service.yml
+- type: DeprecationSchedule
+  url: deprecation/amazon-pinpoint-deprecation-policy.yml
+- type: Attestations
+  url: compliance/amazon-pinpoint-compliance.yml
+- type: Eligibility
+  url: eligibility/amazon-pinpoint-eligibility.yml
+- type: AIPreferences
+  url: ai-preferences/amazon-pinpoint-ai-preferences.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

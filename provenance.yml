@@ -5,6 +5,9 @@ artifacts:
   agentic-access/amazon-pinpoint-agentic-access.yml:
     method: generated
     evidence: declared in the artifact
+  ai-preferences/amazon-pinpoint-ai-preferences.yml:
+    method: harvested
+    evidence: declared in the artifact
   arazzo/amazon-pinpoint-batch-update-endpoints-send-workflow.yml:
     method: derived
     evidence: Arazzo whose sourceDescriptions are our split specs (../openapi/)
@@ -71,6 +74,12 @@ artifacts:
   capabilities/amazon-pinpoint-capability-edges.yml:
     method: unknown
     evidence: no authorship recorded
+  certification/observations-2026-11-11.jsonl:
+    method: unknown
+    evidence: no authorship recorded
+  certification/status.yml:
+    method: unknown
+    evidence: no authorship recorded
   changelog/amazon-pinpoint-changelog.yml:
     method: searched
     evidence: declared in the artifact
@@ -119,6 +128,9 @@ artifacts:
   collections/amazon-pinpoint.postman_collection.json:
     method: derived
     evidence: openapi/amazon-pinpoint
+  compliance/amazon-pinpoint-compliance.yml:
+    method: harvested
+    evidence: declared in the artifact
   conformance/amazon-pinpoint-conformance.yml:
     method: searched
     evidence: declared in the artifact
@@ -127,6 +139,12 @@ artifacts:
     evidence: declared in the artifact
   data-model/amazon-pinpoint-data-model.yml:
     method: derived
+    evidence: declared in the artifact
+  deprecation/amazon-pinpoint-deprecation-policy.yml:
+    method: harvested
+    evidence: declared in the artifact
+  eligibility/amazon-pinpoint-eligibility.yml:
+    method: harvested
     evidence: declared in the artifact
   errors/amazon-pinpoint-problem-types.yml:
     method: searched
@@ -3155,7 +3173,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-11-02T082323.yml:
+  kin/checks-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -3222,6 +3240,9 @@ artifacts:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-11-02T082323.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   lifecycle/amazon-pinpoint-lifecycle.yml:
@@ -3416,8 +3437,12 @@ artifacts:
     method: generated
     evidence: declared in the artifact
   smithy/pinpoint-2016-12-01.json:
-    method: unknown
-    evidence: no authorship recorded
+    method: harvested
+    evidence: byte-identical to https://raw.githubusercontent.com/aws/api-models-aws/582e55931c45b944739742a2c1620b6026dd2d13/models/pinpoint/service/2016-12-01/pinpoint-2016-12-01.json
+      (sha256 79595a61c51b, fetched 2026-10-28T13:34:07+00:00)
+  terms/amazon-pinpoint-terms-of-service.yml:
+    method: harvested
+    evidence: declared in the artifact
   vocabulary/amazon-pinpoint-vocabulary.yaml:
     method: unknown
     evidence: no authorship recorded
