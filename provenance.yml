@@ -3433,9 +3433,6 @@ artifacts:
   skills/amazon-pinpoint-stream-engagement-events.md:
     method: generated
     evidence: declared in the artifact
-  sla/amazon-pinpoint-sla.yml:
-    method: generated
-    evidence: declared in the artifact
   smithy/pinpoint-2016-12-01.json:
     method: harvested
     evidence: byte-identical to https://raw.githubusercontent.com/aws/api-models-aws/582e55931c45b944739742a2c1620b6026dd2d13/models/pinpoint/service/2016-12-01/pinpoint-2016-12-01.json
